@@ -1,0 +1,17 @@
+Newtonsoft.Json
+Serilog
+Serilog.Extensions.Logging
+Autofac
+Microsoft.Extensions.Logging
+Microsoft.Extensions.Configuration.Json
+CommandLineParser
+System.Threading.Tasks.Dataflow
+
+Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore
+Be.Vlaanderen.Basisregisters.CommandHandling
+Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency
+Be.Vlaanderen.Basisregisters.EventHandling
+Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic
+
+SourceLink.Embed.AllSourceFiles
+SourceLink.Copy.PdbFiles

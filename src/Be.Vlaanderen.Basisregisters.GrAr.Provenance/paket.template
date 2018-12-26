@@ -1,0 +1,26 @@
+type file
+version 1.0.0
+
+id Be.Vlaanderen.Basisregisters.GrAr.Provenance
+title Be.Vlaanderen.Basisregisters.GrAr.Provenance
+
+authors Basisregisters Vlaanderen
+owners agentschap Informatie Vlaanderen <https://vlaanderen.be/informatie-vlaanderen>
+copyright Copyright (c) agentschap Informatie Vlaanderen
+requireLicenseAcceptance false
+projectUrl https://github.com/Informatievlaanderen/grar-common
+iconUrl https://raw.githubusercontent.com/Informatievlaanderen/build-pipeline/master/logo.png
+licenseUrl https://opensource.org/licenses/EUPL-1.2
+
+description Common logic for GrAr provenance information.
+
+dependencies
+  framework: netstandard20
+    Be.Vlaanderen.Basisregisters.Crab >= LOCKEDVERSION
+    Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
+
+    Microsoft.CSharp >= LOCKEDVERSION
+
+files
+  /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.dll => lib\netstandard2.0
+  /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.pdb => lib\netstandard2.0
