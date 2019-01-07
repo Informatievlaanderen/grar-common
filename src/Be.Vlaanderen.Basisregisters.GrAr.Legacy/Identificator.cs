@@ -29,23 +29,17 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
         public string ObjectId { get; set; }
 
         /// <summary>
-        /// De identificator van de versie van het object, uniek overheen heel het wereldwijde web.
-        /// </summary>
-        [DataMember(Name = "VersieId", Order = 4)]
-        public int? VersieId { get; set; }
-
-        /// <summary>
         /// De versie van het object.
         /// </summary>
-        [DataMember(Name = "Versie", Order = 5)]
+        [DataMember(Name = "Versie", Order = 4)]
         public DateTimeOffset? Versie { get; set; }
 
-        public Identificator(string naamruimte, string objectId, int? versieId)
+        public Identificator(string naamruimte, string objectId, DateTimeOffset? versie)
         {
             Naamruimte = naamruimte;
             Id = $"{naamruimte}/{HttpUtility.UrlEncode(objectId)}";
             ObjectId = objectId;
-            VersieId = versieId;
+            Versie = versie;
         }
     }
 }
