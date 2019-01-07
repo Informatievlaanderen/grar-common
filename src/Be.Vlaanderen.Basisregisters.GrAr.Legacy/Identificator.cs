@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
 {
+    using System;
     using System.Runtime.Serialization;
     using System.Web;
 
@@ -32,6 +33,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
         /// </summary>
         [DataMember(Name = "VersieId", Order = 4)]
         public int? VersieId { get; set; }
+
+        /// <summary>
+        /// De versie van het object.
+        /// </summary>
+        [DataMember(Name = "Versie", Order = 5)]
+        public DateTimeOffset? Versie { get; set; }
 
         public Identificator(string naamruimte, string objectId, int? versieId)
         {
