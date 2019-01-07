@@ -2,8 +2,8 @@
 
 Common code for all GR/AR base registries.
 
-|: Package | Version |
-| --- | --- |
+| Package | Version |
+|:--- | --- |
 | Be.Vlaanderen.Basisregisters.GrAr.Common | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Common.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Common) |
 | Be.Vlaanderen.Basisregisters.GrAr.Provenance | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Provenance.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Provenance) |
 | Be.Vlaanderen.Basisregisters.GrAr.Legacy | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Legacy.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Legacy) |
