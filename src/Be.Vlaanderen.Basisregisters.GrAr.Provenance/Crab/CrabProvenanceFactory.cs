@@ -2,6 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
 {
     using System;
     using System.Collections.Generic;
+    using System.Security.Cryptography.X509Certificates;
     using System.Text.RegularExpressions;
     using Crab;
     using NodaTime;
@@ -138,5 +139,21 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             MapOperator(crabOperator),
             MapModification(crabModification, version, isRemoved),
             MapOrganisation(crabOrganisation, timestamp));
+
+        public Provenance CreateFrom(
+            Modification modification,
+            CrabTimestamp timestamp,
+            CrabModification? crabModification,
+            CrabOperator @operator,
+            CrabOrganisation? organisation)
+        {
+            return CreateFrom(
+                modification == Modification.Insert ? 1 : 2,
+                modification == Modification.Delete,
+                timestamp,
+                crabModification,
+                @operator,
+                organisation);
+        }
     }
 }
