@@ -34,9 +34,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common
                 return input;
 
             input = input
-                .Replace("'", "")
-                .Replace("-", "")
-                .Replace(" ", "");
+                .Replace("'", string.Empty)
+                .Replace("-", string.Empty)
+                .Replace(" ", string.Empty);
 
             return input.RemoveDiacritics();
         }

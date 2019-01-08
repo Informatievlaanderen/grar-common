@@ -2,14 +2,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
 {
     using System;
     using System.Collections.Generic;
-    using System.Security.Cryptography.X509Certificates;
     using System.Text.RegularExpressions;
     using Crab;
     using NodaTime;
+    using NodaHelpers = Common.NodaHelpers;
 
     public class CrabProvenanceFactory
     {
-        private static readonly DateTimeZone LocalTimeZone = DateTimeZoneProviders.Tzdb.GetZoneOrNull("Europe/Brussels"); //TODO: make public const?
         private static readonly LocalDate VlmEndDate = new LocalDate(2006, 04, 01);
         private static readonly LocalDate AgivEndDate = new LocalDate(2016, 01, 01);
 
@@ -68,10 +67,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
 
             if (crabOrganisation == CrabOrganisation.Vlm)
             {
-                if (timestamp < VlmEndDate.AtStartOfDayInZone(LocalTimeZone).ToInstant())
+                if (timestamp < VlmEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone).ToInstant())
                     return Organisation.Vlm;
 
-                if (timestamp < AgivEndDate.AtStartOfDayInZone(LocalTimeZone).ToInstant())
+                if (timestamp < AgivEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone).ToInstant())
                     return Organisation.Agiv;
 
                 return Organisation.Aiv;

@@ -16,6 +16,8 @@ description Common logic for GrAr provenance information.
 
 dependencies
   framework: netstandard20
+    Be.Vlaanderen.Basisregisters.GrAr.Common CURRENTVERSION
+
     Be.Vlaanderen.Basisregisters.Crab >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
 

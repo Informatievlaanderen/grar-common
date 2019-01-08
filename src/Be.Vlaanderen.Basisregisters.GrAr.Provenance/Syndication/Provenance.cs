@@ -1,4 +1,4 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Common.Syndication
+namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance.Syndication
 {
     using System.Runtime.Serialization;
     using GrAr.Provenance;
