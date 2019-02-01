@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/informatievlaanderen/grar-common/compare/v3.0.0...v3.1.0) (2019-02-01)
+
+
+### Features
+
+* identificator now serialises as an rfc3339 date ([e637bb2](https://github.com/informatievlaanderen/grar-common/commit/e637bb2))
+
 # [3.0.0](https://github.com/informatievlaanderen/grar-common/compare/v2.0.1...v3.0.0) (2019-01-08)
 
 
