@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/informatievlaanderen/grar-common/compare/v3.1.0...v3.1.1) (2019-02-01)
+
+
+### Bug Fixes
+
+* use empty namespace for xml serialisation ([a21a8ca](https://github.com/informatievlaanderen/grar-common/commit/a21a8ca))
+
 # [3.1.0](https://github.com/informatievlaanderen/grar-common/compare/v3.0.0...v3.1.0) (2019-02-01)
 
 
