@@ -1,5 +1,8 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gemeente
 {
+    using System.Runtime.Serialization;
+
+    [DataContract(Name = "GemeenteStatus", Namespace = "")]
     public enum GemeenteStatus
     {
         /// <summary>

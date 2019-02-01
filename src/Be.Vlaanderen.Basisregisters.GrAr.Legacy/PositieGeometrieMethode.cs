@@ -6,6 +6,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     /// <summary>
     /// De Geometrie methode van de positie.
     /// </summary>
+    [DataContract(Name = "PositieGeometrieMethode", Namespace = "")]
     public enum PositieGeometrieMethode
     {
         /// <summary>

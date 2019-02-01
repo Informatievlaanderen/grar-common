@@ -1,8 +1,11 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
 {
+    using System.Runtime.Serialization;
+
     /// <summary>
     /// De specificatie van het object, voorgesteld door de positie.
     /// </summary>
+    [DataContract(Name = "PositieSpecificatie", Namespace = "")]
     public enum PositieSpecificatie
     {
         /// <summary>
