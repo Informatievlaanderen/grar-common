@@ -11,11 +11,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
         /// <summary>
         /// Een gerealiseerd object.
         /// </summary>
+        [EnumMember]
         Gerealiseerd = 1,
 
         /// <summary>
         /// Een gehistoreerd object.
         /// </summary>
+        [EnumMember]
         Gehistoreerd = 2
     }
 }

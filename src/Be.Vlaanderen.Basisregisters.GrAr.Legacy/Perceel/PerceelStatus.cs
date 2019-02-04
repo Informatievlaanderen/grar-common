@@ -11,10 +11,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Perceel
         /// <summary>
         /// Het perceel is gerealiseerd.
         /// </summary>
+        [EnumMember]
         Gerealiseerd = 1,
+
         /// <summary>
         /// Het perceel is gehistoreerd.
         /// </summary>
+        [EnumMember]
         Gehistoreerd = 2,
     }
 }

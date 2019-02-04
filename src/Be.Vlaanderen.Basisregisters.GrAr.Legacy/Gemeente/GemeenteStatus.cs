@@ -8,16 +8,19 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gemeente
         /// <summary>
         /// Een gemeente in gebruik.
         /// </summary>
+        [EnumMember]
         InGebruik = 1,
 
         /// <summary>
         /// Een gemeente die niet langer in gebruik is.
         /// </summary>
+        [EnumMember]
         Gehistoreerd = 2,
 
         /// <summary>
         /// Een gemeente die voorgesteld is.
         /// </summary>
+        [EnumMember]
         Voorgesteld = 3
     }
 }

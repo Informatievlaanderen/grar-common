@@ -12,11 +12,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
         /// <summary>
         /// Aangeduid door de beheerder.
         /// </summary>
+        [EnumMember]
         AangeduidDoorBeheerder = 1,
 
         /// <summary>
         /// Afgeleid van een object.
         /// </summary>
+        [EnumMember]
         AfgeleidVanObject = 2,
 
         /// <summary>
