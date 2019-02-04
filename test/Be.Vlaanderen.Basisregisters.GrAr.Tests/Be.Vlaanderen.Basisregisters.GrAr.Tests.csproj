@@ -4,6 +4,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Common\Be.Vlaanderen.Basisregisters.GrAr.Common.csproj" />
     <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Import\Be.Vlaanderen.Basisregisters.GrAr.Import.csproj" />
+    <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Legacy\Be.Vlaanderen.Basisregisters.GrAr.Legacy.csproj" />
     <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Provenance\Be.Vlaanderen.Basisregisters.GrAr.Provenance.csproj" />
   </ItemGroup>
 
