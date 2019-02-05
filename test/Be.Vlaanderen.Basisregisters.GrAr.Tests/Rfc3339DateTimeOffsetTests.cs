@@ -46,12 +46,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests
         {
             var poco = new JsonPoco
             {
-                Versie = new Rfc3339SerializableDateTimeOffset(new DateTimeOffset(2002, 08, 13, 17, 32, 32, new TimeSpan(2, 0, 0)))
+                Versie = new Rfc3339SerializableDateTimeOffset(new DateTimeOffset(2002, 08, 13, 17, 32, 32, 999, new TimeSpan(2, 0, 0)))
             };
 
             var result = JsonConvert.SerializeObject(poco, SerializerSettings);
             result.Should().NotBeEmpty();
-            result.Should().Be("{\"Versie\":\"2002-08-13T17:32:32+02:00\"}");
+            result.Should().Be("{\"Versie\":\"2002-08-13T17:32:32.999+02:00\"}");
         }
 
         [Fact]
