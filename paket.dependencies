@@ -51,6 +51,7 @@ nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore ~> 1.0
 nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac ~> 1.0
 nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit ~> 1.0
 nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac ~> 1.0
+nuget Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset ~> 1.0
 
 // TEST STUFF
 nuget xunit 2.4.1

@@ -3,6 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     using System;
     using System.Runtime.Serialization;
     using System.Web;
+    using Utilities;
 
     /// <summary>
     /// Bevat informatie waarmee een object kan geïdentificeerd worden.
