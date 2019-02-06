@@ -14,6 +14,12 @@ licenseUrl https://opensource.org/licenses/EUPL-1.2
 
 description Contains common legacy classes from GrAr.
 
+dependencies
+  framework: netstandard20
+    Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset ~> 1.0
+
+    Newtonsoft.Json >= LOCKEDVERSION
+
 files
   /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Legacy.dll => lib\netstandard2.0
   /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Legacy.pdb => lib\netstandard2.0
