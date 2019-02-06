@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/informatievlaanderen/grar-common/compare/v4.0.0...v4.0.1) (2019-02-06)
+
+
+### Bug Fixes
+
+* add nuget references to dependencies ([2412d99](https://github.com/informatievlaanderen/grar-common/commit/2412d99))
+
 # [4.0.0](https://github.com/informatievlaanderen/grar-common/compare/v3.1.3...v4.0.0) (2019-02-06)
 
 
