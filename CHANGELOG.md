@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/informatievlaanderen/grar-common/compare/v3.1.3...v4.0.0) (2019-02-06)
+
+
+### Code Refactoring
+
+* move rfc3339 datetimeoffset to seperate repo ([bd90c6c](https://github.com/informatievlaanderen/grar-common/commit/bd90c6c))
+
+
+### BREAKING CHANGES
+
+* Rfc3339DateTimeOffset is now part of Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset
+
 ## [3.1.3](https://github.com/informatievlaanderen/grar-common/compare/v3.1.2...v3.1.3) (2019-02-06)
 
 
