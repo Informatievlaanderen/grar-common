@@ -1,7 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using AggregateSource;
     using CommandHandling;
@@ -39,11 +38,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             Func<TCommand, TAggregate, Provenance> provenanceFactory)
             where TAggregate : IAggregateRootEntity
         {
-            return commandHandlerBuilder.Pipe(finalHandler => (commandMessage, ct) =>
+            return commandHandlerBuilder.Pipe(next => async (commandMessage, ct) =>
             {
+                var handler = await next(commandMessage, ct);
+
                 AddProvenance(getUnitOfWork, commandMessage, provenanceFactory);
 
-                return finalHandler(commandMessage, ct);
+                return handler;
             });
         }
     }
