@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/informatievlaanderen/grar-common/compare/v4.0.1...v4.1.0) (2019-02-25)
+
+
+### Features
+
+* fix the provenance pipe order ([240a041](https://github.com/informatievlaanderen/grar-common/commit/240a041))
+
 ## [4.0.1](https://github.com/informatievlaanderen/grar-common/compare/v4.0.0...v4.0.1) (2019-02-06)
 
 
