@@ -25,11 +25,11 @@ dependencies
     CommandLineParser >= LOCKEDVERSION
     System.Threading.Tasks.Dataflow >= LOCKEDVERSION
 
-    Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore >= LOCKEDVERSION
-    Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
-    Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency >= LOCKEDVERSION
-    Be.Vlaanderen.Basisregisters.EventHandling >= LOCKEDVERSION
-    Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic >= LOCKEDVERSION
+    Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore ~> 2.0
+    Be.Vlaanderen.Basisregisters.CommandHandling ~> 2.0
+    Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency ~> 2.0
+    Be.Vlaanderen.Basisregisters.EventHandling ~> 1.0
+    Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic ~> 1.0
 
 files
   /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Import.dll => lib\netstandard2.0
