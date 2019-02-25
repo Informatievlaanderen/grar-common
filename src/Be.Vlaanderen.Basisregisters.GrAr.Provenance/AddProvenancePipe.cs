@@ -7,7 +7,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
 
     public static class AddProvenancePipe
     {
-        public static void AddProvenance<TCommand, TAggregate>(Func<ConcurrentUnitOfWork> getUnitOfWork,
+        public static void AddProvenance<TCommand, TAggregate>(
+            Func<ConcurrentUnitOfWork> getUnitOfWork,
             CommandMessage<TCommand> message,
             Func<TCommand, TAggregate, Provenance> provenanceFactory)
             where TAggregate : IAggregateRootEntity
@@ -40,11 +41,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
         {
             return commandHandlerBuilder.Pipe(next => async (commandMessage, ct) =>
             {
-                var handler = await next(commandMessage, ct);
+                var result = await next(commandMessage, ct);
 
                 AddProvenance(getUnitOfWork, commandMessage, provenanceFactory);
 
-                return handler;
+                return result;
             });
         }
     }

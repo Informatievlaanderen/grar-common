@@ -18,8 +18,8 @@ dependencies
   framework: netstandard20
     Be.Vlaanderen.Basisregisters.GrAr.Common CURRENTVERSION
 
-    Be.Vlaanderen.Basisregisters.Crab >= LOCKEDVERSION
-    Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
+    Be.Vlaanderen.Basisregisters.Crab ~> 1.0
+    Be.Vlaanderen.Basisregisters.CommandHandling ~> 2.0
 
     Microsoft.CSharp >= LOCKEDVERSION
 
