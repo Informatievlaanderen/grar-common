@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/informatievlaanderen/grar-common/compare/v4.1.0...v4.2.0) (2019-02-25)
+
+
+### Features
+
+* add common extract infrastructure ([0d5f21c](https://github.com/informatievlaanderen/grar-common/commit/0d5f21c))
+
 # [4.1.0](https://github.com/informatievlaanderen/grar-common/compare/v4.0.1...v4.1.0) (2019-02-25)
 
 
