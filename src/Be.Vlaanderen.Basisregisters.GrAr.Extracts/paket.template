@@ -1,8 +1,8 @@
 type file
 version 1.0.0
 
-id Be.Vlaanderen.Basisregisters.GrAr.Common
-title Be.Vlaanderen.Basisregisters.GrAr.Common
+id Be.Vlaanderen.Basisregisters.GrAr.Extracts
+title Be.Vlaanderen.Basisregisters.GrAr.Extracts
 
 authors Basisregisters Vlaanderen
 owners agentschap Informatie Vlaanderen <https://vlaanderen.be/informatie-vlaanderen>
@@ -12,12 +12,13 @@ projectUrl https://github.com/Informatievlaanderen/grar-common
 iconUrl https://raw.githubusercontent.com/Informatievlaanderen/build-pipeline/master/logo.png
 licenseUrl https://opensource.org/licenses/EUPL-1.2
 
-description Common utilities for GrAr.
+description Extract utilities for GrAr.
 
 dependencies
   framework: netstandard20
-    NodaTime >= LOCKEDVERSION
+    Be.Vlaanderen.Basisregisters.Api ~> 1.8
+    Be.Vlaanderen.Basisregisters.Shaperon ~> 3.0
 
 files
-  /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Common.dll => lib\netstandard2.0
-  /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Common.pdb => lib\netstandard2.0
+  /bin/Release/netcoreapp2.2/Be.Vlaanderen.Basisregisters.GrAr.Extracts.dll => lib\netcoreapp2.2
+  /bin/Release/netcoreapp2.2/Be.Vlaanderen.Basisregisters.GrAr.Extracts.pdb => lib\netcoreapp2.2

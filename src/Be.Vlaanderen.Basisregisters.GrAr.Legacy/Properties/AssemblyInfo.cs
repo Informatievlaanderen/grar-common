@@ -2,7 +2,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
-[assembly: AssemblyProduct("Vlaamse basisregisters")]
+[assembly: AssemblyProduct("Basisregisters Vlaanderen")]
 [assembly: AssemblyDescription("GrAr Common Legacy")]
 [assembly: AssemblyVersion("2.0.0.0")]
 [assembly: AssemblyFileVersion("2.0.0.0")]

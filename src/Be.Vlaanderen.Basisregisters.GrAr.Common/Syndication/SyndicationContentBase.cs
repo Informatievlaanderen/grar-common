@@ -10,6 +10,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common.Syndication
         public string ToXml()
         {
             var serializer = new DataContractSerializer(GetType());
+
             using (var output = new StringWriter())
             using (var writer = new XmlTextWriter(output) { Formatting = Formatting.Indented })
             {
