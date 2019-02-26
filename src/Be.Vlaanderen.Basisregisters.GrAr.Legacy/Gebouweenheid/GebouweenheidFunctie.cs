@@ -18,6 +18,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gebouweenheid
         /// Gemeenschappelijk deel.
         /// </summary>
         [EnumMember]
-        GemeenschappelijkDeel
+        GemeenschappelijkDeel = 2
     }
 }
