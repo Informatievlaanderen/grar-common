@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/informatievlaanderen/grar-common/compare/v4.3.0...v4.4.0) (2019-02-26)
+
+
+### Features
+
+* add legacy building and buildingunit types ([df35fd2](https://github.com/informatievlaanderen/grar-common/commit/df35fd2))
+
 # [4.3.0](https://github.com/informatievlaanderen/grar-common/compare/v4.2.0...v4.3.0) (2019-02-25)
 
 
