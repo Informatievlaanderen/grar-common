@@ -13,14 +13,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
         /// <summary>
         /// Een GML3 punt.
         /// </summary>
-        [DataMember(Name = "XmlPoint")]
+        [DataMember(Name = "point")]
         [JsonIgnore]
         public GmlPoint XmlPoint { get; set; }
 
         /// <summary>
         /// Een GeoJSON punt.
         /// </summary>
-        [DataMember(Name = "JsonPoint")]
+        [DataMember(Name = "point")]
         [XmlIgnore]
         public GeoJSONPoint JsonPoint { get; set; }
     }
