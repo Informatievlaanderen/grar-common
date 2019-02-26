@@ -1,3 +1,15 @@
+# [5.0.0](https://github.com/informatievlaanderen/grar-common/compare/v4.4.0...v5.0.0) (2019-02-26)
+
+
+### Code Refactoring
+
+* remove ProvenanceCommandHandlerModule ([fd85d7e](https://github.com/informatievlaanderen/grar-common/commit/fd85d7e))
+
+
+### BREAKING CHANGES
+
+* ProvenanceCommandHandlerModule is removed, in favor of composition with pipes.
+
 # [4.4.0](https://github.com/informatievlaanderen/grar-common/compare/v4.3.0...v4.4.0) (2019-02-26)
 
 
