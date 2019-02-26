@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/informatievlaanderen/grar-common/compare/v5.0.0...v5.0.1) (2019-02-26)
+
+
+### Bug Fixes
+
+* make AddProvenance public ([224110a](https://github.com/informatievlaanderen/grar-common/commit/224110a))
+
 # [5.0.0](https://github.com/informatievlaanderen/grar-common/compare/v4.4.0...v5.0.0) (2019-02-26)
 
 
