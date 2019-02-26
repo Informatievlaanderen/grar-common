@@ -46,7 +46,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             });
         }
 
-        internal static void AddProvenance<TCommand, TAggregate>(
+        public static void AddProvenance<TCommand, TAggregate>(
             Func<ConcurrentUnitOfWork> getUnitOfWork,
             CommandMessage<TCommand> message,
             Func<TCommand, TAggregate, Provenance> provenanceFactory)
