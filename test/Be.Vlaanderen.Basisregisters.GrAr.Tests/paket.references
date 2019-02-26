@@ -19,5 +19,3 @@ Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore
 Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac
 Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit
 Be.Vlaanderen.Basisregisters.EventHandling.Autofac
-Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore.Autofac
-

@@ -19,7 +19,7 @@ dependencies
     Be.Vlaanderen.Basisregisters.GrAr.Common CURRENTVERSION
 
     Be.Vlaanderen.Basisregisters.Crab ~> 1.0
-    Be.Vlaanderen.Basisregisters.CommandHandling ~> 2.0
+    Be.Vlaanderen.Basisregisters.CommandHandling ~> 3.0
 
     Microsoft.CSharp >= LOCKEDVERSION
 

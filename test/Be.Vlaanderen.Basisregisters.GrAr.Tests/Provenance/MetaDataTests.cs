@@ -1,12 +1,10 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Provenance
 {
-    using System;
     using AggregateSource;
     using AggregateSource.Testing;
     using AggregateSource.Testing.Comparers;
     using Autofac;
     using CommandHandling;
-    using CommandHandling.SqlStreamStore.Autofac;
     using EventHandling;
     using EventHandling.Autofac;
     using Infrastructure;
@@ -29,11 +27,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Provenance
                 .InstancePerLifetimeScope();
 
             builder
-                .RegisterSqlStreamStoreCommandHandler<TestMetadataCommandHandlerModule>(
-                    c => handler => new TestMetadataCommandHandlerModule(
-                        c.Resolve<Func<ITestMetadataRepository>>(),
-                        c.Resolve<Func<ConcurrentUnitOfWork>>(),
-                        handler));
+                .RegisterType<TestMetadataCommandHandlerModule>()
+                .Named<CommandHandlerModule>(typeof(TestMetadataCommandHandlerModule).FullName)
+                .As<CommandHandlerModule>();
 
             builder
                 .RegisterType<CommandHandlerResolver>()

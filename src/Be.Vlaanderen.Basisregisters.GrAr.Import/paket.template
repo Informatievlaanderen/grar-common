@@ -25,9 +25,9 @@ dependencies
     CommandLineParser >= LOCKEDVERSION
     System.Threading.Tasks.Dataflow >= LOCKEDVERSION
 
-    Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore ~> 2.0
-    Be.Vlaanderen.Basisregisters.CommandHandling ~> 2.0
-    Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency ~> 2.0
+    Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore ~> 3.0
+    Be.Vlaanderen.Basisregisters.CommandHandling ~> 3.0
+    Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency ~> 3.0
     Be.Vlaanderen.Basisregisters.EventHandling ~> 1.0
     Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic ~> 1.0
 
