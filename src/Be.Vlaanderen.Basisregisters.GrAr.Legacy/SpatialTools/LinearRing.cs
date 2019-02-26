@@ -3,9 +3,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
     using System.Runtime.Serialization;
 
     [DataContract(Namespace = "")]
-    public class GmlPoint
+    public class LinearRing
     {
-        [DataMember(Name = "pos")]
-        public string Pos { get; set; }
+        [DataMember(Name = "posList")]
+        public string PosList { get; set; }
     }
 }

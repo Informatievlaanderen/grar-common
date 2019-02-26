@@ -7,21 +7,21 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
     /// <summary>
     /// Een GML3 punt of een GeoJSON punt, afhankelijk van het Content-Type.
     /// </summary>
-    [DataContract(Name = "Positie", Namespace = "")]
-    public class Point
+    [DataContract(Name = "GeometriePolygoon", Namespace = "")]
+    public class Polygon
     {
         /// <summary>
-        /// Een GML3 punt.
+        /// Een GML3 polygon.
         /// </summary>
-        [DataMember(Name = "point")]
         [JsonIgnore]
-        public GmlPoint XmlPoint { get; set; }
+        [DataMember(Name = "polygon")]
+        public GmlPolygon XmlPolygon { get; set; }
 
         /// <summary>
-        /// Een GeoJSON punt.
+        /// Een GeoJSON polygon.
         /// </summary>
-        [DataMember(Name = "point")]
         [XmlIgnore]
-        public GeoJSONPoint JsonPoint { get; set; }
+        [DataMember(Name = "polygon")]
+        public GeoJSONPolygon JsonPolygon { get; set; }
     }
 }
