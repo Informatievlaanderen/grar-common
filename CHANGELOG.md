@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/informatievlaanderen/grar-common/compare/v5.1.0...v5.1.1) (2019-02-28)
+
+
+### Bug Fixes
+
+* update metadatatests to capture events ([54d823c](https://github.com/informatievlaanderen/grar-common/commit/54d823c))
+
 # [5.1.0](https://github.com/informatievlaanderen/grar-common/compare/v5.0.1...v5.1.0) (2019-02-28)
 
 
