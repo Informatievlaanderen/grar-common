@@ -3,6 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Provenance
     using AggregateSource;
     using AggregateSource.Testing;
     using AggregateSource.Testing.Comparers;
+    using AggregateSource.Testing.SqlStreamStore.Autofac;
     using Autofac;
     using CommandHandling;
     using EventHandling;
@@ -25,6 +26,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Provenance
             builder
                 .RegisterType<ConcurrentUnitOfWork>()
                 .InstancePerLifetimeScope();
+
+            builder
+                .RegisterType<TestMetadataProvenanceFactory>();
 
             builder
                 .RegisterType<TestMetadataCommandHandlerModule>()
@@ -52,9 +56,22 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Provenance
         public void MetaOnCommandIsAddToAppliedEvents()
         {
             var command = new TestMetadaCommand();
+
             var expectedEvent = new TestMetadataEvent();
-            expectedEvent.SetProvenance(new TestMetadataProvenanceFactory().CreateFrom(0, false, command.Timestamp, command.Modification, command.Operator, command.Organisation));
-            Assert(new Scenario().GivenNone().When(command).Then(new TestMetadataId(1), expectedEvent));
+            expectedEvent.SetProvenance(
+                new TestMetadataProvenanceFactory().CreateFrom(
+                    0,
+                    false,
+                    command.Timestamp,
+                    command.Modification,
+                    command.Operator,
+                    command.Organisation));
+
+            Assert(new Scenario()
+                .GivenNone()
+                .When(command)
+                .Then(new TestMetadataId(1),
+                    expectedEvent));
         }
     }
 }

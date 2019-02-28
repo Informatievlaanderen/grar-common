@@ -5,8 +5,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Provenance.Infrastructure
 
     public class TestMetadataId : IntegerValueObject<TestMetadataId>
     {
-        public TestMetadataId([JsonProperty("value")] int testMetadataId) : base(testMetadataId)
-        {
-        }
+        public TestMetadataId([JsonProperty("value")] int testMetadataId) : base(testMetadataId) { }
     }
 }

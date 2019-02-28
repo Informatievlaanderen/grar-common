@@ -9,6 +9,7 @@ FluentAssertions
 Moq
 
 Be.Vlaanderen.Basisregisters.Crab
+
 Be.Vlaanderen.Basisregisters.AggregateSource
 Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting
 Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore
@@ -18,4 +19,7 @@ Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling
 Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore
 Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac
 Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit
+
 Be.Vlaanderen.Basisregisters.EventHandling.Autofac
+
+Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore
