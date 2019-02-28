@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/informatievlaanderen/grar-common/compare/v5.0.1...v5.1.0) (2019-02-28)
+
+
+### Features
+
+* add interior rings for gml polygon ([4ef38cf](https://github.com/informatievlaanderen/grar-common/commit/4ef38cf))
+
 ## [5.0.1](https://github.com/informatievlaanderen/grar-common/compare/v5.0.0...v5.0.1) (2019-02-26)
 
 
