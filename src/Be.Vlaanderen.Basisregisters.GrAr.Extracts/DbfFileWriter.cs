@@ -9,8 +9,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
     public class DbfFileWriter<TDbaseRecord> : ExtractFileWriter
         where TDbaseRecord : DbaseRecord
     {
-        private static DbaseCodePage CodePage => DbaseCodePage.Western_European_ANSI;
-        private static Encoding Encoding => CodePage.ToEncoding();
+        public static DbaseCodePage CodePage => DbaseCodePage.Western_European_ANSI;
+        public static Encoding Encoding => CodePage.ToEncoding();
 
         public DbfFileWriter(DbaseFileHeader header, Stream writeStream)
             : base(Encoding, writeStream) => header.Write(Writer);
