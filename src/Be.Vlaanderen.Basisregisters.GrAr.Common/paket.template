@@ -18,6 +18,8 @@ dependencies
   framework: netstandard20
     NodaTime >= LOCKEDVERSION
 
+    Be.Vlaanderen.Basisregisters.AggregateSource ~> 3.0
+
 files
   /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Common.dll => lib\netstandard2.0
   /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Common.pdb => lib\netstandard2.0
