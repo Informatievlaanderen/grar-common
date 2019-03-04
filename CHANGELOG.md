@@ -1,3 +1,10 @@
+# [5.2.0](https://github.com/informatievlaanderen/grar-common/compare/v5.1.1...v5.2.0) (2019-03-04)
+
+
+### Features
+
+* add transform possibility for dbfile, add shp and shx files ([9da723c](https://github.com/informatievlaanderen/grar-common/commit/9da723c))
+
 ## [5.1.1](https://github.com/informatievlaanderen/grar-common/compare/v5.1.0...v5.1.1) (2019-02-28)
 
 
