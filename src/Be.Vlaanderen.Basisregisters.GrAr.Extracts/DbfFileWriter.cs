@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
 {
+    using System;
     using System.IO;
     using System.Text;
     using Api.Extract;
@@ -8,7 +9,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
     public class DbfFileWriter<TDbaseRecord> : ExtractFileWriter
         where TDbaseRecord : DbaseRecord
     {
-        private static Encoding Encoding => DbaseCodePage.Western_European_ANSI.ToEncoding();
+        private static DbaseCodePage CodePage => DbaseCodePage.Western_European_ANSI;
+        private static Encoding Encoding => CodePage.ToEncoding();
 
         public DbfFileWriter(DbaseFileHeader header, Stream writeStream)
             : base(Encoding, writeStream) => header.Write(Writer);
@@ -24,5 +26,18 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
         }
 
         public void WriteEndOfFile() => Writer.Write(DbaseRecord.EndOfFile);
+
+        internal static DbfFileWriter<T> CreateDbfFileWriter<T>(
+            DbaseSchema schema,
+            DbaseRecordCount recordCount,
+            Stream writeStream) where T : DbaseRecord
+            => new DbfFileWriter<T>(
+                new DbaseFileHeader(
+                    DateTime.Now,
+                    CodePage,
+                    recordCount,
+                    schema
+                ),
+                writeStream);
     }
 }

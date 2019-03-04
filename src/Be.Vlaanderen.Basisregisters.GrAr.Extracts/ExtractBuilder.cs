@@ -3,6 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using Api.Extract;
     using Shaperon;
 
@@ -13,11 +14,24 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
             DbaseSchema schema,
             IEnumerable<byte[]> records,
             Func<int> getRecordCount) where TDbaseRecord : DbaseRecord, new()
+            => CreateDbfFile<byte[], TDbaseRecord>(
+                fileName,
+                schema,
+                records,
+                getRecordCount,
+                o => o);
+
+        public static ExtractFile CreateDbfFile<T, TDbaseRecord>(
+            string fileName,
+            DbaseSchema schema,
+            IEnumerable<T> records,
+            Func<int> getRecordCount,
+            Func<T, byte[]> buildRecordFunc) where TDbaseRecord : DbaseRecord, new()
             => new ExtractFile(
                 new DbfFileName(fileName),
                 (stream, token) =>
                 {
-                    var dbfFile = CreateDbfFileWriter<TDbaseRecord>(
+                    var dbfFile = DbfFileWriter<TDbaseRecord>.CreateDbfFileWriter<TDbaseRecord>(
                         schema,
                         new DbaseRecordCount(getRecordCount()),
                         stream);
@@ -27,23 +41,83 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
                         if (token.IsCancellationRequested)
                             return;
 
-                        dbfFile.WriteBytesAs<TDbaseRecord>(record);
+                        dbfFile.WriteBytesAs<TDbaseRecord>(buildRecordFunc(record));
                     }
 
                     dbfFile.WriteEndOfFile();
                 });
 
-        private static DbfFileWriter<TDbaseRecord> CreateDbfFileWriter<TDbaseRecord>(
-            DbaseSchema schema,
-            DbaseRecordCount recordCount,
-            Stream writeStream) where TDbaseRecord : DbaseRecord
-            => new DbfFileWriter<TDbaseRecord>(
-                new DbaseFileHeader(
-                    DateTime.Now,
-                    DbaseCodePage.Western_European_ANSI,
-                    recordCount,
-                    schema
-                ),
-                writeStream);
+        public static ExtractFile CreateShapeFile<TShape>(
+            string fileName,
+            ShapeType shapeType,
+            IEnumerable<byte[]> shapes,
+            Func<BinaryReader, ShapeContent> readShape,
+            IEnumerable<int> shapeLengths,
+            BoundingBox3D boundingBox) where TShape : ShapeContent
+            => new ExtractFile(
+                new ShpFileName(fileName),
+                (stream, token) =>
+                {
+                    var totalShapeRecordsLength = shapeLengths.Aggregate(
+                        new WordLength(0),
+                        (current, shapeLength) => current.Plus(ShapeRecord.HeaderLength.Plus(new WordLength(shapeLength))));
+
+                    var shpFile = new ShpFileWriter(
+                        new ShapeFileHeader(
+                            ShapeFileHeader.Length.Plus(totalShapeRecordsLength),
+                            shapeType,
+                            boundingBox),
+                        stream);
+
+                    var number = RecordNumber.Initial;
+                    foreach (var shape in shapes)
+                    {
+                        if (token.IsCancellationRequested)
+                            break;
+
+                        using (var shapeStream = new MemoryStream(shape))
+                        using (var reader = new BinaryReader(shapeStream))
+                        {
+                            var content = readShape(reader);
+                            if (content is TShape || content is NullShapeContent)
+                            {
+                                var shapeRecord = content.RecordAs(number);
+                                shpFile.Write(shapeRecord);
+
+                                number = number.Next();
+                            }
+                        }
+                    }
+                });
+
+        public static ExtractFile CreateShapeIndexFile(
+            string fileName,
+            ShapeType shapeType,
+            IEnumerable<int> shapesLengths,
+            Func<int> getRecordCount,
+            BoundingBox3D boundingBox)
+            => new ExtractFile(
+                new ShxFileName(fileName),
+                (stream, token) =>
+                {
+                    var shxFileWriter = new ShxFileWriter(
+                        new ShapeFileHeader(
+                            ShapeFileHeader.Length.Plus(new WordLength(getRecordCount() * 4)),
+                            shapeType,
+                            boundingBox),
+                        stream);
+
+                    var offset = ShapeRecord.InitialOffset;
+                    foreach (var shapeLength in shapesLengths)
+                    {
+                        if (token.IsCancellationRequested)
+                            break;
+
+                        var indexRecord = new ShapeIndexRecord(offset, new WordLength(shapeLength));
+                        shxFileWriter.Write(indexRecord);
+
+                        offset = offset.Plus(indexRecord.ContentLength.Plus(ShapeRecord.HeaderLength));
+                    }
+                });
     }
 }
