@@ -1,9 +1,9 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
 {
-    using System;
-    using System.Linq;
     using AggregateSource;
     using CommandHandling;
+    using System;
+    using System.Linq;
 
     public static class AddProvenancePipe
     {
@@ -70,6 +70,32 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
                 foreach (var @event in events)
                     @event.SetProvenance(provenance);
             }
+        }
+
+        public static void AddProvenance<TCommand, TAggregate>(
+            Func<ConcurrentUnitOfWork> getUnitOfWork,
+            CommandMessage<TCommand> message,
+            Func<TCommand, TAggregate, Provenance> provenanceFactory,
+            int fromPosition)
+            where TAggregate : IAggregateRootEntity
+        {
+            var aggregateRoot = getUnitOfWork()
+                .GetChanges()
+                .Select(aggregate => aggregate.Root)
+                .OfType<TAggregate>()
+                .Single();
+
+            var events = aggregateRoot
+                .GetChanges()
+                .Skip(fromPosition)
+                .OfType<ISetProvenance>();
+
+            var provenance = provenanceFactory(message.Command, aggregateRoot);
+
+            message.AddMetadata(Provenance.ProvenanceMetadataKey, provenance.ToDictionary());
+
+            foreach (var @event in events)
+                @event.SetProvenance(provenance);
         }
     }
 }

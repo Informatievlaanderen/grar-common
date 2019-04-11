@@ -108,7 +108,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                     foreach (var commandToProcess in commandsToProcess.Select(x => x.Command))
                     {
                         Guid commandId = commandToProcess.CreateCommandId();
-                        CommandMessage commandMessage = await processor.Process(commandToProcess, metadata, cancellationToken);
+                        CommandMessage commandMessage = await processor.Process(commandToProcess, metadata, position, cancellationToken);
 
                         var aggregate = concurrentUnitOfWork.GetChanges().SingleOrDefault();
                         if (aggregate != null)
