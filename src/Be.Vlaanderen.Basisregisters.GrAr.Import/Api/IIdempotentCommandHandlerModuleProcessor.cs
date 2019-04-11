@@ -7,6 +7,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
 
     public interface IIdempotentCommandHandlerModuleProcessor
     {
-        Task<CommandMessage> Process(dynamic commandToProcess, IDictionary<string, object> metadata, CancellationToken cancellationToken = default(CancellationToken));
+        Task<CommandMessage> Process(
+            dynamic commandToProcess,
+            IDictionary<string, object> metadata,
+            int currentPosition,
+            CancellationToken cancellationToken = default(CancellationToken));
     }
 }
