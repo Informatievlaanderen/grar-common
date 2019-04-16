@@ -7,14 +7,17 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Generate
     {
         string Name { get; }
 
-        IEnumerable<TKey> GetChangedKeys(DateTime from,
-            DateTime until);
-
-        IEnumerable<dynamic> GenerateInitCommandsFor(TKey key,
+        IEnumerable<TKey> GetChangedKeys(
             DateTime from,
             DateTime until);
 
-        IEnumerable<dynamic> GenerateUpdateCommandsFor(TKey key,
+        IEnumerable<dynamic> GenerateInitCommandsFor(
+            TKey key,
+            DateTime from,
+            DateTime until);
+
+        IEnumerable<dynamic> GenerateUpdateCommandsFor(
+            TKey key,
             DateTime from,
             DateTime until);
     }

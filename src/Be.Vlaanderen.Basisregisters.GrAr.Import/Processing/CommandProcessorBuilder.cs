@@ -1,12 +1,12 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 {
-    using System;
-    using System.Reflection;
     using Api;
     using Generate;
     using Json;
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
+    using System;
+    using System.Reflection;
 
     public class CommandProcessorBuilder<TKey>
     {
@@ -88,7 +88,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         public CommandProcessorBuilder<TKey> UseDefaultSerializerSettingsForCrabImports()
         {
             _serializerSettings = new JsonSerializerSettings().ConfigureForCrabImports();
-            
+
             return this;
         }
 
@@ -164,7 +164,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             if (_processedKeys != null)
                 return _processedKeys;
 
-            return new ConcurrentFileBasedProcessedKeysSet<TKey>(x => x.ToString(), s => (TKey) Convert.ChangeType(s, typeof(TKey)));
+            return new ConcurrentFileBasedProcessedKeysSet<TKey>(x => x.ToString(), s => (TKey)Convert.ChangeType(s, typeof(TKey)));
         }
 
         private ICommandProcessorConfig GetCommandProcessorConfig()

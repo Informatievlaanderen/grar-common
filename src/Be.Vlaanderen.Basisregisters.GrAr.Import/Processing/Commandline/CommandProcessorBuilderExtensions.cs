@@ -7,7 +7,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Commandline
 
     public static class CommandProcessorBuilderExtensions
     {
-        public static CommandProcessorBuilder<TKey> UseCommandLineArgs<TKey>(this CommandProcessorBuilder<TKey> builder,
+        public static CommandProcessorBuilder<TKey> UseCommandLineArgs<TKey>(
+            this CommandProcessorBuilder<TKey> builder,
             string[] args,
             DateTime? failOverFrom,
             DateTime? failOverUntil,
@@ -26,7 +27,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Commandline
             return builder;
         }
 
-        public static CommandProcessorBuilder<TKey> UseInitOptions<TKey>(this CommandProcessorBuilder<TKey> builder,
+        public static CommandProcessorBuilder<TKey> UseInitOptions<TKey>(
+            this CommandProcessorBuilder<TKey> builder,
             InitOptions options,
             DateTime? failOverUntil,
             TimeSpan timeMargin,
@@ -49,7 +51,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Commandline
             return builder.SetCommandProcessorOptions(commandProcessorOptions);
         }
 
-        public static CommandProcessorBuilder<TKey> UseUpdateOptions<TKey>(this CommandProcessorBuilder<TKey> builder,
+        public static CommandProcessorBuilder<TKey> UseUpdateOptions<TKey>(
+            this CommandProcessorBuilder<TKey> builder,
             UpdateOptions options,
             DateTime? failOverFrom,
             DateTime? failOverUntil,

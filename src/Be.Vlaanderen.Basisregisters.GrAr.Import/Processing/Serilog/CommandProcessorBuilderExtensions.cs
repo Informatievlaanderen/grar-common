@@ -7,7 +7,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Serilog
 
     public static class CommandProcessorBuilderExtensions
     {
-        public static CommandProcessorBuilder<T> UseSerilog<T>(this CommandProcessorBuilder<T> builder,
+        public static CommandProcessorBuilder<T> UseSerilog<T>(
+            this CommandProcessorBuilder<T> builder,
             Action<LoggerConfiguration> configureSinks)
         {
             var loggerConfiguration = new LoggerConfiguration()

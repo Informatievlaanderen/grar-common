@@ -7,7 +7,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
     public static class JsonSerializerExtensions
     {
-        public static string Serialize(this JsonSerializer jsonSerializer,
+        public static string Serialize(
+            this JsonSerializer jsonSerializer,
             object value)
         {
             var stringWriter = new StringWriter(new StringBuilder(256), CultureInfo.InvariantCulture);
