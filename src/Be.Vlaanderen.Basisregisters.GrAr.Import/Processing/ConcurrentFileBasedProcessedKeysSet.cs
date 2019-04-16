@@ -13,7 +13,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         private readonly Func<TKey, string> _serializeKey;
         private HashSet<TKey> _cache;
 
-        public ConcurrentFileBasedProcessedKeysSet(Func<TKey, string> serializeKey,
+        public ConcurrentFileBasedProcessedKeysSet(
+            Func<TKey, string> serializeKey,
             Func<string, TKey> deserializeKey,
             string path = "ProcessedKeys.log")
         {
@@ -33,9 +34,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         public void Add(IEnumerable<TKey> keys)
         {
             lock (_lockObj)
-            {
                 File.AppendAllLines(_path, keys.Select(_serializeKey));
-            }
         }
 
         public void Clear()

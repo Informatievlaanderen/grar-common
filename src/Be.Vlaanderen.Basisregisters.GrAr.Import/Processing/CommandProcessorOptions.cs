@@ -13,7 +13,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         public bool CleanStart { get; }
         public ImportMode Mode { get; }
 
-        public CommandProcessorOptions(DateTime from,
+        public CommandProcessorOptions(
+            DateTime from,
             DateTime until,
             IEnumerable<TKey> keys = null,
             int? take = null,

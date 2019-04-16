@@ -16,7 +16,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
         private readonly ILogger _logger;
         private readonly JsonSerializer _serializer;
 
-        public HttpApiProxy(ILogger logger,
+        public HttpApiProxy(
+            ILogger logger,
             JsonSerializer serializer,
             IHttpApiProxyConfig config)
         {

@@ -13,7 +13,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Consume
         private readonly IApiProxy _proxy;
         private List<KeyImport<TKey>> _batch;
 
-        public BatchedKeyImportConsumer(ILogger logger,
+        public BatchedKeyImportConsumer(
+            ILogger logger,
             IProcessedKeysSet<TKey> processedKeys,
             IApiProxy proxy,
             int batchSize = 1000)

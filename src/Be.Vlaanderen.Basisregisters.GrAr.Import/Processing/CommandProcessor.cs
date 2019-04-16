@@ -21,7 +21,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         private readonly IProcessedKeysSet<TKey> _processedKeys;
         private readonly JsonSerializer _serializer;
 
-        public CommandProcessor(ICommandProcessorConfig config,
+        public CommandProcessor(
+            ICommandProcessorConfig config,
             ICommandGenerator<TKey> generator,
             IProcessedKeysSet<TKey> processedKeys,
             IApiProxyFactory apiProxyFactory,
@@ -75,7 +76,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             }
         }
 
-        private KeyImport<TKey> CreateKeyImport(TKey key,
+        private KeyImport<TKey> CreateKeyImport(
+            TKey key,
             ICommandProcessorOptions<TKey> options)
         {
             var stopwatchGenerate = Stopwatch.StartNew();
