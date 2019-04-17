@@ -32,7 +32,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
         /// <summary>
         /// De versie van het object.
         /// </summary>
-        [DataMember(Name = "Versie", Order = 4)]
+        [DataMember(Name = "VersieId", Order = 4)]
         public Rfc3339SerializableDateTimeOffset? Versie { get; set; }
 
         public Identificator(
