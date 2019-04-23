@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/informatievlaanderen/grar-common/compare/v6.0.2...v6.1.0) (2019-04-23)
+
+
+### Features
+
+* upgraded packages ([7bf3e9e](https://github.com/informatievlaanderen/grar-common/commit/7bf3e9e))
+
 ## [6.0.2](https://github.com/informatievlaanderen/grar-common/compare/v6.0.1...v6.0.2) (2019-04-17)
 
 ## [6.0.1](https://github.com/informatievlaanderen/grar-common/compare/v6.0.0...v6.0.1) (2019-04-16)
