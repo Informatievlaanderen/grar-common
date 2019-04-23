@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/informatievlaanderen/grar-common/compare/v6.1.0...v6.1.1) (2019-04-23)
+
+
+### Bug Fixes
+
+* correct paket.template for Extract ([3a12bcc](https://github.com/informatievlaanderen/grar-common/commit/3a12bcc))
+
 # [6.1.0](https://github.com/informatievlaanderen/grar-common/compare/v6.0.2...v6.1.0) (2019-04-23)
 
 
