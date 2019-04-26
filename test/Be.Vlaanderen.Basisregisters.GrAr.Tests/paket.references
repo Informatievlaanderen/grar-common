@@ -1,7 +1,5 @@
 Microsoft.NETCore.App
 
-dotnet-xunit
-dotnet-sourcelink
 xunit
 xunit.runner.visualstudio
 Microsoft.Extensions.Logging

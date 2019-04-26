@@ -9,10 +9,11 @@ source https://api.nuget.org/v3/index.json
 // source https://informatievlaanderen.myget.org/F/nuget-mirror/api/v3/index.json username: "%MYGET_FEED_USER%" password: "%MYGET_FEED_PASS%" authtype: "basic"
 
 // DOTNETCORE ISSUES
-nuget Microsoft.NETCore.App 2.2.0
-nuget Microsoft.NETCore.DotNetAppHost 2.2.0
-nuget Microsoft.NETCore.DotNetHostResolver 2.2.0
-nuget Microsoft.NETCore.DotNetHostPolicy 2.2.0
+nuget Microsoft.NETCore.App 2.2.4
+nuget Microsoft.NETCore.DotNetAppHost 2.2.4
+nuget Microsoft.NETCore.DotNetHostResolver 2.2.4
+nuget Microsoft.NETCore.DotNetHostPolicy 2.2.4
+nuget NETStandard.Library 2.0.3
 
 // PRODUCTION STUFF
 nuget Microsoft.CSharp 4.5.0
@@ -20,23 +21,23 @@ nuget Microsoft.CSharp 4.5.0
 nuget Microsoft.Extensions.Logging 2.2.0
 nuget Microsoft.Extensions.Configuration.Json 2.2.0
 
-nuget Microsoft.EntityFrameworkCore 2.2.0
+nuget Microsoft.EntityFrameworkCore 2.2.4
 
-nuget CompareNETObjects 4.57.0
+nuget CompareNETObjects 4.58.0
 
 nuget System.Threading.Tasks.Dataflow 4.9.0
 
-nuget Newtonsoft.Json 12.0.1
+nuget Newtonsoft.Json 12.0.2
 
 nuget Serilog 2.8.0
-nuget Serilog.Extensions.Logging 2.0.2
+nuget Serilog.Extensions.Logging 2.0.4
 
 nuget CommandLineParser 2.4.3
-nuget NodaTime 2.4.4
-nuget NetTopologySuite 1.15.1
+nuget NodaTime 2.4.5
+nuget NetTopologySuite 1.15.2
 
 // VBR STUFF
-nuget Be.Vlaanderen.Basisregisters.Build.Pipeline ~> 1.5
+nuget Be.Vlaanderen.Basisregisters.Build.Pipeline ~> 1.6
 
 nuget Be.Vlaanderen.Basisregisters.AggregateSource ~> 3.0
 nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting ~> 3.0
@@ -71,10 +72,7 @@ nuget xunit.runner.visualstudio 2.4.1
 nuget Moq 4.10.1
 nuget FluentAssertions 5.6.0
 
-clitool dotnet-xunit 2.3.1
-
 // BUILD STUFF
 nuget FAKE 4.64.13 // Don't update to v5!
 nuget SourceLink.Embed.AllSourceFiles 2.8.3 copy_local: true
 nuget SourceLink.Copy.PdbFiles 2.8.3 copy_local: true
-clitool dotnet-sourcelink 2.8.3
