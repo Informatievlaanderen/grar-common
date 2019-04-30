@@ -17,22 +17,12 @@ nuget NETStandard.Library 2.0.3
 
 // PRODUCTION STUFF
 nuget Microsoft.CSharp 4.5.0
-
 nuget Microsoft.Extensions.Logging 2.2.0
-nuget Microsoft.Extensions.Configuration.Json 2.2.0
-
-nuget Microsoft.EntityFrameworkCore 2.2.4
-
-nuget CompareNETObjects 4.58.0
 
 nuget System.Threading.Tasks.Dataflow 4.9.0
 
-nuget Newtonsoft.Json 12.0.2
-
-nuget Serilog 2.8.0
-nuget Serilog.Extensions.Logging 2.0.4
-
-nuget CommandLineParser 2.4.3
+nuget CompareNETObjects 4.58.0
+nuget CommandLineParser 2.5.0
 nuget NodaTime 2.4.5
 nuget NetTopologySuite 1.15.2
 
@@ -56,7 +46,7 @@ nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore ~> 3.0
 nuget Be.Vlaanderen.Basisregisters.EventHandling ~> 1.0
 nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac ~> 1.0
 
-nuget Be.Vlaanderen.Basisregisters.Api ~> 6.0
+nuget Be.Vlaanderen.Basisregisters.Api ~> 7.0
 
 nuget Be.Vlaanderen.Basisregisters.Crab ~> 1.0
 
