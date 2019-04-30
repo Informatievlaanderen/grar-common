@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/informatievlaanderen/grar-common/compare/v6.1.2...v6.2.0) (2019-04-30)
+
+
+### Features
+
+* update dependencies ([2d93da8](https://github.com/informatievlaanderen/grar-common/commit/2d93da8))
+
 ## [6.1.2](https://github.com/informatievlaanderen/grar-common/compare/v6.1.1...v6.1.2) (2019-04-26)
 
 ## [6.1.1](https://github.com/informatievlaanderen/grar-common/compare/v6.1.0...v6.1.1) (2019-04-23)
