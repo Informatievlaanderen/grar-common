@@ -102,77 +102,46 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
         public CommandProcessor<TKey> Build()
         {
-            var config = GetCommandProcessorConfig();
-            var processedKeys = GetProcessedKeys();
-            var apiProxyFactory = GetApiProxyFactory();
-            var logger = GetLogger();
-            var serializer = GetSerializer();
-            var result = new CommandProcessor<TKey>(config,
+            var logger = _loggerFactory?.CreateLogger(Assembly.GetExecutingAssembly().FullName) ?? throw new CommandProcessorBuilderConfigurationException("No LoggerFactory was set. Call UseLoggerFactory to set a factory");
+
+            var config = _commandProcessorConfig ?? new DefaultCommandProcessorConfig();
+            var processedKeys = _processedKeys ?? new ConcurrentFileBasedProcessedKeysSet<TKey>(x => x.ToString(), s => (TKey)Convert.ChangeType(s, typeof(TKey)));
+            var serializer = JsonSerializer.CreateDefault(_serializerSettings);
+
+            return new CommandProcessor<TKey>(config,
                 _generator,
                 processedKeys,
-                apiProxyFactory,
+                GetApiProxyFactory(logger, serializer),
                 logger,
-                serializer
-            );
-
-            return result;
+                serializer);
         }
 
         public void BuildAndRun()
         {
             var processor = Build();
-            processor.Run(GetOptions());
+            var options = Options ?? throw new CommandProcessorBuilderConfigurationException("No CommandProcessorOptions was set. Call UseCommandProcessorOptions to set options");
+
+            processor.Run(options);
         }
 
-        private JsonSerializer GetSerializer() => _serializerSettings != null ? JsonSerializer.CreateDefault(_serializerSettings) : JsonSerializer.CreateDefault();
-
-        private ICommandProcessorOptions<TKey> GetOptions()
-        {
-            if (Options == null)
-                throw new CommandProcessorBuilderConfigurationException("No CommandProcessorOptions was set. Call UseCommandProcessorOptions to set options");
-
-            return Options;
-        }
-
-        private ILogger GetLogger()
-        {
-            if (_loggerFactory == null)
-                throw new CommandProcessorBuilderConfigurationException("No LoggerFactory was set. Call UseLoggerFactory to set a factory");
-            return _loggerFactory.CreateLogger(Assembly.GetExecutingAssembly().FullName);
-        }
-
-        private IHttpApiProxyConfig GetHttpApiProxyConfig()
-        {
-            if (_httpApiProxyConfig == null)
-                throw new CommandProcessorBuilderConfigurationException("No IHttpApiProxyConfig was set. Call UseHttpApiProxyConfig or UseApiProxyFactory to set your own factory");
-            return _httpApiProxyConfig;
-        }
-
-        private IApiProxyFactory GetApiProxyFactory()
+        private IApiProxyFactory GetApiProxyFactory(ILogger logger, JsonSerializer serializer)
         {
             if (_apiProxyFactory != null)
                 return _apiProxyFactory;
 
+            if(logger == null)
+                throw new ArgumentNullException(nameof(logger));
+
             if (_useDryRunApiProxyFactory)
-                return new DryRunApiProxyFactory(GetLogger());
+                return new DryRunApiProxyFactory(logger);
 
-            return _apiProxyFactory = new SingleEndpointHttpApiProxyFactory(GetLogger(), GetSerializer(), GetHttpApiProxyConfig());
-        }
+            if(serializer == null)
+                throw new ArgumentNullException(nameof(serializer));
 
-        private IProcessedKeysSet<TKey> GetProcessedKeys()
-        {
-            if (_processedKeys != null)
-                return _processedKeys;
-
-            return new ConcurrentFileBasedProcessedKeysSet<TKey>(x => x.ToString(), s => (TKey)Convert.ChangeType(s, typeof(TKey)));
-        }
-
-        private ICommandProcessorConfig GetCommandProcessorConfig()
-        {
-            if (_commandProcessorConfig != null)
-                return _commandProcessorConfig;
-
-            return new DefaultCommandProcessorConfig();
+            return new SingleEndpointHttpApiProxyFactory(
+                logger,
+                serializer,
+                _httpApiProxyConfig ?? throw new CommandProcessorBuilderConfigurationException("No IHttpApiProxyConfig was set. Call UseHttpApiProxyConfig or UseApiProxyFactory to set your own factory"));
         }
     }
 }
