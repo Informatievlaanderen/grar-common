@@ -1,6 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Serilog
 {
     using System;
+    using System.Collections.Generic;
     using global::Serilog;
     using global::Serilog.Events;
     using Microsoft.Extensions.Logging;
@@ -11,8 +12,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Serilog
             this CommandProcessorBuilder<T> builder,
             Action<LoggerConfiguration> configureSinks)
         {
-            var loggerConfiguration = new LoggerConfiguration()
-                .MinimumLevel.Is(Map(builder.MinLogLevel));
+            var minimumLogLevel = builder.MinLogLevel;
+            var logEventLevel = LogLevelMappings.ContainsKey(minimumLogLevel) ? LogLevelMappings[minimumLogLevel] : LogEventLevel.Information;
+
+            var loggerConfiguration = new LoggerConfiguration().MinimumLevel.Is(logEventLevel);
             configureSinks?.Invoke(loggerConfiguration);
 
             var factory = new LoggerFactory();
@@ -21,25 +24,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Serilog
             return builder.UseLoggerFactory(factory);
         }
 
-        private static LogEventLevel Map(LogLevel logLevel)
-        {
-            switch (logLevel)
+        private static IReadOnlyDictionary<LogLevel, LogEventLevel> LogLevelMappings =>
+            new Dictionary<LogLevel, LogEventLevel>
             {
-                case LogLevel.Critical:
-                    return LogEventLevel.Fatal;
-                case LogLevel.Error:
-                    return LogEventLevel.Error;
-                case LogLevel.Warning:
-                    return LogEventLevel.Warning;
-                case LogLevel.Information:
-                    return LogEventLevel.Information;
-                case LogLevel.Debug:
-                    return LogEventLevel.Debug;
-                case LogLevel.Trace:
-                    return LogEventLevel.Verbose;
-                default:
-                    return LogEventLevel.Information;
-            }
-        }
+                {LogLevel.Critical, LogEventLevel.Fatal},
+                {LogLevel.Error, LogEventLevel.Error},
+                {LogLevel.Warning, LogEventLevel.Warning},
+                {LogLevel.Information, LogEventLevel.Information},
+                {LogLevel.Debug, LogEventLevel.Debug},
+                {LogLevel.Trace, LogEventLevel.Verbose},
+            };
     }
 }
