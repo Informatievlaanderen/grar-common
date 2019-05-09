@@ -67,7 +67,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             builder.SetCommandProcessorOptions(builder.Options.WithCleanStart())
                 .UseProcessedKeysSet(processedKeys.Object);
 
-            builder.BuildAndRun();
+            builder
+                .Build()
+                .Run(builder.Options);
 
             processedKeys.ThenWasCleared();
         }
@@ -83,7 +85,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             builder.SetCommandProcessorOptions(builder.Options.WithKeys(keys))
                 .UseProcessedKeysSet(processedKeys);
 
-            builder.BuildAndRun();
+            builder
+                .Build()
+                .Run(builder.Options);
 
             processedKeys.Keys.Should().HaveCount(nrOfKeys);
             processedKeys.Keys.Should().Contain(keys);

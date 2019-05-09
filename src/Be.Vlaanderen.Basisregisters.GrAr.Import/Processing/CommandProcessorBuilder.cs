@@ -18,15 +18,18 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         private IProcessedKeysSet<TKey> _processedKeys;
         private JsonSerializerSettings _serializerSettings;
         private bool _useDryRunApiProxyFactory;
+        private ICommandProcessorOptions<TKey> _options;
 
-        public ICommandProcessorOptions<TKey> Options { get; private set; }
+        public ICommandProcessorOptions<TKey> Options
+            => _options ?? throw new CommandProcessorBuilderConfigurationException("No CommandProcessorOptions was set. Call UseCommandProcessorOptions to set options");
+
         public LogLevel MinLogLevel { get; private set; }
 
         public CommandProcessorBuilder(ICommandGenerator<TKey> generator) => _generator = generator ?? throw new ArgumentNullException(nameof(generator));
 
         public CommandProcessorBuilder<TKey> SetCommandProcessorOptions(ICommandProcessorOptions<TKey> options)
         {
-            Options = options;
+            _options = options;
 
             return this;
         }
@@ -114,14 +117,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
                 GetApiProxyFactory(logger, serializer),
                 logger,
                 serializer);
-        }
-
-        public void BuildAndRun()
-        {
-            var processor = Build();
-            var options = Options ?? throw new CommandProcessorBuilderConfigurationException("No CommandProcessorOptions was set. Call UseCommandProcessorOptions to set options");
-
-            processor.Run(options);
         }
 
         private IApiProxyFactory GetApiProxyFactory(ILogger logger, JsonSerializer serializer)
