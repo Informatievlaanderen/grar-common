@@ -148,10 +148,6 @@
       },
       {
         "path": "@semantic-release/exec",
-        "cmd": "node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/Be.Vlaanderen.Basisregisters.GrAr/Be.Vlaanderen.Basisregisters.GrAr.Import.Xunit.${nextRelease.version}.nupkg"
-      },
-      {
-        "path": "@semantic-release/exec",
         "cmd": "node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/Be.Vlaanderen.Basisregisters.GrAr/Be.Vlaanderen.Basisregisters.GrAr.Legacy.${nextRelease.version}.nupkg"
       },
       {
