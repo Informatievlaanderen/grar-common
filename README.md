@@ -8,7 +8,6 @@ Common code for all GR/AR base registries.
 | Be.Vlaanderen.Basisregisters.GrAr.Provenance | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Provenance.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Provenance) |
 | Be.Vlaanderen.Basisregisters.GrAr.Legacy | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Legacy.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Legacy) |
 | Be.Vlaanderen.Basisregisters.GrAr.Import | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Import.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Import) |
-| Be.Vlaanderen.Basisregisters.GrAr.Import.Xunit | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Import.Xunit.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Import.Xunit) |
 
 ## License
 

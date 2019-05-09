@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{59931296-488E-4D68-90C9-CCB5E74AEA3A}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,8 +23,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{93490120-C49E-4AD2-8A64-1754F5E01F2E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Vlaanderen.Basisregisters.GrAr.Tests", "test\Be.Vlaanderen.Basisregisters.GrAr.Tests\Be.Vlaanderen.Basisregisters.GrAr.Tests.csproj", "{FFBC520A-F057-4433-8414-7FD56B7DAEA2}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Vlaanderen.Basisregisters.GrAr.Import.Xunit", "src\Be.Vlaanderen.Basisregisters.GrAr.Import.Xunit\Be.Vlaanderen.Basisregisters.GrAr.Import.Xunit.csproj", "{E0C6D608-F574-48E9-BA2F-0FEBF8EF0F70}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Vlaanderen.Basisregisters.GrAr.Legacy", "src\Be.Vlaanderen.Basisregisters.GrAr.Legacy\Be.Vlaanderen.Basisregisters.GrAr.Legacy.csproj", "{7BEE8F34-AD25-47FF-AEF5-C202727D37CE}"
 EndProject
@@ -48,10 +46,6 @@ Global
 		{FFBC520A-F057-4433-8414-7FD56B7DAEA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFBC520A-F057-4433-8414-7FD56B7DAEA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFBC520A-F057-4433-8414-7FD56B7DAEA2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E0C6D608-F574-48E9-BA2F-0FEBF8EF0F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0C6D608-F574-48E9-BA2F-0FEBF8EF0F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0C6D608-F574-48E9-BA2F-0FEBF8EF0F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0C6D608-F574-48E9-BA2F-0FEBF8EF0F70}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7BEE8F34-AD25-47FF-AEF5-C202727D37CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7BEE8F34-AD25-47FF-AEF5-C202727D37CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BEE8F34-AD25-47FF-AEF5-C202727D37CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,7 +69,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4E160F1A-E489-4F53-BBB9-25AB84498C85} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
 		{FFBC520A-F057-4433-8414-7FD56B7DAEA2} = {93490120-C49E-4AD2-8A64-1754F5E01F2E}
-		{E0C6D608-F574-48E9-BA2F-0FEBF8EF0F70} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
 		{7BEE8F34-AD25-47FF-AEF5-C202727D37CE} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
 		{1AB1C63B-B677-4924-9C64-A97C09604313} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
 		{582CC40B-32E8-421D-A080-A17137E39B2C} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
