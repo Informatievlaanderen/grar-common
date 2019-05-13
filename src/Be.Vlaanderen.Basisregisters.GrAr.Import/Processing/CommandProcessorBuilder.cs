@@ -19,7 +19,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         private IProcessedKeysSet<TKey> _processedKeys;
         private JsonSerializerSettings _serializerSettings;
         private bool _useDryRunApiProxyFactory;
-        private ICommandProcessorOptions<TKey> _options;
 
         public LogLevel MinLogLevel { get; private set; }
 
