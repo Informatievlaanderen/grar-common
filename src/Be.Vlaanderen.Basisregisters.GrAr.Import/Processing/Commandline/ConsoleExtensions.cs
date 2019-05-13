@@ -1,4 +1,4 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Commandline
+namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CommandLine
 {
     using System;
 

@@ -1,11 +1,11 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Commandline
+namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CommandLine
 {
     using System;
     using System.Collections.Generic;
-    using CommandLine;
+    using global::CommandLine;
     using Microsoft.Extensions.Logging;
 
-    public abstract class ImportOptions
+    public abstract class ImportArguments
     {
         [Option('c', "clean-start", Default = false, HelpText = "Clean start (reset saved data from previous runs)")]
         public bool CleanStart { get; set; }
@@ -21,18 +21,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Commandline
     }
 
     [Verb("init", HelpText = "Run the event generator in initialize mode")]
-    public class InitOptions : ImportOptions
+    public class InitArguments : ImportArguments
     {
         [Option('t', "take", Required = false, HelpText = "Process one the first x keys, will be ignored if a range of keys is given")]
         public int? Take { get; set; }
     }
 
     [Verb("update", HelpText = "Run the event generator in update mode (default)")]
-    public class UpdateOptions: ImportOptions
+    public class UpdateArguments: ImportArguments
     {
-        [Option("from", Required = false, HelpText = "Looks up all change ids from this timestamp. If empty looks up last saved startdate.")]
-        public DateTime? From { get; set; }
-
         [Option("until", Required = false, HelpText = "Looks up all changed ids until this timestamp. If empty uses default behavior.")]
         public DateTime? Until { get; set; }
     }

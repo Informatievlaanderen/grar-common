@@ -1,7 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using FluentAssertions;
@@ -33,7 +32,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             int nrOfProducers)
         {
             var proxyFactory = new TestApiProxyFactory(_logger, avgDurationPostBatch);
-            var options = new CommandProcessorOptions<int>(DateTime.MinValue, DateTime.Now, null, null);
+            var options = new CommandProcessorOptions<int>(DateTime.MinValue, DateTime.Now, null, null, false, ImportMode.Init);
             var config = new DefaultCommandProcessorConfig() { BufferSize = bufferSize, NrOfConsumers = nrOfConsumers, NrOfProducers = nrOfProducers, BatchSize = batchSize };
             var generator = new TestCommandGenerator(nrOfKeys, nrOfCommandsPerKey, avgDurationGenerateCommandsForKey);
             var filename = $"processedKeys_{Guid.NewGuid()}.log";
@@ -63,13 +62,21 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             var processedKeys = new Mock<IProcessedKeysSet<int>>();
             processedKeys.WhenContainsNothing();
 
-            var builder = new CommandProcessorBuilder<int>(new TestCommandGenerator()).UseDefaultTestConfiguration(_logger); ;
-            builder.SetCommandProcessorOptions(builder.Options.WithCleanStart())
+            var builder = new CommandProcessorBuilder<int>(new TestCommandGenerator())
+                .UseDefaultTestConfiguration(_logger)
                 .UseProcessedKeysSet(processedKeys.Object);
+
+            var options = new CommandProcessorOptions<int>(
+                DateTime.MinValue,
+                DateTime.MaxValue,
+                null,
+                null,
+                true,
+                ImportMode.Init);
 
             builder
                 .Build()
-                .Run(builder.Options);
+                .Run(options);
 
             processedKeys.ThenWasCleared();
         }
@@ -81,13 +88,21 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             var nrOfKeys = 10;
             var keys = Enumerable.Range(100, nrOfKeys).ToList();
 
-            var builder = new CommandProcessorBuilder<int>(new TestCommandGenerator()).UseDefaultTestConfiguration(_logger);
-            builder.SetCommandProcessorOptions(builder.Options.WithKeys(keys))
+            var builder = new CommandProcessorBuilder<int>(new TestCommandGenerator())
+                .UseDefaultTestConfiguration(_logger)
                 .UseProcessedKeysSet(processedKeys);
 
+            var options = new CommandProcessorOptions<int>(
+                DateTime.MinValue,
+                DateTime.MaxValue,
+                keys,
+                null,
+                false,
+                ImportMode.Init);
+            
             builder
                 .Build()
-                .Run(builder.Options);
+                .Run(options);
 
             processedKeys.Keys.Should().HaveCount(nrOfKeys);
             processedKeys.Keys.Should().Contain(keys);
@@ -119,24 +134,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         {
             builder.UseLoggerFactory(new LoggerFactory(new[] { new LoggerProvider(logger) }));
             builder.UseApiProxyFactory(new TestApiProxyFactory(logger));
-            builder.SetCommandProcessorOptions(new CommandProcessorOptions<int>(DateTime.MinValue, DateTime.MaxValue));
             builder.UseCommandProcessorConfig(new DefaultCommandProcessorConfig() { BatchSize = 4, BufferSize = 2, NrOfConsumers = 2, NrOfProducers = 5 });
             builder.UseProcessedKeysSet(new TestProcessedKeysSet());
 
             return builder;
-        }
-    }
-
-    public static class CommandProcessorOptionsExtensions
-    {
-        public static ICommandProcessorOptions<int> WithCleanStart(this ICommandProcessorOptions<int> options)
-        {
-            return new CommandProcessorOptions<int>(options.From, options.Until, options.Keys, options.Take, true, options.Mode);
-        }
-
-        public static ICommandProcessorOptions<int> WithKeys(this ICommandProcessorOptions<int> options, IEnumerable<int> keys)
-        {
-            return new CommandProcessorOptions<int>(options.From, options.Until, keys, options.Take, options.CleanStart, options.Mode);
         }
     }
 

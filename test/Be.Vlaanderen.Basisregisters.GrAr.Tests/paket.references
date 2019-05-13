@@ -5,6 +5,7 @@ xunit.runner.visualstudio
 Microsoft.Extensions.Logging
 FluentAssertions
 Moq
+AutoFixture
 
 Be.Vlaanderen.Basisregisters.Crab
 
