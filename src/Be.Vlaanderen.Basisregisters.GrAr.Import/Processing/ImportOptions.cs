@@ -35,23 +35,22 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         public ICommandProcessorOptions<TKey> CreateProcessorOptions<TKey>(
             DateTime? lastCompletedImport,
             DateTime? recoverUntil,
-            TimeSpan timeMargin,
-            Func<string, TKey> deserializeKey)
+            ICommandProcessorBatchConfiguration<TKey> configuration)
         {
-            var defaultUntil = _getCurrentTimeStamp().Add(-timeMargin);
+            var defaultUntil = _getCurrentTimeStamp().Add(-configuration.Margin);
 
             return _parsed.MapResult(
                 (InitArguments init) => new CommandProcessorOptions<TKey>(
                     lastCompletedImport ?? DateTime.MinValue,
                     recoverUntil ?? defaultUntil,
-                    ImportArguments.Keys.Select(deserializeKey),
+                    ImportArguments.Keys.Select(configuration.Deserialize),
                     init.Take,
                     ImportArguments.CleanStart,
                     ImportMode.Init),
                 (UpdateArguments update) => new CommandProcessorOptions<TKey>(
                     lastCompletedImport ?? throw new ApplicationException("Cannot update an uninitialized import"),
                     recoverUntil ?? update.Until ?? defaultUntil,
-                    ImportArguments.Keys.Select(deserializeKey),
+                    ImportArguments.Keys.Select(configuration.Deserialize),
                     null,
                     ImportArguments.CleanStart || !recoverUntil.HasValue,
                     ImportMode.Update),

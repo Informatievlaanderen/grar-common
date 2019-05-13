@@ -14,7 +14,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     public class When_creating_import_options_for_an_undefined_argument_type
     {
         private readonly Mock<Action<IEnumerable<Error>>> _onNotParsedMock;
-        private ImportOptions _sut;
+        private readonly ImportOptions _sut;
 
         public When_creating_import_options_for_an_undefined_argument_type()
         {
@@ -43,7 +43,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         [Fact]
         public void Then_create_processor_options_throws_an_exception()
         {
-            Func<ICommandProcessorOptions<int>> createProcessorOption = () => _sut.CreateProcessorOptions(null, null, TimeSpan.Zero, s => 0);
+            Func<ICommandProcessorOptions<int>> createProcessorOption = () => _sut.CreateProcessorOptions(null, null, new TestBatchConfiguration<int>());
             createProcessorOption
                 .Should()
                 .Throw<ApplicationException>()
@@ -55,7 +55,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     {
         private readonly Mock<Action<IEnumerable<Error>>> _onNotParsedMock;
         private readonly ImportOptions _sut;
-        private InitArguments _expectedArguments;
+        private readonly InitArguments _expectedArguments;
 
         public When_creating_import_options_for_init()
         {
@@ -86,7 +86,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     {
         private readonly Mock<Action<IEnumerable<Error>>> _onNotParsedMock;
         private readonly ImportOptions _sut;
-        private UpdateArguments _expectedArguments;
+        private readonly UpdateArguments _expectedArguments;
 
         public When_creating_import_options_for_update()
         {
@@ -117,14 +117,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     {
         private readonly InitArguments _initArguments;
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly Func<string, int> _deserializeKey;
+        private readonly ICommandProcessorBatchConfiguration<int> _batchConfiguration;
 
         public When_creating_init_options()
         {
             var fixture = new Fixture();
 
             _initArguments = fixture.Create<InitArguments>();
-            _deserializeKey = s => s.GetHashCode();
+            _batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
 
             _createdOptions = new ImportOptions(
                     _initArguments.ToArguments(),
@@ -132,8 +132,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .CreateProcessorOptions(
                     fixture.Create<DateTime?>(),
                     fixture.Create<DateTime?>(),
-                    fixture.Create<TimeSpan>(),
-                    _deserializeKey); 
+                    _batchConfiguration); 
         }
 
         [Fact]
@@ -157,15 +156,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         [Fact]
         public void Then_keys_should_be_the_arguments_deserialized_keys()
         {
-            _createdOptions.Keys.Should().BeEquivalentTo(_initArguments.Keys.Select(_deserializeKey));
+            _createdOptions.Keys.Should().BeEquivalentTo(_initArguments.Keys.Select(_batchConfiguration.Deserialize));
         }
     }
 
     public class When_creating_init_with_no_previous_import_data
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly TimeSpan _configuredMargin;
         private readonly Func<DateTime> _getCurrentTimeStamp;
+        private readonly ICommandProcessorBatchConfiguration<int> _batchConfiguration;
 
         public When_creating_init_with_no_previous_import_data()
         {
@@ -174,7 +173,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
             var initArguments = fixture.Create<InitArguments>();
             _getCurrentTimeStamp = () => fixedDateTimeNow;
-            _configuredMargin = fixture.Create<TimeSpan>();
+            _batchConfiguration = new TestBatchConfiguration<int>(fixture.Create<TimeSpan>(), s => s.GetHashCode());
 
             _createdOptions = new ImportOptions(
                     initArguments.ToArguments(),
@@ -183,8 +182,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .CreateProcessorOptions(
                     null,
                     null,
-                    _configuredMargin,
-                    s => s.GetHashCode()); 
+                    _batchConfiguration); 
         }
 
         [Fact]
@@ -196,7 +194,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         [Fact]
         public void Then_until_should_be_default_now_minus_the_configured_margin()
         {
-            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(-_configuredMargin));
+            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(- _batchConfiguration.Margin));
         }
     }
 
@@ -211,6 +209,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
             var initArguments = fixture.Create<InitArguments>();
             _lastCompletedImport = fixture.Create<DateTime>();
+            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
 
             _createdOptions = new ImportOptions(
                     initArguments.ToArguments(),
@@ -218,8 +217,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .CreateProcessorOptions(
                     _lastCompletedImport,
                     fixture.Create<DateTime?>(),
-                    fixture.Create<TimeSpan>(),
-                    s => s.GetHashCode()); 
+                    batchConfiguration); 
         }
 
         [Fact]
@@ -240,6 +238,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
             var initArguments = fixture.Create<InitArguments>();
             _recoverUntil = fixture.Create<DateTime>();
+            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
 
             _createdOptions = new ImportOptions(
                     initArguments.ToArguments(),
@@ -247,8 +246,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .CreateProcessorOptions(
                     fixture.Create<DateTime?>(),
                     _recoverUntil,
-                    fixture.Create<TimeSpan>(),
-                    s => s.GetHashCode()); 
+                    batchConfiguration); 
         }
 
         [Fact]
@@ -262,14 +260,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     {
         private readonly UpdateArguments _updateArguments;
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly Func<string, int> _deserializeKey;
+        private readonly ICommandProcessorBatchConfiguration<int> _batchConfiguration;
 
         public When_creating_update_options()
         {
             var fixture = new Fixture();
 
             _updateArguments = fixture.Create<UpdateArguments>();
-            _deserializeKey = s => s.GetHashCode();
+            _batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
 
             _createdOptions = new ImportOptions(
                     _updateArguments.ToArguments(),
@@ -277,8 +275,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .CreateProcessorOptions(
                     fixture.Create<DateTime>(),
                     fixture.Create<DateTime?>(),
-                    fixture.Create<TimeSpan>(),
-                    _deserializeKey);
+                    _batchConfiguration);
         }
 
         [Fact]
@@ -296,7 +293,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         [Fact]
         public void Then_keys_should_be_the_arguments_deserialized_keys()
         {
-            _createdOptions.Keys.Should().BeEquivalentTo(_updateArguments.Keys.Select(_deserializeKey));
+            _createdOptions.Keys.Should().BeEquivalentTo(_updateArguments.Keys.Select(_batchConfiguration.Deserialize));
         }
     }
 
@@ -316,8 +313,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     .CreateProcessorOptions(
                         null,
                         fixture.Create<DateTime?>(),
-                        fixture.Create<TimeSpan>(),
-                        s => s.GetHashCode());
+                        new TestBatchConfiguration<int>());
             };
         }
 
@@ -341,6 +337,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             var fixture = new Fixture();
 
             _lastCompletedImport = fixture.Create<DateTime>();
+            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
 
             _createdOptions = new ImportOptions(
                     fixture.Create<UpdateArguments>().ToArguments(),
@@ -348,8 +345,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .CreateProcessorOptions(
                     _lastCompletedImport,
                     fixture.Create<DateTime?>(),
-                    fixture.Create<TimeSpan>(),
-                    s => s.GetHashCode());
+                    batchConfiguration);
         }
 
         [Fact]
@@ -371,6 +367,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
             _updateArguments = fixture.Create<UpdateArguments>();
             _recoverUntil = fixture.Create<DateTime>();
+            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
 
             _createdOptions = new ImportOptions(
                     _updateArguments.ToArguments(),
@@ -378,8 +375,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .CreateProcessorOptions(
                     fixture.Create<DateTime>(),
                     _recoverUntil,
-                    fixture.Create<TimeSpan>(),
-                    s => s.GetHashCode());
+                    batchConfiguration);
         }
 
         [Fact]
@@ -406,6 +402,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
             _updateArguments = fixture.Create<UpdateArguments>();
             _updateArguments.Until = fixture.Create<DateTime>();
+            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
 
             _createdOptions = new ImportOptions(
                     _updateArguments.ToArguments(),
@@ -413,8 +410,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .CreateProcessorOptions(
                     fixture.Create<DateTime>(),
                     null,
-                    fixture.Create<TimeSpan>(),
-                    s => s.GetHashCode());
+                    batchConfiguration);
         }
 
         [Fact]
@@ -435,8 +431,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     {
         private readonly UpdateArguments _updateArguments;
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private Func<DateTime> _getCurrentTimeStamp;
-        private TimeSpan _timeMargin;
+        private readonly Func<DateTime> _getCurrentTimeStamp;
+        private TestBatchConfiguration<int> _batchConfiguration;
 
         public When_creating_update_options_with_no_recover_until_date_and_no_until_argument()
         {
@@ -447,7 +443,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             _updateArguments.Until = null;
 
             _getCurrentTimeStamp = () => fixedDateTimeNow;
-            _timeMargin = fixture.Create<TimeSpan>();
+            _batchConfiguration = new TestBatchConfiguration<int>(fixture.Create<TimeSpan>(), s => s.GetHashCode());
+
             _createdOptions = new ImportOptions(
                     _updateArguments.ToArguments(),
                     errors => { },
@@ -455,14 +452,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .CreateProcessorOptions(
                     fixture.Create<DateTime>(),
                     null,
-                    _timeMargin,
-                    s => s.GetHashCode());
+                    _batchConfiguration);
         }
 
         [Fact]
         public void Then_until_should_be_the_default_until_date()
         {
-            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(-_timeMargin));
+            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(-_batchConfiguration.Margin));
         }
 
         [Fact]
@@ -471,7 +467,34 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             _createdOptions.CleanStart.Should().Be(true);
         }
     }
-    
+
+    public class TestBatchConfiguration<TKey> : ICommandProcessorBatchConfiguration<TKey>
+    {
+        private readonly Func<string, TKey> _deserialize;
+
+        public TestBatchConfiguration()
+            : this(TimeSpan.Zero, null)
+        { }
+        public TestBatchConfiguration(Func<string, TKey> deserialize)
+            : this(TimeSpan.Zero, deserialize)
+        { }
+
+        public TestBatchConfiguration(TimeSpan margin)
+            : this(margin, null)
+        { }
+
+        public TestBatchConfiguration(TimeSpan margin, Func<string, TKey> deserialize)
+        {
+            _deserialize = deserialize;
+            Margin = margin;
+        }
+
+        public TimeSpan Margin { get; }
+        public TKey Deserialize(string key) =>
+            null != _deserialize
+                ? _deserialize(key)
+                : throw new NotImplementedException();
+    }
 
     public static class ArgumentExtensions
     {
