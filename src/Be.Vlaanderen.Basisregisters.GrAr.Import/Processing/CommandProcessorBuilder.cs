@@ -7,6 +7,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
     using Newtonsoft.Json;
     using System;
     using System.Reflection;
+    using CommandLine;
 
     public class CommandProcessorBuilder<TKey>
     {
@@ -20,16 +21,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         private bool _useDryRunApiProxyFactory;
         private ICommandProcessorOptions<TKey> _options;
 
-        public ICommandProcessorOptions<TKey> Options
-            => _options ?? throw new CommandProcessorBuilderConfigurationException("No CommandProcessorOptions was set. Call UseCommandProcessorOptions to set options");
-
         public LogLevel MinLogLevel { get; private set; }
 
         public CommandProcessorBuilder(ICommandGenerator<TKey> generator) => _generator = generator ?? throw new ArgumentNullException(nameof(generator));
 
-        public CommandProcessorBuilder<TKey> SetCommandProcessorOptions(ICommandProcessorOptions<TKey> options)
+        public CommandProcessorBuilder<TKey> WithCommandLineOptions<TOptions>(TOptions options)
+            where TOptions : ImportArguments
         {
-            _options = options;
+            SetMinLogLevel(options.LogLevel);
+            if (options.DryRun)
+                UseDryRunApiProxyFactory();
 
             return this;
         }

@@ -16,10 +16,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         public CommandProcessorOptions(
             DateTime from,
             DateTime until,
-            IEnumerable<TKey> keys = null,
-            int? take = null,
-            bool cleanStart = false,
-            ImportMode mode = ImportMode.Init)
+            IEnumerable<TKey> keys,
+            int? take,
+            bool cleanStart,
+            ImportMode mode)
         {
             From = from;
             Until = until;
