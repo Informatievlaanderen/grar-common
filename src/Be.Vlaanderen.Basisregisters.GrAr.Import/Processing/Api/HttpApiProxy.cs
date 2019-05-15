@@ -25,11 +25,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
             _logger = logger;
             _config = config;
         }
-
-        public void ImportBatch<TKey>(IEnumerable<KeyImport<TKey>> imports)
+        
+        private void Using(Action<HttpClient> executeCall)
         {
-            var json = _serializer.Serialize(imports.Select(i => i.Commands));
-
             using (var client = new HttpClient { BaseAddress = _config.BaseUrl })
             {
                 client.Timeout = TimeSpan.FromMinutes(_config.HttpTimeoutMinutes);
@@ -43,16 +41,113 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", encodedString);
                 }
 
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                executeCall(client);
+            }
+        }
+
+        public void ImportBatch<TKey>(IEnumerable<KeyImport<TKey>> imports)
+        {
+            var json = _serializer.Serialize(imports.Select(i => i.Commands));
+
+            Using(client =>
+            {
 
                 _logger.LogDebug("Posting to {baseUrl}", _config.BaseUrl);
                 _logger.LogTrace($"Payload:{Environment.NewLine}{{json}}", json);
                 var watch = Stopwatch.StartNew();
-                var response = client.PostAsync(_config.ImportEndpoint, content).GetAwaiter().GetResult();
+                var response = client
+                    .PostAsync(
+                        _config.ImportEndpoint,
+                        new StringContent(json, Encoding.UTF8, "application/json")
+                    )
+                    .GetAwaiter()
+                    .GetResult();
                 watch.Stop();
                 _logger.LogDebug("Post to {baseUrl} was {statusCode} (took:{duration}ms)", _config.BaseUrl, response.StatusCode, watch.ElapsedMilliseconds);
                 response.EnsureSuccessStatusCode();
-            }
+            });
+        }
+
+        public ICommandProcessorOptions<TKey> InitialiseImport<TKey>(
+            ImportOptions options,
+            ICommandProcessorBatchConfiguration<TKey> configuration)
+        {
+            ImportBatchStatus batchStatus = null;
+            Using(client =>
+            {
+                _logger.LogDebug("Getting batch status from {baseUrl}", _config.BaseUrl);
+                var watch = Stopwatch.StartNew();
+                var response = client
+                    .GetAsync(_config.ImportBatchStatusEndpoint)
+                    .GetAwaiter()
+                    .GetResult();
+                watch.Stop();
+                _logger.LogDebug(
+                    "Get from {baseUrl} was {statusCode} (took:{duration}ms)",
+                    _config.BaseUrl,
+                    response.StatusCode,
+                    watch.ElapsedMilliseconds);
+
+                var content = response
+                    .EnsureSuccessStatusCode()
+                    .Content
+                    .ReadAsStringAsync()
+                    .GetAwaiter()
+                    .GetResult() ?? string.Empty;
+
+                batchStatus = JsonConvert.DeserializeObject<ImportBatchStatus>(content);
+            });
+
+            var processorOptions = options.CreateProcessorOptions(batchStatus, configuration);
+            PostImportBatchStatus(processorOptions, Batch.Start);
+
+            return processorOptions;
+        }
+
+        public void FinaliseImport<TKey>(ICommandProcessorOptions<TKey> options)
+        {
+            PostImportBatchStatus(options, Batch.Completed);
+        }
+
+        private static class Batch
+        {
+            public static bool Start => false;
+            public static bool Completed => true;
+        }
+
+        private void PostImportBatchStatus<TKey>(ICommandProcessorOptions<TKey> options, bool importCompleted)
+        {
+            if (options == null)
+                throw new ArgumentNullException(nameof(options));
+
+            var json = _serializer.Serialize(
+                new ImportBatchStatus
+                {
+                    From = options.From,
+                    Until = options.Until,
+                    Completed = importCompleted
+                });
+
+            Using(client =>
+            {
+                _logger.LogDebug("Posting batch status from {baseUrl}", _config.BaseUrl);
+                var watch = Stopwatch.StartNew();
+                var response = client
+                    .PostAsync(
+                        _config.ImportBatchStatusEndpoint,
+                        new StringContent(json, Encoding.UTF8, "application/json")
+                    )
+                    .GetAwaiter()
+                    .GetResult();
+                watch.Stop();
+                _logger.LogDebug(
+                    "Post from {baseUrl} was {statusCode} (took:{duration}ms)",
+                    _config.BaseUrl,
+                    response.StatusCode,
+                    watch.ElapsedMilliseconds);
+
+                response.EnsureSuccessStatusCode();
+            });
         }
     }
 }

@@ -35,14 +35,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import.Infrastructure
             _batches.Add(keysArray.Cast<int>());
         }
 
-        public void ImportBatch(IEnumerable<dynamic> imports)
-        {
-            throw new NotImplementedException();
-        }
+        public ICommandProcessorOptions<TKey> InitialiseImport<TKey>(
+            ImportOptions options,
+            ICommandProcessorBatchConfiguration<TKey> configuration)
+            => throw new NotImplementedException();
+
+        public void FinaliseImport<TKey>(ICommandProcessorOptions<TKey> options)
+            => throw new NotImplementedException();
 
         public IEnumerable<int> AllImportedKeys()
-        {
-            return _batches.SelectMany(x => x);
-        }
+            => _batches.SelectMany(x => x);
     }
 }
