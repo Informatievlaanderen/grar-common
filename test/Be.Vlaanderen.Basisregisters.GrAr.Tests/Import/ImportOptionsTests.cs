@@ -43,7 +43,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         [Fact]
         public void Then_create_processor_options_throws_an_exception()
         {
-            Func<ICommandProcessorOptions<int>> createProcessorOption = () => _sut.CreateProcessorOptions(null, null, new TestBatchConfiguration<int>());
+            Func<ICommandProcessorOptions<int>> createProcessorOption = () => _sut.CreateProcessorOptions(null, new TestBatchConfiguration<int>());
             createProcessorOption
                 .Should()
                 .Throw<ApplicationException>()
@@ -113,13 +113,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         }
     }
 
-    public class When_creating_init_options
+    public class When_creating_init_processor_options_from_import_options
     {
         private readonly InitArguments _initArguments;
         private readonly ICommandProcessorOptions<int> _createdOptions;
         private readonly ICommandProcessorBatchConfiguration<int> _batchConfiguration;
 
-        public When_creating_init_options()
+        public When_creating_init_processor_options_from_import_options()
         {
             var fixture = new Fixture();
 
@@ -130,8 +130,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     _initArguments.ToArguments(),
                     errors => {})
                 .CreateProcessorOptions(
-                    fixture.Create<DateTime?>(),
-                    fixture.Create<DateTime?>(),
+                    new ImportBatchStatus
+                    {
+                        From = fixture.Create<DateTime>(),
+                        Until = fixture.Create<DateTime>(),
+                        Completed = false,
+                    },
                     _batchConfiguration); 
         }
 
@@ -160,13 +164,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         }
     }
 
-    public class When_creating_init_with_no_previous_import_data
+    public class When_creating_init_processor_options_with_no_last_import_data
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
         private readonly Func<DateTime> _getCurrentTimeStamp;
         private readonly ICommandProcessorBatchConfiguration<int> _batchConfiguration;
 
-        public When_creating_init_with_no_previous_import_data()
+        public When_creating_init_processor_options_with_no_last_import_data()
         {
             var fixture = new Fixture();
             var fixedDateTimeNow = fixture.Create<DateTime>();
@@ -179,10 +183,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     initArguments.ToArguments(),
                     errors => {},
                     _getCurrentTimeStamp)
-                .CreateProcessorOptions(
-                    null,
-                    null,
-                    _batchConfiguration); 
+                .CreateProcessorOptions(null, _batchConfiguration); 
         }
 
         [Fact]
@@ -198,71 +199,128 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         }
     }
 
-    public class When_creating_init_with_a_given_last_completed_import_date
+    public class When_creating_init_processor_options_for_an_invalid_last_import
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly DateTime _lastCompletedImport;
+        private readonly Func<DateTime> _getCurrentTimeStamp;
+        private readonly ICommandProcessorBatchConfiguration<int> _batchConfiguration;
 
-        public When_creating_init_with_a_given_last_completed_import_date()
+        public When_creating_init_processor_options_for_an_invalid_last_import()
         {
             var fixture = new Fixture();
+            var fixedDateTimeNow = fixture.Create<DateTime>();
 
             var initArguments = fixture.Create<InitArguments>();
-            _lastCompletedImport = fixture.Create<DateTime>();
-            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
+            _getCurrentTimeStamp = () => fixedDateTimeNow;
+            _batchConfiguration = new TestBatchConfiguration<int>(fixture.Create<TimeSpan>(), s => s.GetHashCode());
 
             _createdOptions = new ImportOptions(
                     initArguments.ToArguments(),
-                    errors => {})
-                .CreateProcessorOptions(
-                    _lastCompletedImport,
-                    fixture.Create<DateTime?>(),
-                    batchConfiguration); 
+                    errors => {},
+                    _getCurrentTimeStamp)
+                .CreateProcessorOptions(new ImportBatchStatus
+                {
+                    From = fixture.Create<DateTime>(),
+                    Until = default,
+                    Completed = false
+                }, _batchConfiguration); 
         }
 
         [Fact]
-        public void Then_from_should_be_the_last_completed_import_date()
+        public void Then_from_should_be_default_from()
         {
-            _createdOptions.From.Should().Be(_lastCompletedImport);
+            _createdOptions.From.Should().Be(DateTime.MinValue);
+        }
+
+        [Fact]
+        public void Then_until_should_be_default_now_minus_the_configured_margin()
+        {
+            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(- _batchConfiguration.Margin));
         }
     }
-
-    public class When_creating_init_with_a_given_recover_until_date
+    
+    public class When_creating_init_processor_options_for_a_not_completed_last_import
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly DateTime _recoverUntil;
+        private readonly ImportBatchStatus _lastBatch;
 
-        public When_creating_init_with_a_given_recover_until_date()
+        public When_creating_init_processor_options_for_a_not_completed_last_import()
         {
             var fixture = new Fixture();
+            var fixedDateTimeNow = fixture.Create<DateTime>();
 
             var initArguments = fixture.Create<InitArguments>();
-            _recoverUntil = fixture.Create<DateTime>();
-            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
+            _lastBatch = new ImportBatchStatus
+            {
+                From = fixture.Create<DateTime>(),
+                Until = fixture.Create<DateTime>(),
+                Completed = false
+            };
 
             _createdOptions = new ImportOptions(
                     initArguments.ToArguments(),
-                    errors => {})
+                    errors => { },
+                    () => fixedDateTimeNow)
                 .CreateProcessorOptions(
-                    fixture.Create<DateTime?>(),
-                    _recoverUntil,
-                    batchConfiguration); 
+                    _lastBatch,
+                    new TestBatchConfiguration<int>(fixture.Create<TimeSpan>(), s => s.GetHashCode()));
         }
 
         [Fact]
-        public void Then_until_should_be_the_recover_until_date()
+        public void Then_from_should_be_last_batch_from()
         {
-            _createdOptions.Until.Should().Be(_recoverUntil);
+            _createdOptions.From.Should().Be(_lastBatch.From);
+        }
+
+        [Fact]
+        public void Then_until_should_be_last_batch_until()
+        {
+            _createdOptions.Until.Should().Be(_lastBatch.Until);
         }
     }
 
-    public class When_creating_update_options
+    public class When_creating_init_processor_options_for_a_completed_last_import
+    {
+        private readonly Func<ICommandProcessorOptions<int>> _createOptions;
+
+        public When_creating_init_processor_options_for_a_completed_last_import()
+        {
+            var fixture = new Fixture();
+            var fixedDateTimeNow = fixture.Create<DateTime>();
+
+            var initArguments = fixture.Create<InitArguments>();
+
+            _createOptions = () => new ImportOptions(
+                    initArguments.ToArguments(),
+                    errors => { },
+                    () => fixedDateTimeNow)
+                .CreateProcessorOptions(
+                    new ImportBatchStatus
+                    {
+                        From = fixture.Create<DateTime>(),
+                        Until = fixture.Create<DateTime>(),
+                        Completed = true
+                    },
+                    new TestBatchConfiguration<int>(fixture.Create<TimeSpan>(), s => s.GetHashCode()));
+        }
+
+        [Fact]
+        public void Then_an_cannot_init_create_init_options_exception_should_be_thrown()
+        {
+            _createOptions
+                .Should()
+                .Throw<ApplicationException>()
+                .WithMessage("Cannot initialize an for an already initialized import");
+        }
+    }
+
+    public class When_creating_update_processor_options
     {
         private readonly UpdateArguments _updateArguments;
         private readonly ICommandProcessorOptions<int> _createdOptions;
         private readonly ICommandProcessorBatchConfiguration<int> _batchConfiguration;
 
-        public When_creating_update_options()
+        public When_creating_update_processor_options()
         {
             var fixture = new Fixture();
 
@@ -273,8 +331,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     _updateArguments.ToArguments(),
                     errors => { })
                 .CreateProcessorOptions(
-                    fixture.Create<DateTime>(),
-                    fixture.Create<DateTime?>(),
+                    fixture.Create<ImportBatchStatus>(),
                     _batchConfiguration);
         }
 
@@ -297,11 +354,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         }
     }
 
-    public class When_creating_update_options_with_no_last_completed_import_date
+    public class When_creating_update_processor_options_with_no_last_import_data
     {
         private readonly Func<ICommandProcessorOptions<int>> _createOptions;
 
-        public When_creating_update_options_with_no_last_completed_import_date()
+        public When_creating_update_processor_options_with_no_last_import_data()
         {
             var fixture = new Fixture();
 
@@ -312,7 +369,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                         errors => { })
                     .CreateProcessorOptions(
                         null,
-                        fixture.Create<DateTime?>(),
                         new TestBatchConfiguration<int>());
             };
         }
@@ -327,147 +383,235 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         }
     }
 
-    public class When_creating_update_options_with_a_last_completed_import_date
+    public class When_creating_update_processor_options_for_an_invalid_last_import
     {
-        private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly DateTime _lastCompletedImport;
+        private readonly Func<ICommandProcessorOptions<int>> _createOptions;
 
-        public When_creating_update_options_with_a_last_completed_import_date()
+        public When_creating_update_processor_options_for_an_invalid_last_import()
         {
             var fixture = new Fixture();
 
-            _lastCompletedImport = fixture.Create<DateTime>();
+            _createOptions = () =>
+            {
+                return new ImportOptions(
+                        fixture.Create<UpdateArguments>().ToArguments(),
+                        errors => { })
+                    .CreateProcessorOptions(
+                        new ImportBatchStatus
+                        {
+                            From = fixture.Create<DateTime>(),
+                            Until = default,
+                            Completed = fixture.Create<bool>()
+                        }, 
+                        new TestBatchConfiguration<int>());
+            };
+        }
+
+        [Fact]
+        public void Then_create_options_should_throw_an_exception()
+        {
+            _createOptions
+                .Should()
+                .Throw<ApplicationException>()
+                .WithMessage("Cannot update an uninitialized import");
+        }
+    }
+
+    public class When_creating_update_processor_options_for_a_completed_previous_batch
+    {
+        private readonly ICommandProcessorOptions<int> _createdOptions;
+        private readonly ImportBatchStatus _lastBatch;
+
+        public When_creating_update_processor_options_for_a_completed_previous_batch()
+        {
+            var fixture = new Fixture();
+
             var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
+
+            _lastBatch = new ImportBatchStatus
+            {
+                From = fixture.Create<DateTime>(),
+                Until = fixture.Create<DateTime>(),
+                Completed = true
+            };
 
             _createdOptions = new ImportOptions(
                     fixture.Create<UpdateArguments>().ToArguments(),
                     errors => { })
                 .CreateProcessorOptions(
-                    _lastCompletedImport,
-                    fixture.Create<DateTime?>(),
+                    _lastBatch, 
                     batchConfiguration);
         }
 
         [Fact]
-        public void Then_from_should_be_the_last_completed_import_date()
+        public void Then_from_should_be_the_last_batch_until()
         {
-            _createdOptions.From.Should().Be(_lastCompletedImport);
-        }
-    }
-
-    public class When_creating_update_options_with_a_recover_until_date
-    {
-        private readonly UpdateArguments _updateArguments;
-        private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly DateTime _recoverUntil;
-
-        public When_creating_update_options_with_a_recover_until_date()
-        {
-            var fixture = new Fixture();
-
-            _updateArguments = fixture.Create<UpdateArguments>();
-            _recoverUntil = fixture.Create<DateTime>();
-            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
-
-            _createdOptions = new ImportOptions(
-                    _updateArguments.ToArguments(),
-                    errors => { })
-                .CreateProcessorOptions(
-                    fixture.Create<DateTime>(),
-                    _recoverUntil,
-                    batchConfiguration);
-        }
-
-        [Fact]
-        public void Then_until_should_be_the_recover_until_date()
-        {
-            _createdOptions.Until.Should().Be(_recoverUntil);
-        }
-
-        [Fact]
-        public void Then_clear_should_be_the_argument_clear_start()
-        {
-            _createdOptions.CleanStart.Should().Be(_updateArguments.CleanStart);
-        }
-    }
-    
-    public class When_creating_update_options_with_no_recover_until_date_and_an_until_argument
-    {
-        private readonly UpdateArguments _updateArguments;
-        private readonly ICommandProcessorOptions<int> _createdOptions;
-
-        public When_creating_update_options_with_no_recover_until_date_and_an_until_argument()
-        {
-            var fixture = new Fixture();
-
-            _updateArguments = fixture.Create<UpdateArguments>();
-            _updateArguments.Until = fixture.Create<DateTime>();
-            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
-
-            _createdOptions = new ImportOptions(
-                    _updateArguments.ToArguments(),
-                    errors => { })
-                .CreateProcessorOptions(
-                    fixture.Create<DateTime>(),
-                    null,
-                    batchConfiguration);
-        }
-
-        [Fact]
-        public void Then_until_should_be_the_argument_until_date()
-        {
-            var until = _updateArguments.Until ?? throw new Exception($"Setup went wrong, {nameof(UpdateArguments)}.{nameof(UpdateArguments.Until)} is empty");
-            _createdOptions.Until.Should().BeCloseTo(until, TimeSpan.FromMilliseconds(1));
+            _createdOptions.From.Should().Be(_lastBatch.Until);
         }
 
         [Fact]
         public void Then_clear_start_should_be_true()
         {
-            _createdOptions.CleanStart.Should().Be(true);
+            _createdOptions.CleanStart.Should().BeTrue();
         }
     }
-    
-    public class When_creating_update_options_with_no_recover_until_date_and_no_until_argument
+
+    public class When_creating_update_processor_options_for_a_completed_previous_batch_and_no_clean_start_argument
     {
-        private readonly UpdateArguments _updateArguments;
+        private readonly ICommandProcessorOptions<int> _createdOptions;
+
+        public When_creating_update_processor_options_for_a_completed_previous_batch_and_no_clean_start_argument()
+        {
+            var fixture = new Fixture();
+
+            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
+
+            var updateArguments = fixture.Create<UpdateArguments>();
+            updateArguments.CleanStart = false;
+
+            _createdOptions = new ImportOptions(
+                    updateArguments.ToArguments(),
+                    errors => { })
+                .CreateProcessorOptions(
+                    new ImportBatchStatus
+                    {
+                        From = fixture.Create<DateTime>(),
+                        Until = fixture.Create<DateTime>(),
+                        Completed = true
+                    }, 
+                    batchConfiguration);
+        }
+
+        [Fact]
+        public void Then_clear_start_should_be_true()
+        {
+            _createdOptions.CleanStart.Should().BeTrue();
+        }
+    }
+
+    public class When_creating_update_processor_options_for_a_completed_previous_batch_and_until_argument
+    {
+        private readonly ICommandProcessorOptions<int> _createdOptions;
+        private readonly ImportBatchStatus _lastBatch;
+        private UpdateArguments _updateArguments;
+
+        public When_creating_update_processor_options_for_a_completed_previous_batch_and_until_argument()
+        {
+            var fixture = new Fixture();
+
+            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
+
+            _lastBatch = new ImportBatchStatus
+            {
+                From = fixture.Create<DateTime>(),
+                Until = fixture.Create<DateTime>(),
+                Completed = true
+            };
+
+            _updateArguments = fixture.Create<UpdateArguments>();
+            _updateArguments.Until = fixture.Create<DateTime>();
+
+            _createdOptions = new ImportOptions(
+                    _updateArguments.ToArguments(),
+                    errors => { })
+                .CreateProcessorOptions(
+                    _lastBatch, 
+                    batchConfiguration);
+        }
+
+        [Fact]
+        public void Then_until_should_be_the_until_import_argument()
+        {
+            var updateArgumentsUntil = _updateArguments.Until ?? throw new Exception($"Setup went wrong, {nameof(UpdateArguments)}.{nameof(UpdateArguments.Until)} is empty");
+            _createdOptions.Until.Should().BeCloseTo(updateArgumentsUntil, TimeSpan.FromMilliseconds(1));
+        }
+    }
+
+    public class When_creating_update_processor_options_for_a_completed_previous_batch_and_no_until_argument
+    {
         private readonly ICommandProcessorOptions<int> _createdOptions;
         private readonly Func<DateTime> _getCurrentTimeStamp;
-        private TestBatchConfiguration<int> _batchConfiguration;
+        private readonly ICommandProcessorBatchConfiguration<int> _batchConfiguration;
 
-        public When_creating_update_options_with_no_recover_until_date_and_no_until_argument()
+        public When_creating_update_processor_options_for_a_completed_previous_batch_and_no_until_argument()
         {
             var fixture = new Fixture();
             var fixedDateTimeNow = fixture.Create<DateTime>();
 
-            _updateArguments = fixture.Create<UpdateArguments>();
-            _updateArguments.Until = null;
+            var updateArguments = fixture.Create<UpdateArguments>();
+            updateArguments.Until = null;
 
             _getCurrentTimeStamp = () => fixedDateTimeNow;
             _batchConfiguration = new TestBatchConfiguration<int>(fixture.Create<TimeSpan>(), s => s.GetHashCode());
 
             _createdOptions = new ImportOptions(
-                    _updateArguments.ToArguments(),
+                    updateArguments.ToArguments(),
                     errors => { },
                     _getCurrentTimeStamp)
                 .CreateProcessorOptions(
-                    fixture.Create<DateTime>(),
-                    null,
+                    new ImportBatchStatus
+                    {
+                        From = fixture.Create<DateTime>(),
+                        Until = fixture.Create<DateTime>(),
+                        Completed = true
+                    }, 
                     _batchConfiguration);
         }
-
+        
         [Fact]
         public void Then_until_should_be_the_default_until_date()
         {
             _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(-_batchConfiguration.Margin));
         }
-
-        [Fact]
-        public void Then_clear_start_should_be_true()
-        {
-            _createdOptions.CleanStart.Should().Be(true);
-        }
     }
 
+    public class When_creating_update_processor_options_for_an_not_completed_previous_batch
+    {
+        private readonly ICommandProcessorOptions<int> _createdOptions;
+        private readonly ImportBatchStatus _lastBatch;
+        private readonly UpdateArguments _updateArguments;
+
+        public When_creating_update_processor_options_for_an_not_completed_previous_batch()
+        {
+            var fixture = new Fixture();
+
+            var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
+
+            _lastBatch = new ImportBatchStatus
+            {
+                From = fixture.Create<DateTime>(),
+                Until = fixture.Create<DateTime>(),
+                Completed = false
+            };
+
+            _updateArguments = fixture.Create<UpdateArguments>();
+            _createdOptions = new ImportOptions(
+                    _updateArguments.ToArguments(),
+                    errors => { })
+                .CreateProcessorOptions(
+                    _lastBatch,
+                    batchConfiguration);
+        }
+
+        [Fact]
+        public void Then_from_should_be_the_last_batch_from()
+        {
+            _createdOptions.From.Should().Be(_lastBatch.From);
+        }
+
+        [Fact]
+        public void Then_until_should_be_the_last_batch_until()
+        {
+            _createdOptions.Until.Should().Be(_lastBatch.Until);
+        }
+
+        [Fact]
+        public void Then_clear_start_should_be_arguments_clean_start()
+        {
+            _createdOptions.CleanStart.Should().Be(_updateArguments.CleanStart);
+        }
+    }
+ 
     public class TestBatchConfiguration<TKey> : ICommandProcessorBatchConfiguration<TKey>
     {
         private readonly Func<string, TKey> _deserialize;
