@@ -33,27 +33,40 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             errors => ThrowNotParsed<ImportArguments>(new ApplicationException($"Parsed options expected to have base type {nameof(ImportArguments)}")));
 
         public ICommandProcessorOptions<TKey> CreateProcessorOptions<TKey>(
-            DateTime? lastCompletedImport,
-            DateTime? recoverUntil,
+            ImportBatchStatus lastBatch,
             ICommandProcessorBatchConfiguration<TKey> configuration)
         {
             var defaultUntil = _getCurrentTimeStamp().Add(-configuration.Margin);
+            if(lastBatch != null && lastBatch.IsInvalid)
+                lastBatch = null;
 
             return _parsed.MapResult(
-                (InitArguments init) => new CommandProcessorOptions<TKey>(
-                    lastCompletedImport ?? DateTime.MinValue,
-                    recoverUntil ?? defaultUntil,
-                    ImportArguments.Keys.Select(configuration.Deserialize),
-                    init.Take,
-                    ImportArguments.CleanStart,
-                    ImportMode.Init),
-                (UpdateArguments update) => new CommandProcessorOptions<TKey>(
-                    lastCompletedImport ?? throw new ApplicationException("Cannot update an uninitialized import"),
-                    recoverUntil ?? update.Until ?? defaultUntil,
-                    ImportArguments.Keys.Select(configuration.Deserialize),
-                    null,
-                    ImportArguments.CleanStart || !recoverUntil.HasValue,
-                    ImportMode.Update),
+                (InitArguments init) =>
+                {
+                    if (lastBatch?.Completed ?? false)
+                        throw new ApplicationException("Cannot initialize an for an already initialized import");
+
+                    return new CommandProcessorOptions<TKey>(
+                        lastBatch?.From ?? DateTime.MinValue,
+                        (lastBatch == null || lastBatch.Completed) ? defaultUntil : lastBatch.Until,
+                        ImportArguments.Keys.Select(configuration.Deserialize),
+                        init.Take,
+                        ImportArguments.CleanStart,
+                        ImportMode.Init);
+                },
+                (UpdateArguments update) =>
+                {
+                    if (lastBatch == null)
+                        throw new ApplicationException("Cannot update an uninitialized import");
+
+                    return new CommandProcessorOptions<TKey>(
+                        lastBatch.Completed ? lastBatch.Until : lastBatch.From,
+                        lastBatch.Completed ? (update.Until ?? defaultUntil) :  lastBatch.Until,
+                        ImportArguments.Keys.Select(configuration.Deserialize),
+                        null,
+                        ImportArguments.CleanStart || lastBatch.Completed,
+                        ImportMode.Update);
+                },
                 errors => ThrowNotParsed<ICommandProcessorOptions<TKey>>(new NotImplementedException($"Create Processor Options has no implementation for {nameof(_parsed.TypeInfo.Current.FullName)}")));
         }
 
