@@ -15,5 +15,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
             _logger.LogDebug("Fake sending {keyCount} imports", imports.Count());
             _logger.LogTrace("Payload: {@imports}", imports);
         }
+
+        public ICommandProcessorOptions<TKey> InitialiseImport<TKey>(
+            ImportOptions options,
+            ICommandProcessorBatchConfiguration<TKey> configuration)
+            => throw new System.NotImplementedException();
+
+        public void FinaliseImport<TKey>(ICommandProcessorOptions<TKey> options)
+            => throw new System.NotImplementedException();
     }
 }

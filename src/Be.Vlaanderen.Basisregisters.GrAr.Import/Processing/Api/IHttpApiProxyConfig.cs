@@ -6,6 +6,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
     {
         Uri BaseUrl { get; }
         string ImportEndpoint { get; }
+        string ImportBatchStatusEndpoint { get; }
         int HttpTimeoutMinutes { get; }
 
         /// <summary>
