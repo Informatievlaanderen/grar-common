@@ -36,7 +36,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             ImportBatchStatus lastBatch,
             ICommandProcessorBatchConfiguration<TKey> configuration)
         {
-            var defaultUntil = _getCurrentTimeStamp().Add(-configuration.Margin);
+            var defaultUntil = _getCurrentTimeStamp().Add(-configuration.TimeMargin);
             if(lastBatch != null && lastBatch.IsInvalid)
                 lastBatch = null;
 

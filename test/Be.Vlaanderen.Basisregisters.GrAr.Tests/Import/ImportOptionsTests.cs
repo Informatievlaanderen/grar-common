@@ -195,7 +195,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         [Fact]
         public void Then_until_should_be_default_now_minus_the_configured_margin()
         {
-            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(- _batchConfiguration.Margin));
+            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(- _batchConfiguration.TimeMargin));
         }
     }
 
@@ -235,7 +235,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         [Fact]
         public void Then_until_should_be_default_now_minus_the_configured_margin()
         {
-            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(- _batchConfiguration.Margin));
+            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(- _batchConfiguration.TimeMargin));
         }
     }
     
@@ -561,7 +561,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         [Fact]
         public void Then_until_should_be_the_default_until_date()
         {
-            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(-_batchConfiguration.Margin));
+            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(-_batchConfiguration.TimeMargin));
         }
     }
 
@@ -630,10 +630,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         public TestBatchConfiguration(TimeSpan margin, Func<string, TKey> deserialize)
         {
             _deserialize = deserialize;
-            Margin = margin;
+            TimeMargin = margin;
         }
 
-        public TimeSpan Margin { get; }
+        public TimeSpan TimeMargin { get; }
         public TKey Deserialize(string key) =>
             null != _deserialize
                 ? _deserialize(key)

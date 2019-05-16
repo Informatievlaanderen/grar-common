@@ -4,7 +4,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
     public interface ICommandProcessorBatchConfiguration<TKey>
     {
-        TimeSpan Margin { get; }
+        TimeSpan TimeMargin { get; }
         TKey Deserialize(string key);
     }
 }
