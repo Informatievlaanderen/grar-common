@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import.Infrastructure
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using GrAr.Import.Processing.Api;
@@ -11,18 +12,23 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import.Infrastructure
         private readonly ILogger _logger;
         private readonly List<TestApiProxy> _proxies;
         private int _counter;
+        private readonly Action<TestApiProxy> _configure;
 
-        public TestApiProxyFactory(ILogger logger,
-            int averageDuration = 100)
+        public TestApiProxyFactory(
+            ILogger logger,
+            int averageDuration,
+            Action<TestApiProxy> configure)
         {
             _averageDuration = averageDuration;
             _logger = logger;
             _proxies = new List<TestApiProxy>();
+            _configure = configure ?? (proxy => {});
         }
 
         public IApiProxy Create()
         {
             var proxy = new TestApiProxy(_logger, _counter++, _averageDuration);
+            _configure(proxy);
             _proxies.Add(proxy);
 
             return proxy;

@@ -637,27 +637,24 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         public TKey Deserialize(string key) =>
             null != _deserialize
                 ? _deserialize(key)
-                : throw new NotImplementedException();
+                : throw new NotImplementedException($"{GetType().Name}.{nameof(Deserialize)}");
     }
 
     public static class ArgumentExtensions
     {
-        public static IEnumerable<string> ToArguments(this InitArguments init)
+        private static IEnumerable<string> ToArguments(this InitArguments init)
         {
             var arguments = new List<string> { "init" };
-
-            arguments.AddRange(((ImportArguments)init).ToArguments());
 
             if (init.Take.HasValue)
                 arguments.AddRange(new []{ "-t", init.Take.ToString() });
 
             return arguments;
         }
-        public static IEnumerable<string> ToArguments(this UpdateArguments update)
+
+        private static IEnumerable<string> ToArguments(this UpdateArguments update)
         {
             var arguments = new List<string> { "update" };
-
-            arguments.AddRange(((ImportArguments)update).ToArguments());
 
             if (update.Until.HasValue)
                 arguments.AddRange(new[] { "--until", update.Until.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ") });
@@ -665,15 +662,41 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             return arguments;
         }
 
-        private static IEnumerable<string> ToArguments(this ImportArguments args)
+        public static IEnumerable<string> ToArguments<TArguments>(this TArguments importArguments)
+            where TArguments : ImportArguments
         {
-            return new List<string>
+            var args = new List<string>();
+
+            switch (importArguments)
             {
-                "-l", args.LogLevel.ToString(),
-                args.DryRun ? "-d" : "",
-                "-k", string.Join(',', args.Keys),
-                args.CleanStart ? "-c" : ""
-            };
+                case InitArguments init:
+                    args.AddRange(init.ToArguments());
+                    break;
+                case UpdateArguments update:
+                    args.AddRange(update.ToArguments());
+                    break;
+            }
+
+            args.AddRange(new []{ "-l", importArguments.LogLevel.ToString() });
+
+            if (importArguments.Keys?.Any() ?? false)
+                args.AddRange(new []{ "-k", string.Join(',', importArguments.Keys) });
+
+            if (importArguments.DryRun)
+                args.Add("-d");
+
+            if (importArguments.CleanStart)
+                args.Add("-c");
+
+            return args;
         }
+
+        public static ImportOptions ToImportOptions<TArguments>(this TArguments arguments)
+            where TArguments : ImportArguments
+            => arguments.ToImportOptions(null);
+
+        public static ImportOptions ToImportOptions<TArguments>(this TArguments arguments, Action<IEnumerable<Error>> onNotParsed)
+            where TArguments : ImportArguments
+            => new ImportOptions(arguments.ToArguments(), onNotParsed ?? (errors => {}));
     }
 }

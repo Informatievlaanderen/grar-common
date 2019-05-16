@@ -14,10 +14,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import.Infrastructure
         private readonly List<IEnumerable<int>> _batches;
         private readonly int _id;
         private readonly ILogger _logger;
+        private readonly IDictionary<Type, dynamic> _initialiseBehaviours = new Dictionary<Type, dynamic>();
 
         public TestApiProxy(ILogger logger,
             int id,
-            int averageDuration = 1000)
+            int averageDuration)
         {
             _averageDuration = averageDuration;
             _id = id;
@@ -25,23 +26,34 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import.Infrastructure
             _batches = new List<IEnumerable<int>>();
         }
 
+        private void Trace(string message) => _logger.LogTrace($"TESTAPIPROXY {_id} {message}");
+
         public void ImportBatch<TKey>(IEnumerable<KeyImport<TKey>> imports)
         {
             var keysArray = imports.Select(x => x.Key).ToArray();
             var keys = string.Join(", ", keysArray);
-            _logger.LogTrace($"TESTAPIPROXY {_id} Posting {keys}");
+            Trace($"Posting {keys}");
             Thread.Sleep(_averageDuration);
-            _logger.LogTrace($"TESTAPIPROXY {_id} Posted {keys}");
+            Trace($"Posted {keys}");
             _batches.Add(keysArray.Cast<int>());
         }
 
         public ICommandProcessorOptions<TKey> InitialiseImport<TKey>(
             ImportOptions options,
             ICommandProcessorBatchConfiguration<TKey> configuration)
-            => throw new NotImplementedException();
+        {
+            var type = typeof(TKey);
+            if (_initialiseBehaviours.ContainsKey(type))
+                return _initialiseBehaviours[type](options, configuration);
+
+            throw new Exception($"{nameof(InitialiseImport)} is not configured for {type}");
+        }
+
+        public void ConfigureInitialise<TKey>(Func<ImportOptions, ICommandProcessorBatchConfiguration<TKey>, ICommandProcessorOptions<TKey>> behavior)
+            => _initialiseBehaviours[typeof(TKey)] = behavior;
 
         public void FinaliseImport<TKey>(ICommandProcessorOptions<TKey> options)
-            => throw new NotImplementedException();
+            => Trace("Finalising");
 
         public IEnumerable<int> AllImportedKeys()
             => _batches.SelectMany(x => x);

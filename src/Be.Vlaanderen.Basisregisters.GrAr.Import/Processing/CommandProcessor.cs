@@ -36,8 +36,19 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             _generator = generator;
             _config = config;
         }
+        
+        public void Run(
+            ImportOptions importOptions,
+            ICommandProcessorBatchConfiguration<TKey> configuration)
+        {
+            var api = _apiProxyFactory.Create();
 
-        public void Run(ICommandProcessorOptions<TKey> options)
+            var options = api.InitialiseImport(importOptions, configuration);
+            Run(options);
+            api.FinaliseImport(options);
+        }
+
+        private void Run(ICommandProcessorOptions<TKey> options)
         {
             _logger.LogInformation("Running {generatorName}", _generator.Name);
             _logger.LogInformation("with options:{options}", options);

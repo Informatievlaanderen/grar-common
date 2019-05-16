@@ -5,6 +5,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     using System.Linq;
     using FluentAssertions;
     using GrAr.Import.Processing;
+    using GrAr.Import.Processing.CommandLine;
     using Infrastructure;
     using Microsoft.Extensions.Logging;
     using Moq;
@@ -31,8 +32,20 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             int nrOfConsumers,
             int nrOfProducers)
         {
-            var proxyFactory = new TestApiProxyFactory(_logger, avgDurationPostBatch);
-            var options = new CommandProcessorOptions<int>(DateTime.MinValue, DateTime.Now, null, null, false, ImportMode.Init);
+            var proxyFactory = new TestApiProxyFactory(
+                _logger,
+                avgDurationPostBatch,
+                proxy => proxy.ConfigureInitialise<int>(
+                    (importOptions, configuration) =>
+                        new CommandProcessorOptions<int>(
+                            DateTime.MinValue,
+                            DateTime.Now,
+                            null,
+                            null,
+                            false,
+                            ImportMode.Init)));
+
+            var options = new InitArguments().ToImportOptions();
             var config = new DefaultCommandProcessorConfig() { BufferSize = bufferSize, NrOfConsumers = nrOfConsumers, NrOfProducers = nrOfProducers, BatchSize = batchSize };
             var generator = new TestCommandGenerator(nrOfKeys, nrOfCommandsPerKey, avgDurationGenerateCommandsForKey);
             var filename = $"processedKeys_{Guid.NewGuid()}.log";
@@ -46,7 +59,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 _logger,
                 JsonSerializer.Create());
 
-            processor.Run(options);
+            processor.Run(options, new TestBatchConfiguration<int>());
 
             proxyFactory.AllImportedKeys().Should().HaveCount(nrOfKeys);
             proxyFactory.AllImportedKeys().Should().OnlyHaveUniqueItems();
@@ -63,20 +76,25 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             processedKeys.WhenContainsNothing();
 
             var builder = new CommandProcessorBuilder<int>(new TestCommandGenerator())
-                .UseDefaultTestConfiguration(_logger)
+                .UseDefaultTestConfiguration(
+                    _logger,
+                    proxy => proxy.ConfigureInitialise<int>(
+                        (importOptions, configuration) =>
+                            new CommandProcessorOptions<int>(
+                            DateTime.MinValue,
+                            DateTime.MaxValue,
+                            null,
+                            null,
+                            true,
+                            ImportMode.Init))
+                )
                 .UseProcessedKeysSet(processedKeys.Object);
 
-            var options = new CommandProcessorOptions<int>(
-                DateTime.MinValue,
-                DateTime.MaxValue,
-                null,
-                null,
-                true,
-                ImportMode.Init);
-
+            var options = new InitArguments().ToImportOptions();
+;
             builder
                 .Build()
-                .Run(options);
+                .Run(options, new TestBatchConfiguration<int>());
 
             processedKeys.ThenWasCleared();
         }
@@ -88,27 +106,29 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             var nrOfKeys = 10;
             var keys = Enumerable.Range(100, nrOfKeys).ToList();
 
-            var builder = new CommandProcessorBuilder<int>(new TestCommandGenerator())
-                .UseDefaultTestConfiguration(_logger)
-                .UseProcessedKeysSet(processedKeys);
+            var commandProcessor = new CommandProcessorBuilder<int>(new TestCommandGenerator())
+                .UseDefaultTestConfiguration(
+                    _logger,
+                    proxy => proxy.ConfigureInitialise<int>(
+                        (importOptions, configuration) =>
+                            new CommandProcessorOptions<int>(
+                                DateTime.MinValue,
+                                DateTime.MaxValue,
+                                keys,
+                                null,
+                                false,
+                                ImportMode.Init)))
+                .UseProcessedKeysSet(processedKeys)
+                .Build();
 
-            var options = new CommandProcessorOptions<int>(
-                DateTime.MinValue,
-                DateTime.MaxValue,
-                keys,
-                null,
-                false,
-                ImportMode.Init);
-            
-            builder
-                .Build()
-                .Run(options);
+            var options = new InitArguments().ToImportOptions();
+            var batchConfiguration = new TestBatchConfiguration<int>();
+
+            commandProcessor.Run(options, batchConfiguration);
 
             processedKeys.Keys.Should().HaveCount(nrOfKeys);
             processedKeys.Keys.Should().Contain(keys);
         }
-
-
     }
 
     public static class MockedIProcessedKeysExtensions
@@ -130,10 +150,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
     public static class CommandProcessorBuilderExtensions
     {
-        public static CommandProcessorBuilder<int> UseDefaultTestConfiguration(this CommandProcessorBuilder<int> builder, ILogger logger)
+        public static CommandProcessorBuilder<int> UseDefaultTestConfiguration(
+            this CommandProcessorBuilder<int> builder,
+            ILogger logger,
+            Action<TestApiProxy> configureApiProxy)
         {
             builder.UseLoggerFactory(new LoggerFactory(new[] { new LoggerProvider(logger) }));
-            builder.UseApiProxyFactory(new TestApiProxyFactory(logger));
+            builder.UseApiProxyFactory(new TestApiProxyFactory(logger, 100, configureApiProxy));
             builder.UseCommandProcessorConfig(new DefaultCommandProcessorConfig() { BatchSize = 4, BufferSize = 2, NrOfConsumers = 2, NrOfProducers = 5 });
             builder.UseProcessedKeysSet(new TestProcessedKeysSet());
 
