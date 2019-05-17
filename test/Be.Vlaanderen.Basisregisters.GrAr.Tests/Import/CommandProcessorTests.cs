@@ -35,7 +35,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             var proxyFactory = new TestApiProxyFactory(
                 _logger,
                 avgDurationPostBatch,
-                proxy => proxy.ConfigureInitialise<int>(
+                proxy => proxy.ConfigureInitialize<int>(
                     (importOptions, configuration) =>
                         new CommandProcessorOptions<int>(
                             DateTime.MinValue,
@@ -78,7 +78,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             var builder = new CommandProcessorBuilder<int>(new TestCommandGenerator())
                 .UseDefaultTestConfiguration(
                     _logger,
-                    proxy => proxy.ConfigureInitialise<int>(
+                    proxy => proxy.ConfigureInitialize<int>(
                         (importOptions, configuration) =>
                             new CommandProcessorOptions<int>(
                             DateTime.MinValue,
@@ -109,7 +109,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             var commandProcessor = new CommandProcessorBuilder<int>(new TestCommandGenerator())
                 .UseDefaultTestConfiguration(
                     _logger,
-                    proxy => proxy.ConfigureInitialise<int>(
+                    proxy => proxy.ConfigureInitialize<int>(
                         (importOptions, configuration) =>
                             new CommandProcessorOptions<int>(
                                 DateTime.MinValue,

@@ -43,9 +43,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         {
             var api = _apiProxyFactory.Create();
 
-            var options = api.InitialiseImport(importOptions, configuration);
+            var options = api.InitializeImport(importOptions, configuration);
             Run(options);
-            api.FinaliseImport(options);
+            api.FinalizeImport(options);
         }
 
         private void Run(ICommandProcessorOptions<TKey> options)
