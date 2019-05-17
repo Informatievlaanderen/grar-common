@@ -6,10 +6,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
     {
         void ImportBatch<TKey>(IEnumerable<KeyImport<TKey>> imports);
 
-        ICommandProcessorOptions<TKey> InitialiseImport<TKey>(
+        ICommandProcessorOptions<TKey> InitializeImport<TKey>(
             ImportOptions options,
             ICommandProcessorBatchConfiguration<TKey> configuration);
 
-        void FinaliseImport<TKey>(ICommandProcessorOptions<TKey> options);
+        void FinalizeImport<TKey>(ICommandProcessorOptions<TKey> options);
     }
 }

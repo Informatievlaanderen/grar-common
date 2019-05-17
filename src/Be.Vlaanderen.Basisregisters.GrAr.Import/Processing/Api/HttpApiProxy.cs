@@ -68,7 +68,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
             });
         }
 
-        public ICommandProcessorOptions<TKey> InitialiseImport<TKey>(
+        public ICommandProcessorOptions<TKey> InitializeImport<TKey>(
             ImportOptions options,
             ICommandProcessorBatchConfiguration<TKey> configuration)
         {
@@ -104,7 +104,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
             return processorOptions;
         }
 
-        public void FinaliseImport<TKey>(ICommandProcessorOptions<TKey> options)
+        public void FinalizeImport<TKey>(ICommandProcessorOptions<TKey> options)
         {
             PostImportBatchStatus(options, Batch.Completed);
         }
