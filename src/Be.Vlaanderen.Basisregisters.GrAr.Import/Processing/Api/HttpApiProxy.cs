@@ -48,17 +48,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
         public void ImportBatch<TKey>(IEnumerable<KeyImport<TKey>> imports)
         {
             var json = Serializer.Serialize(imports.Select(i => i.Commands));
-
             Using(client =>
             {
-
                 Logger.LogDebug("Posting to {baseUrl}", Config.BaseUrl);
                 Logger.LogTrace($"Payload:{Environment.NewLine}{{json}}", json);
                 var watch = Stopwatch.StartNew();
                 var response = client
                     .PostAsync(
                         Config.ImportEndpoint,
-                        new StringContent(json, Encoding.UTF8, MediaTypeNames.Application.Json)
+                        CreateJsonContent(json)
                     )
                     .GetAwaiter()
                     .GetResult();
@@ -135,7 +133,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                 var response = client
                     .PostAsync(
                         Config.ImportBatchStatusEndpoint,
-                        new StringContent(json, Encoding.UTF8, "application/json")
+                        CreateJsonContent(json)
                     )
                     .GetAwaiter()
                     .GetResult();
@@ -150,9 +148,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
             });
         }
 
-        protected class MediaTypeNames
+        protected static StringContent CreateJsonContent(string jsonValue)
         {
-            public class Application
+            return new StringContent(jsonValue, Encoding.UTF8, MediaTypeNames.Application.Json);
+        }
+
+        private static class MediaTypeNames
+        {
+            public static class Application
             {
                 // placeholder for System.Net.Mime.MediaTypeNames.Application.Json
                 // field is not available in .Net Standard 2.0
