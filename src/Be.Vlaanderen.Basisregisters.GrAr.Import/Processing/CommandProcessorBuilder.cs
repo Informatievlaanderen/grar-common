@@ -12,7 +12,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
     public class CommandProcessorBuilder<TKey>
     {
         private readonly ICommandGenerator<TKey> _generator;
-        private IApiProxyFactory _apiProxyFactory;
+        private Func<ILogger, IApiProxyFactory> _createApiProxyFactory;
         private ICommandProcessorConfig _commandProcessorConfig;
         private IHttpApiProxyConfig _httpApiProxyConfig;
         private LoggerFactory _loggerFactory;
@@ -64,7 +64,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
         public CommandProcessorBuilder<TKey> UseApiProxyFactory(IApiProxyFactory factory)
         {
-            _apiProxyFactory = factory;
+            _createApiProxyFactory = logger => factory;
+
+            return this;
+        }
+
+        public CommandProcessorBuilder<TKey> UseApiProxyFactory(Func<ILogger,IApiProxyFactory> factoryBuilder)
+        {
+            _createApiProxyFactory = factoryBuilder;
+
             return this;
         }
 
@@ -121,11 +129,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
         private IApiProxyFactory GetApiProxyFactory(ILogger logger, JsonSerializer serializer)
         {
-            if (_apiProxyFactory != null)
-                return _apiProxyFactory;
-
             if(logger == null)
                 throw new ArgumentNullException(nameof(logger));
+
+            if (_createApiProxyFactory != null)
+                return _createApiProxyFactory(logger);
 
             if (_useDryRunApiProxyFactory)
                 return new DryRunApiProxyFactory(logger);
