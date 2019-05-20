@@ -13,6 +13,7 @@ nuget Microsoft.NETCore.App 2.2.4
 nuget Microsoft.NETCore.DotNetAppHost 2.2.4
 nuget Microsoft.NETCore.DotNetHostResolver 2.2.4
 nuget Microsoft.NETCore.DotNetHostPolicy 2.2.4
+nuget Microsoft.EntityFrameworkCore.Design 2.2.4
 nuget NETStandard.Library 2.0.3
 
 // PRODUCTION STUFF

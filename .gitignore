@@ -29,6 +29,7 @@ yarn-error.log*
 *ncrunchsolution
 _Ncrunch_*
 TestResults.xml
+appsettings.*.json
 
 .DS_Store
 ehthumbs.db
