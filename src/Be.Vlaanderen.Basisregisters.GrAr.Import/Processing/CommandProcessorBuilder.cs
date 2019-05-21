@@ -69,7 +69,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             return this;
         }
 
-        public CommandProcessorBuilder<TKey> UseApiProxyFactory(Func<ILogger,IApiProxyFactory> factoryBuilder)
+        public CommandProcessorBuilder<TKey> UseApiProxyFactory(Func<ILogger, IApiProxyFactory> factoryBuilder)
         {
             _createApiProxyFactory = factoryBuilder;
 
@@ -88,7 +88,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             return this;
         }
 
-        public CommandProcessorBuilder<TKey> ConfigureProcessedKeySerialization(Func<TKey, string> serializeKey,
+        public CommandProcessorBuilder<TKey> ConfigureProcessedKeySerialization(
+            Func<TKey, string> serializeKey,
             Func<string, TKey> deserializeKey)
         {
             _processedKeys = new ConcurrentFileBasedProcessedKeysSet<TKey>(serializeKey, deserializeKey);
@@ -129,7 +130,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
         private IApiProxyFactory GetApiProxyFactory(ILogger logger, JsonSerializer serializer)
         {
-            if(logger == null)
+            if (logger == null)
                 throw new ArgumentNullException(nameof(logger));
 
             if (_createApiProxyFactory != null)
@@ -138,7 +139,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             if (_useDryRunApiProxyFactory)
                 return new DryRunApiProxyFactory(logger);
 
-            if(serializer == null)
+            if (serializer == null)
                 throw new ArgumentNullException(nameof(serializer));
 
             return new SingleEndpointHttpApiProxyFactory(

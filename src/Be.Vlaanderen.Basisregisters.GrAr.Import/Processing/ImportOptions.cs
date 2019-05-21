@@ -11,7 +11,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         private readonly ParserResult<object> _parsed;
         private readonly Func<DateTime> _getCurrentTimeStamp;
 
-
         public ImportOptions(IEnumerable<string> args, Action<IEnumerable<Error>> onNotParsed)
             : this(args, onNotParsed, null)
         { }
@@ -25,7 +24,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             _parsed = Parser
                 .Default
                 .ParseArguments<InitArguments, UpdateArguments>(args)
-                .WithNotParsed(onNotParsed ?? (errors => {}));
+                .WithNotParsed(onNotParsed ?? (errors => { }));
         }
 
         public ImportArguments ImportArguments => _parsed.MapResult(
@@ -37,7 +36,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             ICommandProcessorBatchConfiguration<TKey> configuration)
         {
             var defaultUntil = _getCurrentTimeStamp().Add(-configuration.TimeMargin);
-            if(lastBatch != null && lastBatch.IsInvalid)
+            if (lastBatch != null && lastBatch.IsInvalid)
                 lastBatch = null;
 
             return _parsed.MapResult(
@@ -61,7 +60,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
                     return new CommandProcessorOptions<TKey>(
                         lastBatch.Completed ? lastBatch.Until : lastBatch.From,
-                        lastBatch.Completed ? (update.Until ?? defaultUntil) :  lastBatch.Until,
+                        lastBatch.Completed ? (update.Until ?? defaultUntil) : lastBatch.Until,
                         ImportArguments.Keys.Select(configuration.Deserialize),
                         null,
                         ImportArguments.CleanStart || lastBatch.Completed,
