@@ -15,7 +15,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CommandLine
 
         [Option('d', "dry-run", Default = false, HelpText = "Process without actually sending anything to the api")]
         public bool DryRun { get; set; }
-        
+
         [Option('k', "keys", Required = false, Separator = ',', HelpText = "Process a range of keys. Seperated by ,")]
         public IEnumerable<string> Keys { get; set; }
     }
@@ -28,7 +28,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CommandLine
     }
 
     [Verb("update", HelpText = "Run the event generator in update mode (default)")]
-    public class UpdateArguments: ImportArguments
+    public class UpdateArguments : ImportArguments
     {
         [Option("until", Required = false, HelpText = "Looks up all changed ids until this timestamp. If empty uses default behavior.")]
         public DateTime? Until { get; set; }
