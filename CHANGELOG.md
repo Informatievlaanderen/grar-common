@@ -1,3 +1,33 @@
+# [7.0.0](https://github.com/informatievlaanderen/grar-common/compare/v6.2.1...v7.0.0) (2019-05-21)
+
+
+### Bug Fixes
+
+* create batch configuration interface ([bd7ba94](https://github.com/informatievlaanderen/grar-common/commit/bd7ba94))
+* extract building options from CommandProcessorBuilder ([8bef304](https://github.com/informatievlaanderen/grar-common/commit/8bef304))
+* remove BuildAndRun ([67216ca](https://github.com/informatievlaanderen/grar-common/commit/67216ca))
+* remove Import.Xunit ([dba18f4](https://github.com/informatievlaanderen/grar-common/commit/dba18f4))
+* use import batch status instead of last imported and recovery ([78cdb60](https://github.com/informatievlaanderen/grar-common/commit/78cdb60))
+
+
+### Features
+
+* add crab import status ([68873f5](https://github.com/informatievlaanderen/grar-common/commit/68873f5))
+* add initialise/finalise import to apiproxy ([5c5976e](https://github.com/informatievlaanderen/grar-common/commit/5c5976e))
+* add use ApiProxyFactory with builder ([baf0817](https://github.com/informatievlaanderen/grar-common/commit/baf0817))
+* initialise/finalise batch based status from api ([abfddd1](https://github.com/informatievlaanderen/grar-common/commit/abfddd1))
+
+
+### BREAKING CHANGES
+
+* CHANGE
+remove build and run function as fist step in splitting creating the
+batch parameters from building the commandprocessor
+* remove project
+Import.Xunit is not used in any registry.
+Removing it reduces the complextity of refactoring the Grar.Ipmort for
+udates scenarios
+
 ## [6.2.1](https://github.com/informatievlaanderen/grar-common/compare/v6.2.0...v6.2.1) (2019-04-30)
 
 
