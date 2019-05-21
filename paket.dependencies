@@ -13,7 +13,6 @@ nuget Microsoft.NETCore.App 2.2.4
 nuget Microsoft.NETCore.DotNetAppHost 2.2.4
 nuget Microsoft.NETCore.DotNetHostResolver 2.2.4
 nuget Microsoft.NETCore.DotNetHostPolicy 2.2.4
-nuget Microsoft.EntityFrameworkCore.Design 2.2.4
 nuget NETStandard.Library 2.0.3
 
 // PRODUCTION STUFF
@@ -26,6 +25,8 @@ nuget CompareNETObjects 4.58.0
 nuget CommandLineParser 2.5.0
 nuget NodaTime 2.4.5
 nuget NetTopologySuite 1.15.2
+
+nuget Microsoft.EntityFrameworkCore.Design 2.2.4
 
 // VBR STUFF
 nuget Be.Vlaanderen.Basisregisters.Build.Pipeline ~> 1.6
