@@ -4,10 +4,11 @@ using Be.Vlaanderen.Basisregisters.GrAr.Import.Processing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Migrations
 {
+    using Processing.CrabImport;
+
     [DbContext(typeof(CrabImportContext))]
     partial class CrabImportContextModelSnapshot : ModelSnapshot
     {

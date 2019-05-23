@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Migrations
 {
+    using Processing.CrabImport;
+
     [DbContext(typeof(CrabImportContext))]
     [Migration("20190521145850_inital_migragtions_import")]
     partial class inital_migragtions_import

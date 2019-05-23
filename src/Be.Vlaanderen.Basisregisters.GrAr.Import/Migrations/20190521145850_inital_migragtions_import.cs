@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Migrations
 {
     using Processing;
+    using Processing.CrabImport;
 
     public partial class inital_migragtions_import : Migration
     {

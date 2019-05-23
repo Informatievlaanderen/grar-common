@@ -1,5 +1,6 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
+namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
 {
+    using CommandHandling.Idempotency;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
 
@@ -7,17 +8,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
     {
         internal static CrabImportSchema CrabImportSchema { get; private set; }
 
-        public static void Run(
-            string connectionString,
-            string migrationsSchema,
-            string migrationsTableName,
+        internal static void Run(
+            Configuration configuration,
+            MigrationsSchema migrationsSchema,
             CrabImportSchema crabImportSchema,
-            ILoggerFactory loggerFactory = null)
+            ILoggerFactory loggerFactory)
         {
             var migrationOptionsBuilder = new DbContextOptionsBuilder<CrabImportContext>()
                 .UseSqlServer(
-                    connectionString,
-                    x => x.MigrationsHistoryTable(migrationsTableName, migrationsSchema));
+                    configuration.ConnectionString,
+                    x => x.MigrationsHistoryTable(migrationsSchema.HistoryTable, migrationsSchema.Name));
 
             if (loggerFactory != null)
                 migrationOptionsBuilder = migrationOptionsBuilder.UseLoggerFactory(loggerFactory);
