@@ -1,3 +1,10 @@
+# [7.1.0](https://github.com/informatievlaanderen/grar-common/compare/v7.0.0...v7.1.0) (2019-05-23)
+
+
+### Features
+
+* add crab import setup infrastructure ([52a7563](https://github.com/informatievlaanderen/grar-common/commit/52a7563))
+
 # [7.0.0](https://github.com/informatievlaanderen/grar-common/compare/v6.2.1...v7.0.0) (2019-05-21)
 
 
