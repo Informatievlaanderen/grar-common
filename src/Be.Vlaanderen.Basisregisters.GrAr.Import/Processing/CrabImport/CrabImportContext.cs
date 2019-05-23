@@ -1,4 +1,4 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
+namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
 {
     using System;
     using System.Linq;
@@ -53,25 +53,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             batchStatus.Property(status => status.From);
             batchStatus.Property(status => status.Until);
             batchStatus.Property(status => status.Completed);
-        }
-    }
-
-    public class CrabImportSchema
-    {
-        public string Name { get; }
-        public string StatusTable { get; }
-
-        public CrabImportSchema(
-            string schemaName,
-            string statusTableName)
-        {
-            Name = string.IsNullOrWhiteSpace(schemaName) ? throw new ArgumentNullException(nameof(schemaName)) : schemaName;
-            StatusTable = string.IsNullOrWhiteSpace(statusTableName) ? throw new ArgumentNullException(nameof(statusTableName)) : statusTableName;
-        }
-
-        public static class Default
-        {
-            public const string StatusName = "ImportStatus";
         }
     }
 
