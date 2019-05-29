@@ -12,14 +12,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
             IServiceCollection services,
             string connectionString,
             string schema,
-            string migrationsHistoryTableName,
             ILoggerFactory loggerFactory)
             : this(
                 services,
                 connectionString,
                 schema,
                 CrabImportSchema.Default.StatusName,
-                migrationsHistoryTableName,
+                MigrationsSchema.Default.HistoryTable,
                 loggerFactory)
         { }
 
