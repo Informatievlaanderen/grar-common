@@ -1,3 +1,10 @@
+# [7.2.0](https://github.com/informatievlaanderen/grar-common/compare/v7.1.0...v7.2.0) (2019-05-30)
+
+
+### Features
+
+* use default history table for crab import migrations ([34b97bd](https://github.com/informatievlaanderen/grar-common/commit/34b97bd))
+
 # [7.1.0](https://github.com/informatievlaanderen/grar-common/compare/v7.0.0...v7.1.0) (2019-05-23)
 
 
