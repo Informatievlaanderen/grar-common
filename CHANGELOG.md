@@ -1,3 +1,10 @@
+## [7.2.1](https://github.com/informatievlaanderen/grar-common/compare/v7.2.0...v7.2.1) (2019-06-03)
+
+
+### Bug Fixes
+
+* create HttpApiProxy base class ([862a330](https://github.com/informatievlaanderen/grar-common/commit/862a330))
+
 # [7.2.0](https://github.com/informatievlaanderen/grar-common/compare/v7.1.0...v7.2.0) (2019-05-30)
 
 
