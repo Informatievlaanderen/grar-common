@@ -10,47 +10,20 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
     using System.Net.Http.Headers;
     using System.Text;
 
-    public class HttpApiProxy : IApiProxy
+    public class HttpApiProxy : HttpApiProxyBase
     {
-        protected readonly IHttpApiProxyConfig Config;
-        protected readonly ILogger Logger;
-        protected readonly JsonSerializer Serializer;
-
-        public HttpApiProxy(
-            ILogger logger,
+        public HttpApiProxy(ILogger logger,
             JsonSerializer serializer,
             IHttpApiProxyConfig config)
-        {
-            Serializer = serializer;
-            Logger = logger;
-            Config = config;
-        }
+            : base(logger, serializer, config)
+        { }
 
-        protected void Using(Action<HttpClient> executeCall)
-        {
-            using (var client = new HttpClient { BaseAddress = Config.BaseUrl })
-            {
-                client.Timeout = TimeSpan.FromMinutes(Config.HttpTimeoutMinutes);
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
-
-                if (!string.IsNullOrEmpty(Config.AuthUserName) &&
-                    !string.IsNullOrEmpty(Config.AuthPassword))
-                {
-                    var encodedString = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Config.AuthUserName}:{Config.AuthPassword}"));
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", encodedString);
-                }
-
-                executeCall(client);
-            }
-        }
-
-        public void ImportBatch<TKey>(IEnumerable<KeyImport<TKey>> imports)
+        public override void ImportBatch<TKey>(IEnumerable<KeyImport<TKey>> imports)
         {
             var json = Serializer.Serialize(imports.Select(i => i.Commands));
-            Using(client =>
+            using (var client = CreateImportClient())
             {
-                Logger.LogDebug("Posting to {baseUrl}", Config.BaseUrl);
+                Logger.LogDebug("Posting to {baseUrl}", client.BaseAddress);
                 Logger.LogTrace($"Payload:{Environment.NewLine}{{json}}", json);
                 var watch = Stopwatch.StartNew();
                 var response = client
@@ -61,28 +34,82 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                     .GetAwaiter()
                     .GetResult();
                 watch.Stop();
-                Logger.LogDebug("Post to {baseUrl} was {statusCode} (took:{duration}ms)", Config.BaseUrl, response.StatusCode, watch.ElapsedMilliseconds);
+                Logger.LogDebug(
+                    "Post to {baseUrl} was {statusCode} (took:{duration}ms)",
+                    client.BaseAddress,
+                    response.StatusCode,
+                    watch.ElapsedMilliseconds);
                 response.EnsureSuccessStatusCode();
-            });
+            }
+        }
+    }
+
+    public abstract class HttpApiProxyBase : IApiProxy
+    {
+        protected readonly IHttpApiProxyConfig Config;
+        protected readonly ILogger Logger;
+        protected readonly JsonSerializer Serializer;
+
+        protected HttpApiProxyBase(
+            ILogger logger,
+            JsonSerializer serializer,
+            IHttpApiProxyConfig config)
+        {
+            Serializer = serializer;
+            Logger = logger;
+            Config = config;
+        }
+        
+        protected HttpClient CreateImportClient()
+        {
+            var client = new HttpClient
+            {
+                BaseAddress = Config.BaseUrl,
+                Timeout = TimeSpan.FromMinutes(Config.HttpTimeoutMinutes)
+            };
+            
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
+
+            if (!string.IsNullOrEmpty(Config.AuthUserName) &&
+                !string.IsNullOrEmpty(Config.AuthPassword))
+            {
+                var encodedString = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Config.AuthUserName}:{Config.AuthPassword}"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", encodedString);
+            }
+
+            return client;
+        }
+
+        public abstract void ImportBatch<TKey>(IEnumerable<KeyImport<TKey>> imports);
+
+        protected static StringContent CreateJsonContent(string jsonValue)
+        {
+            return new StringContent(jsonValue, Encoding.UTF8, MediaTypeNames.Application.Json);
         }
 
         public ICommandProcessorOptions<TKey> InitializeImport<TKey>(
             ImportOptions options,
             ICommandProcessorBatchConfiguration<TKey> configuration)
         {
-            ImportBatchStatus batchStatus = null;
-            Using(client =>
+            ICommandProcessorOptions<TKey> processorOptions;
+            using (var client = CreateImportClient())
             {
-                Logger.LogDebug("Getting batch status from {baseUrl}", Config.BaseUrl);
+                var requestUri = Config.ImportBatchStatusEndpoint;
+                Logger.LogDebug(
+                    "Getting batch status from {baseUrl}/{requestUri}",
+                    client.BaseAddress,
+                    requestUri);
                 var watch = Stopwatch.StartNew();
                 var response = client
-                    .GetAsync(Config.ImportBatchStatusEndpoint)
+                    .GetAsync(requestUri)
                     .GetAwaiter()
                     .GetResult();
                 watch.Stop();
                 Logger.LogDebug(
-                    "Get from {baseUrl} was {statusCode} (took:{duration}ms)",
-                    Config.BaseUrl,
+                    "Get from {baseUrl}/{requestUri} was {statusCode} (took:{duration}ms)",
+                    client.BaseAddress,
+                    requestUri,
                     response.StatusCode,
                     watch.ElapsedMilliseconds);
 
@@ -93,24 +120,18 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                     .GetAwaiter()
                     .GetResult() ?? string.Empty;
 
-                batchStatus = JsonConvert.DeserializeObject<ImportBatchStatus>(content);
-            });
+                var batchStatus = JsonConvert.DeserializeObject<ImportBatchStatus>(content);
+                processorOptions = options.CreateProcessorOptions(batchStatus, configuration);
+            }
 
-            var processorOptions = options.CreateProcessorOptions(batchStatus, configuration);
             PostImportBatchStatus(processorOptions, Batch.Start);
-
             return processorOptions;
+
         }
 
         public void FinalizeImport<TKey>(ICommandProcessorOptions<TKey> options)
         {
             PostImportBatchStatus(options, Batch.Completed);
-        }
-
-        private static class Batch
-        {
-            public static bool Start => false;
-            public static bool Completed => true;
         }
 
         private void PostImportBatchStatus<TKey>(ICommandProcessorOptions<TKey> options, bool importCompleted)
@@ -126,31 +147,37 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                     Completed = importCompleted
                 });
 
-            Using(client =>
+            using (var client = CreateImportClient())
             {
-                Logger.LogDebug("Posting batch status from {baseUrl}", Config.BaseUrl);
+                var requestUri = Config.ImportBatchStatusEndpoint;
+                Logger.LogDebug(
+                    "Posting batch status from {baseUrl}/{requestUri}",
+                    client.BaseAddress,
+                    requestUri);
                 var watch = Stopwatch.StartNew();
                 var response = client
                     .PostAsync(
-                        Config.ImportBatchStatusEndpoint,
+                        requestUri,
                         CreateJsonContent(json)
                     )
                     .GetAwaiter()
                     .GetResult();
                 watch.Stop();
                 Logger.LogDebug(
-                    "Post from {baseUrl} was {statusCode} (took:{duration}ms)",
-                    Config.BaseUrl,
+                    "Post to {baseUrl}/{requestUri} was {statusCode} (took:{duration}ms)",
+                    client.BaseAddress,
+                    requestUri,
                     response.StatusCode,
                     watch.ElapsedMilliseconds);
 
                 response.EnsureSuccessStatusCode();
-            });
+            }
         }
 
-        protected static StringContent CreateJsonContent(string jsonValue)
+        private static class Batch
         {
-            return new StringContent(jsonValue, Encoding.UTF8, MediaTypeNames.Application.Json);
+            public static bool Start => false;
+            public static bool Completed => true;
         }
 
         private static class MediaTypeNames
