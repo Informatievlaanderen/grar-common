@@ -5,7 +5,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
 
     public class SingleEndpointHttpApiProxyFactory : IApiProxyFactory
     {
-        //TODO: work with HttpClientFactory? https://www.stevejgordon.co.uk/introduction-to-httpclientfactory-aspnetcore
+        // TODO: work with HttpClientFactory? https://www.stevejgordon.co.uk/introduction-to-httpclientfactory-aspnetcore
         private readonly IHttpApiProxyConfig _config;
         private readonly ILogger _logger;
         private readonly JsonSerializer _serializer;
