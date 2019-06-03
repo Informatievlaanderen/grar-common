@@ -1,3 +1,10 @@
+## [7.2.2](https://github.com/informatievlaanderen/grar-common/compare/v7.2.1...v7.2.2) (2019-06-03)
+
+
+### Bug Fixes
+
+* rerun semantic release due to github borked ([e9839d9](https://github.com/informatievlaanderen/grar-common/commit/e9839d9))
+
 ## [7.2.1](https://github.com/informatievlaanderen/grar-common/compare/v7.2.0...v7.2.1) (2019-06-03)
 
 
