@@ -25,7 +25,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
             {
                 Logger.LogDebug("Posting to {baseUrl}", client.BaseAddress);
                 Logger.LogTrace($"Payload:{Environment.NewLine}{{json}}", json);
+
                 var watch = Stopwatch.StartNew();
+
                 var response = client
                     .PostAsync(
                         Config.ImportEndpoint,
@@ -33,12 +35,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                     )
                     .GetAwaiter()
                     .GetResult();
+
                 watch.Stop();
+
                 Logger.LogDebug(
                     "Post to {baseUrl} was {statusCode} (took:{duration}ms)",
                     client.BaseAddress,
                     response.StatusCode,
                     watch.ElapsedMilliseconds);
+
                 response.EnsureSuccessStatusCode();
             }
         }
@@ -59,7 +64,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
             Logger = logger;
             Config = config;
         }
-        
+
         protected HttpClient CreateImportClient()
         {
             var client = new HttpClient
@@ -67,7 +72,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                 BaseAddress = Config.BaseUrl,
                 Timeout = TimeSpan.FromMinutes(Config.HttpTimeoutMinutes)
             };
-            
+
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
 
@@ -84,9 +89,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
         public abstract void ImportBatch<TKey>(IEnumerable<KeyImport<TKey>> imports);
 
         protected static StringContent CreateJsonContent(string jsonValue)
-        {
-            return new StringContent(jsonValue, Encoding.UTF8, MediaTypeNames.Application.Json);
-        }
+            => new StringContent(jsonValue, Encoding.UTF8, MediaTypeNames.Application.Json);
 
         public ICommandProcessorOptions<TKey> InitializeImport<TKey>(
             ImportOptions options,
@@ -100,12 +103,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                     "Getting batch status from {baseUrl}/{requestUri}",
                     client.BaseAddress,
                     requestUri);
+
                 var watch = Stopwatch.StartNew();
+
                 var response = client
                     .GetAsync(requestUri)
                     .GetAwaiter()
                     .GetResult();
+
                 watch.Stop();
+
                 Logger.LogDebug(
                     "Get from {baseUrl}/{requestUri} was {statusCode} (took:{duration}ms)",
                     client.BaseAddress,
@@ -126,13 +133,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
 
             PostImportBatchStatus(processorOptions, Batch.Start);
             return processorOptions;
-
         }
 
         public void FinalizeImport<TKey>(ICommandProcessorOptions<TKey> options)
-        {
-            PostImportBatchStatus(options, Batch.Completed);
-        }
+            => PostImportBatchStatus(options, Batch.Completed);
 
         private void PostImportBatchStatus<TKey>(ICommandProcessorOptions<TKey> options, bool importCompleted)
         {
@@ -154,7 +158,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                     "Posting batch status from {baseUrl}/{requestUri}",
                     client.BaseAddress,
                     requestUri);
+
                 var watch = Stopwatch.StartNew();
+
                 var response = client
                     .PostAsync(
                         requestUri,
@@ -163,6 +169,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                     .GetAwaiter()
                     .GetResult();
                 watch.Stop();
+
                 Logger.LogDebug(
                     "Post to {baseUrl}/{requestUri} was {statusCode} (took:{duration}ms)",
                     client.BaseAddress,
