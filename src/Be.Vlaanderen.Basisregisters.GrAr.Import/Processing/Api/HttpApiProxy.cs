@@ -31,8 +31,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                 var response = client
                     .PostAsync(
                         Config.ImportEndpoint,
-                        CreateJsonContent(json)
-                    )
+                        CreateJsonContent(json))
                     .GetAwaiter()
                     .GetResult();
 
@@ -76,8 +75,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
 
-            if (!string.IsNullOrEmpty(Config.AuthUserName) &&
-                !string.IsNullOrEmpty(Config.AuthPassword))
+            if (!string.IsNullOrEmpty(Config.AuthUserName) && !string.IsNullOrEmpty(Config.AuthPassword))
             {
                 var encodedString = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{Config.AuthUserName}:{Config.AuthPassword}"));
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", encodedString);
@@ -164,10 +162,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                 var response = client
                     .PostAsync(
                         requestUri,
-                        CreateJsonContent(json)
-                    )
+                        CreateJsonContent(json))
                     .GetAwaiter()
                     .GetResult();
+                    
                 watch.Stop();
 
                 Logger.LogDebug(
