@@ -10,7 +10,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
         public Modification Modification { get; }
         public string Operator { get; }
         public Organisation Organisation { get; }
-        public Plan Plan { get; }
+        public Reason Reason { get; }
 
         public ProvenanceData(Provenance provenance)
         {
@@ -19,7 +19,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             Modification = provenance.Modification;
             Operator = provenance.Operator;
             Organisation = provenance.Organisation;
-            Plan = provenance.Plan;
+            Reason = provenance.Reason;
         }
 
         [JsonConstructor]
@@ -29,11 +29,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             Modification modification,
             string @operator,
             Organisation organisation,
-            Plan plan)
+            Reason reason)
             : this(new Provenance(
                 timestamp,
                 application,
-                plan,
+                reason,
                 new Operator(@operator),
                 modification,
                 organisation))
@@ -43,7 +43,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
         public Provenance ToProvenance() => new Provenance(
             Timestamp,
             Application,
-            Plan,
+            Reason,
             new Operator(Operator),
             Modification,
             Organisation);

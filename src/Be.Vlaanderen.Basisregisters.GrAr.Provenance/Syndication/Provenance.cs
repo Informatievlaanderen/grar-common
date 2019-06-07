@@ -9,15 +9,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance.Syndication
         [DataMember(Name = "Organisatie", Order = 0)]
         public string Organisation { get; set; }
 
-        [DataMember(Name = "Plan", Order = 1)]
-        public string Plan { get; set; }
+        [DataMember(Name = "Reden", Order = 1)]
+        public string Reason { get; set; }
 
         public Provenance(
             Organisation? organisation,
-            Plan? plan)
+            Reason reason)
         {
             Organisation = organisation?.ToName();
-            Plan = plan?.ToName();
+            Reason = reason;
         }
     }
 }

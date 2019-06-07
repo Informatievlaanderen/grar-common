@@ -38,7 +38,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
                 trimmed.Equals(@"VLM\CRABSSisServiceBeta", StringComparison.OrdinalIgnoreCase) ||
                 trimmed.Equals(@"VLM\GRBCrabMatchingProd", StringComparison.OrdinalIgnoreCase) ||
                 trimmed.Equals(@"VLM\GRBCrabMatchingBeta", StringComparison.OrdinalIgnoreCase))
-                return null;
+                return new Operator("ServiceAccount");
 
             return new Operator(crabOperator);
         }
@@ -79,24 +79,24 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             return MapCrabOrganisations[crabOrganisation.Value];
         }
 
-        private static Plan MapPlan(CrabOperator crabOperator)
+        private static Reason MapReason(CrabOperator crabOperator)
         {
             if (string.IsNullOrWhiteSpace(crabOperator))
-                return Plan.Unknown;
+                return null;
 
             string @operator = crabOperator;
 
             if (@operator.Equals("VLM\\GRBCrabMatchingProd", StringComparison.OrdinalIgnoreCase) ||
                 @operator.Equals("VLM\\GRBCrabMatchingBeta", StringComparison.OrdinalIgnoreCase))
-                return Plan.CentralManagementGrb;
+                return Reason.CentralManagementGrb;
 
             if (@operator.StartsWith("VLM", StringComparison.OrdinalIgnoreCase))
-                return Plan.CentralManagementCrab;
+                return Reason.CentralManagementCrab;
 
             if (CrabWstEditServiceRegex.IsMatch(@operator) || LaraRegex.IsMatch(@operator))
-                return Plan.DecentralManagmentCrab;
+                return Reason.DecentralManagmentCrab;
 
-            return Plan.ManagementCrab;
+            return Reason.ManagementCrab;
         }
 
         private static Application MapApplication(CrabOperator crabOperator)
@@ -134,7 +134,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             CrabOrganisation? crabOrganisation) => new Provenance(
             (Instant) timestamp,
             MapApplication(crabOperator),
-            MapPlan(crabOperator),
+            MapReason(crabOperator),
             MapOperator(crabOperator),
             MapModification(crabModification, version, isRemoved),
             MapOrganisation(crabOrganisation, timestamp));
