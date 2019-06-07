@@ -14,19 +14,19 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
         public Modification Modification { get; }
         public Operator Operator { get; }
         public Organisation Organisation { get; }
-        public Plan Plan { get; }
+        public Reason Reason { get; }
 
         public Provenance(
             Instant timestamp,
             Application application,
-            Plan plan,
+            Reason reason,
             Operator @operator,
             Modification modification,
             Organisation organisation)
         {
             Timestamp = timestamp;
             Application = application;
-            Plan = plan;
+            Reason = reason;
             Modification = modification;
             Operator = @operator;
             Organisation = organisation;
@@ -36,11 +36,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
         {
             var ignoreCaseDictionary = new Dictionary<string, object>(dictionary, StringComparer.OrdinalIgnoreCase);
 
-            var timestamp = (Instant) ignoreCaseDictionary[nameof(Timestamp)];
-            var application = (Application) Enum.Parse(typeof(Application), ignoreCaseDictionary[nameof(Application)].ToString(), true);
-            var modification = (Modification) Enum.Parse(typeof(Modification), ignoreCaseDictionary[nameof(Modification)].ToString(), true);
-            var organisation = (Organisation) Enum.Parse(typeof(Organisation), ignoreCaseDictionary[nameof(Organisation)].ToString(), true);
-            var plan = (Plan) Enum.Parse(typeof(Plan), ignoreCaseDictionary[nameof(Plan)].ToString(), true);
+            var timestamp = (Instant)ignoreCaseDictionary[nameof(Timestamp)];
+            var application = (Application)Enum.Parse(typeof(Application), ignoreCaseDictionary[nameof(Application)].ToString(), true);
+            var modification = (Modification)Enum.Parse(typeof(Modification), ignoreCaseDictionary[nameof(Modification)].ToString(), true);
+            var organisation = (Organisation)Enum.Parse(typeof(Organisation), ignoreCaseDictionary[nameof(Organisation)].ToString(), true);
+
+            var reason = ignoreCaseDictionary.ContainsKey(nameof(Reason)) && ignoreCaseDictionary[nameof(Reason)] != null
+                ? new Reason(ignoreCaseDictionary[nameof(Reason)].ToString())
+                : new Reason(string.Empty);
 
             var @operator = ignoreCaseDictionary.ContainsKey(nameof(Operator)) && ignoreCaseDictionary[nameof(Operator)] != null
                 ? new Operator(ignoreCaseDictionary[nameof(Operator)].ToString())
@@ -49,7 +52,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             return new Provenance(
                 timestamp,
                 application,
-                plan,
+                reason,
                 @operator,
                 modification,
                 organisation);
@@ -62,7 +65,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             {nameof(Timestamp), Timestamp},
             {nameof(Operator), Operator?.ToString()},
             {nameof(Organisation), Organisation},
-            {nameof(Plan), Plan}
+            {nameof(Reason), Reason?.ToString()}
         };
 
         protected override IEnumerable<object> Reflect()
@@ -71,7 +74,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             yield return Modification;
             yield return Operator;
             yield return Organisation;
-            yield return Plan;
+            yield return Reason;
         }
     }
 }
