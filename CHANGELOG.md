@@ -1,3 +1,15 @@
+# [8.0.0](https://github.com/informatievlaanderen/grar-common/compare/v7.2.2...v8.0.0) (2019-06-07)
+
+
+### Code Refactoring
+
+* change plan to reason and made a valueobject for it ([e47f6e0](https://github.com/informatievlaanderen/grar-common/commit/e47f6e0))
+
+
+### BREAKING CHANGES
+
+* change Plan (enum) to Reason (valueobject)
+
 ## [7.2.2](https://github.com/informatievlaanderen/grar-common/compare/v7.2.1...v7.2.2) (2019-06-03)
 
 
