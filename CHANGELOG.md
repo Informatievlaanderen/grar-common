@@ -1,3 +1,10 @@
+## [8.0.1](https://github.com/informatievlaanderen/grar-common/compare/v8.0.0...v8.0.1) (2019-06-11)
+
+
+### Bug Fixes
+
+* change reason valueobject to primitive in ProvenanceData ([f10d1ac](https://github.com/informatievlaanderen/grar-common/commit/f10d1ac))
+
 # [8.0.0](https://github.com/informatievlaanderen/grar-common/compare/v7.2.2...v8.0.0) (2019-06-07)
 
 
