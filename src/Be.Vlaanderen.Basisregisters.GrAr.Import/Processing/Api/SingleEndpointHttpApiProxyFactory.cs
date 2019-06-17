@@ -9,17 +9,20 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
         private readonly IHttpApiProxyConfig _config;
         private readonly ILogger _logger;
         private readonly JsonSerializer _serializer;
+        private readonly ImportFeed _importFeed;
 
         public SingleEndpointHttpApiProxyFactory(
             ILogger logger,
             JsonSerializer serializer,
-            IHttpApiProxyConfig config)
+            IHttpApiProxyConfig config,
+            ImportFeed importFeed)
         {
             _config = config;
             _serializer = serializer;
             _logger = logger;
+            _importFeed = importFeed;
         }
 
-        public IApiProxy Create() => new HttpApiProxy(_logger, _serializer, _config);
+        public IApiProxy Create() => new HttpApiProxy(_logger, _serializer, _config, _importFeed);
     }
 }

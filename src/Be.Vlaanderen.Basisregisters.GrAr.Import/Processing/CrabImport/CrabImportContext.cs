@@ -2,54 +2,62 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
 {
     using System;
     using System.Linq;
+    using Api.Messages;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Design;
+    using Newtonsoft.Json;
 
     public class CrabImportContext : DbContext
     {
         private readonly CrabImportSchema _crabImportSchema;
         public DbSet<ImportBatchStatus> BatchStatuses { get; set; }
 
-        public ImportBatchStatus LastBatch =>
+        public ImportBatchStatus LastBatchFor(ImportFeed feed) =>
             BatchStatuses
-                ?.OrderBy(status => status.From)
+                ?.Where(status => status.ImportFeedId == feed.Id)
+                .OrderBy(status => status.From)
                 .LastOrDefault();
 
-        public void SetCurrent(ImportBatchStatus batchStatus)
+        public void SetCurrent(BatchStatusUpdate status)
         {
-            if (batchStatus == null)
+            if (status == null)
                 return;
 
-            if (batchStatus.IsInvalid)
-                throw new ArgumentException($"Invalid batch status : {batchStatus}");
+            if (status.Until == DateTime.MinValue || string.IsNullOrWhiteSpace(status.ImportFeed?.Id))
+                throw new ArgumentException($"Invalid batch status : {JsonConvert.SerializeObject(status)}");
 
-            var currentStatus = BatchStatuses.Find(batchStatus.From);
+            var currentStatus = BatchStatuses.Find(status.From, status.ImportFeed.Id);
             if (currentStatus == null)
             {
-                BatchStatuses.Add(batchStatus);
+                BatchStatuses.Add(
+                    new ImportBatchStatus
+                    {
+                        ImportFeedId = status.ImportFeed.Id,
+                        From = status.From,
+                        Until = status.Until,
+                        Completed = status.Completed
+                    });
             }
             else
             {
-                currentStatus.Completed = batchStatus.Completed;
+                currentStatus.Completed = status.Completed;
             }
         }
 
         public CrabImportContext(
             DbContextOptions<CrabImportContext> options,
             CrabImportSchema schema)
-            : base(options)
-        {
+            : base(options) =>
             _crabImportSchema = schema ?? throw new ArgumentNullException(nameof(schema));
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var batchStatus = modelBuilder.Entity<ImportBatchStatus>();
-
             batchStatus
                 .ToTable(_crabImportSchema.StatusTable, _crabImportSchema.Name)
-                .HasKey(status => status.From);
+                .HasKey(status => new { status.From, ImportFeed = status.ImportFeedId });
 
+            batchStatus.Property(status => status.ImportFeedId);
             batchStatus.Property(status => status.From);
             batchStatus.Property(status => status.Until);
             batchStatus.Property(status => status.Completed);
