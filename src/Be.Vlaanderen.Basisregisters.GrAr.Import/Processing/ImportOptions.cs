@@ -3,6 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Api.Messages;
     using CommandLine;
     using global::CommandLine;
 
@@ -32,11 +33,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             errors => ThrowNotParsed<ImportArguments>(new ApplicationException($"Parsed options expected to have base type {nameof(ImportArguments)}")));
 
         public ICommandProcessorOptions<TKey> CreateProcessorOptions<TKey>(
-            ImportBatchStatus lastBatch,
+            BatchStatus lastBatch,
             ICommandProcessorBatchConfiguration<TKey> configuration)
         {
             var defaultUntil = _getCurrentTimeStamp().Add(-configuration.TimeMargin);
-            if (lastBatch != null && lastBatch.IsInvalid)
+            if (lastBatch != null && lastBatch.Until == DateTime.MinValue)
                 lastBatch = null;
 
             return _parsed.MapResult(

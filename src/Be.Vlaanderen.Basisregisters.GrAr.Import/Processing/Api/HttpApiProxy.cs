@@ -9,13 +9,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
+    using Messages;
 
     public class HttpApiProxy : HttpApiProxyBase
     {
         public HttpApiProxy(ILogger logger,
             JsonSerializer serializer,
-            IHttpApiProxyConfig config)
-            : base(logger, serializer, config)
+            IHttpApiProxyConfig config,
+            ImportFeed importFeed)
+            : base(logger, serializer, config, importFeed)
         { }
 
         public override void ImportBatch<TKey>(IEnumerable<KeyImport<TKey>> imports)
@@ -51,17 +53,20 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
     public abstract class HttpApiProxyBase : IApiProxy
     {
         protected readonly IHttpApiProxyConfig Config;
+        private readonly ImportFeed _importFeed;
         protected readonly ILogger Logger;
         protected readonly JsonSerializer Serializer;
 
         protected HttpApiProxyBase(
             ILogger logger,
             JsonSerializer serializer,
-            IHttpApiProxyConfig config)
+            IHttpApiProxyConfig config,
+            ImportFeed importFeed)
         {
             Serializer = serializer;
             Logger = logger;
             Config = config;
+            _importFeed = importFeed;
         }
 
         protected HttpClient CreateImportClient()
@@ -125,7 +130,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                     .GetAwaiter()
                     .GetResult() ?? string.Empty;
 
-                var batchStatus = JsonConvert.DeserializeObject<ImportBatchStatus>(content);
+                var batchStatus = JsonConvert.DeserializeObject<BatchStatus>(content);
                 processorOptions = options.CreateProcessorOptions(batchStatus, configuration);
             }
 
@@ -142,8 +147,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                 throw new ArgumentNullException(nameof(options));
 
             var json = Serializer.Serialize(
-                new ImportBatchStatus
+                new BatchStatusUpdate
                 {
+                    ImportFeed = _importFeed,
                     From = options.From,
                     Until = options.Until,
                     Completed = importCompleted

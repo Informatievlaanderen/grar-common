@@ -1,10 +1,9 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
+namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api.Messages
 {
     using System;
 
-    public class ImportBatchStatus
+    public class BatchStatus
     {
-        public string ImportFeedId { get; set; }
         public DateTime From { get; set; }
         public DateTime Until { get; set; }
         public bool Completed { get; set; }

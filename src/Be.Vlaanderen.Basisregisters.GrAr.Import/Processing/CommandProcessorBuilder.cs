@@ -19,10 +19,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         private IProcessedKeysSet<TKey> _processedKeys;
         private JsonSerializerSettings _serializerSettings;
         private bool _useDryRunApiProxyFactory;
+        private ImportFeed _importFeed;
 
         public LogLevel MinLogLevel { get; private set; }
 
-        public CommandProcessorBuilder(ICommandGenerator<TKey> generator) => _generator = generator ?? throw new ArgumentNullException(nameof(generator));
+        public CommandProcessorBuilder(ICommandGenerator<TKey> generator)
+            => _generator = generator ?? throw new ArgumentNullException(nameof(generator));
 
         public CommandProcessorBuilder<TKey> WithCommandLineOptions<TOptions>(TOptions options)
             where TOptions : ImportArguments
@@ -63,11 +65,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         }
 
         public CommandProcessorBuilder<TKey> UseApiProxyFactory(IApiProxyFactory factory)
-        {
-            _createApiProxyFactory = logger => factory;
-
-            return this;
-        }
+            => UseApiProxyFactory(logger => factory);
 
         public CommandProcessorBuilder<TKey> UseApiProxyFactory(Func<ILogger, IApiProxyFactory> factoryBuilder)
         {
@@ -112,6 +110,17 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             return this;
         }
 
+        /// <summary>Uses the executing assembly name as import feed.</summary>
+        public CommandProcessorBuilder<TKey> ConfigureDefaultImportFeed()
+            => ConfigureImportFeed(new ImportFeed{ Name = Assembly.GetExecutingAssembly().GetName().Name });
+
+        public CommandProcessorBuilder<TKey> ConfigureImportFeed(ImportFeed feed)
+        {
+            _importFeed = feed;
+
+            return this;
+        }
+
         public CommandProcessor<TKey> Build()
         {
             var logger = _loggerFactory?.CreateLogger(Assembly.GetExecutingAssembly().FullName) ?? throw new CommandProcessorBuilderConfigurationException("No LoggerFactory was set. Call UseLoggerFactory to set a factory");
@@ -128,7 +137,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
                 serializer);
         }
 
-        private IApiProxyFactory GetApiProxyFactory(ILogger logger, JsonSerializer serializer)
+        private IApiProxyFactory GetApiProxyFactory(
+            ILogger logger,
+            JsonSerializer serializer)
         {
             if (logger == null)
                 throw new ArgumentNullException(nameof(logger));
@@ -145,7 +156,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             return new SingleEndpointHttpApiProxyFactory(
                 logger,
                 serializer,
-                _httpApiProxyConfig ?? throw new CommandProcessorBuilderConfigurationException("No IHttpApiProxyConfig was set. Call UseHttpApiProxyConfig or UseApiProxyFactory to set your own factory"));
+                _httpApiProxyConfig ?? throw new CommandProcessorBuilderConfigurationException("No IHttpApiProxyConfig was set. Call UseHttpApiProxyConfig or UseApiProxyFactory to set your own factory"),
+                _importFeed ?? throw new CommandProcessorBuilderConfigurationException($"ImportFeed is not configured. Call {nameof(ConfigureDefaultImportFeed)} or use {nameof(ConfigureImportFeed)} to set custom import feed"));
         }
     }
 }

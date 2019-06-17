@@ -10,6 +10,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     using FluentAssertions;
     using GrAr.Import.Processing.CommandLine;
     using AutoFixture;
+    using GrAr.Import.Processing.Api.Messages;
+    using Newtonsoft.Json;
 
     public class When_creating_import_options_for_an_undefined_argument_type
     {
@@ -130,7 +132,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     _initArguments.ToArguments(),
                     errors => {})
                 .CreateProcessorOptions(
-                    new ImportBatchStatus
+                    new BatchStatus 
                     {
                         From = fixture.Create<DateTime>(),
                         Until = fixture.Create<DateTime>(),
@@ -218,12 +220,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     initArguments.ToArguments(),
                     errors => {},
                     _getCurrentTimeStamp)
-                .CreateProcessorOptions(new ImportBatchStatus
-                {
-                    From = fixture.Create<DateTime>(),
-                    Until = default,
-                    Completed = false
-                }, _batchConfiguration); 
+                .CreateProcessorOptions(
+                    new BatchStatus
+                    {
+                        From = fixture.Create<DateTime>(),
+                        Until = default,
+                        Completed = false
+                    },
+                    _batchConfiguration); 
         }
 
         [Fact]
@@ -242,7 +246,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     public class When_creating_init_processor_options_for_a_not_completed_last_import
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly ImportBatchStatus _lastBatch;
+        private readonly BatchStatus _lastBatch;
 
         public When_creating_init_processor_options_for_a_not_completed_last_import()
         {
@@ -250,7 +254,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             var fixedDateTimeNow = fixture.Create<DateTime>();
 
             var initArguments = fixture.Create<InitArguments>();
-            _lastBatch = new ImportBatchStatus
+            _lastBatch = new BatchStatus
             {
                 From = fixture.Create<DateTime>(),
                 Until = fixture.Create<DateTime>(),
@@ -295,7 +299,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     errors => { },
                     () => fixedDateTimeNow)
                 .CreateProcessorOptions(
-                    new ImportBatchStatus
+                    new BatchStatus
                     {
                         From = fixture.Create<DateTime>(),
                         Until = fixture.Create<DateTime>(),
@@ -331,7 +335,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     _updateArguments.ToArguments(),
                     errors => { })
                 .CreateProcessorOptions(
-                    fixture.Create<ImportBatchStatus>(),
+                    fixture.Create<BatchStatus>(),
                     _batchConfiguration);
         }
 
@@ -397,7 +401,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                         fixture.Create<UpdateArguments>().ToArguments(),
                         errors => { })
                     .CreateProcessorOptions(
-                        new ImportBatchStatus
+                        new BatchStatus
                         {
                             From = fixture.Create<DateTime>(),
                             Until = default,
@@ -420,7 +424,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     public class When_creating_update_processor_options_for_a_completed_previous_batch
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly ImportBatchStatus _lastBatch;
+        private readonly BatchStatus _lastBatch;
 
         public When_creating_update_processor_options_for_a_completed_previous_batch()
         {
@@ -428,7 +432,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
             var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
 
-            _lastBatch = new ImportBatchStatus
+            _lastBatch = new BatchStatus
             {
                 From = fixture.Create<DateTime>(),
                 Until = fixture.Create<DateTime>(),
@@ -473,7 +477,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     updateArguments.ToArguments(),
                     errors => { })
                 .CreateProcessorOptions(
-                    new ImportBatchStatus
+                    new BatchStatus
                     {
                         From = fixture.Create<DateTime>(),
                         Until = fixture.Create<DateTime>(),
@@ -492,21 +496,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     public class When_creating_update_processor_options_for_a_completed_previous_batch_and_until_argument
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly ImportBatchStatus _lastBatch;
-        private UpdateArguments _updateArguments;
+        private readonly UpdateArguments _updateArguments;
 
         public When_creating_update_processor_options_for_a_completed_previous_batch_and_until_argument()
         {
             var fixture = new Fixture();
 
             var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
-
-            _lastBatch = new ImportBatchStatus
-            {
-                From = fixture.Create<DateTime>(),
-                Until = fixture.Create<DateTime>(),
-                Completed = true
-            };
 
             _updateArguments = fixture.Create<UpdateArguments>();
             _updateArguments.Until = fixture.Create<DateTime>();
@@ -515,7 +511,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     _updateArguments.ToArguments(),
                     errors => { })
                 .CreateProcessorOptions(
-                    _lastBatch, 
+                    new BatchStatus
+                    {
+                        From = fixture.Create<DateTime>(),
+                        Until = fixture.Create<DateTime>(),
+                        Completed = true
+                    }, 
                     batchConfiguration);
         }
 
@@ -549,7 +550,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     errors => { },
                     _getCurrentTimeStamp)
                 .CreateProcessorOptions(
-                    new ImportBatchStatus
+                    new BatchStatus
                     {
                         From = fixture.Create<DateTime>(),
                         Until = fixture.Create<DateTime>(),
@@ -568,7 +569,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     public class When_creating_update_processor_options_for_an_not_completed_previous_batch
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly ImportBatchStatus _lastBatch;
+        private readonly BatchStatus _lastBatch;
         private readonly UpdateArguments _updateArguments;
 
         public When_creating_update_processor_options_for_an_not_completed_previous_batch()
@@ -577,7 +578,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
             var batchConfiguration = new TestBatchConfiguration<int>(s => s.GetHashCode());
 
-            _lastBatch = new ImportBatchStatus
+            _lastBatch = new BatchStatus
             {
                 From = fixture.Create<DateTime>(),
                 Until = fixture.Create<DateTime>(),
