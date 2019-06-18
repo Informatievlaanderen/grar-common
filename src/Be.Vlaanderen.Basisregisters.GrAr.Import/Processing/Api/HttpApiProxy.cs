@@ -101,7 +101,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
             ICommandProcessorOptions<TKey> processorOptions;
             using (var client = CreateImportClient())
             {
-                var requestUri = Config.ImportBatchStatusEndpoint;
+                var requestUri = $"{Config.ImportBatchStatusEndpoint}/{_importFeed.Name}";
                 Logger.LogDebug(
                     "Getting batch status from {baseUrl}/{requestUri}",
                     client.BaseAddress,
