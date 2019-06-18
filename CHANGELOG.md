@@ -1,3 +1,16 @@
+# [8.2.0](https://github.com/informatievlaanderen/grar-common/compare/v8.1.0...v8.2.0) (2019-06-18)
+
+
+### Bug Fixes
+
+* add route parameter import feed name for get status call ([1c8627f](https://github.com/informatievlaanderen/grar-common/commit/1c8627f))
+* re-generate batch status migrations ([36d4608](https://github.com/informatievlaanderen/grar-common/commit/36d4608))
+
+
+### Features
+
+* add import feed to batch status ([5d698ab](https://github.com/informatievlaanderen/grar-common/commit/5d698ab))
+
 # [8.1.0](https://github.com/informatievlaanderen/grar-common/compare/v8.0.1...v8.1.0) (2019-06-18)
 
 
