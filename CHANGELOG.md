@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/informatievlaanderen/grar-common/compare/v8.0.1...v8.1.0) (2019-06-18)
+
+
+### Features
+
+* add classes for syndication polygon and point ([8cf1357](https://github.com/informatievlaanderen/grar-common/commit/8cf1357))
+
 ## [8.0.1](https://github.com/informatievlaanderen/grar-common/compare/v8.0.0...v8.0.1) (2019-06-11)
 
 
