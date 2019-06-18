@@ -3,10 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Migrations
 {
-    using Processing;
     using Processing.CrabImport;
 
-    public partial class inital_migragtions_import : Migration
+    public partial class inital_migration_import_batch : Migration
     {
         private static CrabImportSchema Schema => CrabImportMigrationsHelper.CrabImportSchema;
 
@@ -20,13 +19,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Migrations
                 schema: Schema.Name,
                 columns: table => new
                 {
+                    ImportFeedId = table.Column<string>(nullable: false),
                     From = table.Column<DateTime>(nullable: false),
                     Until = table.Column<DateTime>(nullable: false),
                     Completed = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ImportStatus", x => x.From);
+                    table.PrimaryKey("PK_ImportStatus", x => new { x.From, x.ImportFeedId });
                 });
         }
 
