@@ -110,16 +110,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             return this;
         }
 
-        /// <summary>Uses the executing assembly name as import feed.</summary>
-        public CommandProcessorBuilder<TKey> UseDefaultImportFeed()
-            => ConfigureImportFeed((ImportFeed)Assembly.GetExecutingAssembly().GetName().Name);
-
-        public CommandProcessorBuilder<TKey> ConfigureImportFeed(ImportFeed feed)
+        public CommandProcessorBuilder<TKey> UseImportFeed(ImportFeed feed)
         {
             _importFeed = feed;
 
             return this;
         }
+
+        public CommandProcessorBuilder<TKey> ConfigureImportFeedFromAssembly(Assembly assembly)
+            => UseImportFeed((ImportFeed)assembly.GetName().Name);
 
         public CommandProcessor<TKey> Build()
         {
@@ -169,7 +168,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
                 => new CommandProcessorBuilderConfigurationException($"No {nameof(IHttpApiProxyConfig)} was set. Call {nameof(UseHttpApiProxyConfig)} or {nameof(UseApiProxyFactory)} to set your own factory");
 
             public static Exception ImportFeedNotConfigured
-                => new CommandProcessorBuilderConfigurationException($"{nameof(ImportFeed)} is not configured. Call {nameof(UseDefaultImportFeed)} or use {nameof(ConfigureImportFeed)} to set custom import feed");
+                => new CommandProcessorBuilderConfigurationException($"{nameof(ImportFeed)} is not configured. Call {nameof(UseImportFeed)} or use {nameof(ConfigureImportFeedFromAssembly)} to set assembly based feed");
         }
     }
 }
