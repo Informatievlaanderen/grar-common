@@ -15,7 +15,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
         public BatchStatus LastBatchFor(ImportFeed feed)
         {
             var lastStatus = BatchStatuses
-                ?.Where(status => status.ImportFeedId == feed.Id)
+                ?.Where(status => status.ImportFeedId == feed.Name)
                 .OrderBy(status => status.From)
                 .LastOrDefault();
 
@@ -34,16 +34,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
             if (status == null)
                 return;
 
-            if (status.Until == DateTime.MinValue || string.IsNullOrWhiteSpace(status.ImportFeed?.Id))
+            if (status.Until == DateTime.MinValue || string.IsNullOrWhiteSpace(status.ImportFeed?.Name))
                 throw new ArgumentException($"Invalid batch status : {JsonConvert.SerializeObject(status)}");
 
-            var currentStatus = BatchStatuses.Find(status.From, status.ImportFeed.Id);
+            var currentStatus = BatchStatuses.Find(status.From, status.ImportFeed.Name);
             if (currentStatus == null)
             {
                 BatchStatuses.Add(
                     new ImportBatchStatus
                     {
-                        ImportFeedId = status.ImportFeed.Id,
+                        ImportFeedId = status.ImportFeed.Name,
                         From = status.From,
                         Until = status.Until,
                         Completed = status.Completed

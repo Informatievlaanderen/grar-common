@@ -1,13 +1,14 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 {
-    using Newtonsoft.Json;
-
     public class ImportFeed
     {
-        public string Name { get; set; }
+        private string _lowercasedName;
 
-        [JsonIgnore]
-        public string Id => Name?.ToLowerInvariant().Trim() ?? string.Empty;
+        public string Name
+        {
+            get => _lowercasedName;
+            set => _lowercasedName = value?.ToLowerInvariant().Trim() ?? string.Empty;
+        }
 
         public static explicit operator ImportFeed(string name) => new ImportFeed { Name = name };
     }
