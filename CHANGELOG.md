@@ -1,3 +1,10 @@
+## [9.0.1](https://github.com/informatievlaanderen/grar-common/compare/v9.0.0...v9.0.1) (2019-06-19)
+
+
+### Bug Fixes
+
+* replace import feed id by making name lowercase ([6b4d7f2](https://github.com/informatievlaanderen/grar-common/commit/6b4d7f2))
+
 # [9.0.0](https://github.com/informatievlaanderen/grar-common/compare/v8.2.0...v9.0.0) (2019-06-19)
 
 
