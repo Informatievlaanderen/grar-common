@@ -8,5 +8,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
         [JsonIgnore]
         public string Id => Name?.ToLowerInvariant().Trim() ?? string.Empty;
+
+        public static explicit operator ImportFeed(string name) => new ImportFeed { Name = name };
     }
 }

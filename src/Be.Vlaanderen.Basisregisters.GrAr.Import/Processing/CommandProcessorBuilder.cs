@@ -111,8 +111,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         }
 
         /// <summary>Uses the executing assembly name as import feed.</summary>
-        public CommandProcessorBuilder<TKey> ConfigureDefaultImportFeed()
-            => ConfigureImportFeed(new ImportFeed{ Name = Assembly.GetExecutingAssembly().GetName().Name });
+        public CommandProcessorBuilder<TKey> UseDefaultImportFeed()
+            => ConfigureImportFeed((ImportFeed)Assembly.GetExecutingAssembly().GetName().Name);
 
         public CommandProcessorBuilder<TKey> ConfigureImportFeed(ImportFeed feed)
         {
@@ -123,7 +123,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
         public CommandProcessor<TKey> Build()
         {
-            var logger = _loggerFactory?.CreateLogger(Assembly.GetExecutingAssembly().FullName) ?? throw new CommandProcessorBuilderConfigurationException("No LoggerFactory was set. Call UseLoggerFactory to set a factory");
+            var logger = _loggerFactory?.CreateLogger(Assembly.GetExecutingAssembly().FullName) ?? throw Exceptions.LoggerFactoryNotConfigured;
 
             var config = _commandProcessorConfig ?? new DefaultCommandProcessorConfig();
             var processedKeys = _processedKeys ?? new ConcurrentFileBasedProcessedKeysSet<TKey>(x => x.ToString(), s => (TKey)Convert.ChangeType(s, typeof(TKey)));
@@ -156,8 +156,20 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             return new SingleEndpointHttpApiProxyFactory(
                 logger,
                 serializer,
-                _httpApiProxyConfig ?? throw new CommandProcessorBuilderConfigurationException("No IHttpApiProxyConfig was set. Call UseHttpApiProxyConfig or UseApiProxyFactory to set your own factory"),
-                _importFeed ?? throw new CommandProcessorBuilderConfigurationException($"ImportFeed is not configured. Call {nameof(ConfigureDefaultImportFeed)} or use {nameof(ConfigureImportFeed)} to set custom import feed"));
+                _httpApiProxyConfig ?? throw Exceptions.HttpApiProxyNotConfigured,
+                _importFeed ?? throw Exceptions.ImportFeedNotConfigured);
+        }
+
+        private static class Exceptions
+        {
+            public static Exception LoggerFactoryNotConfigured
+                => new CommandProcessorBuilderConfigurationException($"No {nameof(LoggerFactory)} was set. Call {nameof(UseLoggerFactory)} to set a factory");
+
+            public static Exception HttpApiProxyNotConfigured
+                => new CommandProcessorBuilderConfigurationException($"No {nameof(IHttpApiProxyConfig)} was set. Call {nameof(UseHttpApiProxyConfig)} or {nameof(UseApiProxyFactory)} to set your own factory");
+
+            public static Exception ImportFeedNotConfigured
+                => new CommandProcessorBuilderConfigurationException($"{nameof(ImportFeed)} is not configured. Call {nameof(UseDefaultImportFeed)} or use {nameof(ConfigureImportFeed)} to set custom import feed");
         }
     }
 }

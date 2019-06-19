@@ -12,11 +12,22 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
         private readonly CrabImportSchema _crabImportSchema;
         public DbSet<ImportBatchStatus> BatchStatuses { get; set; }
 
-        public ImportBatchStatus LastBatchFor(ImportFeed feed) =>
-            BatchStatuses
+        public BatchStatus LastBatchFor(ImportFeed feed)
+        {
+            var lastStatus = BatchStatuses
                 ?.Where(status => status.ImportFeedId == feed.Id)
                 .OrderBy(status => status.From)
                 .LastOrDefault();
+
+            return lastStatus == null
+                ? null
+                : new BatchStatus
+                {
+                    From = lastStatus.From,
+                    Until = lastStatus.Until,
+                    Completed = lastStatus.Completed
+                };
+        }
 
         public void SetCurrent(BatchStatusUpdate status)
         {
