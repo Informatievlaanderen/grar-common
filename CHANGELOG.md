@@ -1,3 +1,20 @@
+# [9.0.0](https://github.com/informatievlaanderen/grar-common/compare/v8.2.0...v9.0.0) (2019-06-19)
+
+
+### Bug Fixes
+
+* fixing naming ([df95878](https://github.com/informatievlaanderen/grar-common/commit/df95878))
+
+
+### BREAKING CHANGES
+
+* - rename configuration calls to be inline with excisting calls
+- changed type of LastStatusFor(0ImportFeed) so the ef record type is
+not passed
+
+-- Breaking change required as the last  breaking change was not picked
+up by sematic versioning --
+
 # [8.2.0](https://github.com/informatievlaanderen/grar-common/compare/v8.1.0...v8.2.0) (2019-06-18)
 
 
