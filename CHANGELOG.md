@@ -1,3 +1,10 @@
+## [10.0.1](https://github.com/informatievlaanderen/grar-common/compare/v10.0.0...v10.0.1) (2019-06-20)
+
+
+### Bug Fixes
+
+* add datamember to linear ring ([f7fff57](https://github.com/informatievlaanderen/grar-common/commit/f7fff57))
+
 # [10.0.0](https://github.com/informatievlaanderen/grar-common/compare/v9.0.1...v10.0.0) (2019-06-20)
 
 
