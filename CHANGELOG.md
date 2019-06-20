@@ -1,3 +1,18 @@
+# [10.0.0](https://github.com/informatievlaanderen/grar-common/compare/v9.0.1...v10.0.0) (2019-06-20)
+
+
+### Bug Fixes
+
+* configure import feed ([1421d7e](https://github.com/informatievlaanderen/grar-common/commit/1421d7e))
+
+
+### BREAKING CHANGES
+
+* changed configuration calls
+
+GetExecutionAssembly() returns package assembly and not the assembly of
+the executing app
+
 ## [9.0.1](https://github.com/informatievlaanderen/grar-common/compare/v9.0.0...v9.0.1) (2019-06-19)
 
 
