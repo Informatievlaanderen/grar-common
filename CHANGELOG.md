@@ -1,3 +1,15 @@
+# [11.0.0](https://github.com/informatievlaanderen/grar-common/compare/v10.0.1...v11.0.0) (2019-08-16)
+
+
+### Features
+
+* add setting to wait for user input or not ([2c70a4d](https://github.com/informatievlaanderen/grar-common/commit/2c70a4d))
+
+
+### BREAKING CHANGES
+
+* Add WaitForUserInput to ICommandProcessorConfig
+
 ## [10.0.1](https://github.com/informatievlaanderen/grar-common/compare/v10.0.0...v10.0.1) (2019-06-20)
 
 
