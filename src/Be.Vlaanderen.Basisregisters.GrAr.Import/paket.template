@@ -16,6 +16,12 @@ description Common logic for GrAr crab imports.
 
 dependencies
   framework: netstandard20
+    Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore ~> 3.2
+    Be.Vlaanderen.Basisregisters.CommandHandling ~> 3.2
+    Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency ~> 3.2
+    Be.Vlaanderen.Basisregisters.EventHandling ~> 1.1
+    Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic ~> 1.1
+
     Newtonsoft.Json >= LOCKEDVERSION
     Serilog >= LOCKEDVERSION
     Serilog.Extensions.Logging >= LOCKEDVERSION
@@ -24,12 +30,6 @@ dependencies
     Microsoft.Extensions.Configuration.Json >= LOCKEDVERSION
     CommandLineParser >= LOCKEDVERSION
     System.Threading.Tasks.Dataflow >= LOCKEDVERSION
-
-    Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore ~> 3.0
-    Be.Vlaanderen.Basisregisters.CommandHandling ~> 3.0
-    Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency ~> 3.0
-    Be.Vlaanderen.Basisregisters.EventHandling ~> 1.0
-    Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic ~> 1.0
 
 files
   /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Import.dll => lib\netstandard2.0

@@ -9,10 +9,10 @@ source https://api.nuget.org/v3/index.json
 // source https://informatievlaanderen.myget.org/F/nuget-mirror/api/v3/index.json username: "%MYGET_FEED_USER%" password: "%MYGET_FEED_PASS%" authtype: "basic"
 
 // DOTNETCORE ISSUES
-nuget Microsoft.NETCore.App 2.2.4
-nuget Microsoft.NETCore.DotNetAppHost 2.2.4
-nuget Microsoft.NETCore.DotNetHostResolver 2.2.4
-nuget Microsoft.NETCore.DotNetHostPolicy 2.2.4
+nuget Microsoft.NETCore.App 2.2.6
+nuget Microsoft.NETCore.DotNetAppHost 2.2.6
+nuget Microsoft.NETCore.DotNetHostResolver 2.2.6
+nuget Microsoft.NETCore.DotNetHostPolicy 2.2.6
 nuget NETStandard.Library 2.0.3
 
 // PRODUCTION STUFF
@@ -21,49 +21,49 @@ nuget Microsoft.Extensions.Logging 2.2.0
 
 nuget System.Threading.Tasks.Dataflow 4.9.0
 
-nuget CompareNETObjects 4.58.0
-nuget CommandLineParser 2.5.0
-nuget NodaTime 2.4.5
-nuget NetTopologySuite 1.15.2
+nuget CompareNETObjects 4.62.0
+nuget CommandLineParser 2.6.0
+nuget NodaTime 2.4.6
+nuget NetTopologySuite 1.15.3
 
-nuget Microsoft.EntityFrameworkCore.Design 2.2.4
+nuget Microsoft.EntityFrameworkCore.Design 2.2.6
 
 // VBR STUFF
-nuget Be.Vlaanderen.Basisregisters.Build.Pipeline ~> 1.6
+nuget Be.Vlaanderen.Basisregisters.Build.Pipeline ~> 1.7
 
-nuget Be.Vlaanderen.Basisregisters.AggregateSource ~> 3.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting ~> 3.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore ~> 3.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore.Autofac ~> 3.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing ~> 3.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling ~> 3.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore ~> 3.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac ~> 3.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit ~> 3.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource ~> 3.2
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting ~> 3.2
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore ~> 3.2
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore.Autofac ~> 3.2
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing ~> 3.2
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling ~> 3.2
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore ~> 3.2
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac ~> 3.2
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit ~> 3.2
 
-nuget Be.Vlaanderen.Basisregisters.CommandHandling ~> 3.0
-nuget Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency ~> 3.0
-nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore ~> 3.0
+nuget Be.Vlaanderen.Basisregisters.CommandHandling ~> 3.2
+nuget Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency ~> 3.2
+nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore ~> 3.2
 
-nuget Be.Vlaanderen.Basisregisters.EventHandling ~> 1.0
-nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac ~> 1.0
+nuget Be.Vlaanderen.Basisregisters.EventHandling ~> 1.1
+nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac ~> 1.1
 
-nuget Be.Vlaanderen.Basisregisters.Api ~> 7.0
+nuget Be.Vlaanderen.Basisregisters.Api ~> 7.3
 
-nuget Be.Vlaanderen.Basisregisters.Crab ~> 1.0
+nuget Be.Vlaanderen.Basisregisters.Crab ~> 1.1
 
-nuget Be.Vlaanderen.Basisregisters.Shaperon ~> 4.0
+nuget Be.Vlaanderen.Basisregisters.Shaperon ~> 4.2
 
-nuget Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic ~> 1.0
+nuget Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic ~> 1.1
 
-nuget Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset ~> 1.0
+nuget Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset ~> 1.1
 
 // TEST STUFF
 nuget xunit 2.4.1
 nuget xunit.runner.visualstudio 2.4.1
-nuget Moq 4.10.1
-nuget FluentAssertions 5.6.0
-nuget AutoFixture 4.8.0
+nuget Moq 4.12.0
+nuget FluentAssertions 5.8.0
+nuget AutoFixture 4.11.0
 
 // BUILD STUFF
 nuget FAKE 4.64.13 // Don't update to v5!

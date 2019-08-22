@@ -16,7 +16,7 @@ description Common utilities for GrAr.
 
 dependencies
   framework: netstandard20
-    Be.Vlaanderen.Basisregisters.AggregateSource ~> 3.0
+    Be.Vlaanderen.Basisregisters.AggregateSource ~> 3.2
 
     NodaTime >= LOCKEDVERSION
 
