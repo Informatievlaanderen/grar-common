@@ -1,3 +1,10 @@
+# [11.1.0](https://github.com/informatievlaanderen/grar-common/compare/v11.0.0...v11.1.0) (2019-08-22)
+
+
+### Features
+
+* bump to .net 2.2.6 ([c33b979](https://github.com/informatievlaanderen/grar-common/commit/c33b979))
+
 # [11.0.0](https://github.com/informatievlaanderen/grar-common/compare/v10.0.1...v11.0.0) (2019-08-16)
 
 
