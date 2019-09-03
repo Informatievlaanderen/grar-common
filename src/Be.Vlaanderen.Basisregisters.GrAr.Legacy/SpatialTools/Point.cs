@@ -20,7 +20,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
         /// <summary>
         /// Een GeoJSON punt.
         /// </summary>
-        [DataMember(Name = "point")]
+        [JsonProperty("point")] // Do NOT put [DataMember(Name = "point")] here or the XmlDataContractSerializer freaks out
         [XmlIgnore]
         public GeoJSONPoint JsonPoint { get; set; }
     }

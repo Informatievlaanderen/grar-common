@@ -13,15 +13,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
         /// <summary>
         /// Een GML3 polygon.
         /// </summary>
-        [JsonIgnore]
         [DataMember(Name = "polygon")]
+        [JsonIgnore]
         public GmlPolygon XmlPolygon { get; set; }
 
         /// <summary>
         /// Een GeoJSON polygon.
         /// </summary>
+        [JsonProperty("polygon")] // Do NOT put [DataMember(Name = "polygon")] here or the XmlDataContractSerializer freaks out
         [XmlIgnore]
-        [DataMember(Name = "polygon")]
         public GeoJSONPolygon JsonPolygon { get; set; }
     }
 }
