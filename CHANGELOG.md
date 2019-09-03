@@ -1,3 +1,10 @@
+## [11.1.1](https://github.com/informatievlaanderen/grar-common/compare/v11.1.0...v11.1.1) (2019-09-03)
+
+
+### Bug Fixes
+
+* correctly serialise point and polygon to xml ([43a0449](https://github.com/informatievlaanderen/grar-common/commit/43a0449))
+
 # [11.1.0](https://github.com/informatievlaanderen/grar-common/compare/v11.0.0...v11.1.0) (2019-08-22)
 
 
