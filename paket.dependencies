@@ -52,7 +52,7 @@ nuget Be.Vlaanderen.Basisregisters.Api ~> 7.3
 
 nuget Be.Vlaanderen.Basisregisters.Crab ~> 1.1
 
-nuget Be.Vlaanderen.Basisregisters.Shaperon ~> 4.2
+nuget Be.Vlaanderen.Basisregisters.Shaperon ~> 5.0
 
 nuget Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic ~> 1.1
 
