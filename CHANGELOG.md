@@ -1,3 +1,16 @@
+# [12.0.0](https://github.com/informatievlaanderen/grar-common/compare/v11.1.1...v12.0.0) (2019-09-18)
+
+
+### Features
+
+* upgdated paket.template dependencies ([6118766](https://github.com/informatievlaanderen/grar-common/commit/6118766))
+* upgrade nts to 2.0.0 ([6826c43](https://github.com/informatievlaanderen/grar-common/commit/6826c43))
+
+
+### BREAKING CHANGES
+
+* upgrade NTS
+
 ## [11.1.1](https://github.com/informatievlaanderen/grar-common/compare/v11.1.0...v11.1.1) (2019-09-03)
 
 
