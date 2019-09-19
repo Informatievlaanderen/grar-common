@@ -1,3 +1,10 @@
+## [12.1.1](https://github.com/informatievlaanderen/grar-common/compare/v12.1.0...v12.1.1) (2019-09-19)
+
+
+### Bug Fixes
+
+* correct package depedency ([0c0a737](https://github.com/informatievlaanderen/grar-common/commit/0c0a737))
+
 # [12.1.0](https://github.com/informatievlaanderen/grar-common/compare/v12.0.0...v12.1.0) (2019-09-19)
 
 
