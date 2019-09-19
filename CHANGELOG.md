@@ -1,3 +1,10 @@
+# [12.1.0](https://github.com/informatievlaanderen/grar-common/compare/v12.0.0...v12.1.0) (2019-09-19)
+
+
+### Features
+
+* upgrade shaperon ([c544b10](https://github.com/informatievlaanderen/grar-common/commit/c544b10))
+
 # [12.0.0](https://github.com/informatievlaanderen/grar-common/compare/v11.1.1...v12.0.0) (2019-09-18)
 
 
