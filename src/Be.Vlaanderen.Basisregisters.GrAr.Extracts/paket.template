@@ -17,7 +17,7 @@ description Extract utilities for GrAr.
 dependencies
   framework: netstandard20
     Be.Vlaanderen.Basisregisters.Api ~> 7.3
-    Be.Vlaanderen.Basisregisters.Shaperon ~> 5.0
+    Be.Vlaanderen.Basisregisters.Shaperon ~> 6.0
 
 files
   /bin/Release/netcoreapp2.2/Be.Vlaanderen.Basisregisters.GrAr.Extracts.dll => lib\netcoreapp2.2
