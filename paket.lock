@@ -222,7 +222,7 @@ NUGET
     Be.Vlaanderen.Basisregisters.ProblemDetails (3.2)
       Microsoft.AspNetCore.Mvc.Core (>= 2.2.5)
       System.Reflection.Metadata (>= 1.6)
-    Be.Vlaanderen.Basisregisters.Shaperon (5.0)
+    Be.Vlaanderen.Basisregisters.Shaperon (6.0)
     Be.Vlaanderen.Basisregisters.Utilities.HashCodeCalculator (1.1)
     Be.Vlaanderen.Basisregisters.Utilities.HexByteConvertor (1.1)
     Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset (1.2)
