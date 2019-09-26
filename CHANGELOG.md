@@ -1,3 +1,10 @@
+## [12.1.2](https://github.com/informatievlaanderen/grar-common/compare/v12.1.1...v12.1.2) (2019-09-26)
+
+
+### Bug Fixes
+
+* correct namespaces in building unit legacy ([47ca945](https://github.com/informatievlaanderen/grar-common/commit/47ca945))
+
 ## [12.1.1](https://github.com/informatievlaanderen/grar-common/compare/v12.1.0...v12.1.1) (2019-09-19)
 
 
