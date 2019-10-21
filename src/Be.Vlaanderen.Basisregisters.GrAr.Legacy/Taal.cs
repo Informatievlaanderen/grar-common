@@ -6,19 +6,19 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     public enum Taal
     {
         /// <summary>Nederlands</summary>
-        [EnumMember]
+        [EnumMember(Value = "nl")]
         NL,
 
         /// <summary>Frans</summary>
-        [EnumMember]
+        [EnumMember(Value = "fr")]
         FR,
 
         /// <summary>Duits</summary>
-        [EnumMember]
+        [EnumMember(Value = "de")]
         DE,
 
         /// <summary>Engels</summary>
-        [EnumMember]
+        [EnumMember(Value = "en")]
         EN
     }
 }
