@@ -1,3 +1,10 @@
+## [12.1.3](https://github.com/informatievlaanderen/grar-common/compare/v12.1.2...v12.1.3) (2019-10-21)
+
+
+### Bug Fixes
+
+* properly case language value ([d94866e](https://github.com/informatievlaanderen/grar-common/commit/d94866e))
+
 ## [12.1.2](https://github.com/informatievlaanderen/grar-common/compare/v12.1.1...v12.1.2) (2019-09-26)
 
 
