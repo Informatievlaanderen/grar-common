@@ -38,12 +38,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
         public Identificator(
             string naamruimte,
             string objectId,
-            DateTimeOffset versie)
+            DateTimeOffset? versie)
         {
             Naamruimte = naamruimte;
             Id = $"{naamruimte}/{HttpUtility.UrlEncode(objectId)}";
             ObjectId = objectId;
-            Versie = versie;
+            Versie = versie ?? new Rfc3339SerializableDateTimeOffset(DateTimeOffset.MinValue);
         }
     }
 }
