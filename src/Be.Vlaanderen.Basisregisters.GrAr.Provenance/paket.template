@@ -26,3 +26,4 @@ dependencies
 files
   /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.dll => lib\netstandard2.0
   /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.pdb => lib\netstandard2.0
+  /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.xml => lib\netstandard2.0
