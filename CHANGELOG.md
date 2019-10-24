@@ -1,3 +1,10 @@
+## [12.1.4](https://github.com/informatievlaanderen/grar-common/compare/v12.1.3...v12.1.4) (2019-10-24)
+
+
+### Bug Fixes
+
+* provide xml documentation ([adbef40](https://github.com/informatievlaanderen/grar-common/commit/adbef40))
+
 ## [12.1.3](https://github.com/informatievlaanderen/grar-common/compare/v12.1.2...v12.1.3) (2019-10-21)
 
 
