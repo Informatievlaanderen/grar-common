@@ -19,7 +19,7 @@ dependencies
     Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore ~> 3.2
     Be.Vlaanderen.Basisregisters.CommandHandling ~> 3.2
     Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency ~> 3.2
-    Be.Vlaanderen.Basisregisters.EventHandling ~> 1.1
+    Be.Vlaanderen.Basisregisters.EventHandling ~> 1.3
     Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic ~> 1.1
 
     Newtonsoft.Json >= LOCKEDVERSION
@@ -34,3 +34,4 @@ dependencies
 files
   /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Import.dll => lib\netstandard2.0
   /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Import.pdb => lib\netstandard2.0
+  /bin/Release/netstandard2.0/Be.Vlaanderen.Basisregisters.GrAr.Import.xml => lib\netstandard2.0
