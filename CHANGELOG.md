@@ -1,3 +1,16 @@
+# [13.0.0](https://github.com/informatievlaanderen/grar-common/compare/v12.1.4...v13.0.0) (2019-10-24)
+
+
+### Bug Fixes
+
+* generate xml docs for provenance ([71d0954](https://github.com/informatievlaanderen/grar-common/commit/71d0954))
+* versie cannot be nullable ([e7af898](https://github.com/informatievlaanderen/grar-common/commit/e7af898))
+
+
+### BREAKING CHANGES
+
+* Versie is no longer nullable
+
 ## [12.1.4](https://github.com/informatievlaanderen/grar-common/compare/v12.1.3...v12.1.4) (2019-10-24)
 
 
