@@ -2,6 +2,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// De geografische naam.
+    /// </summary>
     [DataContract(Name = "GeografischeNaam", Namespace = "")]
     public class GeografischeNaam
     {

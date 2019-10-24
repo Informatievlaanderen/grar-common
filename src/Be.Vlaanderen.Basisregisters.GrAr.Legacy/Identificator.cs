@@ -46,4 +46,59 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
             Versie = versie ?? new Rfc3339SerializableDateTimeOffset(DateTimeOffset.MinValue);
         }
     }
+
+    /// <summary>Bevat informatie waarmee een gemeente kan geïdentificeerd worden.</summary>
+    [DataContract(Name = "Identificator", Namespace = "")]
+    public class GemeenteIdentificator : Identificator
+    {
+        public GemeenteIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+            : base(naamruimte, objectId, versie) { }
+    }
+
+    /// <summary>Bevat informatie waarmee de postinfo kan geïdentificeerd worden.</summary>
+    [DataContract(Name = "Identificator", Namespace = "")]
+    public class PostinfoIdentificator : Identificator
+    {
+        public PostinfoIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+            : base(naamruimte, objectId, versie) { }
+    }
+
+    /// <summary>Bevat informatie waarmee de straatnaam kan geïdentificeerd worden.</summary>
+    [DataContract(Name = "Identificator", Namespace = "")]
+    public class StraatnaamIdentificator : Identificator
+    {
+        public StraatnaamIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+            : base(naamruimte, objectId, versie) { }
+    }
+
+    /// <summary>Bevat informatie waarmee het adres kan geïdentificeerd worden.</summary>
+    [DataContract(Name = "Identificator", Namespace = "")]
+    public class AdresIdentificator : Identificator
+    {
+        public AdresIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+            : base(naamruimte, objectId, versie) { }
+    }
+
+    /// <summary>Bevat informatie waarmee het gebouw kan geïdentificeerd worden.</summary>
+    [DataContract(Name = "Identificator", Namespace = "")]
+    public class GebouwIdentificator : Identificator
+    {
+        public GebouwIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+            : base(naamruimte, objectId, versie) { }
+    }
+    /// <summary>Bevat informatie waarmee de gebouweenheid kan geïdentificeerd worden.</summary>
+    [DataContract(Name = "Identificator", Namespace = "")]
+    public class GebouwEenheidIdentificator : Identificator
+    {
+        public GebouwEenheidIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+            : base(naamruimte, objectId, versie) { }
+    }
+
+    /// <summary>Bevat informatie waarmee het perceel kan geïdentificeerd worden.</summary>
+    [DataContract(Name = "Identificator", Namespace = "")]
+    public class PerceelIdentificator : Identificator
+    {
+        public PerceelIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+            : base(naamruimte, objectId, versie) { }
+    }
 }

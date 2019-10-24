@@ -3,6 +3,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
     using System.Runtime.Serialization;
     using Straatnaam;
 
+    /// <summary>
+    /// Een straatnaam die deel uitmaakt van het adres.
+    /// </summary>
     [DataContract(Name = "Straatnaam", Namespace = "")]
     public class AdresDetailStraatnaam
     {

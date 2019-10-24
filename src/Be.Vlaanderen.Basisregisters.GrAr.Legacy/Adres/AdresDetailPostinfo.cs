@@ -2,6 +2,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// Een PostInfo object dat deel uitmaakt van het adres.
+    /// </summary>
     [DataContract(Name = "PostInfo", Namespace = "")]
     public class AdresDetailPostinfo
     {

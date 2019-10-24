@@ -3,6 +3,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Straatnaam
     using System.Runtime.Serialization;
     using Gemeente;
 
+    /// <summary>
+    /// De gemeente aan dewelke de straatnaam is toegewezen.
+    /// </summary>
     [DataContract(Name = "Gemeente", Namespace = "")]
     public class StraatnaamDetailGemeente
     {

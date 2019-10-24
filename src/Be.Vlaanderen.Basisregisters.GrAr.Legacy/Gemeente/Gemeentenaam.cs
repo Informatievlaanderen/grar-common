@@ -2,6 +2,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gemeente
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// De naam van de gemeente in het Nederlands.
+    /// </summary>
     [DataContract(Name = "Gemeentenaam", Namespace = "")]
     public class Gemeentenaam
     {
@@ -12,8 +15,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gemeente
         public GeografischeNaam GeografischeNaam { get; set; }
 
         public Gemeentenaam(GeografischeNaam geografischeNaam)
-        {
-            GeografischeNaam = geografischeNaam;
-        }
+            => GeografischeNaam = geografischeNaam;
     }
 }

@@ -2,6 +2,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Straatnaam
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// De straatnaam in het Nederlands.
+    /// </summary>
     [DataContract(Name = "Straatnaam", Namespace = "")]
     public class Straatnaam
     {

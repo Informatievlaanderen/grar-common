@@ -3,6 +3,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
     using System.Runtime.Serialization;
     using Gemeente;
 
+    /// <summary>
+    /// De gemeente die deel uitmaakt van het adres.
+    /// </summary>
     [DataContract(Name = "Gemeente", Namespace = "")]
     public class AdresDetailGemeente
     {

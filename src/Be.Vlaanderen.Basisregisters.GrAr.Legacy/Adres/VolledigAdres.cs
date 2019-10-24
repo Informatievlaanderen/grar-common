@@ -2,6 +2,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// De voorstelling van een adres in het Nederlands.
+    /// </summary>
     [DataContract(Name = "VolledigAdres", Namespace = "")]
     public class VolledigAdres
     {

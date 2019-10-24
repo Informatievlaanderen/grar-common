@@ -2,6 +2,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gebouweenheid
 {
     using System.Runtime.Serialization;
 
+    /// <summary>
+    /// Het gebouw waartoe de gebouweenheid behoort.
+    /// </summary>
     [DataContract(Name = "Gebouw", Namespace = "")]
     public class GebouweenheidDetailGebouw
     {

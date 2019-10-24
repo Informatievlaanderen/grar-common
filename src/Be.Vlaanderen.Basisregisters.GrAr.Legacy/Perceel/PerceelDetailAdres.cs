@@ -13,7 +13,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Perceel
         public string ObjectId { get; set; }
 
         /// <summary>
-        /// URL returning the details of the latest version of the coupled address
+        /// De URL die de details van de meest recente versie van het gekoppelde adres weergeeft.
         /// </summary>
         [DataMember(Name = "Detail", Order = 2)]
         public Uri Detail { get; set; }
