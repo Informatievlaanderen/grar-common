@@ -1,3 +1,10 @@
+## [13.0.1](https://github.com/informatievlaanderen/grar-common/compare/v13.0.0...v13.0.1) (2019-10-24)
+
+
+### Bug Fixes
+
+* still allow nullable versions in ctor ([240fa94](https://github.com/informatievlaanderen/grar-common/commit/240fa94))
+
 # [13.0.0](https://github.com/informatievlaanderen/grar-common/compare/v12.1.4...v13.0.0) (2019-10-24)
 
 
