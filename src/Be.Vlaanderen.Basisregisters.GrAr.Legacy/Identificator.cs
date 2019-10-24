@@ -88,9 +88,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     }
     /// <summary>Bevat informatie waarmee de gebouweenheid kan geïdentificeerd worden.</summary>
     [DataContract(Name = "Identificator", Namespace = "")]
-    public class GebouwEenheidIdentificator : Identificator
+    public class GebouweenheidIdentificator : Identificator
     {
-        public GebouwEenheidIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+        public GebouweenheidIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
             : base(naamruimte, objectId, versie) { }
     }
 
