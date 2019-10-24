@@ -1,3 +1,5 @@
+## [13.0.2](https://github.com/informatievlaanderen/grar-common/compare/v13.0.1...v13.0.2) (2019-10-24)
+
 ## [13.0.1](https://github.com/informatievlaanderen/grar-common/compare/v13.0.0...v13.0.1) (2019-10-24)
 
 
