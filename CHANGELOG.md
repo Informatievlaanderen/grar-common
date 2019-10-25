@@ -1,3 +1,10 @@
+## [13.0.4](https://github.com/informatievlaanderen/grar-common/compare/v13.0.3...v13.0.4) (2019-10-25)
+
+
+### Bug Fixes
+
+* add docs for geojson and gml point ([f8e1a79](https://github.com/informatievlaanderen/grar-common/commit/f8e1a79))
+
 ## [13.0.3](https://github.com/informatievlaanderen/grar-common/compare/v13.0.2...v13.0.3) (2019-10-24)
 
 
