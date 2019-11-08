@@ -12,25 +12,25 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     public class Identificator
     {
         /// <summary>
-        /// De persistente identificator van het object (volgens de Vlaamse URI standaard), uniek overheen heel het wereldwijde web.
+        /// De unieke en persistente identificator van het object (volgt de Vlaamse URI-standaard).
         /// </summary>
         [DataMember(Name = "Id", Order = 1)]
         public string Id { get; set; }
 
         /// <summary>
-        /// De naamruimte die de bron uniek identificeert overheen heel het wereldwijde web.
+        /// De naamruimte waarbinnen objecten van een bepaald objecttype geïdentificeerd worden.
         /// </summary>
         [DataMember(Name = "Naamruimte", Order = 2)]
         public string Naamruimte { get; set; }
 
         /// <summary>
-        /// De identificator van het object, uniek overheen heel het wereldwijde web.
+        /// De objectidentificator (enkel uniek binnen naamruimte).
         /// </summary>
         [DataMember(Name = "ObjectId", Order = 3)]
         public string ObjectId { get; set; }
 
         /// <summary>
-        /// De versie van het object.
+        /// De versie-identificator (timestamp volgens RFC 3339) (notatie: lokale tijd + verschil t.o.v. UTC).
         /// </summary>
         [DataMember(Name = "VersieId", Order = 4)]
         public Rfc3339SerializableDateTimeOffset Versie { get; set; }
