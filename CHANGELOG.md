@@ -1,3 +1,11 @@
+## [13.0.5](https://github.com/informatievlaanderen/grar-common/compare/v13.0.4...v13.0.5) (2019-11-08)
+
+
+### Bug Fixes
+
+* clarify identificator GR-1036 ([7b68d8d](https://github.com/informatievlaanderen/grar-common/commit/7b68d8d))
+* clarify spatial GR-1046 ([6ecd014](https://github.com/informatievlaanderen/grar-common/commit/6ecd014))
+
 ## [13.0.4](https://github.com/informatievlaanderen/grar-common/compare/v13.0.3...v13.0.4) (2019-10-25)
 
 
