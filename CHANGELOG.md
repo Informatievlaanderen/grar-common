@@ -1,3 +1,10 @@
+## [13.1.1](https://github.com/informatievlaanderen/grar-common/compare/v13.1.0...v13.1.1) (2019-11-25)
+
+
+### Bug Fixes
+
+* paket.template include upgrade previous commit ([202ec23](https://github.com/informatievlaanderen/grar-common/commit/202ec23))
+
 # [13.1.0](https://github.com/informatievlaanderen/grar-common/compare/v13.0.5...v13.1.0) (2019-11-25)
 
 
