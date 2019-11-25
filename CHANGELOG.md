@@ -1,3 +1,10 @@
+# [13.1.0](https://github.com/informatievlaanderen/grar-common/compare/v13.0.5...v13.1.0) (2019-11-25)
+
+
+### Features
+
+* upgrade API package ([65a62e3](https://github.com/informatievlaanderen/grar-common/commit/65a62e3))
+
 ## [13.0.5](https://github.com/informatievlaanderen/grar-common/compare/v13.0.4...v13.0.5) (2019-11-08)
 
 
