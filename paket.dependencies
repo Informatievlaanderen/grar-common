@@ -48,7 +48,7 @@ nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore ~> 3.2
 nuget Be.Vlaanderen.Basisregisters.EventHandling ~> 1.3
 nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac ~> 1.3
 
-nuget Be.Vlaanderen.Basisregisters.Api ~> 7.8
+nuget Be.Vlaanderen.Basisregisters.Api ~> 8.0
 
 nuget Be.Vlaanderen.Basisregisters.Crab ~> 1.1
 
