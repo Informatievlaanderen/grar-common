@@ -1,3 +1,10 @@
+# [13.2.0](https://github.com/informatievlaanderen/grar-common/compare/v13.1.1...v13.2.0) (2019-11-28)
+
+
+### Features
+
+* add datetimeoffset extensions for extracts ([149c438](https://github.com/informatievlaanderen/grar-common/commit/149c438))
+
 ## [13.1.1](https://github.com/informatievlaanderen/grar-common/compare/v13.1.0...v13.1.1) (2019-11-25)
 
 
