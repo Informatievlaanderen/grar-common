@@ -23,6 +23,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
         private int _maxSqlInSize = 2000;
         protected ILifetimeScope Container { get; }
         private const int AggregateExpectedVersionNotSet = -1000;
+        private const int IdempotencyCommandTimeoutInSeconds = 120;
 
         public IdempotentCommandHandlerModule(ILifetimeScope container)
         {
@@ -42,6 +43,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                 var eventMapping = c.Resolve<EventMapping>();
                 var eventSerializer = c.Resolve<EventSerializer>();
                 var context = c.Resolve<IdempotencyContext>();
+
+                context.Database.SetCommandTimeout(IdempotencyCommandTimeoutInSeconds);
 
                 // WHICH COMMANDS SHOULD I PROCESS?
                 if (commands.Any(x => !x.Key.HasValue))
