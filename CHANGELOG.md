@@ -1,3 +1,10 @@
+## [13.2.1](https://github.com/informatievlaanderen/grar-common/compare/v13.2.0...v13.2.1) (2019-12-13)
+
+
+### Bug Fixes
+
+* increase timeout checking idempotency commands ([1aa58f1](https://github.com/informatievlaanderen/grar-common/commit/1aa58f1))
+
 # [13.2.0](https://github.com/informatievlaanderen/grar-common/compare/v13.1.1...v13.2.0) (2019-11-28)
 
 
