@@ -15,11 +15,17 @@ licenseUrl https://opensource.org/licenses/EUPL-1.2
 description Extract utilities for GrAr.
 
 dependencies
+<<<<<<< HEAD
   framework: netstandard20
     Be.Vlaanderen.Basisregisters.Api ~> 8.0
     Be.Vlaanderen.Basisregisters.Shaperon ~> 6.0
+=======
+  framework: netcoreapp31
+    Be.Vlaanderen.Basisregisters.Api >= LOCKEDVERSION
+    Be.Vlaanderen.Basisregisters.Shaperon >= LOCKEDVERSION
+>>>>>>> refactor: upgrade to netcoreapp31
 
 files
-  /bin/Release/netcoreapp2.2/Be.Vlaanderen.Basisregisters.GrAr.Extracts.dll => lib\netcoreapp2.2
-  /bin/Release/netcoreapp2.2/Be.Vlaanderen.Basisregisters.GrAr.Extracts.pdb => lib\netcoreapp2.2
-  /bin/Release/netcoreapp2.2/Be.Vlaanderen.Basisregisters.GrAr.Extracts.xml => lib\netcoreapp2.2
+  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Extracts.dll => lib\netcoreapp3.1
+  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Extracts.pdb => lib\netcoreapp3.1
+  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Extracts.xml => lib\netcoreapp3.1

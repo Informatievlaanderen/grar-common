@@ -6,6 +6,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
     using Api.Extract;
     using Shaperon;
 
+
     public class DbfFileWriter<TDbaseRecord> : ExtractFileWriter
         where TDbaseRecord : DbaseRecord
     {
@@ -21,8 +22,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
             where T : TDbaseRecord, new()
         {
             var record = new T();
-            record.FromBytes(recordBytes, Encoding);
+            ReadFromBytes(record, recordBytes, Encoding);
             Write(record);
+        }
+
+        private static void ReadFromBytes(DbaseRecord record, byte[] bytes, Encoding encoding)
+        {
+            using (var input = new MemoryStream(bytes))
+            using (var reader = new BinaryReader(input, encoding))
+                record.Read(reader);
         }
 
         public void WriteEndOfFile() => Writer.Write(DbaseRecord.EndOfFile);

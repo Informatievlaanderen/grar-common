@@ -1,5 +1,3 @@
-Microsoft.NETCore.App
-
 xunit
 xunit.runner.visualstudio
 Microsoft.Extensions.Logging
