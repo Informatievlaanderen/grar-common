@@ -1,3 +1,15 @@
+# [14.0.0](https://github.com/informatievlaanderen/grar-common/compare/v13.2.1...v14.0.0) (2019-12-17)
+
+
+### Code Refactoring
+
+* upgrade to netcoreapp31 ([9bf3731](https://github.com/informatievlaanderen/grar-common/commit/9bf3731))
+
+
+### BREAKING CHANGES
+
+* Upgrade to .NET Core 3.1
+
 ## [13.2.1](https://github.com/informatievlaanderen/grar-common/compare/v13.2.0...v13.2.1) (2019-12-13)
 
 
