@@ -31,6 +31,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Consume
             _batch.Add(message);
 
             var currentBatchSize = _batch.Sum(x => x.Commands.Length);
+
             if (currentBatchSize >= _batchSize)
             {
                 _logger.LogDebug("{ConsumerId} Flushing batch of {currentBatchSize} commands for {keyCount} keys", GetHashCode(), currentBatchSize, _batch.Count);
@@ -42,12 +43,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Consume
 
         public void Flush()
         {
-            if (_batch.Any())
-            {
-                _proxy.ImportBatch(_batch);
-                _processedKeys.Add(_batch.Select(m => m.Key));
-                _batch = new List<KeyImport<TKey>>();
-            }
+            if (!_batch.Any())
+                return;
+
+            _proxy.ImportBatch(_batch);
+            _processedKeys.Add(_batch.Select(m => m.Key));
+            _batch = new List<KeyImport<TKey>>();
         }
     }
 }

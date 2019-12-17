@@ -14,7 +14,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
         /// 7 = Limburg
         /// 23, 24 = Vlaams-Brabant (we can't use just 2, because that also covers Waals-Brabant)
         /// </summary>
-        private static readonly string[] flemishRegionNiscodes = new[]
+        private static readonly string[] flemishRegionNiscodes =
         {
             "1",
             "3",
@@ -30,8 +30,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
         /// <param name="nisCode">The NIS-code.</param>
         /// <returns>True if the NIS-code is in the Flemish Region, otherwise false.</returns>
         public static bool IsFlemishRegion(string nisCode)
-        {
-            return flemishRegionNiscodes.Any(n => nisCode.StartsWith(n, StringComparison.OrdinalIgnoreCase));
-        }
+            => flemishRegionNiscodes.Any(n => nisCode.StartsWith(n, StringComparison.OrdinalIgnoreCase));
     }
 }

@@ -18,6 +18,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Json
             {
                 NamingStrategy = new CamelCaseNamingStrategy() //TODO is this necessary?
             };
+
             source.MissingMemberHandling = MissingMemberHandling.Ignore;
             source.MaxDepth = 32;
             source.TypeNameHandling = TypeNameHandling.None;

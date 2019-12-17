@@ -41,11 +41,7 @@ nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore 4.1.0
 nuget Be.Vlaanderen.Basisregisters.EventHandling 2.1.0
 nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac 2.1.0
 
-<<<<<<< HEAD
-nuget Be.Vlaanderen.Basisregisters.Api ~> 8.0
-=======
 nuget Be.Vlaanderen.Basisregisters.Api 9.0.0
->>>>>>> refactor: upgrade to netcoreapp31
 
 nuget Be.Vlaanderen.Basisregisters.Crab 2.0.0
 

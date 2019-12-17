@@ -5,7 +5,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common
 
     public static class StringExtensions
     {
-        public static string RemoveDiacritics(this string input, bool lowerCaseString = true)
+        public static string? RemoveDiacritics(this string? input, bool lowerCaseString = true)
         {
             if (input == null)
                 return null;

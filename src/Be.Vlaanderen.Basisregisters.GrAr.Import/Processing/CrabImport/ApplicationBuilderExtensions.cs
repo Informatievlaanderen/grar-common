@@ -9,6 +9,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
         public static IApplicationBuilder UseCrabImportMigrations(this IApplicationBuilder builder)
         {
             var services = builder.ApplicationServices;
+
             CrabImportMigrationsHelper.Run(
                 services.GetService<Configuration>(),
                 services.GetService<MigrationsSchema>(),

@@ -171,7 +171,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                         CreateJsonContent(json))
                     .GetAwaiter()
                     .GetResult();
-                    
+
                 watch.Stop();
 
                 Logger.LogDebug(

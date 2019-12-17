@@ -29,12 +29,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             Take = take;
         }
 
-        public override string ToString() => $"{Environment.NewLine}" +
-                                             $"From: {From}{Environment.NewLine}" +
-                                             $"Until: {Until}{Environment.NewLine}" +
-                                             (Keys != null && Keys.Any() ? $"Keys: {string.Join(", ", Keys)}{Environment.NewLine}" : "") +
-                                             (Take.HasValue ? $"Take: {Take.Value}{Environment.NewLine}" : "") +
-                                             $"CleanStart: {CleanStart}{Environment.NewLine}" +
-                                             $"Mode: {Enum.GetName(typeof(ImportMode), Mode)}"; //{Environment.NewLine}";
+        public override string ToString() =>
+            $"{Environment.NewLine}" +
+            $"From: {From}{Environment.NewLine}" +
+            $"Until: {Until}{Environment.NewLine}" +
+            (Keys != null && Keys.Any() ? $"Keys: {string.Join(", ", Keys)}{Environment.NewLine}" : "") +
+            (Take.HasValue ? $"Take: {Take.Value}{Environment.NewLine}" : "") +
+            $"CleanStart: {CleanStart}{Environment.NewLine}" +
+            $"Mode: {Enum.GetName(typeof(ImportMode), Mode)}";
     }
 }

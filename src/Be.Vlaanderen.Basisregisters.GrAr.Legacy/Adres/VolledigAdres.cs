@@ -19,7 +19,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
             GeografischeNaam = geografischeNaam;
         }
 
-        public VolledigAdres(string straatnaam, string huisnummer, string busnummer, string postcode, string gemeentenaam, Taal taal)
+        public VolledigAdres(
+            string straatnaam,
+            string huisnummer,
+            string busnummer,
+            string postcode,
+            string gemeentenaam,
+            Taal taal)
         {
             var representation = string.IsNullOrEmpty(busnummer) ?
                 $"{straatnaam} {huisnummer}, {postcode} {gemeentenaam}" :
@@ -30,15 +36,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
 
         private static string TranslateBus(Taal taalCode)
         {
-            switch (taalCode)
+            return taalCode switch
             {
-                case Taal.DE:
-                    return "pf";
-                case Taal.FR:
-                    return "bte";
-                default:
-                    return "bus";
-            }
+                Taal.DE => "pf",
+                Taal.FR => "bte",
+                _ => "bus"
+            };
         }
     }
 }

@@ -11,6 +11,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
             dynamic commandToProcess,
             IDictionary<string, object> metadata,
             int currentPosition,
-            CancellationToken cancellationToken = default(CancellationToken));
+            CancellationToken cancellationToken = default);
     }
 }

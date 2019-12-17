@@ -18,13 +18,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Perceel
         [DataMember(Name = "Detail", Order = 2)]
         public Uri Detail { get; set; }
 
-        public static PerceelDetailAdres Create(string objectId, Uri detail)
-        {
-            return new PerceelDetailAdres
+        public static PerceelDetailAdres Create(
+            string objectId,
+            Uri detail)
+            => new PerceelDetailAdres
             {
                 ObjectId = objectId,
                 Detail = detail
             };
-        }
     }
 }

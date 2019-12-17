@@ -23,7 +23,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests
             var expected = "2019-11-28T14:55:30+01:00";
             var dateTimeOffset = new DateTimeOffset(2019, 11, 28, 14, 55, 30, TimeSpan.FromHours(1));
 
-            var dbaseString = new DbaseString(DbaseField.CreateStringField(new DbaseFieldName("test"), new DbaseFieldLength(25)));
+            var dbaseString = new DbaseCharacter(DbaseField.CreateCharacterField(new DbaseFieldName("test"), new DbaseFieldLength(25)));
             dbaseString.SetValue(dateTimeOffset);
 
             dbaseString.Value.Should().Be(expected);

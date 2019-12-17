@@ -36,7 +36,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             _generator = generator;
             _config = config;
         }
-        
+
         public void Run(
             ImportOptions importOptions,
             ICommandProcessorBatchConfiguration<TKey> configuration)
@@ -53,6 +53,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             _logger.LogInformation("Running {generatorName}", _generator.Name);
             _logger.LogInformation("with options:{options}", options);
             _logger.LogDebug("and config:{config}", _config);
+
             if (options.CleanStart)
             {
                 _logger.LogInformation("Deleting processed keys");
@@ -65,19 +66,24 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             {
                 var consumers = SubscribeConsumers(bus);
 
-                var keys = options.Keys != null && options.Keys.Any() ? options.Keys.ToList() : GetKeys(options);
+                var keys = options.Keys != null && options.Keys.Any()
+                    ? options.Keys.ToList()
+                    : GetKeys(options);
 
                 progress.Total = keys.Count;
                 _logger.LogInformation("Processing {keysToProcessCount} keys", progress.Total);
 
-                Parallel.ForEach(keys, new ParallelOptions
-                {
-                    MaxDegreeOfParallelism = _config.NrOfProducers //_processConfig.MaxDegreeOfParallelism, CancellationToken = _cts.Token//TODO: add cancellation support
-                }, key =>
-                {
-                    var import = CreateKeyImport(key, options);
-                    bus.ProduceAsync(import).ContinueWith(t => progress++).Wait();
-                });
+                Parallel.ForEach(
+                    keys,
+                    new ParallelOptions
+                    {
+                        MaxDegreeOfParallelism = _config.NrOfProducers //_processConfig.MaxDegreeOfParallelism, CancellationToken = _cts.Token//TODO: add cancellation support
+                    },
+                    key =>
+                    {
+                        var import = CreateKeyImport(key, options);
+                        bus.ProduceAsync(import).ContinueWith(t => progress++).Wait();
+                    });
 
                 _logger.LogInformation("Waiting for buffer depletion");
                 bus.Complete().Wait();
@@ -92,29 +98,41 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             ICommandProcessorOptions<TKey> options)
         {
             var stopwatchGenerate = Stopwatch.StartNew();
-            IEnumerable<dynamic> commands;
-            commands = options.Mode == ImportMode.Init
+
+            var commands = options.Mode == ImportMode.Init
                 ? _generator.GenerateInitCommandsFor(key, options.From, options.Until)
                 : _generator.GenerateUpdateCommandsFor(key, options.From, options.Until);
 
             stopwatchGenerate.Stop();
+
             var stopwatchSerialize = Stopwatch.StartNew();
-            var keyImport = new KeyImport<TKey>(key, commands.Select(c =>
-                new ImportCommand
-                {
-                    Type = c.GetType().FullName,
-                    CrabItem = _serializer.Serialize((object) c)
-                }).ToArray());
+
+            var keyImport = new KeyImport<TKey>(
+                key,
+                commands.Select(c =>
+                    new ImportCommand
+                    {
+                        Type = c.GetType().FullName,
+                        CrabItem = _serializer.Serialize((object) c)
+                    }).ToArray());
+
             stopwatchSerialize.Stop();
-            _logger.LogDebug("{producerId} Generated {commandCount} commands for key {key}, generation took ({generateDuration}) and serialization took ({serializationDuration})",
-                Thread.CurrentThread.ManagedThreadId, keyImport.Commands.Length, keyImport.Key, stopwatchGenerate.ElapsedMilliseconds, stopwatchSerialize.ElapsedMilliseconds);
+
+            _logger.LogDebug(
+                "{producerId} Generated {commandCount} commands for key {key}, generation took ({generateDuration}) and serialization took ({serializationDuration})",
+                Thread.CurrentThread.ManagedThreadId,
+                keyImport.Commands.Length,
+                keyImport.Key,
+                stopwatchGenerate.ElapsedMilliseconds,
+                stopwatchSerialize.ElapsedMilliseconds);
 
             return keyImport;
         }
 
         private void FlushConsumers(IEnumerable<BatchedKeyImportConsumer<TKey>> consumers)
         {
-            foreach (var consumer in consumers) consumer.Flush();
+            foreach (var consumer in consumers)
+                consumer.Flush();
         }
 
         private IEnumerable<BatchedKeyImportConsumer<TKey>> SubscribeConsumers(Bus.Bus bus)

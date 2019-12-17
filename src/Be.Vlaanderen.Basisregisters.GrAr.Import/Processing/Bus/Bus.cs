@@ -47,10 +47,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Bus
         {
             _queue.Complete();
             var dataFlows = new[] {_queue}.Concat(_consumers).ToList();
-            //foreach (var dataFlow in dataFlows)
-            //{
-            //    dataFlow.Complete();
-            //}
             return Task.WhenAll(dataFlows.Select(x => x.Completion));
         }
     }

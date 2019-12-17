@@ -8,7 +8,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
 
         public Configuration(string connectionString)
         {
-            ConnectionString = string.IsNullOrWhiteSpace(connectionString) ? throw new ArgumentNullException(connectionString) : connectionString;
+            ConnectionString = string.IsNullOrWhiteSpace(connectionString)
+                ? throw new ArgumentNullException(connectionString)
+                : connectionString;
         }
     }
 }

@@ -6,13 +6,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
     public static class DbaseStringExtensions
     {
         public static string FromDateTimeOffset(this DateTimeOffset dateTimeOffset)
-        {
-            return dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:ss%K");
-        }
+            => dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:ss%K");
 
-        public static void SetValue(this DbaseString dbaseString, DateTimeOffset dateTimeOffset)
-        {
-            dbaseString.Value = dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:ss%K");
-        }
+        public static void SetValue(this DbaseCharacter dbaseString, DateTimeOffset dateTimeOffset)
+            => dbaseString.Value = dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:ss%K");
     }
 }
