@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
     using System;
     using Shaperon;
 
-    public static class DbaseStringExtensions
+    public static class DbaseCharacterExtensions
     {
         public static string FromDateTimeOffset(this DateTimeOffset dateTimeOffset)
             => dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:ss%K");
