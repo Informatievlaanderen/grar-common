@@ -1,3 +1,10 @@
+# [14.1.0](https://github.com/informatievlaanderen/grar-common/compare/v14.0.1...v14.1.0) (2019-12-25)
+
+
+### Features
+
+* add from/to bytes for shapecontent DC-144 ([df00c8e](https://github.com/informatievlaanderen/grar-common/commit/df00c8e))
+
 ## [14.0.1](https://github.com/informatievlaanderen/grar-common/compare/v14.0.0...v14.0.1) (2019-12-20)
 
 # [14.0.0](https://github.com/informatievlaanderen/grar-common/compare/v13.2.1...v14.0.0) (2019-12-17)
