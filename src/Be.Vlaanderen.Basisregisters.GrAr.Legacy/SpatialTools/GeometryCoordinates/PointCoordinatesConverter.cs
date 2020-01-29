@@ -1,4 +1,4 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools.GeometryTypes
+namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 {
     using System;
     using System.Linq;

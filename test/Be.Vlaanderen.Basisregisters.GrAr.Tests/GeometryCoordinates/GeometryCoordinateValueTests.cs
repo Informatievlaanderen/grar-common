@@ -1,10 +1,10 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryTypes
+namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
 {
     using System;
     using AutoFixture;
     using FluentAssertions;
     using Infrastructure;
-    using Legacy.SpatialTools.GeometryTypes;
+    using Legacy.SpatialTools;
     using Xunit;
 
     public class WhenConvertingACreatingAGeometryCoordinateValueBackToADouble
