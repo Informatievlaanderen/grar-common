@@ -1,7 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
 {
     using FluentAssertions;
-    using Legacy;
     using Legacy.SpatialTools;
     using Newtonsoft.Json;
     using Xunit;
