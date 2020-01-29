@@ -1,8 +1,9 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools.GeometryTypes
+namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
 {
     using System;
     using System.Linq;
     using Newtonsoft.Json;
+    using SpatialTools;
 
     public class PolygonCoordinatesConverter : JsonConverter<double[][][]>
     {

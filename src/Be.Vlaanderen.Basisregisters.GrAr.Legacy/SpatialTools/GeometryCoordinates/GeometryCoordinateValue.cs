@@ -1,4 +1,4 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools.GeometryTypes
+namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 {
     public class GeometryCoordinateValue
     {
@@ -13,16 +13,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools.GeometryTypes
         public override string ToString() => _value.ToString("F11");
 
         public override bool Equals(object? obj)
-        {
-            return obj switch
+            => obj switch
             {
-                GeometryCoordinateValue value => Equals(value),
-                double d => Equals(d),
+                GeometryCoordinateValue value => _value.Equals(value._value),
+                double d => _value.Equals(d),
                 _ => false
             };
-        }
 
-        private bool Equals(double other) => _value.Equals(other);
         private bool Equals(GeometryCoordinateValue other) => _value.Equals(other._value);
 
         public override int GetHashCode() => _value.GetHashCode();

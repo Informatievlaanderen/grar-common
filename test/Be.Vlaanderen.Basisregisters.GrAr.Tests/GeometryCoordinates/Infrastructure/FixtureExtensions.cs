@@ -1,4 +1,4 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryTypes.Infrastructure
+namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates.Infrastructure
 {
     using System;
     using AutoFixture;
