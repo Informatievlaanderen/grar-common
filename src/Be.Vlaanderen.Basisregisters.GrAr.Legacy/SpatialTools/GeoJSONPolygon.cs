@@ -1,5 +1,8 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 {
+    using GeometryTypes;
+    using Newtonsoft.Json;
+
     /// <summary>
     /// Een GeoJSON polygoon.
     /// </summary>
@@ -8,6 +11,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
         /// <summary>
         /// Coördinaten volgens Lambert-72 (EPSG:31370).
         /// </summary>
+        [JsonConverter(typeof(PolygonCoordinatesConverter))]
         public double[][][] Coordinates { get; set; }
 
         /// <summary>
