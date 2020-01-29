@@ -26,7 +26,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools.GeometryTypes
         private bool Equals(GeometryCoordinateValue other) => _value.Equals(other._value);
 
         public override int GetHashCode() => _value.GetHashCode();
+    }
 
-        public static implicit operator double(GeometryCoordinateValue geometryCoordinateValue) => geometryCoordinateValue?._value ?? 0;
+    public static class GeometryCoordinateValueExtensions
+    {
+        public static string ToGeometryCoordinateValueFormat(this double value) => new GeometryCoordinateValue(value).ToString();
     }
 }
