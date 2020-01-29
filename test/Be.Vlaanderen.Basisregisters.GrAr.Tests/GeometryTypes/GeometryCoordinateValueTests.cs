@@ -22,7 +22,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryTypes
         [Fact]
         public void ThenOriginalPrecisionShouldBeMaintained()
         {
-            ((double)_coordinateValue)
+            _coordinateValue
                 .Should()
                 .Be(_originalValue);
         }
