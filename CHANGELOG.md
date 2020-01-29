@@ -1,3 +1,18 @@
+# [14.2.0](https://github.com/informatievlaanderen/grar-common/compare/v14.1.0...v14.2.0) (2020-01-29)
+
+
+### Bug Fixes
+
+* correct namespace ([75e8735](https://github.com/informatievlaanderen/grar-common/commit/75e8735))
+* remove implicit cast from geometrycoordinatevalue ([bdc1f77](https://github.com/informatievlaanderen/grar-common/commit/bdc1f77))
+* remove unused field ([617d799](https://github.com/informatievlaanderen/grar-common/commit/617d799))
+
+
+### Features
+
+* add geometrycoordinatevalue ([13cecac](https://github.com/informatievlaanderen/grar-common/commit/13cecac))
+* add json serialization for points and polygons ([c958e34](https://github.com/informatievlaanderen/grar-common/commit/c958e34))
+
 # [14.1.0](https://github.com/informatievlaanderen/grar-common/compare/v14.0.1...v14.1.0) (2019-12-25)
 
 
