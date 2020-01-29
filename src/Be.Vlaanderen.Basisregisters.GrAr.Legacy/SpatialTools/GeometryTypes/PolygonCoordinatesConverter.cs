@@ -6,8 +6,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools.GeometryTypes
 
     public class PolygonCoordinatesConverter : JsonConverter<double[][][]>
     {
-        private readonly GeometryCoordinateValueConverter _baseConverter = new GeometryCoordinateValueConverter();
-
         public override void WriteJson(
             JsonWriter writer,
             double[][][] polygon,
