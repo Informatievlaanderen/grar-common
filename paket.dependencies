@@ -10,52 +10,52 @@ source https://api.nuget.org/v3/index.json
 
 // PRODUCTION STUFF
 nuget Microsoft.CSharp 4.7.0
-nuget Microsoft.Extensions.Logging 3.1.0
+nuget Microsoft.Extensions.Logging 3.1.1
 
 nuget System.Threading.Tasks.Dataflow 4.11.0
 
-nuget CompareNETObjects 4.64.0
-nuget CommandLineParser 2.6.0
+nuget CompareNETObjects 4.65.0
+nuget CommandLineParser 2.7.82
 nuget NodaTime 2.4.7
 nuget NetTopologySuite 2.0.0
 
-nuget Microsoft.EntityFrameworkCore.Design 3.1.0
+nuget Microsoft.EntityFrameworkCore.Design 3.1.1
 
 // VBR STUFF
-nuget Be.Vlaanderen.Basisregisters.Build.Pipeline 3.2.0
+nuget Be.Vlaanderen.Basisregisters.Build.Pipeline 3.3.1
 
-nuget Be.Vlaanderen.Basisregisters.AggregateSource 4.1.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting 4.1.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore 4.1.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore.Autofac 4.1.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing 4.1.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling 4.1.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore 4.1.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac 4.1.0
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit 4.1.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource 4.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting 4.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore 4.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore.Autofac 4.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing 4.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling 4.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore 4.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac 4.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit 4.2.0
 
-nuget Be.Vlaanderen.Basisregisters.CommandHandling 4.1.0
-nuget Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency 4.1.0
-nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore 4.1.0
+nuget Be.Vlaanderen.Basisregisters.CommandHandling 4.2.0
+nuget Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency 4.2.0
+nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore 4.2.0
 
-nuget Be.Vlaanderen.Basisregisters.EventHandling 2.1.0
-nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac 2.1.0
+nuget Be.Vlaanderen.Basisregisters.EventHandling 2.2.0
+nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac 2.2.0
 
-nuget Be.Vlaanderen.Basisregisters.Api 9.0.0
+nuget Be.Vlaanderen.Basisregisters.Api 10.6.0
 
-nuget Be.Vlaanderen.Basisregisters.Crab 2.0.0
+nuget Be.Vlaanderen.Basisregisters.Crab 2.1.0
 
-nuget Be.Vlaanderen.Basisregisters.Shaperon 7.2.0
+nuget Be.Vlaanderen.Basisregisters.Shaperon 7.3.0
 
-nuget Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic 2.1.0
+nuget Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic 2.2.0
 
-nuget Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset 2.1.0
+nuget Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset 2.2.0
 
 // TEST STUFF
 nuget xunit 2.4.1
 nuget xunit.runner.visualstudio 2.4.1
 nuget Moq 4.13.1
-nuget FluentAssertions 5.9.0
+nuget FluentAssertions 5.10.0
 nuget AutoFixture 4.11.0
 
 // BUILD STUFF
