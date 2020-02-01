@@ -1,3 +1,10 @@
+# [14.3.0](https://github.com/informatievlaanderen/grar-common/compare/v14.2.0...v14.3.0) (2020-02-01)
+
+
+### Features
+
+* upgrade netcoreapp31 and dependencies ([6901fc7](https://github.com/informatievlaanderen/grar-common/commit/6901fc7))
+
 # [14.2.0](https://github.com/informatievlaanderen/grar-common/compare/v14.1.0...v14.2.0) (2020-01-29)
 
 
