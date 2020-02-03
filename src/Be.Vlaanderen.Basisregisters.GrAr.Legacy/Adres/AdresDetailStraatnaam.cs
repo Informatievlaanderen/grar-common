@@ -1,6 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
     using Straatnaam;
 
     /// <summary>
@@ -13,18 +14,21 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
         /// De identifier van de gekoppelde straatnaam.
         /// </summary>
         [DataMember(Name = "ObjectId", Order = 1)]
+        [JsonProperty(Required = Required.DisallowNull)]
         public string ObjectId { get; set; }
 
         /// <summary>
         /// De URL die de details van de meest recente versie van de gekoppelde straatnaam weergeeft.
         /// </summary>
         [DataMember(Name = "Detail", Order = 2)]
+        [JsonProperty(Required = Required.DisallowNull)]
         public string Detail { get; set; }
 
         /// <summary>
         /// De straatnaam in het Nederlands.
         /// </summary>
         [DataMember(Name = "Straatnaam", Order = 3)]
+        [JsonProperty(Required = Required.DisallowNull)]
         public Straatnaam Straatnaam { get; set; }
 
         public AdresDetailStraatnaam(string objectId, string detail, GeografischeNaam geografischeNaam)

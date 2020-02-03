@@ -20,7 +20,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
         /// <summary>
         /// Een GeoJSON polygoon.
         /// </summary>
-        [JsonProperty("polygon")] // Do NOT put [DataMember(Name = "polygon")] here or the XmlDataContractSerializer freaks out
+        [JsonProperty("polygon", Required = Required.DisallowNull)] // Do NOT put [DataMember(Name = "polygon")] here or the XmlDataContractSerializer freaks out
         [XmlIgnore]
         public GeoJSONPolygon JsonPolygon { get; set; }
     }

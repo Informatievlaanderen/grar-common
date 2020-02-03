@@ -1,6 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Straatnaam
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// De straatnaam in het Nederlands.
@@ -12,6 +13,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Straatnaam
         /// De geografische naam.
         /// </summary>
         [DataMember(Name = "GeografischeNaam")]
+        [JsonProperty(Required = Required.DisallowNull)]
         public GeografischeNaam GeografischeNaam { get; set; }
 
         public Straatnaam(GeografischeNaam geografischeNaam)

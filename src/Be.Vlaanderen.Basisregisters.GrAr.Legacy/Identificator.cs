@@ -3,6 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     using System;
     using System.Runtime.Serialization;
     using System.Web;
+    using Newtonsoft.Json;
     using Utilities;
 
     /// <summary>
@@ -15,24 +16,28 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
         /// De unieke en persistente identificator van het object (volgt de Vlaamse URI-standaard).
         /// </summary>
         [DataMember(Name = "Id", Order = 1)]
+        [JsonProperty(Required = Required.DisallowNull)]
         public string Id { get; set; }
 
         /// <summary>
         /// De naamruimte waarbinnen objecten van een bepaald objecttype geïdentificeerd worden.
         /// </summary>
         [DataMember(Name = "Naamruimte", Order = 2)]
+        [JsonProperty(Required = Required.DisallowNull)]
         public string Naamruimte { get; set; }
 
         /// <summary>
         /// De objectidentificator (enkel uniek binnen naamruimte).
         /// </summary>
         [DataMember(Name = "ObjectId", Order = 3)]
+        [JsonProperty(Required = Required.DisallowNull)]
         public string ObjectId { get; set; }
 
         /// <summary>
         /// De versie-identificator (timestamp volgens RFC 3339) (notatie: lokale tijd + verschil t.o.v. UTC).
         /// </summary>
         [DataMember(Name = "VersieId", Order = 4)]
+        [JsonProperty(Required = Required.DisallowNull)]
         public Rfc3339SerializableDateTimeOffset Versie { get; set; }
 
         public Identificator(

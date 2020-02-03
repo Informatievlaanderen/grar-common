@@ -1,6 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
 {
     using System.Runtime.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// De voorstelling van een adres in het Nederlands.
@@ -12,6 +13,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
         /// De geografische naam.
         /// </summary>
         [DataMember(Name = "GeografischeNaam")]
+        [JsonProperty(Required = Required.DisallowNull)]
         public GeografischeNaam GeografischeNaam { get; set; }
 
         public VolledigAdres(GeografischeNaam geografischeNaam)
