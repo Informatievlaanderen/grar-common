@@ -1,3 +1,10 @@
+## [14.3.1](https://github.com/informatievlaanderen/grar-common/compare/v14.3.0...v14.3.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* specify non nullable responses ([7529e54](https://github.com/informatievlaanderen/grar-common/commit/7529e54))
+
 # [14.3.0](https://github.com/informatievlaanderen/grar-common/compare/v14.2.0...v14.3.0) (2020-02-01)
 
 
