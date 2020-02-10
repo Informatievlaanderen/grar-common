@@ -1,3 +1,10 @@
+## [14.3.2](https://github.com/informatievlaanderen/grar-common/compare/v14.3.1...v14.3.2) (2020-02-10)
+
+
+### Bug Fixes
+
+* json default value for nullable fields ([88b9ca1](https://github.com/informatievlaanderen/grar-common/commit/88b9ca1))
+
 ## [14.3.1](https://github.com/informatievlaanderen/grar-common/compare/v14.3.0...v14.3.1) (2020-02-03)
 
 
