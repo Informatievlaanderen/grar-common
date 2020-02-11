@@ -14,8 +14,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
         [JsonProperty(Required = Required.DisallowNull)]
         public RingProperty Exterior { get; set; }
 
-        [DataMember(Name = "interior")]
-        [JsonProperty(Required = Required.DisallowNull)]
+        [DataMember(Name = "interior", EmitDefaultValue = false)]
+        [JsonProperty(Required = Required.Default, DefaultValueHandling = DefaultValueHandling.Ignore)]
         public List<RingProperty> Interior { get; set; }
     }
 }
