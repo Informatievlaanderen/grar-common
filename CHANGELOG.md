@@ -1,3 +1,10 @@
+## [14.3.3](https://github.com/informatievlaanderen/grar-common/compare/v14.3.2...v14.3.3) (2020-02-11)
+
+
+### Bug Fixes
+
+* gml interior ring can be nullable ([58d0ad4](https://github.com/informatievlaanderen/grar-common/commit/58d0ad4))
+
 ## [14.3.2](https://github.com/informatievlaanderen/grar-common/compare/v14.3.1...v14.3.2) (2020-02-10)
 
 
