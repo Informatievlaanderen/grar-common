@@ -18,7 +18,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
                 polygon.Select(
                     ring => ring.Select(
                         point => point.Select(
-                            coordinateValue => new GeometryCoordinateValue(coordinateValue))));
+                            coordinateValue => new PolygonGeometryCoordinateValue(coordinateValue))));
 
             serializer.Serialize(
                 writer,
