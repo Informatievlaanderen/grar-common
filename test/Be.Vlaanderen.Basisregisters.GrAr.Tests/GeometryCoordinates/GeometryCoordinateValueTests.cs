@@ -1,6 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
 {
     using System;
+    using System.Globalization;
     using AutoFixture;
     using FluentAssertions;
     using Infrastructure;
@@ -52,7 +53,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
         [Fact]
         public void ThenPrintedValueShouldBeEqualToTheOriginal()
         {
-            double.Parse(_printedValue)
+            double.Parse(_printedValue, CultureInfo.InvariantCulture)
                 .Should()
                 .Be(_originalValue);
         }
@@ -82,7 +83,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
         public void ThenThePrintedValueShouldBeRoundedToElevenDecimalsPrecision()
         {
             var roundedValue = Math.Round(_originalValue, 11);
-            double.Parse(_printedValue)
+            double.Parse(_printedValue, CultureInfo.InvariantCulture)
                 .Should()
                 .Be(roundedValue);
         }
@@ -95,7 +96,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
         {
             var value = new Fixture().CreateDoubleWithPrecision(15);
             GeometryCoordinateValue
-                .TryParse($"{value}")
+                .TryParse(value.ToString(CultureInfo.InvariantCulture))
                 .Should()
                 .NotBeNull()
                 .And.BeOfType<GeometryCoordinateValue>()
