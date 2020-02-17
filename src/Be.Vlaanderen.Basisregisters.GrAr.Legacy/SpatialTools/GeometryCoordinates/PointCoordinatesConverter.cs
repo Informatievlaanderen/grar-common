@@ -16,7 +16,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 
             serializer.Serialize(
                 writer,
-                point.Select(coordinateValue => new GeometryCoordinateValue(coordinateValue)),
+                point.Select(coordinateValue => new PointGeometryCoordinateValue(coordinateValue)),
                 typeof(GeometryCoordinateValueConverter));
         }
 

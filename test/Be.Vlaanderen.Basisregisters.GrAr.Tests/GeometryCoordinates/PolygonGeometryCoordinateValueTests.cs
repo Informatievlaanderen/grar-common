@@ -8,16 +8,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
     using Legacy.SpatialTools;
     using Xunit;
 
-    public class WhenConvertingACreatingAGeometryCoordinateValueBackToADouble
+    public class WhenConvertingACreatingAPolygonGeometryCoordinateValueBackToADouble
     {
         private readonly double _originalValue;
         private readonly GeometryCoordinateValue _coordinateValue;
 
-        public WhenConvertingACreatingAGeometryCoordinateValueBackToADouble()
+        public WhenConvertingACreatingAPolygonGeometryCoordinateValueBackToADouble()
         {
             _originalValue = new Fixture().CreateDoubleWithPrecision(12, 25);
 
-            _coordinateValue = new GeometryCoordinateValue(_originalValue);
+            _coordinateValue = new PolygonGeometryCoordinateValue(_originalValue);
         }
 
         [Fact]
@@ -30,16 +30,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
 
     }
 
-    public class WhenWritingAGeometryCoordinateValueWithLessPrecisionThanExpected
+    public class WhenWritingAPolygonGeometryCoordinateValueWithLessPrecisionThanExpected
     {
         private readonly double _originalValue;
         private readonly string _printedValue;
 
-        public WhenWritingAGeometryCoordinateValueWithLessPrecisionThanExpected()
+        public WhenWritingAPolygonGeometryCoordinateValueWithLessPrecisionThanExpected()
         {
             _originalValue = new Fixture().CreateDoubleWithPrecision(0, 10);
 
-            _printedValue = new GeometryCoordinateValue(_originalValue).ToString();
+            _printedValue = new PolygonGeometryCoordinateValue(_originalValue).ToString();
         }
 
         [Fact]
@@ -59,16 +59,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
         }
     }
 
-    public class WhenWritingAGeometryCoordinateValueWithMorePrecisionThanSupported
+    public class WhenWritingAPolygonGeometryCoordinateValueWithMorePrecisionThanSupported
     {
         private readonly double _originalValue;
         private readonly string _printedValue;
 
-        public WhenWritingAGeometryCoordinateValueWithMorePrecisionThanSupported()
+        public WhenWritingAPolygonGeometryCoordinateValueWithMorePrecisionThanSupported()
         {
             _originalValue = new Fixture().CreateDoubleWithPrecision(12, 20);
 
-            _printedValue = new GeometryCoordinateValue(_originalValue).ToString();
+            _printedValue = new PolygonGeometryCoordinateValue(_originalValue).ToString();
         }
 
         [Fact]
@@ -89,27 +89,27 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
         }
     }
 
-    public class WhenParsingAValidDoubleStringAsGeometryCoordinateValue
+    public class WhenParsingAValidDoubleStringAsPolygonGeometryCoordinateValue
     {
         [Fact]
         public void ThenAGeometryCoordinateValueShouldBeReturned()
         {
             var value = new Fixture().CreateDoubleWithPrecision(15);
-            GeometryCoordinateValue
+            PolygonGeometryCoordinateValue
                 .TryParse(value.ToString(CultureInfo.InvariantCulture))
                 .Should()
                 .NotBeNull()
-                .And.BeOfType<GeometryCoordinateValue>()
+                .And.BeOfType<PolygonGeometryCoordinateValue>()
                 .And.Be(value);
         }
     }
 
-    public class WhenParsingAnInvalidDoubleStringAsGeometryCoordinateValue
+    public class WhenParsingAnInvalidDoubleStringAsPolygonGeometryCoordinateValue
     {
         [Fact]
         public void ThenNothingShouldBeReturned()
         {
-            GeometryCoordinateValue
+            PolygonGeometryCoordinateValue
                 .TryParse(new Fixture().Create<string>())
                 .Should()
                 .BeNull();

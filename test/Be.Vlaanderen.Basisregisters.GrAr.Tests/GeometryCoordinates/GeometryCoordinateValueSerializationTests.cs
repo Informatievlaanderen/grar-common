@@ -13,8 +13,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
             var coordinates = new CoordinatesSerializationTestModel
             {
                 DefaultDoubleFormat = 0.1,
-                CoordinateValue = new GeometryCoordinateValue(3.1234567890138493),
-                PointCoordinates = new[] { 5.2, 2.20192302932029399020, -0.00120097 },
+                CoordinateValue = new PointGeometryCoordinateValue(3.1234567890138493),
+                PointCoordinates = new[] { 5.2, 2.20192302932029399020, -0.0160097 },
                 PolygonCoordinates = new[]
                     {
                         new []
@@ -33,8 +33,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
 
             var expectedJson = ("{" +
                 "\"DefaultDoubleFormat\": 0.1" +
-                ",\"CoordinateValue\": 3.12345678901" +
-                ",\"PointCoordinates\":[ 5.20000000000, 2.20192302932, -0.00120097000 ]" +
+                ",\"CoordinateValue\": 3.12" +
+                ",\"PointCoordinates\":[ 5.20, 2.20, -0.02 ]" +
                 ",\"PolygonCoordinates\":[" +
                     "[" +
                         "[ 3209.10000000000, -83.01300000000, 0.13500000383], [ 5.30000000000, 2.20192302932 ]" +
