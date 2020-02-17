@@ -1,3 +1,17 @@
+# [15.0.0](https://github.com/informatievlaanderen/grar-common/compare/v14.3.3...v15.0.0) (2020-02-17)
+
+
+### Bug Fixes
+
+* add PointGeometryCoordinate to have 2 decimals instead of 11 ([b512484](https://github.com/informatievlaanderen/grar-common/commit/b512484))
+* correct parsing GeometryCoordinate on Culture ([81d3e7c](https://github.com/informatievlaanderen/grar-common/commit/81d3e7c))
+
+
+### BREAKING CHANGES
+
+* GeometryCoordinateValue is split into 2 classes PointGeometryCoordinateValue and
+PolygonGeometryCoordinateValue
+
 ## [14.3.3](https://github.com/informatievlaanderen/grar-common/compare/v14.3.2...v14.3.3) (2020-02-11)
 
 
