@@ -1,6 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates.Infrastructure
 {
     using System;
+    using System.Globalization;
     using AutoFixture;
 
     public static class FixtureExtensions {
@@ -20,7 +21,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates.Infrastruc
                 .PadLeft(precision, '0')
                 .Substring(0, precision);
 
-            return double.Parse($"{integer}.{fraction}");
+            return double.Parse($"{integer}.{fraction}", CultureInfo.InvariantCulture);
         }
 
         public static double CreateDoubleWithPrecision(this IFixture fixture, int minimumPrecision, int maximumPrecision)
