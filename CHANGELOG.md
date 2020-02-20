@@ -1,3 +1,10 @@
+## [15.0.1](https://github.com/informatievlaanderen/grar-common/compare/v15.0.0...v15.0.1) (2020-02-20)
+
+
+### Bug Fixes
+
+* wrap adding converters in a lock ([c0406e1](https://github.com/informatievlaanderen/grar-common/commit/c0406e1))
+
 # [15.0.0](https://github.com/informatievlaanderen/grar-common/compare/v14.3.3...v15.0.0) (2020-02-17)
 
 
