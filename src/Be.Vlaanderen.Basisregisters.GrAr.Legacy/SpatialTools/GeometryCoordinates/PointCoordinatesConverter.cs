@@ -6,13 +6,18 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 
     public class PointCoordinatesConverter : JsonConverter<double[]>
     {
+        private static readonly object Lock = new object();
+
         public override void WriteJson(
             JsonWriter writer,
             double[] point,
             JsonSerializer serializer)
         {
-            if (!serializer.Converters.Any(converter => converter is GeometryCoordinateValueConverter))
-                serializer.Converters.Add(new GeometryCoordinateValueConverter());
+            lock (Lock)
+            {
+                if (!serializer.Converters.Any(converter => converter is GeometryCoordinateValueConverter))
+                    serializer.Converters.Add(new GeometryCoordinateValueConverter());
+            }
 
             serializer.Serialize(
                 writer,
