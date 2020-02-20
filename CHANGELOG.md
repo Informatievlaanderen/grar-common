@@ -1,3 +1,10 @@
+## [15.0.2](https://github.com/informatievlaanderen/grar-common/compare/v15.0.1...v15.0.2) (2020-02-20)
+
+
+### Bug Fixes
+
+* force build ([6967256](https://github.com/informatievlaanderen/grar-common/commit/6967256))
+
 ## [15.0.1](https://github.com/informatievlaanderen/grar-common/compare/v15.0.0...v15.0.1) (2020-02-20)
 
 
