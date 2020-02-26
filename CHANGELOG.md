@@ -1,3 +1,10 @@
+## [15.0.3](https://github.com/informatievlaanderen/grar-common/compare/v15.0.2...v15.0.3) (2020-02-26)
+
+
+### Bug Fixes
+
+* udate basisregisters api dependency ([230266a](https://github.com/informatievlaanderen/grar-common/commit/230266a))
+
 ## [15.0.2](https://github.com/informatievlaanderen/grar-common/compare/v15.0.1...v15.0.2) (2020-02-20)
 
 
