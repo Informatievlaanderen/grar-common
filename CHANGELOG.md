@@ -1,3 +1,10 @@
+## [15.0.4](https://github.com/informatievlaanderen/grar-common/compare/v15.0.3...v15.0.4) (2020-03-03)
+
+
+### Bug Fixes
+
+* bump netcore to 3.1.2 ([240bac0](https://github.com/informatievlaanderen/grar-common/commit/240bac0))
+
 ## [15.0.3](https://github.com/informatievlaanderen/grar-common/compare/v15.0.2...v15.0.3) (2020-02-26)
 
 
