@@ -1,3 +1,10 @@
+## [15.0.6](https://github.com/informatievlaanderen/grar-common/compare/v15.0.5...v15.0.6) (2020-03-05)
+
+
+### Bug Fixes
+
+* 'AddProvenance' no longer crashes is no changes are detected ([fdb1ae2](https://github.com/informatievlaanderen/grar-common/commit/fdb1ae2))
+
 ## [15.0.5](https://github.com/informatievlaanderen/grar-common/compare/v15.0.4...v15.0.5) (2020-03-03)
 
 
