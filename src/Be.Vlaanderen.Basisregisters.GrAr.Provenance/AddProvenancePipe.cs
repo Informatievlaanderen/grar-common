@@ -83,7 +83,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
                 .GetChanges()
                 .Select(aggregate => aggregate.Root)
                 .OfType<TAggregate>()
-                .Single();
+                .SingleOrDefault();
+
+            //Possible when commands don't influence the aggregate => no changes (e.g. RemovedBuilding gets address updates)
+            if(aggregateRoot == null)
+                return;
 
             var events = aggregateRoot
                 .GetChanges()
