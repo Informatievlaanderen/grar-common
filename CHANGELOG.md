@@ -1,3 +1,10 @@
+# [15.1.0](https://github.com/informatievlaanderen/grar-common/compare/v15.0.6...v15.1.0) (2020-03-06)
+
+
+### Features
+
+* add TotaalAantal response ([eec025b](https://github.com/informatievlaanderen/grar-common/commit/eec025b))
+
 ## [15.0.6](https://github.com/informatievlaanderen/grar-common/compare/v15.0.5...v15.0.6) (2020-03-05)
 
 
