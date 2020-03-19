@@ -1,3 +1,10 @@
+## [15.2.1](https://github.com/informatievlaanderen/grar-common/compare/v15.2.0...v15.2.1) (2020-03-19)
+
+
+### Bug Fixes
+
+* use correct build user ([ec750d9](https://github.com/informatievlaanderen/grar-common/commit/ec750d9))
+
 # [15.2.0](https://github.com/informatievlaanderen/grar-common/compare/v15.1.0...v15.2.0) (2020-03-19)
 
 
