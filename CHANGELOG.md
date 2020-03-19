@@ -1,3 +1,10 @@
+# [15.2.0](https://github.com/informatievlaanderen/grar-common/compare/v15.1.0...v15.2.0) (2020-03-19)
+
+
+### Features
+
+* add extension method to send mails in importer ([ca6aba9](https://github.com/informatievlaanderen/grar-common/commit/ca6aba9))
+
 # [15.1.0](https://github.com/informatievlaanderen/grar-common/compare/v15.0.6...v15.1.0) (2020-03-06)
 
 
