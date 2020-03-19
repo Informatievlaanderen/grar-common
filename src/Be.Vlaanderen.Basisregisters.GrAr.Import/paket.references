@@ -1,6 +1,7 @@
 Newtonsoft.Json
 Serilog
 Serilog.Extensions.Logging
+Serilog.Sinks.Email
 Autofac
 Microsoft.Extensions.Logging
 Microsoft.Extensions.Configuration.Json

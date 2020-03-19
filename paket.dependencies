@@ -19,6 +19,8 @@ nuget CommandLineParser 2.7.82
 nuget NodaTime 2.4.7
 nuget NetTopologySuite 2.0.0
 
+nuget Serilog.Sinks.Email 2.3.0
+
 nuget Microsoft.EntityFrameworkCore.Design 3.1.2
 
 // VBR STUFF
