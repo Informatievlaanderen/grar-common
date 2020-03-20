@@ -38,7 +38,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
         /// </summary>
         [DataMember(Name = "VersieId", Order = 4)]
         [JsonProperty(Required = Required.DisallowNull)]
-        public Rfc3339SerializableDateTimeOffset Versie { get; set; }
+        public string Versie { get; set; }
 
         public Identificator(
             string naamruimte,
@@ -48,7 +48,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
             Naamruimte = naamruimte;
             Id = $"{naamruimte}/{HttpUtility.UrlEncode(objectId)}";
             ObjectId = objectId;
-            Versie = versie ?? new Rfc3339SerializableDateTimeOffset(DateTimeOffset.MinValue);
+            Versie = versie.HasValue
+                ? new Rfc3339SerializableDateTimeOffset(versie.Value).ToString()
+                : new Rfc3339SerializableDateTimeOffset(DateTimeOffset.MinValue).ToString();
         }
     }
 
