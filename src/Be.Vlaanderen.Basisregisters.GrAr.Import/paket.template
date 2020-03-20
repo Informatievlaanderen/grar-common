@@ -25,6 +25,7 @@ dependencies
     Newtonsoft.Json >= LOCKEDVERSION
     Serilog >= LOCKEDVERSION
     Serilog.Extensions.Logging >= LOCKEDVERSION
+    Serilog.Sinks.Email >= LOCKEDVERSION
     Autofac >= LOCKEDVERSION
     Microsoft.Extensions.Logging >= LOCKEDVERSION
     Microsoft.Extensions.Configuration.Json >= LOCKEDVERSION
