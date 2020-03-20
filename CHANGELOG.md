@@ -1,3 +1,10 @@
+## [15.2.2](https://github.com/informatievlaanderen/grar-common/compare/v15.2.1...v15.2.2) (2020-03-20)
+
+
+### Bug Fixes
+
+* build package include Serilog.Sinks.Email ref ([be5d92c](https://github.com/informatievlaanderen/grar-common/commit/be5d92c))
+
 ## [15.2.1](https://github.com/informatievlaanderen/grar-common/compare/v15.2.0...v15.2.1) (2020-03-19)
 
 
