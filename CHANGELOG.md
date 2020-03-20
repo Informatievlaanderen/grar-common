@@ -1,3 +1,10 @@
+## [15.2.3](https://github.com/informatievlaanderen/grar-common/compare/v15.2.2...v15.2.3) (2020-03-20)
+
+
+### Bug Fixes
+
+* versie is represented as string for Identificator ([deed512](https://github.com/informatievlaanderen/grar-common/commit/deed512))
+
 ## [15.2.2](https://github.com/informatievlaanderen/grar-common/compare/v15.2.1...v15.2.2) (2020-03-20)
 
 
