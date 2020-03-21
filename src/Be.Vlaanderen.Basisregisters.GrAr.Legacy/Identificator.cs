@@ -44,13 +44,23 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
             string naamruimte,
             string objectId,
             DateTimeOffset? versie)
+        : this(
+            naamruimte,
+            objectId,
+            versie.HasValue
+                ? new Rfc3339SerializableDateTimeOffset(versie.Value).ToString()
+                : new Rfc3339SerializableDateTimeOffset(DateTimeOffset.MinValue).ToString())
+        { }
+
+        public Identificator(
+            string naamruimte,
+            string objectId,
+            string versie)
         {
             Naamruimte = naamruimte;
             Id = $"{naamruimte}/{HttpUtility.UrlEncode(objectId)}";
             ObjectId = objectId;
-            Versie = versie.HasValue
-                ? new Rfc3339SerializableDateTimeOffset(versie.Value).ToString()
-                : new Rfc3339SerializableDateTimeOffset(DateTimeOffset.MinValue).ToString();
+            Versie = versie;
         }
     }
 
