@@ -70,6 +70,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     {
         public GemeenteIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
             : base(naamruimte, objectId, versie) { }
+
+        public GemeenteIdentificator(string naamruimte, string objectId, string versie)
+            : base(naamruimte, objectId, versie) { }
     }
 
     /// <summary>Bevat informatie waarmee de postinfo kan geïdentificeerd worden.</summary>
@@ -77,6 +80,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     public class PostinfoIdentificator : Identificator
     {
         public PostinfoIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+            : base(naamruimte, objectId, versie) { }
+
+        public PostinfoIdentificator(string naamruimte, string objectId, string versie)
             : base(naamruimte, objectId, versie) { }
     }
 
@@ -86,6 +92,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     {
         public StraatnaamIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
             : base(naamruimte, objectId, versie) { }
+
+        public StraatnaamIdentificator(string naamruimte, string objectId, string versie)
+            : base(naamruimte, objectId, versie) { }
     }
 
     /// <summary>Bevat informatie waarmee het adres kan geïdentificeerd worden.</summary>
@@ -93,6 +102,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     public class AdresIdentificator : Identificator
     {
         public AdresIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+            : base(naamruimte, objectId, versie) { }
+
+        public AdresIdentificator(string naamruimte, string objectId, string versie)
             : base(naamruimte, objectId, versie) { }
     }
 
@@ -102,12 +114,18 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     {
         public GebouwIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
             : base(naamruimte, objectId, versie) { }
+
+        public GebouwIdentificator(string naamruimte, string objectId, string versie)
+            : base(naamruimte, objectId, versie) { }
     }
     /// <summary>Bevat informatie waarmee de gebouweenheid kan geïdentificeerd worden.</summary>
     [DataContract(Name = "Identificator", Namespace = "")]
     public class GebouweenheidIdentificator : Identificator
     {
         public GebouweenheidIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+            : base(naamruimte, objectId, versie) { }
+
+        public GebouweenheidIdentificator(string naamruimte, string objectId, string versie)
             : base(naamruimte, objectId, versie) { }
     }
 
@@ -116,6 +134,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     public class PerceelIdentificator : Identificator
     {
         public PerceelIdentificator(string naamruimte, string objectId, DateTimeOffset? versie)
+            : base(naamruimte, objectId, versie) { }
+
+        public PerceelIdentificator(string naamruimte, string objectId, string versie)
             : base(naamruimte, objectId, versie) { }
     }
 }
