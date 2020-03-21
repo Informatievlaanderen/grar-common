@@ -1,3 +1,10 @@
+# [15.3.0](https://github.com/informatievlaanderen/grar-common/compare/v15.2.3...v15.3.0) (2020-03-21)
+
+
+### Features
+
+* add overload identificator legacy ([1388b7b](https://github.com/informatievlaanderen/grar-common/commit/1388b7b))
+
 ## [15.2.3](https://github.com/informatievlaanderen/grar-common/compare/v15.2.2...v15.2.3) (2020-03-20)
 
 
