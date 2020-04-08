@@ -71,6 +71,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
             batchStatus.Property(status => status.ImportFeedId);
             batchStatus.Property(status => status.From);
             batchStatus.Property(status => status.Until);
+            batchStatus.Property(status => status.CrabTimeScope);
             batchStatus.Property(status => status.Completed);
         }
     }

@@ -9,6 +9,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text;
+    using Crab;
     using Messages;
 
     public class HttpApiProxy : HttpApiProxyBase
@@ -150,8 +151,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                 new BatchStatusUpdate
                 {
                     ImportFeed = _importFeed,
-                    From = options.From,
-                    Until = options.Until,
+                    From = options.From.ToDateTimeOffset(),
+                    Until = options.Until.ToDateTimeOffset(),
+                    CrabTimeScope = $"{options.From.ToCrabDateTime()} - {options.Until.ToCrabDateTime()}",
                     Completed = importCompleted
                 });
 
