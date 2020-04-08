@@ -66,13 +66,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
             var batchStatus = modelBuilder.Entity<ImportBatchStatus>();
             batchStatus
                 .ToTable(_crabImportSchema.StatusTable, _crabImportSchema.Name)
-                .HasKey(status => new { status.From, ImportFeed = status.ImportFeedId });
+                .HasKey(status => status.Id);
 
             batchStatus.Property(status => status.ImportFeedId);
             batchStatus.Property(status => status.From);
             batchStatus.Property(status => status.Until);
             batchStatus.Property(status => status.CrabTimeScope);
             batchStatus.Property(status => status.Completed);
+
+            batchStatus.HasIndex(status => new {status.From, status.ImportFeedId}).IsUnique();
         }
     }
 
