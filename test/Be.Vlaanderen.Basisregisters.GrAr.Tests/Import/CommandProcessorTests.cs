@@ -10,6 +10,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     using Microsoft.Extensions.Logging;
     using Moq;
     using Newtonsoft.Json;
+    using NodaTime;
+    using NodaTime.Extensions;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -36,17 +38,18 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 _logger,
                 avgDurationPostBatch,
                 proxy => proxy.ConfigureInitialize<int>(
-                    (importOptions, configuration) =>
+                    (importOptions,
+                            configuration) =>
                         new CommandProcessorOptions<int>(
-                            DateTime.MinValue,
-                            DateTime.Now,
+                            DateTimeOffset.MinValue.ToInstant(),
+                            DateTimeOffset.Now.ToInstant(),
                             null,
                             null,
                             false,
                             ImportMode.Init)));
 
             var options = new InitArguments().ToImportOptions();
-            var config = new DefaultCommandProcessorConfig() { BufferSize = bufferSize, NrOfConsumers = nrOfConsumers, NrOfProducers = nrOfProducers, BatchSize = batchSize };
+            var config = new DefaultCommandProcessorConfig() {BufferSize = bufferSize, NrOfConsumers = nrOfConsumers, NrOfProducers = nrOfProducers, BatchSize = batchSize};
             var generator = new TestCommandGenerator(nrOfKeys, nrOfCommandsPerKey, avgDurationGenerateCommandsForKey);
             var filename = $"processedKeys_{Guid.NewGuid()}.log";
             var processedKeys = new ConcurrentFileBasedProcessedKeysSet<int>(i => i.ToString(), int.Parse, filename);
@@ -79,19 +82,20 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .UseDefaultTestConfiguration(
                     _logger,
                     proxy => proxy.ConfigureInitialize<int>(
-                        (importOptions, configuration) =>
+                        (importOptions,
+                                configuration) =>
                             new CommandProcessorOptions<int>(
-                            DateTime.MinValue,
-                            DateTime.MaxValue,
-                            null,
-                            null,
-                            true,
-                            ImportMode.Init))
+                                DateTimeOffset.MinValue.ToInstant(),
+                                ValidCrabTimes.MaxValue.ToInstant(),
+                                null,
+                                null,
+                                true,
+                                ImportMode.Init))
                 )
                 .UseProcessedKeysSet(processedKeys.Object);
 
             var options = new InitArguments().ToImportOptions();
-;
+            ;
             builder
                 .Build()
                 .Run(options, new TestBatchConfiguration<int>());
@@ -110,10 +114,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .UseDefaultTestConfiguration(
                     _logger,
                     proxy => proxy.ConfigureInitialize<int>(
-                        (importOptions, configuration) =>
+                        (importOptions,
+                                configuration) =>
                             new CommandProcessorOptions<int>(
-                                DateTime.MinValue,
-                                DateTime.MaxValue,
+                                DateTimeOffset.MinValue.ToInstant(),
+                                ValidCrabTimes.MaxValue.ToInstant(),
                                 keys,
                                 null,
                                 false,
@@ -142,7 +147,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
         public static Mock<IProcessedKeysSet<int>> ThenWasCleared(this Mock<IProcessedKeysSet<int>> mock)
         {
-            mock.Verify(x=>x.Clear(), Times.Once);
+            mock.Verify(x => x.Clear(), Times.Once);
 
             return mock;
         }
@@ -155,9 +160,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             ILogger logger,
             Action<TestApiProxy> configureApiProxy)
         {
-            builder.UseLoggerFactory(new LoggerFactory(new[] { new LoggerProvider(logger) }));
+            builder.UseLoggerFactory(new LoggerFactory(new[] {new LoggerProvider(logger)}));
             builder.UseApiProxyFactory(new TestApiProxyFactory(logger, 100, configureApiProxy));
-            builder.UseCommandProcessorConfig(new DefaultCommandProcessorConfig() { BatchSize = 4, BufferSize = 2, NrOfConsumers = 2, NrOfProducers = 5 });
+            builder.UseCommandProcessorConfig(new DefaultCommandProcessorConfig() {BatchSize = 4, BufferSize = 2, NrOfConsumers = 2, NrOfProducers = 5});
             builder.UseProcessedKeysSet(new TestProcessedKeysSet());
 
             return builder;
@@ -167,10 +172,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     public class LoggerProvider : ILoggerProvider
     {
         private ILogger _logger;
+
         public LoggerProvider(ILogger logger)
         {
             _logger = logger;
         }
+
         public void Dispose()
         {
             throw new NotImplementedException();

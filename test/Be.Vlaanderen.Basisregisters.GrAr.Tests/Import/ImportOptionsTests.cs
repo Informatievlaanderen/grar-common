@@ -11,7 +11,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     using GrAr.Import.Processing.CommandLine;
     using AutoFixture;
     using GrAr.Import.Processing.Api.Messages;
-    using Newtonsoft.Json;
+    using NodaTime;
+    using NodaTime.Extensions;
 
     public class When_creating_import_options_for_an_undefined_argument_type
     {
@@ -23,7 +24,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             _onNotParsedMock = new Mock<Action<IEnumerable<Error>>>();
             _sut = new ImportOptions(new List<string>(), _onNotParsedMock.Object);
         }
-        
+
         [Fact]
         public void Then_on_not_parsed_is_called()
         {
@@ -66,7 +67,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
             _sut = new ImportOptions(_expectedArguments.ToArguments(), _onNotParsedMock.Object);
         }
-        
+
         [Fact]
         public void Then_on_not_parsed_is_not_called()
         {
@@ -97,7 +98,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
             _sut = new ImportOptions(_expectedArguments.ToArguments(), _onNotParsedMock.Object);
         }
-        
+
         [Fact]
         public void Then_on_not_parsed_is_not_called()
         {
@@ -132,13 +133,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     _initArguments.ToArguments(),
                     errors => {})
                 .CreateProcessorOptions(
-                    new BatchStatus 
+                    new BatchStatus
                     {
                         From = fixture.Create<DateTime>(),
                         Until = fixture.Create<DateTime>(),
                         Completed = false,
                     },
-                    _batchConfiguration); 
+                    _batchConfiguration);
         }
 
         [Fact]
@@ -169,13 +170,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
     public class When_creating_init_processor_options_with_no_last_import_data
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly Func<DateTime> _getCurrentTimeStamp;
+        private readonly Func<Instant> _getCurrentTimeStamp;
         private readonly ICommandProcessorBatchConfiguration<int> _batchConfiguration;
 
         public When_creating_init_processor_options_with_no_last_import_data()
         {
             var fixture = new Fixture();
-            var fixedDateTimeNow = fixture.Create<DateTime>();
+            var fixedDateTimeNow = fixture.Create<DateTimeOffset>().ToInstant();
 
             var initArguments = fixture.Create<InitArguments>();
             _getCurrentTimeStamp = () => fixedDateTimeNow;
@@ -185,32 +186,32 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     initArguments.ToArguments(),
                     errors => {},
                     _getCurrentTimeStamp)
-                .CreateProcessorOptions(null, _batchConfiguration); 
+                .CreateProcessorOptions(null, _batchConfiguration);
         }
 
         [Fact]
         public void Then_from_should_be_default_from()
         {
-            _createdOptions.From.Should().Be(DateTime.MinValue);
+            _createdOptions.From.Should().Be(DateTimeOffset.MinValue.ToInstant());
         }
 
         [Fact]
         public void Then_until_should_be_default_now_minus_the_configured_margin()
         {
-            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(- _batchConfiguration.TimeMargin));
+            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Minus(Duration.FromTimeSpan(_batchConfiguration.TimeMargin)));
         }
     }
 
     public class When_creating_init_processor_options_for_an_invalid_last_import
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly Func<DateTime> _getCurrentTimeStamp;
+        private readonly Func<Instant> _getCurrentTimeStamp;
         private readonly ICommandProcessorBatchConfiguration<int> _batchConfiguration;
 
         public When_creating_init_processor_options_for_an_invalid_last_import()
         {
             var fixture = new Fixture();
-            var fixedDateTimeNow = fixture.Create<DateTime>();
+            var fixedDateTimeNow = fixture.Create<DateTimeOffset>().ToInstant();
 
             var initArguments = fixture.Create<InitArguments>();
             _getCurrentTimeStamp = () => fixedDateTimeNow;
@@ -227,22 +228,22 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                         Until = default,
                         Completed = false
                     },
-                    _batchConfiguration); 
+                    _batchConfiguration);
         }
 
         [Fact]
         public void Then_from_should_be_default_from()
         {
-            _createdOptions.From.Should().Be(DateTime.MinValue);
+            _createdOptions.From.Should().Be(DateTimeOffset.MinValue.ToInstant());
         }
 
         [Fact]
         public void Then_until_should_be_default_now_minus_the_configured_margin()
         {
-            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(- _batchConfiguration.TimeMargin));
+            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Minus(Duration.FromTimeSpan(_batchConfiguration.TimeMargin)));
         }
     }
-    
+
     public class When_creating_init_processor_options_for_a_not_completed_last_import
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
@@ -251,7 +252,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         public When_creating_init_processor_options_for_a_not_completed_last_import()
         {
             var fixture = new Fixture();
-            var fixedDateTimeNow = fixture.Create<DateTime>();
+            var fixedDateTimeNow = fixture.Create<DateTimeOffset>().ToInstant();
 
             var initArguments = fixture.Create<InitArguments>();
             _lastBatch = new BatchStatus
@@ -273,13 +274,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         [Fact]
         public void Then_from_should_be_last_batch_from()
         {
-            _createdOptions.From.Should().Be(_lastBatch.From);
+            _createdOptions.From.Should().Be(_lastBatch.From.ToInstant());
         }
 
         [Fact]
         public void Then_until_should_be_last_batch_until()
         {
-            _createdOptions.Until.Should().Be(_lastBatch.Until);
+            _createdOptions.Until.Should().Be(_lastBatch.Until.ToInstant());
         }
     }
 
@@ -290,7 +291,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         public When_creating_init_processor_options_for_a_completed_last_import()
         {
             var fixture = new Fixture();
-            var fixedDateTimeNow = fixture.Create<DateTime>();
+            var fixedDateTimeNow = fixture.Create<DateTimeOffset>().ToInstant();
 
             var initArguments = fixture.Create<InitArguments>();
 
@@ -301,8 +302,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .CreateProcessorOptions(
                     new BatchStatus
                     {
-                        From = fixture.Create<DateTime>(),
-                        Until = fixture.Create<DateTime>(),
+                        From = fixture.Create<DateTimeOffset>(),
+                        Until = fixture.Create<DateTimeOffset>(),
                         Completed = true
                     },
                     new TestBatchConfiguration<int>(fixture.Create<TimeSpan>(), s => s.GetHashCode()));
@@ -406,7 +407,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                             From = fixture.Create<DateTime>(),
                             Until = default,
                             Completed = fixture.Create<bool>()
-                        }, 
+                        },
                         new TestBatchConfiguration<int>());
             };
         }
@@ -434,8 +435,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
 
             _lastBatch = new BatchStatus
             {
-                From = fixture.Create<DateTime>(),
-                Until = fixture.Create<DateTime>(),
+                From = fixture.Create<DateTimeOffset>(),
+                Until = fixture.Create<DateTimeOffset>(),
                 Completed = true
             };
 
@@ -443,14 +444,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                     fixture.Create<UpdateArguments>().ToArguments(),
                     errors => { })
                 .CreateProcessorOptions(
-                    _lastBatch, 
+                    _lastBatch,
                     batchConfiguration);
         }
 
         [Fact]
         public void Then_from_should_be_the_last_batch_until()
         {
-            _createdOptions.From.Should().Be(_lastBatch.Until);
+            _createdOptions.From.Should().Be(_lastBatch.Until.ToInstant());
         }
 
         [Fact]
@@ -482,7 +483,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                         From = fixture.Create<DateTime>(),
                         Until = fixture.Create<DateTime>(),
                         Completed = true
-                    }, 
+                    },
                     batchConfiguration);
         }
 
@@ -516,7 +517,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                         From = fixture.Create<DateTime>(),
                         Until = fixture.Create<DateTime>(),
                         Completed = true
-                    }, 
+                    },
                     batchConfiguration);
         }
 
@@ -524,20 +525,20 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         public void Then_until_should_be_the_until_import_argument()
         {
             var updateArgumentsUntil = _updateArguments.Until ?? throw new Exception($"Setup went wrong, {nameof(UpdateArguments)}.{nameof(UpdateArguments.Until)} is empty");
-            _createdOptions.Until.Should().BeCloseTo(updateArgumentsUntil, TimeSpan.FromMilliseconds(1));
+            _createdOptions.Until.ToDateTimeOffset().Should().BeCloseTo(updateArgumentsUntil, TimeSpan.FromMilliseconds(1));
         }
     }
 
     public class When_creating_update_processor_options_for_a_completed_previous_batch_and_no_until_argument
     {
         private readonly ICommandProcessorOptions<int> _createdOptions;
-        private readonly Func<DateTime> _getCurrentTimeStamp;
+        private readonly Func<Instant> _getCurrentTimeStamp;
         private readonly ICommandProcessorBatchConfiguration<int> _batchConfiguration;
 
         public When_creating_update_processor_options_for_a_completed_previous_batch_and_no_until_argument()
         {
             var fixture = new Fixture();
-            var fixedDateTimeNow = fixture.Create<DateTime>();
+            var fixedDateTimeNow = fixture.Create<DateTimeOffset>().ToInstant();
 
             var updateArguments = fixture.Create<UpdateArguments>();
             updateArguments.Until = null;
@@ -552,17 +553,17 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
                 .CreateProcessorOptions(
                     new BatchStatus
                     {
-                        From = fixture.Create<DateTime>(),
-                        Until = fixture.Create<DateTime>(),
+                        From = fixture.Create<DateTimeOffset>(),
+                        Until = fixture.Create<DateTimeOffset>(),
                         Completed = true
-                    }, 
+                    },
                     _batchConfiguration);
         }
-        
+
         [Fact]
         public void Then_until_should_be_the_default_until_date()
         {
-            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Add(-_batchConfiguration.TimeMargin));
+            _createdOptions.Until.Should().Be(_getCurrentTimeStamp().Minus(Duration.FromTimeSpan(_batchConfiguration.TimeMargin)));
         }
     }
 
@@ -597,13 +598,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         [Fact]
         public void Then_from_should_be_the_last_batch_from()
         {
-            _createdOptions.From.Should().Be(_lastBatch.From);
+            _createdOptions.From.Should().Be(_lastBatch.From.ToInstant());
         }
 
         [Fact]
         public void Then_until_should_be_the_last_batch_until()
         {
-            _createdOptions.Until.Should().Be(_lastBatch.Until);
+            _createdOptions.Until.Should().Be(_lastBatch.Until.ToInstant());
         }
 
         [Fact]
@@ -612,7 +613,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             _createdOptions.CleanStart.Should().Be(_updateArguments.CleanStart);
         }
     }
- 
+
     public class TestBatchConfiguration<TKey> : ICommandProcessorBatchConfiguration<TKey>
     {
         private readonly Func<string, TKey> _deserialize;

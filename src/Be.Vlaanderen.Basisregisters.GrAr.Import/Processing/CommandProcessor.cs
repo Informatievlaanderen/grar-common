@@ -8,6 +8,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
     using System.Threading.Tasks;
     using Api;
     using Consume;
+    using Crab;
     using Generate;
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
@@ -100,8 +101,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             var stopwatchGenerate = Stopwatch.StartNew();
 
             var commands = options.Mode == ImportMode.Init
-                ? _generator.GenerateInitCommandsFor(key, options.From, options.Until)
-                : _generator.GenerateUpdateCommandsFor(key, options.From, options.Until);
+                ? _generator.GenerateInitCommandsFor(key, options.From.ToCrabDateTime(), options.Until.ToCrabDateTime())
+                : _generator.GenerateUpdateCommandsFor(key, options.From.ToCrabDateTime(), options.Until.ToCrabDateTime());
 
             stopwatchGenerate.Stop();
 
@@ -150,7 +151,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
         private IList<TKey> GetKeys(ICommandProcessorOptions<TKey> options)
         {
-            var keys = _generator.GetChangedKeys(options.From, options.Until).ToList();
+            var keys = _generator.GetChangedKeys(options.From.ToCrabDateTime(), options.Until.ToCrabDateTime()).ToList();
             var keyCount = keys.Count();
             _logger.LogInformation("{generatorName} found {keyCount} keys", _generator.Name, keyCount);
 

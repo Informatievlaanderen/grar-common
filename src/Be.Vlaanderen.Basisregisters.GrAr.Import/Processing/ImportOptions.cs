@@ -6,11 +6,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
     using Api.Messages;
     using CommandLine;
     using global::CommandLine;
+    using NodaTime;
+    using NodaTime.Extensions;
 
     public class ImportOptions
     {
         private readonly ParserResult<object> _parsed;
-        private readonly Func<DateTime> _getCurrentTimeStamp;
+        private readonly Func<Instant> _getCurrentTimeStamp;
 
         public ImportOptions(IEnumerable<string> args, Action<IEnumerable<Error>> onNotParsed)
             : this(args, onNotParsed, null)
@@ -19,9 +21,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         public ImportOptions(
             IEnumerable<string> args,
             Action<IEnumerable<Error>> onNotParsed,
-            Func<DateTime> getCurrentTimeStamp)
+            Func<Instant> getCurrentTimeStamp)
         {
-            _getCurrentTimeStamp = getCurrentTimeStamp ?? (() => DateTime.Now);
+            _getCurrentTimeStamp = getCurrentTimeStamp ?? (() => DateTimeOffset.Now.ToInstant());
             _parsed = Parser
                 .Default
                 .ParseArguments<InitArguments, UpdateArguments>(args)
@@ -36,8 +38,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             BatchStatus lastBatch,
             ICommandProcessorBatchConfiguration<TKey> configuration)
         {
-            var defaultUntil = _getCurrentTimeStamp().Add(-configuration.TimeMargin);
-            if (lastBatch != null && lastBatch.Until == DateTime.MinValue)
+            var defaultUntil = _getCurrentTimeStamp().Minus(Duration.FromTimeSpan(configuration.TimeMargin));
+            if (lastBatch != null && lastBatch.Until == DateTimeOffset.MinValue)
                 lastBatch = null;
 
             return _parsed.MapResult(
@@ -47,8 +49,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
                         throw new ApplicationException("Cannot initialize an for an already initialized import");
 
                     return new CommandProcessorOptions<TKey>(
-                        lastBatch?.From ?? DateTime.MinValue,
-                        (lastBatch == null || lastBatch.Completed) ? defaultUntil : lastBatch.Until,
+                        (lastBatch?.From ?? DateTimeOffset.MinValue).ToInstant(),
+                        (lastBatch == null || lastBatch.Completed) ? defaultUntil : lastBatch.Until.ToInstant(),
                         ImportArguments.Keys.Select(configuration.Deserialize),
                         init.Take,
                         ImportArguments.CleanStart,
@@ -60,8 +62,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
                         throw new ApplicationException("Cannot update an uninitialized import");
 
                     return new CommandProcessorOptions<TKey>(
-                        lastBatch.Completed ? lastBatch.Until : lastBatch.From,
-                        lastBatch.Completed ? (update.Until ?? defaultUntil) : lastBatch.Until,
+                        lastBatch.Completed ? lastBatch.Until.ToInstant() : lastBatch.From.ToInstant(),
+                        lastBatch.Completed ? (update.UntilDateTimeOffset?.ToInstant() ?? defaultUntil) : lastBatch.Until.ToInstant(),
                         ImportArguments.Keys.Select(configuration.Deserialize),
                         null,
                         ImportArguments.CleanStart || lastBatch.Completed,

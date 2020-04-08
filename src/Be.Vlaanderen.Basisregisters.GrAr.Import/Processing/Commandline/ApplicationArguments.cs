@@ -30,7 +30,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CommandLine
     [Verb("update", HelpText = "Run the event generator in update mode (default)")]
     public class UpdateArguments : ImportArguments
     {
-        [Option("until", Required = false, HelpText = "Looks up all changed ids until this timestamp. If empty uses default behavior.")]
+        [Option("until", Required = false, HelpText = "Looks up all changed ids until this timestamp (UTC). If empty uses default behavior.")]
         public DateTime? Until { get; set; }
+
+        public DateTimeOffset? UntilDateTimeOffset => Until.HasValue ? new DateTimeOffset(Until.Value) : (DateTimeOffset?) null;
     }
 }
