@@ -19,6 +19,7 @@ dependencies
     Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency >= LOCKEDVERSION
+    Be.Vlaanderen.Basisregisters.Crab >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.EventHandling >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic >= LOCKEDVERSION
 
