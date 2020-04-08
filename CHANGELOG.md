@@ -1,3 +1,11 @@
+## [15.4.1](https://github.com/informatievlaanderen/grar-common/compare/v15.4.0...v15.4.1) (2020-04-08)
+
+
+### Bug Fixes
+
+* add migrations for importstatus table ([a0d87d4](https://github.com/informatievlaanderen/grar-common/commit/a0d87d4))
+* use DateTimeOffset and Instant to determine crab scope ([a08aa14](https://github.com/informatievlaanderen/grar-common/commit/a08aa14))
+
 # [15.4.0](https://github.com/informatievlaanderen/grar-common/compare/v15.3.0...v15.4.0) (2020-03-21)
 
 
