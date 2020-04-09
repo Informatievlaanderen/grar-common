@@ -45,8 +45,23 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             var api = _apiProxyFactory.Create();
 
             var options = api.InitializeImport(importOptions, configuration);
-            Run(options);
+
+            if(IsAllowedToRun(options))
+                Run(options);
+            else
+                throw new InvalidOperationException("Importer is not allowed to run at this time.");
+
             api.FinalizeImport(options);
+        }
+
+        private static bool IsAllowedToRun(ICommandProcessorOptions<TKey> options)
+        {
+            if (options.Mode == ImportMode.Init)
+                return true;
+
+            var from = options.From.ToCrabDateTime();
+            var until = options.Until.ToCrabDateTime();
+            return @from.Hour != 2 && until.Hour != 2 && options.From < options.Until;
         }
 
         private void Run(ICommandProcessorOptions<TKey> options)
