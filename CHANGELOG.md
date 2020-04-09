@@ -1,3 +1,10 @@
+## [15.4.2](https://github.com/informatievlaanderen/grar-common/compare/v15.4.1...v15.4.2) (2020-04-09)
+
+
+### Bug Fixes
+
+* dont run importer between certain hours ([c3318d8](https://github.com/informatievlaanderen/grar-common/commit/c3318d8))
+
 ## [15.4.1](https://github.com/informatievlaanderen/grar-common/compare/v15.4.0...v15.4.1) (2020-04-08)
 
 
