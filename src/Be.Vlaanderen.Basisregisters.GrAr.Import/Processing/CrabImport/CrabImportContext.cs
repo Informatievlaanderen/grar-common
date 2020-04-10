@@ -37,7 +37,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
             if (status.Until == DateTime.MinValue || string.IsNullOrWhiteSpace(status.ImportFeed?.Name))
                 throw new ArgumentException($"Invalid batch status : {JsonConvert.SerializeObject(status)}");
 
-            var currentStatus = BatchStatuses.Find(status.From, status.ImportFeed.Name);
+            var currentStatus = BatchStatuses.SingleOrDefault(x => x.From == status.From && x.ImportFeedId == status.ImportFeed.Name);
             if (currentStatus == null)
             {
                 BatchStatuses.Add(
@@ -46,6 +46,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
                         ImportFeedId = status.ImportFeed.Name,
                         From = status.From,
                         Until = status.Until,
+                        CrabTimeScope = status.CrabTimeScope,
                         Completed = status.Completed
                     });
             }
