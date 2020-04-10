@@ -1,3 +1,10 @@
+## [15.4.3](https://github.com/informatievlaanderen/grar-common/compare/v15.4.2...v15.4.3) (2020-04-10)
+
+
+### Bug Fixes
+
+* correct schema for import status migration ([4e72408](https://github.com/informatievlaanderen/grar-common/commit/4e72408))
+
 ## [15.4.2](https://github.com/informatievlaanderen/grar-common/compare/v15.4.1...v15.4.2) (2020-04-09)
 
 
