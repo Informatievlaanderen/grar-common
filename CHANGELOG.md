@@ -1,3 +1,10 @@
+## [15.4.4](https://github.com/informatievlaanderen/grar-common/compare/v15.4.3...v15.4.4) (2020-04-10)
+
+
+### Bug Fixes
+
+* find import status by from & feedname ([3ac3a8b](https://github.com/informatievlaanderen/grar-common/commit/3ac3a8b))
+
 ## [15.4.3](https://github.com/informatievlaanderen/grar-common/compare/v15.4.2...v15.4.3) (2020-04-10)
 
 
