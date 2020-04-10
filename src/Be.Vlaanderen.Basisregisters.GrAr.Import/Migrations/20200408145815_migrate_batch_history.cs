@@ -48,7 +48,7 @@ WHERE Completed = 1"); //Needed to be sure to only collapse completed batches, p
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_ImportStatus",
-                schema: "MunicipalityRegistryImport",
+                schema: Schema.Name,
                 table:Schema.StatusTable);
 
             migrationBuilder.AlterColumn<DateTimeOffset>(
@@ -136,7 +136,7 @@ GROUP BY ImportFeedId");
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "Until",
-                schema: "MunicipalityRegistryImport",
+                schema: Schema.Name,
                 table:Schema.StatusTable,
                 type: "datetime2",
                 nullable: false,
@@ -144,7 +144,7 @@ GROUP BY ImportFeedId");
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "From",
-                schema: "MunicipalityRegistryImport",
+                schema: Schema.Name,
                 table:Schema.StatusTable,
                 type: "datetime2",
                 nullable: false,
@@ -152,7 +152,7 @@ GROUP BY ImportFeedId");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_ImportStatus",
-                schema: "MunicipalityRegistryImport",
+                schema: Schema.Name,
                 table:Schema.StatusTable,
                 columns: new[] { "From", "ImportFeedId" });
         }
