@@ -38,8 +38,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import.Infrastructure
             _batches.Add(keysArray.Cast<int>());
         }
 
-        public ICommandProcessorOptions<TKey> InitializeImport<TKey>(
-            ImportOptions options,
+        public ICommandProcessorOptions<TKey> GetImportOptions<TKey>(ImportOptions options,
             ICommandProcessorBatchConfiguration<TKey> configuration)
         {
             var type = typeof(TKey);
@@ -48,6 +47,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import.Infrastructure
 
             throw new Exception($"{nameof(InitializeImport)} is not configured for {type}");
         }
+
+        public void InitializeImport<TKey>(ICommandProcessorOptions<TKey> options)
+        { }
 
         public void ConfigureInitialize<TKey>(Func<ImportOptions, ICommandProcessorBatchConfiguration<TKey>, ICommandProcessorOptions<TKey>> behavior)
             => _initializeBehaviours[typeof(TKey)] = behavior;

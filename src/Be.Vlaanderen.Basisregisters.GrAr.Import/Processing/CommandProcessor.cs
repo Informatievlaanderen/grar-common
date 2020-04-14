@@ -44,10 +44,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         {
             var api = _apiProxyFactory.Create();
 
-            var options = api.InitializeImport(importOptions, configuration);
+            var options = api.GetImportOptions(importOptions, configuration);
 
-            if(IsAllowedToRun(options))
+            if (IsAllowedToRun(options))
+            {
+                api.InitializeImport(options);
                 Run(options);
+            }
             else
                 throw new InvalidOperationException("Importer is not allowed to run at this time.");
 
