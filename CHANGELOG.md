@@ -1,3 +1,10 @@
+# [15.5.0](https://github.com/informatievlaanderen/grar-common/compare/v15.4.4...v15.5.0) (2020-04-14)
+
+
+### Features
+
+* split getting options and initialize import in IApiProxy GRAR-1188 ([913fcea](https://github.com/informatievlaanderen/grar-common/commit/913fcea))
+
 ## [15.4.4](https://github.com/informatievlaanderen/grar-common/compare/v15.4.3...v15.4.4) (2020-04-10)
 
 
