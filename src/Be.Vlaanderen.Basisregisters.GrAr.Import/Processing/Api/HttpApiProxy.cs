@@ -95,7 +95,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
         protected static StringContent CreateJsonContent(string jsonValue)
             => new StringContent(jsonValue, Encoding.UTF8, MediaTypeNames.Application.Json);
 
-        public ICommandProcessorOptions<TKey> InitializeImport<TKey>(
+        public ICommandProcessorOptions<TKey> GetImportOptions<TKey>(
             ImportOptions options,
             ICommandProcessorBatchConfiguration<TKey> configuration)
         {
@@ -135,9 +135,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api
                 processorOptions = options.CreateProcessorOptions(batchStatus, configuration);
             }
 
-            PostImportBatchStatus(processorOptions, Batch.Start);
             return processorOptions;
         }
+
+        public void InitializeImport<TKey>(ICommandProcessorOptions<TKey> options) =>
+            PostImportBatchStatus(options, Batch.Start);
 
         public void FinalizeImport<TKey>(ICommandProcessorOptions<TKey> options)
             => PostImportBatchStatus(options, Batch.Completed);

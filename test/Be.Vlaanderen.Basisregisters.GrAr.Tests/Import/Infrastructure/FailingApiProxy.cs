@@ -32,10 +32,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import.Infrastructure
             _logger.Information($"Fake sending {imports.Count()} imports ({_counter}/{_failAfter})");
         }
 
-        public ICommandProcessorOptions<TKey> InitializeImport<TKey>(
-            ImportOptions options,
+        public ICommandProcessorOptions<TKey> GetImportOptions<TKey>(ImportOptions options,
             ICommandProcessorBatchConfiguration<TKey> configuration)
             => throw new NotImplementedException();
+
+        public void InitializeImport<TKey>(ICommandProcessorOptions<TKey> options) => throw new NotImplementedException();
 
         public void FinalizeImport<TKey>(ICommandProcessorOptions<TKey> options)
             => throw new NotImplementedException();
