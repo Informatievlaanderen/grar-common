@@ -34,7 +34,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
             if (status == null)
                 return;
 
-            if (status.Until == DateTime.MinValue || string.IsNullOrWhiteSpace(status.ImportFeed?.Name))
+            if (status.Until == DateTimeOffset.MinValue || string.IsNullOrWhiteSpace(status.ImportFeed?.Name))
                 throw new ArgumentException($"Invalid batch status : {JsonConvert.SerializeObject(status)}");
 
             var currentStatus = BatchStatuses.SingleOrDefault(x => x.From == status.From && x.ImportFeedId == status.ImportFeed.Name);
