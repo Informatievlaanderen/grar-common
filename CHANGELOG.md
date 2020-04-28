@@ -1,3 +1,10 @@
+## [15.5.1](https://github.com/informatievlaanderen/grar-common/compare/v15.5.0...v15.5.1) (2020-04-28)
+
+
+### Bug Fixes
+
+* compare DateTimeOffset types correctly for SetCurrent batch ([cb3782e](https://github.com/informatievlaanderen/grar-common/commit/cb3782e))
+
 # [15.5.0](https://github.com/informatievlaanderen/grar-common/compare/v15.4.4...v15.5.0) (2020-04-14)
 
 
