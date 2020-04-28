@@ -1,3 +1,10 @@
+## [15.5.2](https://github.com/informatievlaanderen/grar-common/compare/v15.5.1...v15.5.2) (2020-04-28)
+
+
+### Bug Fixes
+
+* add documentation for GeoJson objects GRAR-412 ([34b7ca1](https://github.com/informatievlaanderen/grar-common/commit/34b7ca1))
+
 ## [15.5.1](https://github.com/informatievlaanderen/grar-common/compare/v15.5.0...v15.5.1) (2020-04-28)
 
 
