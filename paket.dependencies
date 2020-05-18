@@ -1,77 +1,50 @@
 framework: netcoreapp31
 source https://api.nuget.org/v3/index.json
-//BEGIN-FORCE-DOTNET-PACKAGES-DOWN-TO-3.1.3 (can be removed once dotnet version is upgraded to 3.1.4)
-nuget Microsoft.AspNetCore.JsonPatch  3.1.3
-nuget Microsoft.AspNetCore.Mvc.NewtonsoftJson 3.1.3
-
-nuget Microsoft.Extensions.ApiDescription.Server 3.1.3
-nuget Microsoft.Extensions.Caching.Memory 3.1.3
-nuget Microsoft.Extensions.Caching.Abstractions 3.1.3
-nuget Microsoft.Extensions.Configuration 3.1.3
-nuget Microsoft.Extensions.Configuration.Binder 3.1.3
-nuget Microsoft.Extensions.Configuration.Abstractions 3.1.3
-nuget Microsoft.Extensions.DependencyInjection 3.1.3
-nuget Microsoft.Extensions.DependencyInjection.Abstractions 3.1.3
-nuget Microsoft.Extensions.DependencyModel 3.1.3
-nuget Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions 3.1.3
-nuget Microsoft.Extensions.FileProviders.Abstractions 3.1.3
-nuget Microsoft.Extensions.FileSystemGlobbing 3.1.3
-nuget Microsoft.Extensions.Localization.Abstractions 3.1.3
-nuget Microsoft.Extensions.Logging  3.1.3
-nuget Microsoft.Extensions.Logging.Abstractions 3.1.3
-nuget Microsoft.Extensions.Options 3.1.3
-nuget Microsoft.Extensions.Primitives 3.1.3
-
-nuget Microsoft.EntityFrameworkCore 3.1.3
-nuget Microsoft.EntityFrameworkCore.Abstractions 3.1.3
-nuget Microsoft.EntityFrameworkCore.Analyzers 3.1.3
-nuget Microsoft.EntityFrameworkCore.Relational 3.1.3
-//END--FORCE-DOTNET-PACKAGES-DOWN-TO-3.1.3
 
 // PRODUCTION STUFF
 nuget Microsoft.CSharp 4.7.0
-nuget Microsoft.Extensions.Logging 3.1.3
+nuget Microsoft.Extensions.Logging 3.1.4
 
-nuget System.Threading.Tasks.Dataflow 4.11.0
+nuget System.Threading.Tasks.Dataflow 4.11.1
 
-nuget CompareNETObjects 4.65.0
-nuget CommandLineParser 2.7.82
+nuget CompareNETObjects 4.66.0
+nuget CommandLineParser 2.8.0
 nuget NodaTime 2.4.8
 nuget NetTopologySuite 2.0.0
 
 nuget Serilog.Sinks.Email 2.3.0
 
-nuget Microsoft.EntityFrameworkCore.Design 3.1.3
+nuget Microsoft.EntityFrameworkCore.Design 3.1.4
 
 // VBR STUFF
-nuget Be.Vlaanderen.Basisregisters.Build.Pipeline 4.0.6
+nuget Be.Vlaanderen.Basisregisters.Build.Pipeline 4.1.0
 
-nuget Be.Vlaanderen.Basisregisters.AggregateSource 5.0.4
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting 5.0.4
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore 5.0.4
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore.Autofac 5.0.4
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing 5.0.4
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling 5.0.4
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore 5.0.4
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac 5.0.4
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit 5.0.4
+nuget Be.Vlaanderen.Basisregisters.AggregateSource 5.0.5
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting 5.0.5
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore 5.0.5
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore.Autofac 5.0.5
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing 5.0.5
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling 5.0.5
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore 5.0.5
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac 5.0.5
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit 5.0.5
 
-nuget Be.Vlaanderen.Basisregisters.CommandHandling 5.0.4
-nuget Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency 5.0.4
-nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore 5.0.4
+nuget Be.Vlaanderen.Basisregisters.CommandHandling 5.0.5
+nuget Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency 5.0.5
+nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore 5.0.5
 
-nuget Be.Vlaanderen.Basisregisters.EventHandling 2.2.2
-nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac 2.2.2
+nuget Be.Vlaanderen.Basisregisters.EventHandling 2.2.3
+nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac 2.2.3
 
-nuget Be.Vlaanderen.Basisregisters.Api 11.2.1
+nuget Be.Vlaanderen.Basisregisters.Api 11.2.3
 
-nuget Be.Vlaanderen.Basisregisters.Crab 2.1.2
+nuget Be.Vlaanderen.Basisregisters.Crab 2.1.3
 
-nuget Be.Vlaanderen.Basisregisters.Shaperon 7.7.3
+nuget Be.Vlaanderen.Basisregisters.Shaperon 7.7.4
 
-nuget Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic 2.2.2
+nuget Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic 2.2.3
 
-nuget Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset 2.2.2
+nuget Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset 2.2.3
 
 // TEST STUFF
 nuget xunit 2.4.1
