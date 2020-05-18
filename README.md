@@ -1,4 +1,4 @@
-# Be.Vlaanderen.Basisregisters.GrAr
+# Be.Vlaanderen.Basisregisters.GrAr [![Build Status](https://github.com/Informatievlaanderen/grar-common/workflows/CI/badge.svg)](https://github.com/Informatievlaanderen/grar-common/actions)
 
 Common code for all GR/AR base registries.
 
