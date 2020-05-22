@@ -1,3 +1,10 @@
+# [15.6.0](https://github.com/informatievlaanderen/grar-common/compare/v15.5.3...v15.6.0) (2020-05-22)
+
+
+### Features
+
+* add prj files to extract GRAR-356 ([112b262](https://github.com/informatievlaanderen/grar-common/commit/112b262bf530b7d284bea4ae1448d803c19edb86))
+
 ## [15.5.3](https://github.com/informatievlaanderen/grar-common/compare/v15.5.2...v15.5.3) (2020-05-18)
 
 
