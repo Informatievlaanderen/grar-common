@@ -119,5 +119,17 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
                         offset = offset.Plus(indexRecord.ContentLength.Plus(ShapeRecord.HeaderLength));
                     }
                 });
+
+        public static ExtractFile CreateProjectedCoordinateSystemFile(string fileName, ProjectedCoordinateSystem projectedCoordinateSystem)
+            => new ExtractFile(
+                new PrjFileName(fileName),
+                (stream, token) =>
+                {
+                    if (token.IsCancellationRequested)
+                        return;
+
+                    new PrjFileWriter(stream)
+                        .Write(projectedCoordinateSystem);
+                });
     }
 }
