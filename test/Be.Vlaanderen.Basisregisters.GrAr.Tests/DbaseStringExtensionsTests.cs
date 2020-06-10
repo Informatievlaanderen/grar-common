@@ -1,8 +1,8 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Tests
 {
     using System;
-    using Extracts;
     using FluentAssertions;
+    using GrAr.Extracts;
     using Shaperon;
     using Xunit;
 
