@@ -9,5 +9,15 @@
     <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Provenance\Be.Vlaanderen.Basisregisters.GrAr.Provenance.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extracts\References\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Extracts\References\Belge_Lambert_1972.prj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
