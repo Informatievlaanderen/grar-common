@@ -10,7 +10,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
 
         private ProjectedCoordinateSystem(string definition) => _definition = definition;
 
-        public byte[] GeBytes(Encoding encoding) => encoding.GetBytes(_definition);
+        public byte[] GetBytes(Encoding encoding) => encoding.GetBytes(_definition);
 
         public override string ToString() => _definition;
 

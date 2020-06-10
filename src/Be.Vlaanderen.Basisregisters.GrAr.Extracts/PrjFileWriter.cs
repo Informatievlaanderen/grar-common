@@ -17,7 +17,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
         public void Write(ProjectedCoordinateSystem coordinateSystem)
         {
             var content = coordinateSystem
-                .GeBytes(Encoding)
+                .GetBytes(Encoding)
                 .Concat(Encoding.GetBytes(Environment.NewLine))
                 .ToArray();
 
