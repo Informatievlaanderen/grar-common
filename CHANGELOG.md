@@ -1,3 +1,11 @@
+## [15.6.1](https://github.com/informatievlaanderen/grar-common/compare/v15.6.0...v15.6.1) (2020-06-10)
+
+
+### Bug Fixes
+
+* correct typo GRAR-1330 ([66827e6](https://github.com/informatievlaanderen/grar-common/commit/66827e67779bde5eb0217b853187d09f1eabf930))
+* remove whitespace characters in prj files GRAR-1330 ([8b3cc2d](https://github.com/informatievlaanderen/grar-common/commit/8b3cc2d8cd40516798b6a2bcfca289025bebe137))
+
 # [15.6.0](https://github.com/informatievlaanderen/grar-common/compare/v15.5.3...v15.6.0) (2020-05-22)
 
 
