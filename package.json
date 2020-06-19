@@ -1,6 +1,6 @@
 {
   "name": "grar-common",
-  "version": "15.6.1",
+  "version": "15.6.2",
   "description": "Common code for all GR/AR base registries.",
   "author": "Basisregisters Vlaanderen",
   "license": "EUPL-1.2",
@@ -48,7 +48,10 @@
     ]
   },
   "release": {
-    "branches": [ "master", "main" ],
+    "branches": [
+      "master",
+      "main"
+    ],
     "verifyConditions": [
       "@semantic-release/changelog",
       "@semantic-release/git",
