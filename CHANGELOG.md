@@ -1,3 +1,10 @@
+## [15.6.3](https://github.com/informatievlaanderen/grar-common/compare/v15.6.2...v15.6.3) (2020-07-02)
+
+
+### Bug Fixes
+
+* update streamstore ([9a403cc](https://github.com/informatievlaanderen/grar-common/commit/9a403ccdf9bef1137fb89c60c01317b57eb0f8d8))
+
 ## [15.6.2](https://github.com/informatievlaanderen/grar-common/compare/v15.6.1...v15.6.2) (2020-06-19)
 
 
