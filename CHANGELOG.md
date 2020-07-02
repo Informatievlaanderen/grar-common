@@ -1,3 +1,5 @@
+## [15.6.4](https://github.com/informatievlaanderen/grar-common/compare/v15.6.3...v15.6.4) (2020-07-02)
+
 ## [15.6.3](https://github.com/informatievlaanderen/grar-common/compare/v15.6.2...v15.6.3) (2020-07-02)
 
 
