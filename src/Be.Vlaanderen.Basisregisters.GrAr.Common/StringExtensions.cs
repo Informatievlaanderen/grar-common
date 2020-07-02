@@ -10,7 +10,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common
             if (input == null)
                 return null;
 
-            var stringBuilder = new StringBuilder();
+            var stringBuilder = new StringBuilder(input.Length);
             var normalizedString = input.Normalize(NormalizationForm.FormD);
 
             foreach (var character in normalizedString)
