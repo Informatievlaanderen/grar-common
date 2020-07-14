@@ -1,3 +1,15 @@
+# [16.0.0](https://github.com/informatievlaanderen/grar-common/compare/v15.6.4...v16.0.0) (2020-07-14)
+
+
+### Features
+
+* add timestamp to syndication provenance GRAR-1451 ([034d995](https://github.com/informatievlaanderen/grar-common/commit/034d995fb2618a577f051e748afc51f2be6a6e0a))
+
+
+### BREAKING CHANGES
+
+* Add timestamp (Instant or DateTimeOffset) to ctor of provenance syndication
+
 ## [15.6.4](https://github.com/informatievlaanderen/grar-common/compare/v15.6.3...v15.6.4) (2020-07-02)
 
 ## [15.6.3](https://github.com/informatievlaanderen/grar-common/compare/v15.6.2...v15.6.3) (2020-07-02)
