@@ -1,3 +1,10 @@
+## [16.0.1](https://github.com/informatievlaanderen/grar-common/compare/v16.0.0...v16.0.1) (2020-07-18)
+
+
+### Bug Fixes
+
+* move to 3.1.6 ([89f675b](https://github.com/informatievlaanderen/grar-common/commit/89f675b299d902ed27e2d52d7bf94213ece34e1f))
+
 # [16.0.0](https://github.com/informatievlaanderen/grar-common/compare/v15.6.4...v16.0.0) (2020-07-14)
 
 
