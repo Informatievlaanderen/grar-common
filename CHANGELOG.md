@@ -1,3 +1,10 @@
+# [16.1.0](https://github.com/informatievlaanderen/grar-common/compare/v16.0.1...v16.1.0) (2020-08-10)
+
+
+### Features
+
+* add uri based oslo identifier ([e2659c0](https://github.com/informatievlaanderen/grar-common/commit/e2659c06814c14a26941e1b50a7b5d6844174c66))
+
 ## [16.0.1](https://github.com/informatievlaanderen/grar-common/compare/v16.0.0...v16.0.1) (2020-07-18)
 
 
