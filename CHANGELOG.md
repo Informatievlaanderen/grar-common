@@ -1,3 +1,10 @@
+## [16.1.1](https://github.com/informatievlaanderen/grar-common/compare/v16.1.0...v16.1.1) (2020-09-02)
+
+
+### Bug Fixes
+
+* style to force build ([811d158](https://github.com/informatievlaanderen/grar-common/commit/811d1589fea66d20013b230cb163c8bfa8c1e142))
+
 # [16.1.0](https://github.com/informatievlaanderen/grar-common/compare/v16.0.1...v16.1.0) (2020-08-10)
 
 
