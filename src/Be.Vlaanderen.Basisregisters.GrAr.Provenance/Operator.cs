@@ -5,7 +5,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
     public class Operator : StringValueObject<Operator>
     {
         public Operator(string @operator) : base(@operator)
-        {
-        }
+        { }
     }
 }
