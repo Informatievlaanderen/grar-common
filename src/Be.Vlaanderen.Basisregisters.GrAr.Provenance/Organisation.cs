@@ -23,7 +23,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
     {
         private static readonly IDictionary<Organisation, string> Names = new Dictionary<Organisation, string>
         {
-            {Organisation.Unknown, ""},
+            {Organisation.Unknown, "Onbekend"},
             {Organisation.Municipality, "Gemeente"},
             {Organisation.NationalRegister, "Federale Overheidsdienst Binnenlandse Zaken (Rijksregister)"},
             {Organisation.Akred, "Federale Overheidsdienst Financiën (Algemene Administratie van de Patrimoniumdocumentatie)"},
