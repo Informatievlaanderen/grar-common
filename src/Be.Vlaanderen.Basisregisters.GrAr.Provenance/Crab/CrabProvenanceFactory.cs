@@ -81,10 +81,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
 
         private static Reason MapReason(CrabOperator crabOperator)
         {
-            if (string.IsNullOrWhiteSpace(crabOperator))
-                return null;
-
-            string @operator = crabOperator;
+            string @operator = crabOperator ?? string.Empty;
 
             if (@operator.Equals("VLM\\GRBCrabMatchingProd", StringComparison.OrdinalIgnoreCase) ||
                 @operator.Equals("VLM\\GRBCrabMatchingBeta", StringComparison.OrdinalIgnoreCase))
