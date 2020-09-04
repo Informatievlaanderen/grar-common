@@ -1,3 +1,10 @@
+## [16.1.2](https://github.com/informatievlaanderen/grar-common/compare/v16.1.1...v16.1.2) (2020-09-04)
+
+
+### Bug Fixes
+
+* empty operator now maps to default reason GRAR-1535 ([28b1587](https://github.com/informatievlaanderen/grar-common/commit/28b1587fb9fe3c64e99fd6397b666b44a618549a))
+
 ## [16.1.1](https://github.com/informatievlaanderen/grar-common/compare/v16.1.0...v16.1.1) (2020-09-02)
 
 
