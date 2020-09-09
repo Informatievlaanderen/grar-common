@@ -1,3 +1,10 @@
+# [16.2.0](https://github.com/informatievlaanderen/grar-common/compare/v16.1.2...v16.2.0) (2020-09-09)
+
+
+### Features
+
+* add registers as application provenance ([daee546](https://github.com/informatievlaanderen/grar-common/commit/daee546b479ded5875323a93a2fe7322c52b3c51))
+
 ## [16.1.2](https://github.com/informatievlaanderen/grar-common/compare/v16.1.1...v16.1.2) (2020-09-04)
 
 
