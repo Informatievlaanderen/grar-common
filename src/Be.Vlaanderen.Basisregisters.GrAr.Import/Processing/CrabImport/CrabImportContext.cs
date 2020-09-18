@@ -12,7 +12,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
         private readonly CrabImportSchema _crabImportSchema;
         public DbSet<ImportBatchStatus> BatchStatuses { get; set; }
 
-        public BatchStatus LastBatchFor(ImportFeed feed)
+        public CrabImportContext(
+            DbContextOptions<CrabImportContext> options,
+            CrabImportSchema schema)
+            : base(options) =>
+            _crabImportSchema = schema ?? throw new ArgumentNullException(nameof(schema));
+
+        public BatchStatus? LastBatchFor(ImportFeed feed)
         {
             var lastStatus = BatchStatuses
                 ?.Where(status => status.ImportFeedId == feed.Name)
@@ -27,6 +33,34 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
                     Until = lastStatus.Until,
                     Completed = lastStatus.Completed
                 };
+        }
+
+        public ImportStatus StatusFor(ImportFeed feed)
+        {
+            ImportStatusBatchScope? GetLastBatch(bool completed)
+            {
+                var batchStatus = BatchStatuses
+                    ?.Where(batch =>
+                        batch.ImportFeedId == feed.Name
+                        && batch.Completed == completed)
+                    .OrderBy(batch => batch.From)
+                    .LastOrDefault();
+
+                return batchStatus == null
+                    ? null
+                    : new ImportStatusBatchScope
+                    {
+                        From = batchStatus.From,
+                        Until = batchStatus.Until
+                    };
+            }
+
+            return new ImportStatus
+            {
+                Name = feed.Name,
+                CurrentBatch = GetLastBatch(false),
+                LastCompletedBatch = GetLastBatch(true)
+            };
         }
 
         public void SetCurrent(BatchStatusUpdate status)
@@ -55,12 +89,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
                 currentStatus.Completed = status.Completed;
             }
         }
-
-        public CrabImportContext(
-            DbContextOptions<CrabImportContext> options,
-            CrabImportSchema schema)
-            : base(options) =>
-            _crabImportSchema = schema ?? throw new ArgumentNullException(nameof(schema));
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
