@@ -41,8 +41,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
             {
                 var batchStatus = BatchStatuses
                     ?.Where(batch =>
-                        batch.ImportFeedId == feed.Name
-                        && batch.Completed == completed)
+                        batch.ImportFeedId == feed.Name && 
+                        batch.Completed == completed)
                     .OrderBy(batch => batch.From)
                     .LastOrDefault();
 
