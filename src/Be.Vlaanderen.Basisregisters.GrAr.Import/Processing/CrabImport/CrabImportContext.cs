@@ -1,6 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using Api.Messages;
     using Microsoft.EntityFrameworkCore;
@@ -40,7 +41,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
             ImportStatusBatchScope? GetLastBatch(bool completed)
             {
                 var batchStatus = BatchStatuses
-                    ?.Where(batch =>
+                    ?.AsNoTracking()
+                    .Where(batch =>
                         batch.ImportFeedId == feed.Name && 
                         batch.Completed == completed)
                     .OrderBy(batch => batch.From)
@@ -61,6 +63,19 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
                 CurrentBatch = GetLastBatch(false),
                 LastCompletedBatch = GetLastBatch(true)
             };
+        }
+
+        public IEnumerable<ImportStatus> StatusForAllFeeds()
+        {
+            var feeds = BatchStatuses
+                ?.AsNoTracking()
+                .Select(status => status.ImportFeedId)
+                .Distinct()
+                .ToList();
+
+            return feeds
+                ?.Select(feed => StatusFor((ImportFeed) feed))
+                .ToList() ?? new List<ImportStatus>();
         }
 
         public void SetCurrent(BatchStatusUpdate status)
