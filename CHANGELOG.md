@@ -1,3 +1,16 @@
+# [16.3.0](https://github.com/informatievlaanderen/grar-common/compare/v16.2.0...v16.3.0) (2020-09-21)
+
+
+### Bug Fixes
+
+* move to 3.1.8 ([fb3f28c](https://github.com/informatievlaanderen/grar-common/commit/fb3f28ca0f60340d716e4873f5e58a5ade635db7))
+
+
+### Features
+
+* get all statuses for all import feeds GRAR-1400 ([ce3b1a1](https://github.com/informatievlaanderen/grar-common/commit/ce3b1a1bb218d19a79248a85b4fc8068529c9e78))
+* get the current import status GRAR-1400 ([950359b](https://github.com/informatievlaanderen/grar-common/commit/950359bfc39fe749e020b7191c2415b99f3549f3))
+
 # [16.2.0](https://github.com/informatievlaanderen/grar-common/compare/v16.1.2...v16.2.0) (2020-09-09)
 
 
