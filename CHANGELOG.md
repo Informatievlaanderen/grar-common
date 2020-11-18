@@ -1,3 +1,10 @@
+## [16.3.1](https://github.com/informatievlaanderen/grar-common/compare/v16.3.0...v16.3.1) (2020-11-18)
+
+
+### Bug Fixes
+
+* remove set-env usage in gh-actions ([ad45143](https://github.com/informatievlaanderen/grar-common/commit/ad45143785a5468b147ad2a071511d44b95336e9))
+
 # [16.3.0](https://github.com/informatievlaanderen/grar-common/compare/v16.2.0...v16.3.0) (2020-09-21)
 
 
