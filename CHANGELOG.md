@@ -1,3 +1,10 @@
+## [16.3.2](https://github.com/informatievlaanderen/grar-common/compare/v16.3.1...v16.3.2) (2020-11-19)
+
+
+### Bug Fixes
+
+* update eventhandling reference ([3a9c6bd](https://github.com/informatievlaanderen/grar-common/commit/3a9c6bda39db7533975eedd92386f73793f7b45d))
+
 ## [16.3.1](https://github.com/informatievlaanderen/grar-common/compare/v16.3.0...v16.3.1) (2020-11-18)
 
 
