@@ -1,4 +1,7 @@
 Newtonsoft.Json
 
+Microsoft.Extensions.Configuration
+Microsoft.Extensions.Configuration.Json
+
 SourceLink.Embed.AllSourceFiles
 SourceLink.Copy.PdbFiles

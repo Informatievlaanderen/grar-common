@@ -5,6 +5,10 @@ source https://api.nuget.org/v3/index.json
 nuget Microsoft.CSharp 4.7.0
 nuget Microsoft.Extensions.Logging 3.1.8
 
+nuget Microsoft.Extensions.Configuration 3.1.8
+nuget Microsoft.Extensions.Configuration.Json 3.1.8
+
+
 nuget System.Threading.Tasks.Dataflow 4.11.1
 
 nuget CompareNETObjects 4.67.0
