@@ -1,0 +1,26 @@
+type file
+version 1.0.0
+
+id Be.Vlaanderen.Basisregisters.GrAr.Oslo
+title Be.Vlaanderen.Basisregisters.GrAr.Oslo
+
+authors Basisregisters Vlaanderen
+owners agentschap Informatie Vlaanderen <https://vlaanderen.be/informatie-vlaanderen>
+copyright Copyright (c) agentschap Informatie Vlaanderen
+requireLicenseAcceptance false
+projectUrl https://github.com/Informatievlaanderen/grar-common
+iconUrl https://raw.githubusercontent.com/Informatievlaanderen/build-pipeline/master/logo.png
+licenseUrl https://opensource.org/licenses/EUPL-1.2
+
+description Contains common oslo classes from GrAr.
+
+dependencies
+  framework: netcoreapp31
+    Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset >= LOCKEDVERSION
+
+    Newtonsoft.Json >= LOCKEDVERSION
+
+files
+  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Oslo.dll => lib\netcoreapp3.1
+  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Oslo.pdb => lib\netcoreapp3.1
+  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Oslo.xml => lib\netcoreapp3.1
