@@ -2,7 +2,6 @@ namespace Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator
 {
     using System;
     using System.IO;
-    using System.Linq;
     using Microsoft.Extensions.Configuration;
 
     public class ContextPropertiesDirectory 
@@ -16,18 +15,8 @@ namespace Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator
             _directory = CreateContextPropertiesDirectory(applicationSourceDirectory, configuration);
         }
 
-        public DirectoryInfo CreateVersionDirectory()
-        {
-            var versionDirectory = DateTime.Today.ToString("yyyyMMdd");
-            var index = 0;
-            while (_directory.GetDirectories(versionDirectory).Any())
-            {
-                index++;
-                versionDirectory = $"{versionDirectory.Split('-')[0]}-{index:00}";
-            }
-
-            return _directory.CreateSubdirectory(versionDirectory);
-        }
+        public VersionDirectory CreateVersionDirectory()
+            => new VersionDirectory(this);
 
         private static DirectoryInfo CreateContextPropertiesDirectory(DirectoryInfo directory, IConfiguration configuration)
         {

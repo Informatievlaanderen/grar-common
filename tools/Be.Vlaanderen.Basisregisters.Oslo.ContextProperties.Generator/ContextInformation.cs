@@ -4,13 +4,13 @@ namespace Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator
 
     public class ContextInformation
     {
-        public ContextInformation(string fileName, Uri sourceUrl)
+        public ContextInformation(string name, Uri sourceUrl)
         {
-            FileName = fileName;
+            Name = name;
             SourceUrl = sourceUrl;
         }
 
-        public string FileName { get; }
+        public string Name { get; }
         public Uri SourceUrl { get; }
     }
 }
