@@ -47,7 +47,7 @@ namespace Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator
                 if (pair is JProperty property)
                 {
                     var reference = property.Value.Count() > 1
-                        ? property.Value["@id"]?.ToString() ?? ""
+                        ? property.Value["@id"]?.ToString() ?? string.Empty
                         : property.Value.ToString();
 
                     objectProperties.Add(new ContextPropertyDefinition(property.Name, reference));
@@ -90,6 +90,6 @@ namespace Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator
         }
 
         private static string Indent(int amount)
-            => "".PadLeft(4 * amount);
+            => new string(' ', 4 * amount);
     }
 }
