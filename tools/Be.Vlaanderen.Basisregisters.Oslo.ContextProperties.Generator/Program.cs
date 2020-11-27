@@ -12,7 +12,7 @@ namespace Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator
     {
         private static readonly IConfiguration Configuration;
 
-        static Program()
+        public static Program()
         {
             Configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -21,7 +21,7 @@ namespace Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator
                 .Build();
         }
 
-        static async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var cancellationTokenSource = new CancellationTokenSource();
             Console.CancelKeyPress += (sender, cancelArgs) => cancellationTokenSource.Cancel();
