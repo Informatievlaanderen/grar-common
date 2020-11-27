@@ -12,7 +12,7 @@ namespace Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator
     {
         private static readonly IConfiguration Configuration;
 
-        public static Program()
+        static Program()
         {
             Configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
