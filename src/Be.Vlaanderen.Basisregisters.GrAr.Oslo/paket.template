@@ -12,7 +12,7 @@ projectUrl https://github.com/Informatievlaanderen/grar-common
 iconUrl https://raw.githubusercontent.com/Informatievlaanderen/build-pipeline/master/logo.png
 licenseUrl https://opensource.org/licenses/EUPL-1.2
 
-description Contains common oslo classes from GrAr.
+description Contains common OSLO classes from GrAr.
 
 dependencies
   framework: netcoreapp31

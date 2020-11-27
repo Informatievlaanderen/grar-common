@@ -8,7 +8,7 @@ namespace Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator
     using System.Threading.Tasks;
     using Microsoft.Extensions.Configuration;
 
-    class Program
+    public class Program
     {
         private static readonly IConfiguration Configuration;
 
