@@ -1,3 +1,18 @@
+# [16.4.0](https://github.com/informatievlaanderen/grar-common/compare/v16.3.2...v16.4.0) (2020-11-27)
+
+
+### Bug Fixes
+
+* add Oslo nuget package ([08fa311](https://github.com/informatievlaanderen/grar-common/commit/08fa311e06c4ce784bf383a19563ca20a8656e1a))
+* write file templates ([ed9b4ea](https://github.com/informatievlaanderen/grar-common/commit/ed9b4ea66b18d74fb837d7ed0e220477bc40501e))
+* xs modifier ([45383b0](https://github.com/informatievlaanderen/grar-common/commit/45383b07516e584aad52091c468c5b8179864bee))
+
+
+### Features
+
+* fetch jsonld context from source ([e425ea9](https://github.com/informatievlaanderen/grar-common/commit/e425ea92d22f9d9adc426e7f9c7efdddbb063026))
+* generate context property code files ([d8666e8](https://github.com/informatievlaanderen/grar-common/commit/d8666e844da7ab2a16625473ac6c41f2035144fe))
+
 ## [16.3.2](https://github.com/informatievlaanderen/grar-common/compare/v16.3.1...v16.3.2) (2020-11-19)
 
 
