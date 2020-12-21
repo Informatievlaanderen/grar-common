@@ -15,12 +15,12 @@ licenseUrl https://opensource.org/licenses/EUPL-1.2
 description Contains common OSLO classes from GrAr.
 
 dependencies
-  framework: netcoreapp31
+  framework: net5.0
     Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset >= LOCKEDVERSION
 
     Newtonsoft.Json >= LOCKEDVERSION
 
 files
-  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Oslo.dll => lib\netcoreapp3.1
-  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Oslo.pdb => lib\netcoreapp3.1
-  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Oslo.xml => lib\netcoreapp3.1
+  /bin/Release/net5.0/Be.Vlaanderen.Basisregisters.GrAr.Oslo.dll => lib\net5.0
+  /bin/Release/net5.0/Be.Vlaanderen.Basisregisters.GrAr.Oslo.pdb => lib\net5.0
+  /bin/Release/net5.0/Be.Vlaanderen.Basisregisters.GrAr.Oslo.xml => lib\net5.0
