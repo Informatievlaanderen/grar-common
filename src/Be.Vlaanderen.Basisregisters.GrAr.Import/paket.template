@@ -15,7 +15,7 @@ licenseUrl https://opensource.org/licenses/EUPL-1.2
 description Common logic for GrAr crab imports.
 
 dependencies
-  framework: netcoreapp31
+  framework: net5.0
     Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency >= LOCKEDVERSION
@@ -34,6 +34,6 @@ dependencies
     System.Threading.Tasks.Dataflow >= LOCKEDVERSION
 
 files
-  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Import.dll => lib\netcoreapp3.1
-  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Import.pdb => lib\netcoreapp3.1
-  /bin/Release/netcoreapp3.1/Be.Vlaanderen.Basisregisters.GrAr.Import.xml => lib\netcoreapp3.1
+  /bin/Release/net5.0/Be.Vlaanderen.Basisregisters.GrAr.Import.dll => lib\net5.0
+  /bin/Release/net5.0/Be.Vlaanderen.Basisregisters.GrAr.Import.pdb => lib\net5.0
+  /bin/Release/net5.0/Be.Vlaanderen.Basisregisters.GrAr.Import.xml => lib\net5.0
