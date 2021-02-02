@@ -10,50 +10,50 @@ nuget Microsoft.Extensions.Configuration.Json 5.0.0
 
 nuget System.Threading.Tasks.Dataflow 5.0.0
 
-nuget CompareNETObjects 4.67.0
+nuget CompareNETObjects 4.71.0
 nuget CommandLineParser 2.8.0
-nuget NodaTime 3.0.3
+nuget NodaTime 3.0.5
 nuget NetTopologySuite 2.1.0
 
 nuget Serilog.Sinks.Email 2.4.0
 
-nuget Microsoft.EntityFrameworkCore.Design 5.0.1
+nuget Microsoft.EntityFrameworkCore.Design 5.0.2
 
 // VBR STUFF
-nuget Be.Vlaanderen.Basisregisters.Build.Pipeline 5.0.1
+nuget Be.Vlaanderen.Basisregisters.Build.Pipeline 5.0.2
 
-nuget Be.Vlaanderen.Basisregisters.AggregateSource 5.0.12
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting 5.0.12
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore 5.0.12
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore.Autofac 5.0.12
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing 5.0.12
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling 5.0.12
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore 5.0.12
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac 5.0.12
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit 5.0.12
+nuget Be.Vlaanderen.Basisregisters.AggregateSource 5.0.13
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting 5.0.13
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore 5.0.13
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore.Autofac 5.0.13
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing 5.0.13
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling 5.0.13
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore 5.0.13
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac 5.0.13
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit 5.0.13
 
-nuget Be.Vlaanderen.Basisregisters.CommandHandling 5.0.12
-nuget Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency 5.0.12
-nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore 5.0.12
+nuget Be.Vlaanderen.Basisregisters.CommandHandling 5.0.13
+nuget Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency 5.0.13
+nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore 5.0.13
 
-nuget Be.Vlaanderen.Basisregisters.EventHandling 3.0.3
-nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac 3.0.3
+nuget Be.Vlaanderen.Basisregisters.EventHandling 3.0.4
+nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac 3.0.4
 
-nuget Be.Vlaanderen.Basisregisters.Api 12.1.1
+nuget Be.Vlaanderen.Basisregisters.Api 13.0.2
 
-nuget Be.Vlaanderen.Basisregisters.Crab 2.2.4
+nuget Be.Vlaanderen.Basisregisters.Crab 2.2.5
 
-nuget Be.Vlaanderen.Basisregisters.Shaperon 8.1.1
+nuget Be.Vlaanderen.Basisregisters.Shaperon 8.1.2
 
-nuget Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic 2.2.9
+nuget Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic 2.2.10
 
-nuget Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset 2.2.8
+nuget Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset 2.2.9
 
 // TEST STUFF
 nuget Microsoft.NET.Test.Sdk 16.8.3
 nuget xunit 2.4.1
 nuget xunit.runner.visualstudio 2.4.3
-nuget Moq 4.15.2
+nuget Moq 4.16.0
 nuget FluentAssertions 5.10.3
 nuget AutoFixture 4.15.0
 
