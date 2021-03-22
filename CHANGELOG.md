@@ -1,3 +1,10 @@
+## [16.4.3](https://github.com/informatievlaanderen/grar-common/compare/v16.4.2...v16.4.3) (2021-03-22)
+
+
+### Bug Fixes
+
+* remove ridingwolf, collaboration ended ([f7b1119](https://github.com/informatievlaanderen/grar-common/commit/f7b1119c67ebee02d4d66fa8124c99922b363bed))
+
 ## [16.4.2](https://github.com/informatievlaanderen/grar-common/compare/v16.4.1...v16.4.2) (2021-02-02)
 
 
