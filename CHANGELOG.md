@@ -1,3 +1,10 @@
+# [16.5.0](https://github.com/informatievlaanderen/grar-common/compare/v16.4.3...v16.5.0) (2021-04-22)
+
+
+### Features
+
+* add snapshotting to IdempotencyCommandHandler ([f0d15b5](https://github.com/informatievlaanderen/grar-common/commit/f0d15b5c2ff5aac65c71e3433494ef5192829550))
+
 ## [16.4.3](https://github.com/informatievlaanderen/grar-common/compare/v16.4.2...v16.4.3) (2021-03-22)
 
 
