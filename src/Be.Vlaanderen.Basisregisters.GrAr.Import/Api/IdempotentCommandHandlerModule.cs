@@ -2,12 +2,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.Immutable;
     using System.Linq;
     using System.Security.Cryptography;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
     using AggregateSource;
+    using AggregateSource.Snapshotting;
     using Autofac;
     using CommandHandling;
     using CommandHandling.Idempotency;
@@ -105,6 +107,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                     var aggregateIdentifier = "";
                     var aggregateExpectedVersion = AggregateExpectedVersionNotSet;
                     var changes = new List<Tuple<Guid, List<object>, IDictionary<string, object>>>();
+                    Aggregate? latestAggregate = null;
 
                     var processor = c.Resolve<IIdempotentCommandHandlerModuleProcessor>();
 
@@ -127,6 +130,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
 
                             aggregateIdentifier = aggregate.Identifier;
                             aggregateExpectedVersion = aggregate.ExpectedVersion;
+                            latestAggregate = aggregate;
                         }
                     }
 
@@ -152,6 +156,25 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                         messages,
                         cancellationToken);
 
+                    if (latestAggregate?.Root is ISnapshotable snapshotable)
+                    {
+                        await CreateSnapshot(
+                            snapshotable,
+                            new SnapshotStrategyContext(
+                                latestAggregate,
+                                changes
+                                    .SelectMany(e => e.Item2)
+                                    .Select(e => e is EventWithMetadata ? e : new EventWithMetadata(e))
+                                    .Cast<EventWithMetadata>()
+                                    .ToImmutableList(),
+                                result.CurrentPosition),
+                            streamStore,
+                            concurrentUnitOfWork,
+                            eventMapping,
+                            eventSerializer,
+                            cancellationToken);
+                    }
+
                     return result.CurrentPosition;
                 }
                 catch
@@ -165,6 +188,42 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                     throw;
                 }
             }
+        }
+
+        private static async Task CreateSnapshot(
+            ISnapshotable snapshotSupport,
+            SnapshotStrategyContext context,
+            IStreamStore streamStore,
+            ConcurrentUnitOfWork uow,
+            EventMapping eventMapping,
+            EventSerializer eventSerializer,
+            CancellationToken ct)
+        {
+            if (!snapshotSupport.Strategy.ShouldCreateSnapshot(context))
+                return;
+
+            var snapshot = snapshotSupport.TakeSnapshot();
+            if (snapshot == null)
+                throw new InvalidOperationException("Snapshot missing.");
+
+            var snapshotContainer = new SnapshotContainer
+            {
+                Data = eventSerializer.SerializeObject(snapshot),
+                Info =
+                {
+                    Type = eventMapping.GetEventName(snapshot.GetType()),
+                    Position = context.SnapshotPosition
+                }
+            };
+
+            await streamStore.AppendToStream(
+                uow.GetSnapshotIdentifier(context.Aggregate.Identifier),
+                ExpectedVersion.Any,
+                new NewStreamMessage(
+                    Deterministic.Create(Deterministic.Namespaces.Events, $"snapshot-{context.SnapshotPosition}"),
+                    $"SnapshotContainer<{snapshotContainer.Info.Type}>",
+                    eventSerializer.SerializeObject(snapshotContainer)),
+                ct);
         }
 
         private class CommandContainer
