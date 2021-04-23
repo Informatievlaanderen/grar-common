@@ -1,3 +1,10 @@
+## [16.5.1](https://github.com/informatievlaanderen/grar-common/compare/v16.5.0...v16.5.1) (2021-04-23)
+
+
+### Bug Fixes
+
+* bump command-handling packages ([83ccd88](https://github.com/informatievlaanderen/grar-common/commit/83ccd88fa0845bc3f5e90c700dd94b0c0f1b435c))
+
 # [16.5.0](https://github.com/informatievlaanderen/grar-common/compare/v16.4.3...v16.5.0) (2021-04-22)
 
 
