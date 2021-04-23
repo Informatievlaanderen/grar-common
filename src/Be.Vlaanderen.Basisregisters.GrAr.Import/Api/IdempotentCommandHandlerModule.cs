@@ -167,6 +167,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                                     .Select(e => e is EventWithMetadata ? e : new EventWithMetadata(e))
                                     .Cast<EventWithMetadata>()
                                     .ToImmutableList(),
+                                result.CurrentVersion,
                                 result.CurrentPosition),
                             streamStore,
                             concurrentUnitOfWork,
