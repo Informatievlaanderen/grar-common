@@ -22,19 +22,19 @@ nuget Microsoft.EntityFrameworkCore.Design 5.0.2
 // VBR STUFF
 nuget Be.Vlaanderen.Basisregisters.Build.Pipeline 5.0.2
 
-nuget Be.Vlaanderen.Basisregisters.AggregateSource 5.1.6
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting 5.1.6
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore 5.1.6
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore.Autofac 5.1.6
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing 5.1.6
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling 5.1.6
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore 5.1.6
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac 5.1.6
-nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit 5.1.6
+nuget Be.Vlaanderen.Basisregisters.AggregateSource 5.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting 5.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore 5.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore.Autofac 5.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing 5.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling 5.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore 5.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac 5.2.0
+nuget Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit 5.2.0
 
-nuget Be.Vlaanderen.Basisregisters.CommandHandling 5.1.6
-nuget Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency 5.1.6
-nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore 5.1.6
+nuget Be.Vlaanderen.Basisregisters.CommandHandling 5.2.0
+nuget Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency 5.2.0
+nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore 5.2.0
 
 nuget Be.Vlaanderen.Basisregisters.EventHandling 3.0.4
 nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac 3.0.4
