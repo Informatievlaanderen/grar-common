@@ -36,10 +36,10 @@ nuget Be.Vlaanderen.Basisregisters.CommandHandling 5.2.0
 nuget Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency 5.2.0
 nuget Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore 5.2.0
 
-nuget Be.Vlaanderen.Basisregisters.EventHandling 3.0.4
-nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac 3.0.4
+nuget Be.Vlaanderen.Basisregisters.EventHandling 3.1.0
+nuget Be.Vlaanderen.Basisregisters.EventHandling.Autofac 3.1.0
 
-nuget Be.Vlaanderen.Basisregisters.Api 13.0.2
+nuget Be.Vlaanderen.Basisregisters.Api 15.0.1
 
 nuget Be.Vlaanderen.Basisregisters.Crab 2.2.5
 
