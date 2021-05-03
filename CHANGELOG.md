@@ -1,3 +1,10 @@
+# [16.6.0](https://github.com/informatievlaanderen/grar-common/compare/v16.5.1...v16.6.0) (2021-05-03)
+
+
+### Features
+
+* add Digitaal Vlaanderen to provenance ([866cd66](https://github.com/informatievlaanderen/grar-common/commit/866cd6612eaced87fead1884dde0842eed59ad18))
+
 ## [16.5.1](https://github.com/informatievlaanderen/grar-common/compare/v16.5.0...v16.5.1) (2021-04-23)
 
 
