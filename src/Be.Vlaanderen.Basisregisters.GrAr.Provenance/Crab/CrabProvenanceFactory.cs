@@ -11,6 +11,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
     {
         private static readonly LocalDate VlmEndDate = new LocalDate(2006, 04, 01);
         private static readonly LocalDate AgivEndDate = new LocalDate(2016, 01, 01);
+        private static readonly LocalDate AivEndDate = new LocalDate(2021, 05, 10);
 
         private static readonly Regex CrabWstEditServiceRegex = new Regex(".*:.*/agiv-services.*", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private static readonly Regex LaraRegex = new Regex(".*:.*", RegexOptions.Compiled | RegexOptions.IgnoreCase);
@@ -73,7 +74,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
                 if (timestamp < AgivEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone).ToInstant())
                     return Organisation.Agiv;
 
-                return Organisation.Aiv;
+                if (timestamp < AivEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone).ToInstant())
+                    return Organisation.Aiv;
+
+                return Organisation.DigitaalVlaanderen;
             }
 
             return MapCrabOrganisations[crabOrganisation.Value];
