@@ -1,3 +1,10 @@
+## [16.6.2](https://github.com/informatievlaanderen/grar-common/compare/v16.6.1...v16.6.2) (2021-05-31)
+
+
+### Bug Fixes
+
+* bump api ([01f7f31](https://github.com/informatievlaanderen/grar-common/commit/01f7f31a913f3a565b720fe61790a29b3dc0967f))
+
 ## [16.6.1](https://github.com/informatievlaanderen/grar-common/compare/v16.6.0...v16.6.1) (2021-05-28)
 
 
