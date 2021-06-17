@@ -1,3 +1,10 @@
+## [16.6.3](https://github.com/informatievlaanderen/grar-common/compare/v16.6.2...v16.6.3) (2021-06-17)
+
+
+### Bug Fixes
+
+* update nuget package ([712d29b](https://github.com/informatievlaanderen/grar-common/commit/712d29ba9a1b596a56aecf049917bb9d305026d1))
+
 ## [16.6.2](https://github.com/informatievlaanderen/grar-common/compare/v16.6.1...v16.6.2) (2021-05-31)
 
 
