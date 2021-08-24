@@ -47,6 +47,43 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
                     dbfFile.WriteEndOfFile();
                 });
 
+        public static ExtractFile CreateMetadataDbfFile(
+            string fileName,
+            IDictionary<string,string> records)
+            => new ExtractFile(
+                new MetadataDbfFileName(fileName),
+                (stream, token) =>
+                {
+                    foreach (var record in records)
+                    {
+                        if (record.Key.Length > MetadataDbaseSchema.MetadataMaxLength)
+                            throw new DbaseRecordException($"Metadata key has {record.Key.Length} characters, more than allowed {MetadataDbaseSchema.MetadataMaxLength} characters");
+                        if (record.Value.Length > MetadataDbaseSchema.ValueMaxLength)
+                            throw new DbaseRecordException($"Metadata value has {record.Value.Length} characters, more than allowed {MetadataDbaseSchema.ValueMaxLength} characters");
+                    }
+
+                    var dbfFile = DbfFileWriter<MetadataDbaseRecord>.CreateDbfFileWriter<MetadataDbaseRecord>(
+                        new MetadataDbaseSchema(),
+                        new DbaseRecordCount(records.Count),
+                        stream);
+
+                    foreach (var record in records)
+                    {
+                        if (token.IsCancellationRequested)
+                            return;
+
+                        var item = new MetadataDbaseRecord();
+
+                        item.metadata.Value = record.Key;
+                        item.value.Value = record.Value;
+
+                        dbfFile.WriteBytesAs<MetadataDbaseRecord>(item.ToBytes(DbfFileWriter<MetadataDbaseRecord>.Encoding));
+                    }
+
+                    dbfFile.WriteEndOfFile();
+                });
+
+
         public static ExtractFile CreateShapeFile<TShape>(
             string fileName,
             ShapeType shapeType,
