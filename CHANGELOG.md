@@ -1,3 +1,10 @@
+# [16.7.0](https://github.com/informatievlaanderen/grar-common/compare/v16.6.3...v16.7.0) (2021-08-24)
+
+
+### Features
+
+* add MetadataDbFile feature to ExtractBuilder ([c740910](https://github.com/informatievlaanderen/grar-common/commit/c7409104bb937ba95c917bd9a0d47b4ac0273280))
+
 ## [16.6.3](https://github.com/informatievlaanderen/grar-common/compare/v16.6.2...v16.6.3) (2021-06-17)
 
 
