@@ -1,3 +1,10 @@
+## [16.7.1](https://github.com/informatievlaanderen/grar-common/compare/v16.7.0...v16.7.1) (2021-08-26)
+
+
+### Bug Fixes
+
+* change name of metadata field to dutch GRAR-2060 ([03abb47](https://github.com/informatievlaanderen/grar-common/commit/03abb4773819ce32701bd54236a1df3bab434fa0))
+
 # [16.7.0](https://github.com/informatievlaanderen/grar-common/compare/v16.6.3...v16.7.0) (2021-08-24)
 
 
