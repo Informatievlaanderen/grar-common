@@ -25,7 +25,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
         public string Detail { get; set; }
 
         /// <summary>
-        /// De straatnaam in het Nederlands.
+        /// De straatnaam in de eerste officiële taal van de gemeente.
         /// </summary>
         [DataMember(Name = "Straatnaam", Order = 3)]
         [JsonProperty(Required = Required.DisallowNull)]

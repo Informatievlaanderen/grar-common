@@ -4,7 +4,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gemeente
     using Newtonsoft.Json;
 
     /// <summary>
-    /// De naam van de gemeente in het Nederlands.
+    /// De gemeentenaam in de eerste officiële taal van de gemeente.
     /// </summary>
     [DataContract(Name = "Gemeentenaam", Namespace = "")]
     public class Gemeentenaam

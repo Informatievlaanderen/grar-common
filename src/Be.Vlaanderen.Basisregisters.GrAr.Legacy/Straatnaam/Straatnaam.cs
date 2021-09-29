@@ -4,7 +4,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Straatnaam
     using Newtonsoft.Json;
 
     /// <summary>
-    /// De straatnaam in het Nederlands.
+    /// De straatnaam in de eerste officiële taal van de gemeente.
     /// </summary>
     [DataContract(Name = "Straatnaam", Namespace = "")]
     public class Straatnaam

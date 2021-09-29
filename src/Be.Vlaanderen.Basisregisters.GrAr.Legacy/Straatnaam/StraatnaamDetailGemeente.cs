@@ -25,7 +25,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Straatnaam
         public string Detail {get; set; }
 
         /// <summary>
-        /// De naam van de gemeente in het Nederlands.
+        /// De gemeentenaam in de eerste officiële taal van de gemeente.
         /// </summary>
         [DataMember(Name = "Gemeentenaam", Order = 3)]
         [JsonProperty(Required = Required.DisallowNull)]

@@ -4,7 +4,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     using Newtonsoft.Json;
 
     /// <summary>
-    /// De homoniemtoevoeging in het Nederlands.
+    /// De homoniemtoevoeging in de eerste officiële taal van de gemeente.
     /// </summary>
     [DataContract(Name = "HomoniemToevoeging", Namespace = "")]
     public class HomoniemToevoeging
