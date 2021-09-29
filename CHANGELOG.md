@@ -1,3 +1,10 @@
+## [16.7.2](https://github.com/informatievlaanderen/grar-common/compare/v16.7.1...v16.7.2) (2021-09-29)
+
+
+### Bug Fixes
+
+* gawr-623 api documentation ([88513b2](https://github.com/informatievlaanderen/grar-common/commit/88513b2131adc01bf971144c9218afb1a32cbda9))
+
 ## [16.7.1](https://github.com/informatievlaanderen/grar-common/compare/v16.7.0...v16.7.1) (2021-08-26)
 
 
