@@ -4,7 +4,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
     using Newtonsoft.Json;
 
     /// <summary>
-    /// De voorstelling van een adres in het Nederlands.
+    /// Adresvoorstelling in de eerste officiële taal van de gemeente.
     /// </summary>
     [DataContract(Name = "VolledigAdres", Namespace = "")]
     public class VolledigAdres
