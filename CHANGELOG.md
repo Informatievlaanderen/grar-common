@@ -1,3 +1,10 @@
+# [16.8.0](https://github.com/informatievlaanderen/grar-common/compare/v16.7.2...v16.8.0) (2021-10-04)
+
+
+### Features
+
+* adding extension method to configure offset for api examples ([df0aae9](https://github.com/informatievlaanderen/grar-common/commit/df0aae986fa98b8d9023ee7343c18a53687aee4f))
+
 ## [16.7.2](https://github.com/informatievlaanderen/grar-common/compare/v16.7.1...v16.7.2) (2021-09-29)
 
 
