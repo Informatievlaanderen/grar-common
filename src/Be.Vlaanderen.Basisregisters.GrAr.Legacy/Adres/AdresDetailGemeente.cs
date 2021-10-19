@@ -11,7 +11,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
     public class AdresDetailGemeente
     {
         /// <summary>
-        /// De identifier van de gekoppelde gemeente.
+        /// De objectidentificator van de gekoppelde gemeente.
         /// </summary>
         [DataMember(Name = "ObjectId", Order = 1)]
         [JsonProperty(Required = Required.DisallowNull)]

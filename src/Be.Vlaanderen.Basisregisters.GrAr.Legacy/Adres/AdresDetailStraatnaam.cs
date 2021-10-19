@@ -5,13 +5,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
     using Straatnaam;
 
     /// <summary>
-    /// Een straatnaam die deel uitmaakt van het adres.
+    /// De straatnaam die deel uitmaakt van het adres.
     /// </summary>
     [DataContract(Name = "Straatnaam", Namespace = "")]
     public class AdresDetailStraatnaam
     {
         /// <summary>
-        /// De identifier van de gekoppelde straatnaam.
+        /// De objectidentificator van de gekoppelde straatnaam.
         /// </summary>
         [DataMember(Name = "ObjectId", Order = 1)]
         [JsonProperty(Required = Required.DisallowNull)]

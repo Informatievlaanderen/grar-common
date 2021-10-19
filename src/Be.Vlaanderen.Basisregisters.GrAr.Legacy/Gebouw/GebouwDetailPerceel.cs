@@ -7,7 +7,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gebouw
     public class GebouwDetailPerceel
     {
         /// <summary>
-        /// De identifier van het gekoppelde perceel.
+        /// De objectidentificator van het gekoppelde perceel. 
         /// </summary>
         [DataMember(Name = "ObjectId", Order = 1)]
         [JsonProperty(Required = Required.DisallowNull)]
