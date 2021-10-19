@@ -1,3 +1,10 @@
+## [16.8.1](https://github.com/informatievlaanderen/grar-common/compare/v16.8.0...v16.8.1) (2021-10-19)
+
+
+### Bug Fixes
+
+* gawr-2202 changed swashbuckle docs ([f0e5b60](https://github.com/informatievlaanderen/grar-common/commit/f0e5b601a15a0279075e53eeb0a0bb56fe6ee430))
+
 # [16.8.0](https://github.com/informatievlaanderen/grar-common/compare/v16.7.2...v16.8.0) (2021-10-04)
 
 
