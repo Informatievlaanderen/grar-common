@@ -64,7 +64,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
         }
     }
 
-    /// <summary>Bevat informatie waarmee een gemeente kan geïdentificeerd worden.</summary>
+    /// <summary>Bevat informatie waarmee de gemeente kan geïdentificeerd worden.</summary>
     [DataContract(Name = "Identificator", Namespace = "")]
     public class GemeenteIdentificator : Identificator
     {

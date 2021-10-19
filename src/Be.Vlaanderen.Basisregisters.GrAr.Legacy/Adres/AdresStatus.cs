@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// De status van een adres.
+    /// De status van het adres.
     /// </summary>
     [DataContract(Name = "AdresStatus", Namespace = "")]
     public enum AdresStatus

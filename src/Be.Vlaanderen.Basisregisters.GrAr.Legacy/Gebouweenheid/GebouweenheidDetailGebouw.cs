@@ -4,13 +4,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gebouweenheid
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Het gebouw waartoe de gebouweenheid behoort.
+    /// De aan het gebouweenheid gelinkte gebouw. 
     /// </summary>
     [DataContract(Name = "Gebouw", Namespace = "")]
     public class GebouweenheidDetailGebouw
     {
         /// <summary>
-        /// De identifier van het gekoppelde gebouw.
+        /// De objectidentificator van het gekoppelde gebouw.
         /// </summary>
         [DataMember(Name = "ObjectId", Order = 1)]
         [JsonProperty(Required = Required.DisallowNull)]

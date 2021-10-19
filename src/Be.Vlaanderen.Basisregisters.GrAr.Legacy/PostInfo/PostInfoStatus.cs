@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// De status van het PostInfo object.
+    /// De status van de postinfo. 
     /// </summary>
     [DataContract(Name = "PostInfoStatus", Namespace = "")]
     public enum PostInfoStatus

@@ -4,20 +4,20 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Een PostInfo object dat deel uitmaakt van het adres.
+    /// De postinfo die deel uitmaakt van het adres. 
     /// </summary>
     [DataContract(Name = "PostInfo", Namespace = "")]
     public class AdresDetailPostinfo
     {
         /// <summary>
-        /// De identifier van het gekoppelde PostInfo object.
+        /// De objectidentificator van de gekoppelde postinfo. 
         /// </summary>
         [DataMember(Name = "ObjectId", Order = 1)]
         [JsonProperty(Required = Required.DisallowNull)]
         public string ObjectId { get; set; }
 
         /// <summary>
-        /// De URL die de details van de meest recente versie van het gekoppelde PostInfo object weergeeft.
+        /// De URL die de details van de meest recente versie van de gekoppelde postinfo weergeeft.
         /// </summary>
         [DataMember(Name = "Detail", Order = 2)]
         [JsonProperty(Required = Required.DisallowNull)]

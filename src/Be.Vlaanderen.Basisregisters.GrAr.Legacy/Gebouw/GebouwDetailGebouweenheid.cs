@@ -7,7 +7,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gebouw
     public class GebouwDetailGebouweenheid
     {
         /// <summary>
-        /// De identifier van de gekoppelde gebouweenheid.
+        /// De objectidentificator van de gekoppelde gebouweenheid.
         /// </summary>
         [DataMember(Name = "ObjectId", Order = 1)]
         [JsonProperty(Required = Required.DisallowNull)]

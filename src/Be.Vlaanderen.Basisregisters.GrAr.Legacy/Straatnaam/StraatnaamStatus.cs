@@ -1,7 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Straatnaam
 {
     using System.Runtime.Serialization;
-
+    /// <summary>De status van de straatnaam.</summary>
     [DataContract(Name = "StraatnaamStatus", Namespace = "")]
     public enum StraatnaamStatus
     {

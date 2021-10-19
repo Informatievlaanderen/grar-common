@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Perceel
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// De status van een perceel.
+    /// De status van het perceel.
     /// </summary>
     [DataContract(Name = "PerceelStatus", Namespace = "")]
     public enum PerceelStatus

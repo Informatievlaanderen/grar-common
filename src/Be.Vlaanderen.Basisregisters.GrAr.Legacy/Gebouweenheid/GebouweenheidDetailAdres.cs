@@ -10,7 +10,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gebouweenheid
     public class GebouweenheidDetailAdres
     {
         /// <summary>
-        /// De identifier van het gekoppelde adres.
+        /// De objectidentificator van het gekoppelde adres. 
         /// </summary>
         [DataMember(Name = "ObjectId", Order = 1)]
         [JsonProperty(Required = Required.DisallowNull)]
