@@ -4,7 +4,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Een GML3 punt of een GeoJSON punt, afhankelijk van het Content-Type.
+    /// De geometrie van het object in gml- of geoJSON-formaat, afhankelijk van het content-type.
     /// </summary>
     [DataContract(Name = "GeometriePolygoon", Namespace = "")]
     public class SyndicationPolygon
