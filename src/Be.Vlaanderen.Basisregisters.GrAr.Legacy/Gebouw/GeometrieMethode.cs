@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gebouw
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// De methode waarop de geometrie is verworven.
+    /// De geometriemethode van het object.
     /// </summary>
     [DataContract(Name = "GeometrieMethode", Namespace = "")]
     public enum GeometrieMethode

@@ -4,7 +4,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
     using System.Xml.Serialization;
 
     /// <summary>
-    /// De Geometrie methode van de positie.
+    /// De geometriemethode van de positie.
     /// </summary>
     [DataContract(Name = "PositieGeometrieMethode", Namespace = "")]
     public enum PositieGeometrieMethode
