@@ -1,3 +1,10 @@
+## [16.8.3](https://github.com/informatievlaanderen/grar-common/compare/v16.8.2...v16.8.3) (2021-11-02)
+
+
+### Bug Fixes
+
+* gawr 2022 corrected building unit docu ([3764981](https://github.com/informatievlaanderen/grar-common/commit/37649819a23a787aada3d9ff37180c014c25c9c5))
+
 ## [16.8.2](https://github.com/informatievlaanderen/grar-common/compare/v16.8.1...v16.8.2) (2021-10-22)
 
 
