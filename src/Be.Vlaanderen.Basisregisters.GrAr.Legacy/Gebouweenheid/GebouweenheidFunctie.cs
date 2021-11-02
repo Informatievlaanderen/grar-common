@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gebouweenheid
     using System.Runtime.Serialization;
 
     /// <summary>
-    /// De functie van de gebouweenheid in realiteit.
+    /// De functie van de gebouweenheid.
     /// </summary>
     [DataContract(Name = "GebouweenheidFunctie", Namespace = "")]
     public enum GebouweenheidFunctie
