@@ -24,6 +24,7 @@ supportedRuntimeIdentifiers <- [ "linux-x64" ]
 // Library ------------------------------------------------------------------------
 Target.create "Lib_Build" (fun _ ->
     buildSource "Be.Vlaanderen.Basisregisters.GrAr.Common"
+    buildSource "Be.Vlaanderen.Basisregisters.GrAr.Contracts"
     buildSource "Be.Vlaanderen.Basisregisters.GrAr.Extracts"
     buildSource "Be.Vlaanderen.Basisregisters.GrAr.Import"
     buildSource "Be.Vlaanderen.Basisregisters.GrAr.Legacy"
@@ -40,6 +41,7 @@ Target.create "Lib_Test" (fun _ ->
 
 Target.create "Lib_Publish" (fun _ ->
     publishSource "Be.Vlaanderen.Basisregisters.GrAr.Common"
+    publishSource "Be.Vlaanderen.Basisregisters.GrAr.Contracts"
     publishSource "Be.Vlaanderen.Basisregisters.GrAr.Extracts"
     publishSource "Be.Vlaanderen.Basisregisters.GrAr.Import"
     publishSource "Be.Vlaanderen.Basisregisters.GrAr.Legacy"
