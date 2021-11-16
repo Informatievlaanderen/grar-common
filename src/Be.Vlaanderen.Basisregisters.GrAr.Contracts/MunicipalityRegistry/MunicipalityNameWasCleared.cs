@@ -1,40 +1,23 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.MunicipalityRegistry
 {
-    using System;
-    using Newtonsoft.Json;
-    using Provenance;
+    using Common;
 
-    [EventTags(EventTag.For.Sync)]
-    [EventName("MunicipalityNameWasCleared")]
-    [EventDescription("De naam van de gemeente (in een bepaalde taal) werd gewist.")]
-    public class MunicipalityNameWasCleared : IHasProvenance, ISetProvenance
+    public class MunicipalityNameWasCleared
     {
-        [EventPropertyDescription("Interne GUID van de gemeente.")]
-        public Guid MunicipalityId { get; }
+        public string MunicipalityId { get; }
 
-        [EventPropertyDescription("Taal waarvoor de officiële naam gewist werd. Mogelijkheden: Dutch, French of German.")]
-        public Language Language { get; }
+        public string Language { get; }
 
-        [EventPropertyDescription("Metadata bij het event.")]
-        public ProvenanceData Provenance { get; private set; }
+        public Provenance Provenance { get; }
 
         public MunicipalityNameWasCleared(
-            MunicipalityId municipalityId,
-            Language language)
+            string municipalityId,
+            string language,
+            Provenance provenance)
         {
             MunicipalityId = municipalityId;
             Language = language;
+            Provenance = provenance;
         }
-
-        [JsonConstructor]
-        private MunicipalityNameWasCleared(
-            Guid municipalityId,
-            Language language,
-            ProvenanceData provenance) :
-            this(
-                new MunicipalityId(municipalityId),
-                language) => ((ISetProvenance)this).SetProvenance(provenance.ToProvenance());
-
-        void ISetProvenance.SetProvenance(Provenance provenance) => Provenance = new ProvenanceData(provenance);
     }
 }

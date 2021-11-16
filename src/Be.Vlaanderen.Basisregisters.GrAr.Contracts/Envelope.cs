@@ -15,7 +15,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts
         public string EventName { get; set; }
 
         /// <summary>
-        /// Format: ISO8086
+        /// Format: ISO-8601
         /// </summary>
         public string Timestamp { get; set; }
 

@@ -1,41 +1,23 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.MunicipalityRegistry
 {
-    using System;
-    using Newtonsoft.Json;
-    using NodaTime;
-    using Provenance;
+    using Common;
 
-    [EventTags(EventTag.For.Sync)]
-    [EventName("MunicipalityWasCorrectedToRetired")]
-    [EventDescription("De gemeente kreeg status 'gehistoreerd' (via correctie).")]
-    public class MunicipalityWasCorrectedToRetired : IHasProvenance, ISetProvenance
+    public class MunicipalityWasCorrectedToRetired
     {
-        [EventPropertyDescription("Interne GUID van de gemeente.")]
-        public Guid MunicipalityId { get; }
+        public string MunicipalityId { get; }
 
-        [EventPropertyDescription("Administratief tijdstip waarop de gemeente status ‘gehistoreerd’ kreeg.")]
-        public Instant RetirementDate { get; }
+        public string RetirementDate { get; }
 
-        [EventPropertyDescription("Metadata bij het event.")]
-        public ProvenanceData Provenance { get; private set; }
+        public Provenance Provenance { get; }
 
         public MunicipalityWasCorrectedToRetired(
-            MunicipalityId municipalityId,
-            RetirementDate retirementDate)
+            string municipalityId,
+            string retirementDate,
+            Provenance provenance)
         {
             MunicipalityId = municipalityId;
             RetirementDate = retirementDate;
+            Provenance = provenance;
         }
-
-        [JsonConstructor]
-        private MunicipalityWasCorrectedToRetired(
-            Guid municipalityId,
-            Instant retirementDate,
-            ProvenanceData provenance) :
-            this(
-                new MunicipalityId(municipalityId),
-                new RetirementDate(retirementDate)) => ((ISetProvenance)this).SetProvenance(provenance.ToProvenance());
-
-        void ISetProvenance.SetProvenance(Provenance provenance) => Provenance = new ProvenanceData(provenance);
     }
 }

@@ -1,43 +1,27 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.MunicipalityRegistry
 {
-    using System;
-    using Be.Vlaanderen.Basisregisters.EventHandling;
-    using Be.Vlaanderen.Basisregisters.GrAr.Provenance;
-    using Newtonsoft.Json;
+    using Common;
 
-    public class MunicipalityWasNamed : IHasProvenance, ISetProvenance
+    public class MunicipalityWasNamed
     {
-        [EventPropertyDescription("Interne GUID van de gemeente.")]
-        public Guid MunicipalityId { get; }
+        public string MunicipalityId { get; }
 
-        [EventPropertyDescription("Officiële spelling van de gemeente.")]
         public string Name { get; }
 
-        [EventPropertyDescription("Taal waarin de officiële naam staat. Mogelijkheden: Dutch, French of German.")]
-        public Language Language { get; }
+        public string Language { get; }
 
-        [EventPropertyDescription("Metadata bij het event.")]
-        public ProvenanceData Provenance { get; private set; }
+        public Provenance Provenance { get; }
 
         public MunicipalityWasNamed(
-            MunicipalityId municipalityId,
-            MunicipalityName municipalityName)
+            string municipalityId,
+            string name,
+            string language,
+            Provenance provenance)
         {
             MunicipalityId = municipalityId;
-            Language = municipalityName.Language;
-            Name = municipalityName.Name;
+            Name = name;
+            Language = language;
+            Provenance = provenance;
         }
-
-        [JsonConstructor]
-        private MunicipalityWasNamed(
-            Guid municipalityId,
-            string name,
-            Language language,
-            ProvenanceData provenance) :
-            this(
-                new MunicipalityId(municipalityId),
-                new MunicipalityName(name, language)) => ((ISetProvenance)this).SetProvenance(provenance.ToProvenance());
-
-        void ISetProvenance.SetProvenance(Provenance provenance) => Provenance = new ProvenanceData(provenance);
     }
 }

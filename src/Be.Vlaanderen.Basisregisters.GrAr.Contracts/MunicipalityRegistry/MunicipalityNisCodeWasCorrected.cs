@@ -1,40 +1,23 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.MunicipalityRegistry
 {
-    using System;
-    using Newtonsoft.Json;
-    using Provenance;
+    using Common;
 
-    [EventTags(EventTag.For.Sync)]
-    [EventName("MunicipalityNisCodeWasCorrected")]
-    [EventDescription("De persistente lokale identificator (NIS-code) van de gemeente werd gecorrigeerd.")]
-    public class MunicipalityNisCodeWasCorrected : IHasProvenance, ISetProvenance
+    public class MunicipalityNisCodeWasCorrected
     {
-        [EventPropertyDescription("Interne GUID van de gemeente.")]
-        public Guid MunicipalityId { get; }
+        public string MunicipalityId { get; }
 
-        [EventPropertyDescription("NIS-code (= objectidentificator) van de gemeente.")]
         public string NisCode { get; }
 
-        [EventPropertyDescription("Metadata bij het event.")]
-        public ProvenanceData Provenance { get; private set; }
+        public Provenance Provenance { get; }
 
         public MunicipalityNisCodeWasCorrected(
-            MunicipalityId municipalityId,
-            NisCode nisCode)
+            string municipalityId,
+            string nisCode,
+            Provenance provenance)
         {
             MunicipalityId = municipalityId;
             NisCode = nisCode;
+            Provenance = provenance;
         }
-
-        [JsonConstructor]
-        private MunicipalityNisCodeWasCorrected(
-            Guid municipalityId,
-            string nisCode,
-            ProvenanceData provenance) :
-            this(
-                new MunicipalityId(municipalityId),
-                new NisCode(nisCode)) => ((ISetProvenance)this).SetProvenance(provenance.ToProvenance());
-
-        void ISetProvenance.SetProvenance(Provenance provenance) => Provenance = new ProvenanceData(provenance);
     }
 }
