@@ -38,6 +38,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{562ACC15
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator", "tools\Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator\Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator.csproj", "{0597BD87-FE42-46C0-B2AA-4C2E00BAC857}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Be.Vlaanderen.Basisregisters.GrAr.Contracts", "src\Be.Vlaanderen.Basisregisters.GrAr.Contracts\Be.Vlaanderen.Basisregisters.GrAr.Contracts.csproj", "{AFB8F63E-9C39-4C1D-8C58-66C542C3632E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +78,10 @@ Global
 		{0597BD87-FE42-46C0-B2AA-4C2E00BAC857}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0597BD87-FE42-46C0-B2AA-4C2E00BAC857}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0597BD87-FE42-46C0-B2AA-4C2E00BAC857}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFB8F63E-9C39-4C1D-8C58-66C542C3632E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFB8F63E-9C39-4C1D-8C58-66C542C3632E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFB8F63E-9C39-4C1D-8C58-66C542C3632E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFB8F63E-9C39-4C1D-8C58-66C542C3632E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{582CC40B-32E8-421D-A080-A17137E39B2D} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
 		{D7389237-367A-426E-AFA8-280F5A88199B} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
 		{0597BD87-FE42-46C0-B2AA-4C2E00BAC857} = {562ACC15-A0F7-4F21-B0DA-90F757F23342}
+		{AFB8F63E-9C39-4C1D-8C58-66C542C3632E} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEAD0895-A570-4203-B6EF-288CA9D98AEF}
