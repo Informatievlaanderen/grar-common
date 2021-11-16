@@ -1,3 +1,11 @@
+# [16.9.0](https://github.com/informatievlaanderen/grar-common/compare/v16.8.3...v16.9.0) (2021-11-16)
+
+
+### Features
+
+* add Contracts ([58d7d44](https://github.com/informatievlaanderen/grar-common/commit/58d7d44c38d568689325a5962751da8b28709895))
+* making contracts WIP ([72506d6](https://github.com/informatievlaanderen/grar-common/commit/72506d6c479b64fe1e963000666c9b39a9371f9b))
+
 ## [16.8.3](https://github.com/informatievlaanderen/grar-common/compare/v16.8.2...v16.8.3) (2021-11-02)
 
 
