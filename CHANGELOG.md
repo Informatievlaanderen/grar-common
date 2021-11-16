@@ -1,3 +1,10 @@
+## [16.9.1](https://github.com/informatievlaanderen/grar-common/compare/v16.9.0...v16.9.1) (2021-11-16)
+
+
+### Bug Fixes
+
+* add marker interface ([3b412a7](https://github.com/informatievlaanderen/grar-common/commit/3b412a7caebf68466a4948763a588fbaea5025ed))
+
 # [16.9.0](https://github.com/informatievlaanderen/grar-common/compare/v16.8.3...v16.9.0) (2021-11-16)
 
 
