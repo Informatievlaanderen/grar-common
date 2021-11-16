@@ -74,7 +74,7 @@ jobs:
 
     - name: Install NPM dependencies
       shell: bash
-      run: npm install
+      run: npm ci
 
     - name: Install Python dependencies
       shell: bash
