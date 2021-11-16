@@ -4,7 +4,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.Common
     {
 
         /// <summary>
-        /// Format ISO8086
+        /// Format ISO-8601
         /// </summary>
         public string Timestamp { get; }
 
