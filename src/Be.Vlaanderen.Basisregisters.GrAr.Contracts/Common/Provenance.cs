@@ -32,5 +32,20 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.Common
         ///
         /// </summary>
         public string Reason { get; }
+
+        public Provenance(string timestamp,
+            string application,
+            string modification,
+            string @operator,
+            string organisation,
+            string reason)
+        {
+            Timestamp = timestamp;
+            Application = application;
+            Modification = modification;
+            Operator = @operator;
+            Organisation = organisation;
+            Reason = reason;
+        }
     }
 }

@@ -73,5 +73,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Provenance
                 .Then(new TestMetadataId(1),
                     expectedEvent));
         }
+
     }
 }
