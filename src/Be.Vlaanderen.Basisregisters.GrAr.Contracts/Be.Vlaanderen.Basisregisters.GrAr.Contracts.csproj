@@ -10,9 +10,6 @@
     <DocumentationFile>bin\Release\net5.0\Be.Vlaanderen.Basisregisters.GrAr.Contracts.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Be.Vlaanderen.Basisregisters.GrAr.Provenance\Be.Vlaanderen.Basisregisters.GrAr.Provenance.csproj" />
-  </ItemGroup>
 
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
