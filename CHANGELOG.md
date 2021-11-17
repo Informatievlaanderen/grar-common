@@ -1,3 +1,10 @@
+# [16.10.0](https://github.com/informatievlaanderen/grar-common/compare/v16.9.1...v16.10.0) (2021-11-17)
+
+
+### Features
+
+* add crab events ([a9d5daa](https://github.com/informatievlaanderen/grar-common/commit/a9d5daafb7b3cdd9858491aad800adf6e36c50d5))
+
 ## [16.9.1](https://github.com/informatievlaanderen/grar-common/compare/v16.9.0...v16.9.1) (2021-11-16)
 
 
