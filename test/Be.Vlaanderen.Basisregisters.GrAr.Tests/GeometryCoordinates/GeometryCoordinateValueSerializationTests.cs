@@ -32,7 +32,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
 
 
             var expectedJson = ("{" +
-                "\"DefaultDoubleFormat\": 0.1" +
+                "\"Gml\": \"<gml:Point srsName='https://www.opengis.net/def/crs/EPSG/0/31370'><gml:pos>5.20 2.20 -0.02</gml:pos></gml:Point>\"" +
+                ",\"DefaultDoubleFormat\": 0.1" +
                 ",\"CoordinateValue\": 3.12" +
                 ",\"PointCoordinates\":[ 5.20, 2.20, -0.02 ]" +
                 ",\"PolygonCoordinates\":[" +
@@ -47,12 +48,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
             "}").Replace(" ", string.Empty);
 
             JsonConvert.SerializeObject(coordinates, Formatting.None)
+                .Replace(" ", string.Empty)
                 .Should()
                 .Be(expectedJson);
         }
 
         private class CoordinatesSerializationTestModel
         {
+            [JsonConverter(typeof(GmlPointConverter))]
+            public double[] Gml => PointCoordinates;
+
             public double DefaultDoubleFormat { get; set; }
 
             [JsonConverter(typeof(GeometryCoordinateValueConverter))]

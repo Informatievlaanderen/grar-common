@@ -21,6 +21,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
         [JsonProperty(Required = Required.DisallowNull)]
         public string Type { get; set; }
 
+        /// <summary>
+        /// Coördinaten volgens Lambert-72 (EPSG:31370).
+        /// </summary>
+        [JsonConverter(typeof(GmlPointConverter))]
+        [JsonProperty(Required = Required.DisallowNull)]
+        public double[] Gml => Coordinates;
+
         public GeoJSONPoint()
         {
             Type = "Point";
