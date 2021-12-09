@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 {
+    using System.Linq;
     using System.Runtime.Serialization;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
@@ -31,32 +32,42 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
         [JsonProperty(Required = Required.DisallowNull)]
         public PositieSpecificatie PositieSpecificatie { get; set; }
 
-        public static implicit operator Point(OsloPoint p) => p.ToPoint();
+        public OsloPoint()
+        {
+        }
+
+        public OsloPoint(string gml)
+        {
+            JsonPoint = new GmlJSONPoint(gml);
+        }
     }
 
     public static class PointExtensions
     {
-        public static Point ToPoint(this OsloPoint p)
+        public static Point ToPoint(this OsloPoint p,
+            double[] coordinates,
+            GmlPoint xmlPoint)
             => new()
             {
-                JsonPoint = p.JsonPoint,
-                XmlPoint = GmlHelper.ToGmlPoint(p.JsonPoint.Coordinates)
+                JsonPoint = p.JsonPoint.ToGeoJSONPoint(coordinates),
+                XmlPoint =  xmlPoint
             };
 
         public static OsloPoint ToOsloPoint(this Point p,
+            string gml,
             PositieGeometrieMethode? methode,
             PositieSpecificatie positieSpecificatie)
             => new()
             {
-                JsonPoint = p.JsonPoint,
+                JsonPoint = p.JsonPoint.ToGmlJSONPoint(gml),
                 PositieGeometrieMethode = methode,
                 PositieSpecificatie = positieSpecificatie
             };
 
-        public static GmlJSONPoint ToGmlJSONPoint(this GeoJSONPoint p)
-            => new() {Coordinates = p.Coordinates, Type = p.Type};
+        public static GmlJSONPoint ToGmlJSONPoint(this GeoJSONPoint p, string gml)
+            => new() {Type = p.Type, Gml = gml};
 
-        public static GeoJSONPoint ToGeoJSONPoint(this GmlJSONPoint p)
-            => new() {Coordinates = p.Coordinates, Type = p.Type};
+        public static GeoJSONPoint ToGeoJSONPoint(this GmlJSONPoint p, double[] coordinates)
+            => new() {Coordinates = coordinates, Type = p.Type};
     }
 }
