@@ -33,6 +33,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
 
             var expectedJson = ("{" +
                 "\"Gml\": \"<gml:Point srsName='https://www.opengis.net/def/crs/EPSG/0/31370'><gml:pos>5.20 2.20 -0.02</gml:pos></gml:Point>\"" +
+                ",\"GmlString\": \"<gml:Point srsName='https://www.opengis.net/def/crs/EPSG/0/31370'><gml:pos>5.20 2.20 -0.02</gml:pos></gml:Point>\"" +
                 ",\"DefaultDoubleFormat\": 0.1" +
                 ",\"CoordinateValue\": 3.12" +
                 ",\"PointCoordinates\":[ 5.20, 2.20, -0.02 ]" +
@@ -57,6 +58,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
         {
             [JsonConverter(typeof(GmlPointConverter))]
             public double[] Gml => PointCoordinates;
+
+            public string GmlString => GmlHelper.ToGmlPointString(PointCoordinates);
 
             public double DefaultDoubleFormat { get; set; }
 
