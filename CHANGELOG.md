@@ -1,3 +1,10 @@
+## [16.11.1](https://github.com/informatievlaanderen/grar-common/compare/v16.11.0...v16.11.1) (2021-12-13)
+
+
+### Bug Fixes
+
+* add GmlJsonPolygon ([8c7b54d](https://github.com/informatievlaanderen/grar-common/commit/8c7b54d1822c53929e1fc1540a22cb38282c507d))
+
 # [16.11.0](https://github.com/informatievlaanderen/grar-common/compare/v16.10.0...v16.11.0) (2021-12-13)
 
 
