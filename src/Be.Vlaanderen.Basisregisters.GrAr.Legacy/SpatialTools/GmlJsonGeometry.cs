@@ -1,32 +1,27 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 {
-    using System.Linq;
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Een GeoJSON punt met gml.
+    /// Een geometrie met GML3.
     /// </summary>
-    public class GmlJSONPoint
+    public class GmlJsonGeometry
     {
         /// <summary>
-        /// GeoJSON-geometrietype.
+        /// Geometrietype.
         /// </summary>
         [JsonProperty(Required = Required.DisallowNull)]
         public string Type { get; set; }
 
         /// <summary>
-        /// Coördinaten volgens Lambert-72 (EPSG:31370).
+        /// GML3: geometrie object serializatie.
         /// </summary>
         [JsonProperty(Required = Required.DisallowNull)]
         public string Gml { get; set; }
 
-        public GmlJSONPoint()
+        public GmlJsonGeometry(string type, string gml)
         {
-            Type = "Point";
-        }
-
-        public GmlJSONPoint(string gml): this()
-        {
+            Type = type;
             Gml = gml;
         }
     }
