@@ -1,3 +1,10 @@
+# [16.11.0](https://github.com/informatievlaanderen/grar-common/compare/v16.10.0...v16.11.0) (2021-12-13)
+
+
+### Features
+
+* add GmlJsonGeometry with Point child ([332681c](https://github.com/informatievlaanderen/grar-common/commit/332681c1525fac526a8ba3ad61bf275ca5f7232c))
+
 # [16.10.0](https://github.com/informatievlaanderen/grar-common/compare/v16.9.1...v16.10.0) (2021-11-17)
 
 
