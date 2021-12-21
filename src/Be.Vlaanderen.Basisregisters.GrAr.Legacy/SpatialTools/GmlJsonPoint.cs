@@ -1,7 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 {
     /// <summary>
-    /// Een geometrie punt met GML3.
+    /// De geometrie.
     /// </summary>
     public class GmlJsonPoint : GmlJsonGeometry
     {

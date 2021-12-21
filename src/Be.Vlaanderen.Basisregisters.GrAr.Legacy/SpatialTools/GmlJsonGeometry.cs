@@ -3,18 +3,18 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Een geometrie met GML3.
+    /// De geometrie.
     /// </summary>
     public class GmlJsonGeometry
     {
         /// <summary>
-        /// Geometrietype.
+        /// Het geometrietype.
         /// </summary>
         [JsonProperty(Required = Required.DisallowNull)]
         public string Type { get; set; }
 
         /// <summary>
-        /// GML3: geometrie object serializatie.
+        /// GML3: geometrie object serialisatie.
         /// </summary>
         [JsonProperty(Required = Required.DisallowNull)]
         public string Gml { get; set; }
