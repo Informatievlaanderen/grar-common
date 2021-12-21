@@ -1,3 +1,10 @@
+## [16.11.2](https://github.com/informatievlaanderen/grar-common/compare/v16.11.1...v16.11.2) (2021-12-21)
+
+
+### Bug Fixes
+
+* gawr-2513 api docs ([4d884fd](https://github.com/informatievlaanderen/grar-common/commit/4d884fdaf541aab1dc2b2d1eada870ff6cf3827d))
+
 ## [16.11.1](https://github.com/informatievlaanderen/grar-common/compare/v16.11.0...v16.11.1) (2021-12-13)
 
 
