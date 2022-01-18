@@ -1,7 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 {
     /// <summary>
-    /// Een geometrie polygon met GML3.
+    /// De geometrie.
     /// </summary>
     public class GmlJsonPolygon : GmlJsonGeometry
     {
