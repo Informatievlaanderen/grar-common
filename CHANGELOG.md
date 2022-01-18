@@ -1,3 +1,10 @@
+## [16.11.3](https://github.com/informatievlaanderen/grar-common/compare/v16.11.2...v16.11.3) (2022-01-18)
+
+
+### Bug Fixes
+
+* change docs GML polygon ([feedc00](https://github.com/informatievlaanderen/grar-common/commit/feedc005ab2b695ab8c82091c50eb619ade7065f))
+
 ## [16.11.2](https://github.com/informatievlaanderen/grar-common/compare/v16.11.1...v16.11.2) (2021-12-21)
 
 
