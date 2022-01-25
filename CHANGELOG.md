@@ -1,3 +1,10 @@
+## [16.11.4](https://github.com/informatievlaanderen/grar-common/compare/v16.11.3...v16.11.4) (2022-01-25)
+
+
+### Bug Fixes
+
+* add Provenance ctor ([f16e04e](https://github.com/informatievlaanderen/grar-common/commit/f16e04e1d5cc5c2f0bc9d72f15680589abad1836))
+
 ## [16.11.3](https://github.com/informatievlaanderen/grar-common/compare/v16.11.2...v16.11.3) (2022-01-18)
 
 
