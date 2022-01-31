@@ -1,3 +1,10 @@
+## [16.11.5](https://github.com/informatievlaanderen/grar-common/compare/v16.11.4...v16.11.5) (2022-01-31)
+
+
+### Bug Fixes
+
+* correct name of municipality facility contract ([9d5cd71](https://github.com/informatievlaanderen/grar-common/commit/9d5cd7188d5581d751fd1b9b563fbe1c1c653ae7))
+
 ## [16.11.4](https://github.com/informatievlaanderen/grar-common/compare/v16.11.3...v16.11.4) (2022-01-25)
 
 
