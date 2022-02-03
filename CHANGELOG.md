@@ -1,3 +1,10 @@
+## [16.11.6](https://github.com/informatievlaanderen/grar-common/compare/v16.11.5...v16.11.6) (2022-02-03)
+
+
+### Bug Fixes
+
+* remove operator from provenance contract ([4ed97f5](https://github.com/informatievlaanderen/grar-common/commit/4ed97f576659ae213d412809fe2d82372f3c4cc0))
+
 ## [16.11.5](https://github.com/informatievlaanderen/grar-common/compare/v16.11.4...v16.11.5) (2022-01-31)
 
 
