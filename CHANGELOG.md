@@ -1,3 +1,10 @@
+# [16.12.0](https://github.com/informatievlaanderen/grar-common/compare/v16.11.6...v16.12.0) (2022-02-22)
+
+
+### Features
+
+* add IHasCommandProvenance ([cf38d12](https://github.com/informatievlaanderen/grar-common/commit/cf38d121b858a2a9054386fd55516fde1b24bf3a))
+
 ## [16.11.6](https://github.com/informatievlaanderen/grar-common/compare/v16.11.5...v16.11.6) (2022-02-03)
 
 
