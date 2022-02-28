@@ -1,9 +1,11 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
 {
+    using System.Collections.Generic;
+    using Common;
     using Newtonsoft.Json;
     using NodaTime;
 
-    public class ProvenanceData
+    public class ProvenanceData : IHaveHashFields
     {
         public Instant Timestamp { get; }
         public Application Application { get; }
@@ -47,5 +49,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             new Operator(Operator),
             Modification,
             Organisation);
+
+        public IEnumerable<string> GetHashFields()
+        {
+            yield return Timestamp.ToString();
+            yield return Application.ToString();
+            yield return Modification.ToString();
+            yield return Operator;
+            yield return Organisation.ToString();
+            yield return Reason;
+        }
     }
 }
