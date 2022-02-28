@@ -1,3 +1,10 @@
+# [16.13.0](https://github.com/informatievlaanderen/grar-common/compare/v16.12.0...v16.13.0) (2022-02-28)
+
+
+### Features
+
+* add IHaveHash & IHaveHashFields ([27040d8](https://github.com/informatievlaanderen/grar-common/commit/27040d840461fc843de587616917616d9a5e8d79))
+
 # [16.12.0](https://github.com/informatievlaanderen/grar-common/compare/v16.11.6...v16.12.0) (2022-02-22)
 
 
