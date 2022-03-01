@@ -1,3 +1,10 @@
+# [16.14.0](https://github.com/informatievlaanderen/grar-common/compare/v16.13.0...v16.14.0) (2022-03-01)
+
+
+### Features
+
+* change GetHash method to Hash property ([e41f6b1](https://github.com/informatievlaanderen/grar-common/commit/e41f6b1b905e4d6b466377de345106bbade676c5))
+
 # [16.13.0](https://github.com/informatievlaanderen/grar-common/compare/v16.12.0...v16.13.0) (2022-02-28)
 
 
