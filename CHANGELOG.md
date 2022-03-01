@@ -1,3 +1,10 @@
+## [16.14.1](https://github.com/informatievlaanderen/grar-common/compare/v16.14.0...v16.14.1) (2022-03-01)
+
+
+### Reverts
+
+* Revert "feat: change GetHash method to Hash property" ([6d50f06](https://github.com/informatievlaanderen/grar-common/commit/6d50f06e7d531f30531c04917051ee557f73cc81))
+
 # [16.14.0](https://github.com/informatievlaanderen/grar-common/compare/v16.13.0...v16.14.0) (2022-03-01)
 
 
