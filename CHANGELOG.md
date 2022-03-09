@@ -1,3 +1,10 @@
+# [16.15.0](https://github.com/informatievlaanderen/grar-common/compare/v16.14.1...v16.15.0) (2022-03-09)
+
+
+### Features
+
+* add identity fields to provenance ([0d2eae1](https://github.com/informatievlaanderen/grar-common/commit/0d2eae14f81369aa1d655ccb9ffc1a1969c506a9))
+
 ## [16.14.1](https://github.com/informatievlaanderen/grar-common/compare/v16.14.0...v16.14.1) (2022-03-01)
 
 
