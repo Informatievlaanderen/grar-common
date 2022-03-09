@@ -67,6 +67,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             {nameof(Organisation), Organisation},
             {nameof(Reason), Reason?.ToString()}
         };
+        
+        public IEnumerable<object> GetIdentityFields() => Reflect();
 
         protected override IEnumerable<object> Reflect()
         {
