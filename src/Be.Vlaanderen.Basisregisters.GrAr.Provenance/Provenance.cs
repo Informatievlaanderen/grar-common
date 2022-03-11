@@ -74,6 +74,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
         {
             yield return Application;
             yield return Modification;
+            yield return Timestamp.ToString();
             yield return Operator;
             yield return Organisation;
             yield return Reason;
