@@ -1,3 +1,10 @@
+## [16.15.1](https://github.com/informatievlaanderen/grar-common/compare/v16.15.0...v16.15.1) (2022-03-11)
+
+
+### Bug Fixes
+
+* add timestamp to Reflect in Provenance.Provenance ([4f4c587](https://github.com/informatievlaanderen/grar-common/commit/4f4c587e21d8cd5339d667371abc552f83565829))
+
 # [16.15.0](https://github.com/informatievlaanderen/grar-common/compare/v16.14.1...v16.15.0) (2022-03-09)
 
 
