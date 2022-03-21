@@ -1,3 +1,10 @@
+## [16.16.1](https://github.com/informatievlaanderen/grar-common/compare/v16.16.0...v16.16.1) (2022-03-21)
+
+
+### Bug Fixes
+
+* guid to string in streetname events ([f0f008e](https://github.com/informatievlaanderen/grar-common/commit/f0f008e8958df6603933386ea6e4850035b9b40b))
+
 # [16.16.0](https://github.com/informatievlaanderen/grar-common/compare/v16.15.1...v16.16.0) (2022-03-21)
 
 
