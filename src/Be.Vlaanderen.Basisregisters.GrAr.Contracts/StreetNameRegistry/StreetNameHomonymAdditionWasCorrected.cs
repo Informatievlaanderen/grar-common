@@ -5,7 +5,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 
     public class StreetNameHomonymAdditionWasCorrected : IQueueMessage
     {
-        public Guid StreetNameId { get; }
+        public string StreetNameId { get; }
 
         public string HomonymAddition { get; }
 
@@ -13,7 +13,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 
         public Provenance Provenance { get; }
 
-        public StreetNameHomonymAdditionWasCorrected(Guid streetNameId,
+        public StreetNameHomonymAdditionWasCorrected(string streetNameId,
             string homonymAddition,
             string? language,
             Provenance provenance)

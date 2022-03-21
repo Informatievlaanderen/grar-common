@@ -5,13 +5,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 
     public class StreetNamePrimaryLanguageWasCorrected : IQueueMessage
     {
-        public Guid StreetNameId { get; }
+        public string StreetNameId { get; }
 
         public string PrimaryLanguage { get; }
 
         public Provenance Provenance { get; }
 
-        public StreetNamePrimaryLanguageWasCorrected(Guid streetNameId,
+        public StreetNamePrimaryLanguageWasCorrected(string streetNameId,
             string primaryLanguage,
             Provenance provenance)
         {
