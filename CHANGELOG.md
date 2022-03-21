@@ -1,3 +1,10 @@
+# [16.16.0](https://github.com/informatievlaanderen/grar-common/compare/v16.15.1...v16.16.0) (2022-03-21)
+
+
+### Features
+
+* add streetname events ([8114453](https://github.com/informatievlaanderen/grar-common/commit/8114453686f5a8827b1249ee6f68590205c1798f))
+
 ## [16.15.1](https://github.com/informatievlaanderen/grar-common/compare/v16.15.0...v16.15.1) (2022-03-11)
 
 
