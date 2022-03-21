@@ -5,11 +5,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 
     public class StreetNameWasCorrectedToRetired : IQueueMessage
     {
-        public Guid StreetNameId { get; }
+        public string StreetNameId { get; }
 
         public Provenance Provenance { get; }
 
-        public StreetNameWasCorrectedToRetired(Guid streetNameId,
+        public StreetNameWasCorrectedToRetired(string streetNameId,
             Provenance provenance)
         {
             StreetNameId = streetNameId;

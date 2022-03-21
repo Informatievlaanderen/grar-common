@@ -5,7 +5,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 
     public class StreetNamePersistentLocalIdWasAssigned : IQueueMessage
     {
-        public Guid StreetNameId { get; }
+        public string StreetNameId { get; }
 
         public int PersistentLocalId { get; }
 
@@ -13,7 +13,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 
         public Provenance Provenance { get; }
 
-        public StreetNamePersistentLocalIdWasAssigned(Guid streetNameId,
+        public StreetNamePersistentLocalIdWasAssigned(string streetNameId,
             int persistentLocalId,
             string assignmentDate,
             Provenance provenance)

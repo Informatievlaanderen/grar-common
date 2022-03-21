@@ -5,11 +5,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 
     public class StreetNameWasCorrectedToCurrent : IQueueMessage
     {
-        public Guid StreetNameId { get; }
+        public string StreetNameId { get; }
 
         public Provenance Provenance { get; }
 
-        public StreetNameWasCorrectedToCurrent(Guid streetNameId,
+        public StreetNameWasCorrectedToCurrent(string streetNameId,
             Provenance provenance)
         {
             StreetNameId = streetNameId;

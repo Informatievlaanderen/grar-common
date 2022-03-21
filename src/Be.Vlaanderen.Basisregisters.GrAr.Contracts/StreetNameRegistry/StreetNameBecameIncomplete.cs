@@ -5,11 +5,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 
     public class StreetNameBecameIncomplete : IQueueMessage
     {
-        public Guid StreetNameId { get; }
+        public string StreetNameId { get; }
 
         public Provenance Provenance { get; }
 
-        public StreetNameBecameIncomplete(Guid streetNameId,
+        public StreetNameBecameIncomplete(string streetNameId,
             Provenance provenance)
         {
             StreetNameId = streetNameId;

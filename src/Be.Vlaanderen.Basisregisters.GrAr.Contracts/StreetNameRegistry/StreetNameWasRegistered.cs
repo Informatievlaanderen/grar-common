@@ -5,7 +5,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 
     public class StreetNameWasRegistered : IQueueMessage
     {
-        public Guid StreetNameId { get; }
+        public string StreetNameId { get; }
 
         public Guid MunicipalityId { get; }
 
@@ -13,7 +13,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 
         public Provenance Provenance { get; }
 
-        public StreetNameWasRegistered(Guid streetNameId,
+        public StreetNameWasRegistered(string streetNameId,
             Guid municipalityId,
             string nisCode,
             Provenance provenance)
