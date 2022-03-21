@@ -1,3 +1,10 @@
+## [16.16.2](https://github.com/informatievlaanderen/grar-common/compare/v16.16.1...v16.16.2) (2022-03-21)
+
+
+### Bug Fixes
+
+* municipalityid to string type in streetname events ([3a9d772](https://github.com/informatievlaanderen/grar-common/commit/3a9d772154717fb707739451d40ce4433d256295))
+
 ## [16.16.1](https://github.com/informatievlaanderen/grar-common/compare/v16.16.0...v16.16.1) (2022-03-21)
 
 
