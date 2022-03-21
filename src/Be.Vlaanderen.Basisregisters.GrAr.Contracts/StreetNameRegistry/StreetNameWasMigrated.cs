@@ -1,20 +1,19 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 {
-    using System;
     using Common;
 
     public class StreetNameWasMigrated : IQueueMessage
     {
         public string StreetNameId { get; }
 
-        public Guid MunicipalityId { get; }
+        public string MunicipalityId { get; }
 
         public int PersistentLocalId { get; }
 
         public Provenance Provenance { get; }
 
         public StreetNameWasMigrated(string streetNameId,
-            Guid municipalityId,
+            string municipalityId,
             int persistentLocalId,
             Provenance provenance)
         {
