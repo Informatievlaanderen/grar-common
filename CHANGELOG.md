@@ -1,3 +1,10 @@
+## [16.16.3](https://github.com/informatievlaanderen/grar-common/compare/v16.16.2...v16.16.3) (2022-03-21)
+
+
+### Bug Fixes
+
+* add 3 new streetname events ([8fee5e0](https://github.com/informatievlaanderen/grar-common/commit/8fee5e0843f7286d1e6a001f1d81c843756e2f74))
+
 ## [16.16.2](https://github.com/informatievlaanderen/grar-common/compare/v16.16.1...v16.16.2) (2022-03-21)
 
 
