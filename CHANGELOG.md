@@ -1,3 +1,15 @@
+# [17.0.0](https://github.com/informatievlaanderen/grar-common/compare/v16.16.3...v17.0.0) (2022-03-28)
+
+
+### Features
+
+* move to dotnet 6.0.3 ([2385743](https://github.com/informatievlaanderen/grar-common/commit/2385743e59ddf726a13b85234a91436c482d9b10))
+
+
+### BREAKING CHANGES
+
+* move to dotnet 6.0.3
+
 ## [16.16.3](https://github.com/informatievlaanderen/grar-common/compare/v16.16.2...v16.16.3) (2022-03-21)
 
 
