@@ -1,6 +1,8 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Common
 {
     using System.Globalization;
+    using System.Linq;
+    using System.Security.Cryptography;
     using System.Text;
 
     public static class StringExtensions
@@ -39,6 +41,29 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common
                 .Replace(" ", string.Empty);
 
             return input.RemoveDiacritics();
+        }
+
+        public static string ToEventHash(this IHaveHashFields haveHashFields, params string[] extraValues)
+        {
+            const string hashSeparator = "þ";
+
+            var valuesToHash = extraValues.Union(haveHashFields.GetHashFields());
+            var value = string.Join(hashSeparator, valuesToHash);
+
+            using SHA512 sha512Managed = new SHA512Managed();
+            var hashedBytes = sha512Managed.ComputeHash(Encoding.UTF8.GetBytes(value));
+
+            return GetStringFromHash(hashedBytes);
+        }
+
+        private static string GetStringFromHash(byte[] hash)
+        {
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                result.Append(hash[i].ToString("X2"));
+            }
+            return result.ToString();
         }
     }
 }
