@@ -1,3 +1,10 @@
+# [17.1.0](https://github.com/informatievlaanderen/grar-common/compare/v17.0.0...v17.1.0) (2022-04-01)
+
+
+### Features
+
+* add extension method to calculate eventhash ([c264ee8](https://github.com/informatievlaanderen/grar-common/commit/c264ee8d7d8867a622d0ec502d313d18569a7785))
+
 # [17.0.0](https://github.com/informatievlaanderen/grar-common/compare/v16.16.3...v17.0.0) (2022-03-28)
 
 
