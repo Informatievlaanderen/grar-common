@@ -10,10 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Extracts\References\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Extracts\References\Belge_Lambert_1972.prj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
