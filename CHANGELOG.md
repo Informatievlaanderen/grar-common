@@ -1,3 +1,10 @@
+# [17.2.0](https://github.com/informatievlaanderen/grar-common/compare/v17.1.0...v17.2.0) (2022-04-03)
+
+
+### Features
+
+* add AddEventHash pipe ([2af5640](https://github.com/informatievlaanderen/grar-common/commit/2af5640aa9854b72aed457c5f97d4ab82dd51d06))
+
 # [17.1.0](https://github.com/informatievlaanderen/grar-common/compare/v17.0.0...v17.1.0) (2022-04-01)
 
 
