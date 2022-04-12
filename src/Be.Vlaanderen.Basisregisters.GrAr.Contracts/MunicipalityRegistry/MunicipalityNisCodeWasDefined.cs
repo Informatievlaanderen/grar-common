@@ -2,7 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.MunicipalityRegistry
 {
     using Common;
 
-    public class MunicipalityNisCodeWasDefined : IQueueMessage
+    public class MunicipalityNisCodeWasDefined : IMessage
     {
         public string MunicipalityId { get; }
 

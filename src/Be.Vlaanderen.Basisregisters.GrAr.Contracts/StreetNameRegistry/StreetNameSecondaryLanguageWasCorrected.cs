@@ -2,7 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 {
     using Common;
 
-    public class StreetNameSecondaryLanguageWasCorrected : IQueueMessage
+    public class StreetNameSecondaryLanguageWasCorrected : IMessage
     {
         public string StreetNameId { get; }
 

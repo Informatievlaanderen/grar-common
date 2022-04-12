@@ -2,7 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.MunicipalityRegistry
 {
     using Common;
 
-    public class MunicipalityWasCorrectedToRetired : IQueueMessage
+    public class MunicipalityWasCorrectedToRetired : IMessage
     {
         public string MunicipalityId { get; }
 
