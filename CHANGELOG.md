@@ -1,3 +1,10 @@
+## [17.2.1](https://github.com/informatievlaanderen/grar-common/compare/v17.2.0...v17.2.1) (2022-04-27)
+
+
+### Bug Fixes
+
+* redirect sonar to /dev/null ([2430b43](https://github.com/informatievlaanderen/grar-common/commit/2430b43adcac5e5a2cbaf6db96a3389cbbcd7aed))
+
 # [17.2.0](https://github.com/informatievlaanderen/grar-common/compare/v17.1.0...v17.2.0) (2022-04-03)
 
 
