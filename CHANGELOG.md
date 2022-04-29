@@ -1,3 +1,10 @@
+## [17.2.2](https://github.com/informatievlaanderen/grar-common/compare/v17.2.1...v17.2.2) (2022-04-29)
+
+
+### Bug Fixes
+
+* run sonar end when release version != none ([fd24ceb](https://github.com/informatievlaanderen/grar-common/commit/fd24ceb7bb191780d4bb28999f5530504d07219f))
+
 ## [17.2.1](https://github.com/informatievlaanderen/grar-common/compare/v17.2.0...v17.2.1) (2022-04-27)
 
 
