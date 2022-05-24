@@ -1,3 +1,10 @@
+# [17.3.0](https://github.com/informatievlaanderen/grar-common/compare/v17.2.2...v17.3.0) (2022-05-24)
+
+
+### Features
+
+* add addressregistry contracts ([030e1cf](https://github.com/informatievlaanderen/grar-common/commit/030e1cf974bcf28c491d44948cedb3064c7644e7))
+
 ## [17.2.2](https://github.com/informatievlaanderen/grar-common/compare/v17.2.1...v17.2.2) (2022-04-29)
 
 
