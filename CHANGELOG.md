@@ -1,3 +1,10 @@
+## [17.3.1](https://github.com/informatievlaanderen/grar-common/compare/v17.3.0...v17.3.1) (2022-05-27)
+
+
+### Bug Fixes
+
+* missing constructor in address contract ([51adc3e](https://github.com/informatievlaanderen/grar-common/commit/51adc3eda4eb6ff48fc05ebffc9e13c86cc46621))
+
 # [17.3.0](https://github.com/informatievlaanderen/grar-common/compare/v17.2.2...v17.3.0) (2022-05-24)
 
 
