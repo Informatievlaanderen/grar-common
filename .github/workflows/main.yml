@@ -88,7 +88,7 @@ jobs:
         path: ~/sonar/cache
         key: ${{ runner.os }}-sonar
         restore-keys: ${{ runner.os }}-sonar
-        
+
     - name: Cache SonarCloud scanner
       id: cache-sonar-scanner
       uses: actions/cache@v1
@@ -96,7 +96,7 @@ jobs:
         path: ./.sonar/scanner
         key: ${{ runner.os }}-sonar-scanner
         restore-keys: ${{ runner.os }}-sonar-scanner
-        
+
     - name: Install SonarCloud scanner
       if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
       shell: bash
@@ -104,7 +104,7 @@ jobs:
         mkdir .sonar
         mkdir .sonar/scanner
         dotnet tool update dotnet-sonarscanner --tool-path ./.sonar/scanner
-        
+
     - name: Sonar begin build & analyze
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
@@ -131,7 +131,7 @@ jobs:
         [ ! -f semver ] && echo none > semver
         echo RELEASE_VERSION=$(cat semver) >> $GITHUB_ENV
       shell: bash
-        
+
     - name: Sonar end build & analyze
       if: env.RELEASE_VERSION != 'none'
       env:
@@ -152,6 +152,7 @@ jobs:
         node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Common.$SEMVER.nupkg
         node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Contracts.$SEMVER.nupkg
         node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Extracts.$SEMVER.nupkg
+        node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Edit.$SEMVER.nupkg
       env:
         LIBNAME: Be.Vlaanderen.Basisregisters.GrAr
         SEMVER: ${{ env.RELEASE_VERSION }}
