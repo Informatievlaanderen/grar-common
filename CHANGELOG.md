@@ -1,3 +1,15 @@
+# [17.4.0](https://github.com/informatievlaanderen/grar-common/compare/v17.3.1...v17.4.0) (2022-06-30)
+
+
+### Bug Fixes
+
+* build ([b444540](https://github.com/informatievlaanderen/grar-common/commit/b444540e2766598904a0da6d798932b057bb3f93))
+
+
+### Features
+
+* add edit project ([02f1295](https://github.com/informatievlaanderen/grar-common/commit/02f1295db28a6fe9cc808bba372fe73762fe5bb4))
+
 ## [17.3.1](https://github.com/informatievlaanderen/grar-common/compare/v17.3.0...v17.3.1) (2022-05-27)
 
 
