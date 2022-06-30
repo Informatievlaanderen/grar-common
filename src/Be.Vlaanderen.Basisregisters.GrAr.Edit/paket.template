@@ -16,7 +16,6 @@ description Contains common edit classes for GrAr.
 
 dependencies
   framework: net6.0
-    Be.Vlaanderen.Basisregisters.GrAr.Common >= LOCKEDVERSION
     NetTopologySuite >= LOCKEDVERSION
 
 files
