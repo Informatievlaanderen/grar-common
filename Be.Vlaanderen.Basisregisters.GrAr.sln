@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.202
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{59931296-488E-4D68-90C9-CCB5E74AEA3A}"
 	ProjectSection(SolutionItems) = preProject
@@ -38,7 +38,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{562ACC15
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator", "tools\Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator\Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator.csproj", "{0597BD87-FE42-46C0-B2AA-4C2E00BAC857}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Be.Vlaanderen.Basisregisters.GrAr.Contracts", "src\Be.Vlaanderen.Basisregisters.GrAr.Contracts\Be.Vlaanderen.Basisregisters.GrAr.Contracts.csproj", "{AFB8F63E-9C39-4C1D-8C58-66C542C3632E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Vlaanderen.Basisregisters.GrAr.Contracts", "src\Be.Vlaanderen.Basisregisters.GrAr.Contracts\Be.Vlaanderen.Basisregisters.GrAr.Contracts.csproj", "{AFB8F63E-9C39-4C1D-8C58-66C542C3632E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Vlaanderen.Basisregisters.GrAr.Edit", "src\Be.Vlaanderen.Basisregisters.GrAr.Edit\Be.Vlaanderen.Basisregisters.GrAr.Edit.csproj", "{38714190-48F6-4114-988C-4045D8135C8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +84,10 @@ Global
 		{AFB8F63E-9C39-4C1D-8C58-66C542C3632E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFB8F63E-9C39-4C1D-8C58-66C542C3632E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFB8F63E-9C39-4C1D-8C58-66C542C3632E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38714190-48F6-4114-988C-4045D8135C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38714190-48F6-4114-988C-4045D8135C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38714190-48F6-4114-988C-4045D8135C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38714190-48F6-4114-988C-4045D8135C8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +102,7 @@ Global
 		{D7389237-367A-426E-AFA8-280F5A88199B} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
 		{0597BD87-FE42-46C0-B2AA-4C2E00BAC857} = {562ACC15-A0F7-4F21-B0DA-90F757F23342}
 		{AFB8F63E-9C39-4C1D-8C58-66C542C3632E} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
+		{38714190-48F6-4114-988C-4045D8135C8B} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEAD0895-A570-4203-B6EF-288CA9D98AEF}
