@@ -1,4 +1,4 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Edit
+namespace Be.Vlaanderen.Basisregisters.GrAr.Edit.Contracts
 {
     using System.Runtime.Serialization;
 
