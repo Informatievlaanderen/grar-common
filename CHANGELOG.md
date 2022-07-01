@@ -1,3 +1,10 @@
+## [17.4.1](https://github.com/informatievlaanderen/grar-common/compare/v17.4.0...v17.4.1) (2022-07-01)
+
+
+### Bug Fixes
+
+* correct namespace of PositieGeometrieMethode ([3654265](https://github.com/informatievlaanderen/grar-common/commit/365426528242d76c0e535793f8dde433c2ab5348))
+
 # [17.4.0](https://github.com/informatievlaanderen/grar-common/compare/v17.3.1...v17.4.0) (2022-06-30)
 
 
