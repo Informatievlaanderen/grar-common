@@ -1,3 +1,10 @@
+## [17.4.2](https://github.com/informatievlaanderen/grar-common/compare/v17.4.1...v17.4.2) (2022-07-27)
+
+
+### Bug Fixes
+
+* bump dependencies ([3466017](https://github.com/informatievlaanderen/grar-common/commit/34660173ed6a9824cbc682b1d0b38cd3013f3e0e))
+
 ## [17.4.1](https://github.com/informatievlaanderen/grar-common/compare/v17.4.0...v17.4.1) (2022-07-01)
 
 
