@@ -1,3 +1,10 @@
+# [17.7.0](https://github.com/informatievlaanderen/grar-common/compare/v17.6.0...v17.7.0) (2022-08-01)
+
+
+### Features
+
+* add address was regulated ([e064ae3](https://github.com/informatievlaanderen/grar-common/commit/e064ae3ee89e6a582cda1a904c12f575f0fbed8c))
+
 # [17.6.0](https://github.com/informatievlaanderen/grar-common/compare/v17.5.0...v17.6.0) (2022-07-29)
 
 
