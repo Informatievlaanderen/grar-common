@@ -1,3 +1,10 @@
+## [17.7.1](https://github.com/informatievlaanderen/grar-common/compare/v17.7.0...v17.7.1) (2022-08-01)
+
+
+### Bug Fixes
+
+* naming AddressWasRegularized ([2d53414](https://github.com/informatievlaanderen/grar-common/commit/2d534143d4e8a702a643582387b9317e37de4951))
+
 # [17.7.0](https://github.com/informatievlaanderen/grar-common/compare/v17.6.0...v17.7.0) (2022-08-01)
 
 
