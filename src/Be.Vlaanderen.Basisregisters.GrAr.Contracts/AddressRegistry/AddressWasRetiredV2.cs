@@ -10,7 +10,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
 
         public Provenance Provenance { get; }
 
-        public AddressWasRetiredV2(int streetNamePersistentLocalId,
+        public AddressWasRetiredV2(
+            int streetNamePersistentLocalId,
             int addressPersistentLocalId,
             Provenance provenance)
         {
