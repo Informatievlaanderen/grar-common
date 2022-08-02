@@ -1,3 +1,10 @@
+## [17.7.2](https://github.com/informatievlaanderen/grar-common/compare/v17.7.1...v17.7.2) (2022-08-02)
+
+
+### Bug Fixes
+
+* version bump after adding additional retire and reject address events ([4b0caf6](https://github.com/informatievlaanderen/grar-common/commit/4b0caf6e3ac5fd94863f489860ed44b333a5d5ca))
+
 ## [17.7.1](https://github.com/informatievlaanderen/grar-common/compare/v17.7.0...v17.7.1) (2022-08-01)
 
 
