@@ -1,3 +1,10 @@
+# [17.8.0](https://github.com/informatievlaanderen/grar-common/compare/v17.7.2...v17.8.0) (2022-08-05)
+
+
+### Features
+
+* add StreetNameWasRejected ([c174958](https://github.com/informatievlaanderen/grar-common/commit/c1749584a39b0c46566563464a70db5dfd896fd5))
+
 ## [17.7.2](https://github.com/informatievlaanderen/grar-common/compare/v17.7.1...v17.7.2) (2022-08-02)
 
 
