@@ -1,3 +1,10 @@
+# [17.10.0](https://github.com/informatievlaanderen/grar-common/compare/v17.9.0...v17.10.0) (2022-08-08)
+
+
+### Features
+
+* Add StreetNameWasRetired to AddressRegistry contracts ([158a865](https://github.com/informatievlaanderen/grar-common/commit/158a86578df4013e63430570cbe423f6160ba3a7))
+
 # [17.9.0](https://github.com/informatievlaanderen/grar-common/compare/v17.8.0...v17.9.0) (2022-08-08)
 
 
