@@ -10,6 +10,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
 
         public Provenance Provenance { get; }
 
+
         public AddressWasRejectedBecauseHouseNumberWasRejected(
             int streetNamePersistentLocalId,
             int addressPersistentLocalId,
