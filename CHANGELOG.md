@@ -1,3 +1,10 @@
+# [17.9.0](https://github.com/informatievlaanderen/grar-common/compare/v17.8.0...v17.9.0) (2022-08-08)
+
+
+### Features
+
+* trigger version build ([5a5c5da](https://github.com/informatievlaanderen/grar-common/commit/5a5c5da642c95451967135f18f65ba8fed6587e7))
+
 # [17.8.0](https://github.com/informatievlaanderen/grar-common/compare/v17.7.2...v17.8.0) (2022-08-05)
 
 
