@@ -1,3 +1,10 @@
+# [17.11.0](https://github.com/informatievlaanderen/grar-common/compare/v17.10.0...v17.11.0) (2022-08-09)
+
+
+### Features
+
+* add StreetNameNameWasCorrectedV2 ([b6db97d](https://github.com/informatievlaanderen/grar-common/commit/b6db97d6f9f5155d35146874f9cd5e9506bb3809))
+
 # [17.10.0](https://github.com/informatievlaanderen/grar-common/compare/v17.9.0...v17.10.0) (2022-08-08)
 
 
