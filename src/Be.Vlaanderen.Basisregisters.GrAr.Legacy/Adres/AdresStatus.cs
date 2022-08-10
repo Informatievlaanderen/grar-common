@@ -24,6 +24,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Adres
         /// Het adres is formeel gehistoreerd door het gemeentebestuur.
         /// </summary>
         [EnumMember]
-        Gehistoreerd = 3
+        Gehistoreerd = 3,
+
+        /// <summary>
+        /// Het adres is formeel afgekeurd door het gemeentebestuur.
+        /// </summary>
+        [EnumMember]
+        Afgekeurd = 4
     }
 }
