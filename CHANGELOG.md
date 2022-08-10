@@ -1,3 +1,10 @@
+# [17.12.0](https://github.com/informatievlaanderen/grar-common/compare/v17.11.0...v17.12.0) (2022-08-10)
+
+
+### Features
+
+* Add address legacy status 'afgekeurd' ([fbc2652](https://github.com/informatievlaanderen/grar-common/commit/fbc2652d6863026c73871651b4341f3b7776c7d5))
+
 # [17.11.0](https://github.com/informatievlaanderen/grar-common/compare/v17.10.0...v17.11.0) (2022-08-09)
 
 
