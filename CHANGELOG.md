@@ -1,3 +1,10 @@
+## [17.12.1](https://github.com/informatievlaanderen/grar-common/compare/v17.12.0...v17.12.1) (2022-08-11)
+
+
+### Bug Fixes
+
+* rename StreetNameNameWasCorrectedV2 to StreetNameNamesWereCorrected ([0c39c88](https://github.com/informatievlaanderen/grar-common/commit/0c39c88674de062a63d0a6cae7c8d0e9177c2bef))
+
 # [17.12.0](https://github.com/informatievlaanderen/grar-common/compare/v17.11.0...v17.12.0) (2022-08-10)
 
 
