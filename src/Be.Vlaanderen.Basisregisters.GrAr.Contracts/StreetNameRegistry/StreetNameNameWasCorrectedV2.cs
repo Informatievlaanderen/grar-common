@@ -4,24 +4,25 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
     using Common;
     using Contracts;
 
-    public class StreetNameNameWasCorrectedV2 : IQueueMessage
+    public class StreetNameNamesWereCorrected : IQueueMessage
     {
         public string MunicipalityId { get; }
 
+        public int PersistentLocalId { get; }
+
         public IDictionary<string, string> StreetNameNames { get; }
 
-        public int PersistentLocalId { get; }
 
         public Provenance Provenance { get; }
 
-        public StreetNameNameWasCorrectedV2(string municipalityId,
-            IDictionary<string, string> streetNameNames,
+        public StreetNameNamesWereCorrected(string municipalityId,
             int persistentLocalId,
+            IDictionary<string, string> streetNameNames,
             Provenance provenance)
         {
             MunicipalityId = municipalityId;
-            StreetNameNames = streetNameNames;
             PersistentLocalId = persistentLocalId;
+            StreetNameNames = streetNameNames;
             Provenance = provenance;    
         }
     }
