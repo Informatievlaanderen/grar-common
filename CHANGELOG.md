@@ -1,3 +1,10 @@
+# [17.13.0](https://github.com/informatievlaanderen/grar-common/compare/v17.12.2...v17.13.0) (2022-08-12)
+
+
+### Features
+
+* add AddressWasRejectedBecauseHouseNumberWasRetired ([798cfc0](https://github.com/informatievlaanderen/grar-common/commit/798cfc0313b8f13980f5e66b2d9bebf0e7ca76f5))
+
 ## [17.12.2](https://github.com/informatievlaanderen/grar-common/compare/v17.12.1...v17.12.2) (2022-08-12)
 
 
