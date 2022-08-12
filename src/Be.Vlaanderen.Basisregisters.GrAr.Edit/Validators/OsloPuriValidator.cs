@@ -8,6 +8,7 @@
         public static bool TryParseIdentifier(string url, out string identifier)
         {
             identifier = string.Empty;
+
             try
             {
                 if (string.IsNullOrEmpty(url))
