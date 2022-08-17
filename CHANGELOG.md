@@ -1,3 +1,10 @@
+# [17.14.0](https://github.com/informatievlaanderen/grar-common/compare/v17.13.0...v17.14.0) (2022-08-17)
+
+
+### Features
+
+* add PositieSpecificatieMethode ([112b408](https://github.com/informatievlaanderen/grar-common/commit/112b4085c0165c391792dfc1aa177d2ed60ca97c))
+
 # [17.13.0](https://github.com/informatievlaanderen/grar-common/compare/v17.12.2...v17.13.0) (2022-08-12)
 
 
