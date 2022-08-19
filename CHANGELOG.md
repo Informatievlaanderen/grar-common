@@ -1,3 +1,10 @@
+# [17.15.0](https://github.com/informatievlaanderen/grar-common/compare/v17.14.0...v17.15.0) (2022-08-19)
+
+
+### Features
+
+* add AddressPositionWasChanged ([007ce05](https://github.com/informatievlaanderen/grar-common/commit/007ce0546a5fd2f472eba48c7cc3bc6d458d5365))
+
 # [17.14.0](https://github.com/informatievlaanderen/grar-common/compare/v17.13.0...v17.14.0) (2022-08-17)
 
 
