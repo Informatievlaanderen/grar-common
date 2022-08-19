@@ -1,3 +1,10 @@
+## [17.15.1](https://github.com/informatievlaanderen/grar-common/compare/v17.15.0...v17.15.1) (2022-08-19)
+
+
+### Bug Fixes
+
+* style to trigger build ([69174a6](https://github.com/informatievlaanderen/grar-common/commit/69174a6bf269f237523d5cbf92d6e6e236575e91))
+
 # [17.15.0](https://github.com/informatievlaanderen/grar-common/compare/v17.14.0...v17.15.0) (2022-08-19)
 
 
