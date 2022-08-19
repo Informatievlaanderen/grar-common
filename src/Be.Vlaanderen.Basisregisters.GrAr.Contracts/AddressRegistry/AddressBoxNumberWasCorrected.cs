@@ -10,7 +10,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
 
         public Provenance Provenance { get; }
 
-        public AddressBoxNumberWasCorrected(string addressId,
+        public AddressBoxNumberWasCorrected(
+            string addressId,
             string boxNumber,
             Provenance provenance)
         {
