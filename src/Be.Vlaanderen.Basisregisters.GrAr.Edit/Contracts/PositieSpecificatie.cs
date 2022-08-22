@@ -36,10 +36,5 @@ public enum PositieSpecificatie
     /// <summary>
     /// De positie duidt een ingang aan.
     /// </summary>
-    [EnumMember] Ingang = 9,
-
-    /// <summary>
-    /// De positie duidt een wegsegment aan.
-    /// </summary>
-    [EnumMember] Wegsegment = 11
+    [EnumMember] Ingang = 9
 }
