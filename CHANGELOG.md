@@ -1,3 +1,10 @@
+## [17.15.2](https://github.com/informatievlaanderen/grar-common/compare/v17.15.1...v17.15.2) (2022-08-22)
+
+
+### Bug Fixes
+
+* remove `wegsegment` from PositieSpecificatie enum ([f6e8aaa](https://github.com/informatievlaanderen/grar-common/commit/f6e8aaa457f679d54aac001fb5c3453d1406a7c0))
+
 ## [17.15.1](https://github.com/informatievlaanderen/grar-common/compare/v17.15.0...v17.15.1) (2022-08-19)
 
 
