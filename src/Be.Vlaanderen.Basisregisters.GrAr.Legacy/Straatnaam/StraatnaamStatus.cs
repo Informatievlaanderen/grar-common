@@ -21,6 +21,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Straatnaam
         /// Een straatnaam die niet langer in gebruik is.
         /// </summary>
         [EnumMember]
-        Gehistoreerd = 3
+        Gehistoreerd = 3,
+
+        /// <summary>
+        /// Een straatnaam die afgekeurd is.
+        /// </summary>
+        [EnumMember]
+        Afgekeurd = 4
     }
 }
