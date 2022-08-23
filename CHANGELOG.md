@@ -1,3 +1,10 @@
+# [17.17.0](https://github.com/informatievlaanderen/grar-common/compare/v17.16.0...v17.17.0) (2022-08-23)
+
+
+### Features
+
+* add streetname status Rejected ([cca6791](https://github.com/informatievlaanderen/grar-common/commit/cca6791d40c87e8bcc0381f4e256c49fefb1377f))
+
 # [17.16.0](https://github.com/informatievlaanderen/grar-common/compare/v17.15.2...v17.16.0) (2022-08-22)
 
 
