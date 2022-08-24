@@ -1,3 +1,10 @@
+# [17.18.0](https://github.com/informatievlaanderen/grar-common/compare/v17.17.0...v17.18.0) (2022-08-24)
+
+
+### Features
+
+* extend AddressWasProposedV2 with geometry ([b8852b6](https://github.com/informatievlaanderen/grar-common/commit/b8852b6c28d584907d41bda921b48bf1f7f7cfc5))
+
 # [17.17.0](https://github.com/informatievlaanderen/grar-common/compare/v17.16.0...v17.17.0) (2022-08-23)
 
 
