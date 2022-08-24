@@ -16,6 +16,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
 
         public string? BoxNumber { get; }
 
+        public string GeometryMethod { get; }
+
+        public string GeometrySpecification { get; }
+
+        public string ExtendedWkbGeometry { get; }
+
         public Provenance Provenance { get; }
 
         public AddressWasProposedV2(int streetNamePersistentLocalId,
@@ -24,6 +30,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
             string postalCode,
             string houseNumber,
             string? boxNumber,
+            string geometryMethod,
+            string geometrySpecification,
+            string extendedWkbGeometry,
             Provenance provenance)
         {
             StreetNamePersistentLocalId = streetNamePersistentLocalId;
@@ -32,6 +41,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
             PostalCode = postalCode;
             HouseNumber = houseNumber;
             BoxNumber = boxNumber;
+            GeometryMethod = geometryMethod;
+            GeometrySpecification = geometrySpecification;
+            ExtendedWkbGeometry = extendedWkbGeometry;
             Provenance = provenance;
         }
     }
