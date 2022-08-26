@@ -156,7 +156,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                         messages,
                         cancellationToken);
 
-                    if (latestAggregate?.Root is ISnapshotable snapshotable)
+                    var snapshotable = latestAggregate?.Root as ISnapshotable;
+                    if (snapshotable != null)
                     {
                         await CreateSnapshot(
                             snapshotable,
@@ -167,8 +168,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                                     .Select(e => e is EventWithMetadata ? e : new EventWithMetadata(e))
                                     .Cast<EventWithMetadata>()
                                     .ToImmutableList(),
-                                result.CurrentVersion,
-                                result.CurrentPosition),
+                                result.CurrentVersion),
                             streamStore,
                             concurrentUnitOfWork,
                             eventMapping,
@@ -213,7 +213,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                 Info =
                 {
                     Type = eventMapping.GetEventName(snapshot.GetType()),
-                    Position = context.SnapshotPosition
+                    StreamVersion = context.StreamVersion
                 }
             };
 
@@ -221,7 +221,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                 uow.GetSnapshotIdentifier(context.Aggregate.Identifier),
                 ExpectedVersion.Any,
                 new NewStreamMessage(
-                    Deterministic.Create(Deterministic.Namespaces.Events, $"snapshot-{context.SnapshotPosition}"),
+                    Deterministic.Create(Deterministic.Namespaces.Events, $"snapshot-{context.Aggregate.Identifier}-{context.StreamVersion}"),
                     $"SnapshotContainer<{snapshotContainer.Info.Type}>",
                     eventSerializer.SerializeObject(snapshotContainer)),
                 ct);
