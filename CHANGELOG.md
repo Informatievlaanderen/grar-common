@@ -1,3 +1,10 @@
+# [17.20.0](https://github.com/informatievlaanderen/grar-common/compare/v17.19.0...v17.20.0) (2022-08-29)
+
+
+### Features
+
+* add NetTopology Geometry extension CentroidWithinArea ([15f9a32](https://github.com/informatievlaanderen/grar-common/commit/15f9a329c3e3eb883a2537a3debb2e49686b84b1))
+
 # [17.19.0](https://github.com/informatievlaanderen/grar-common/compare/v17.18.0...v17.19.0) (2022-08-26)
 
 
