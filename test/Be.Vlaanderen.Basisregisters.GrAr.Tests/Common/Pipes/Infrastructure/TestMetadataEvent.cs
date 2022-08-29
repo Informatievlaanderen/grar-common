@@ -1,8 +1,8 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Pipes.Infrastructure
+namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Common.Pipes.Infrastructure
 {
     using System.Collections.Generic;
-    using Common;
     using EventHandling;
+    using GrAr.Common;
 
     [EventName(EventName)]
     public class TestMetadataEvent : IHaveHash

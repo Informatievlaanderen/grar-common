@@ -1,4 +1,4 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Pipes.Infrastructure
+namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Common.Pipes.Infrastructure
 {
     using System.Collections.Generic;
     using AggregateSource;
@@ -7,7 +7,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Pipes.Infrastructure
     {
         public TestMetadataAggregate()
         {
-            this.Register<TestMetadataEvent>(e => { });
+            Register<TestMetadataEvent>(e => { });
         }
         public void TestMetadata(TestMetadataCommand command)
         {

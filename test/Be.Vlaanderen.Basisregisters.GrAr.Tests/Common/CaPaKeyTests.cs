@@ -1,9 +1,9 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Tests
+namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Common
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Common;
     using FluentAssertions;
+    using GrAr.Common;
     using Xunit;
 
     public class CaPaKeyTests

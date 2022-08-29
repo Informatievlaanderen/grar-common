@@ -6,7 +6,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Provenance.Infrastructure
     {
         public TestMetadataAggregate()
         {
-            this.Register<TestMetadataEvent>(e => { });
+            Register<TestMetadataEvent>(e => { });
         }
         public void TestMetadata(TestMetadaCommand command)
         {

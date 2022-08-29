@@ -1,9 +1,9 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Tests
+namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Common
 {
-    using Common;
-    using FluentAssertions;
-    using NodaTime.Extensions;
     using System;
+    using FluentAssertions;
+    using GrAr.Common;
+    using NodaTime.Extensions;
     using Xunit;
 
     public class NodaHelperTests

@@ -1,11 +1,11 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Pipes.Infrastructure
+namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Common.Pipes.Infrastructure
 {
     using System;
     using AggregateSource;
     using CommandHandling;
-    using CommandHandling.SqlStreamStore;
-    using Common.Pipes;
+    using Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore;
     using EventHandling;
+    using GrAr.Common.Pipes;
     using SqlStreamStore;
 
     public sealed class TestMetadataCommandHandlerModule : CommandHandlerModule

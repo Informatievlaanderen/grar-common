@@ -1,9 +1,9 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Tests
+namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Extracts
 {
     using System;
-    using FluentAssertions;
-    using GrAr.Extracts;
+    using Be.Vlaanderen.Basisregisters.GrAr.Extracts;
     using Shaperon;
+    using FluentAssertions;
     using Xunit;
 
     public class DbaseStringExtensionsTests

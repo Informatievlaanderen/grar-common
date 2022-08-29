@@ -1,21 +1,20 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Pipes
+namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Common.Pipes
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Autofac;
+    using AutoFixture;
     using AggregateSource;
     using AggregateSource.Testing;
     using AggregateSource.Testing.Comparers;
-    using AggregateSource.Testing.SqlStreamStore.Autofac;
-    using Autofac;
-    using AutoFixture;
+    using Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac;
     using CommandHandling;
-    using Common.Pipes;
     using EventHandling;
-    using EventHandling.Autofac;
+    using Be.Vlaanderen.Basisregisters.EventHandling.Autofac;
     using FluentAssertions;
+    using GrAr.Common.Pipes;
     using Infrastructure;
     using KellermanSoftware.CompareNetObjects;
-    using SqlStreamStore;
     using Xunit;
     using Xunit.Abstractions;
 

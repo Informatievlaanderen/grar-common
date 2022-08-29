@@ -1,5 +1,6 @@
 Microsoft.NET.Test.Sdk
 
+NetTopologySuite
 xunit
 xunit.runner.visualstudio
 Microsoft.Extensions.Logging
