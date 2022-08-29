@@ -1,7 +1,7 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Pipes.Infrastructure
+namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Common.Pipes.Infrastructure
 {
     using AggregateSource;
-    using AggregateSource.SqlStreamStore;
+    using Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore;
     using EventHandling;
     using SqlStreamStore;
 
