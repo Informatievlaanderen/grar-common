@@ -1,3 +1,10 @@
+## [17.20.1](https://github.com/informatievlaanderen/grar-common/compare/v17.20.0...v17.20.1) (2022-08-31)
+
+
+### Bug Fixes
+
+* docs PositieSpecificatie ([e079b5f](https://github.com/informatievlaanderen/grar-common/commit/e079b5fad0faf5a5d5b6dee5d5e8a46f712a84da))
+
 # [17.20.0](https://github.com/informatievlaanderen/grar-common/compare/v17.19.0...v17.20.0) (2022-08-29)
 
 
