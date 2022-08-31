@@ -3,7 +3,7 @@
 using System.Runtime.Serialization;
 
 /// <summary>
-/// De specificatiemethode van de positie.
+/// De specificatie van de positie.
 /// </summary>
 [DataContract(Name = "PositieSpecificatie", Namespace = "")]
 public enum PositieSpecificatie
