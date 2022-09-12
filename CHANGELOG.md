@@ -1,3 +1,10 @@
+# [17.21.0](https://github.com/informatievlaanderen/grar-common/compare/v17.20.1...v17.21.0) (2022-09-12)
+
+
+### Features
+
+* add AddressWasRemovedV2 ([cdef5ae](https://github.com/informatievlaanderen/grar-common/commit/cdef5ae4a8a748590e6ae6ca8e9d0de2fcb3455b))
+
 ## [17.20.1](https://github.com/informatievlaanderen/grar-common/compare/v17.20.0...v17.20.1) (2022-08-31)
 
 
