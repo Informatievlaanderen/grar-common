@@ -1,3 +1,10 @@
+# [17.23.0](https://github.com/informatievlaanderen/grar-common/compare/v17.22.0...v17.23.0) (2022-09-14)
+
+
+### Features
+
+* AddressPostalCodeWasCorrectedV2 ([b95b8df](https://github.com/informatievlaanderen/grar-common/commit/b95b8df7467637033effba2b7f7e975bf9cd1a6e))
+
 # [17.22.0](https://github.com/informatievlaanderen/grar-common/compare/v17.21.0...v17.22.0) (2022-09-13)
 
 
