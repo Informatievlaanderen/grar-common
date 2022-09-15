@@ -1,3 +1,10 @@
+# [17.24.0](https://github.com/informatievlaanderen/grar-common/compare/v17.23.0...v17.24.0) (2022-09-15)
+
+
+### Features
+
+* AddressHouseNumberWasCorrectedV2 ([6385704](https://github.com/informatievlaanderen/grar-common/commit/6385704dbf84d646e3e7d6f606670af694eb9709))
+
 # [17.23.0](https://github.com/informatievlaanderen/grar-common/compare/v17.22.0...v17.23.0) (2022-09-14)
 
 
