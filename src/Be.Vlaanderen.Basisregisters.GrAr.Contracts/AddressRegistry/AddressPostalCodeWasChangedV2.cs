@@ -1,5 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Common;
 
     public class AddressPostalCodeWasChangedV2 : IQueueMessage
@@ -8,6 +10,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
 
         public int AddressPersistentLocalId { get; }
 
+        public List<int> BoxNumberPersistentLocalIds { get; }
+
         public string PostalCode { get; }
 
         public Provenance Provenance { get; }
@@ -15,11 +19,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
         public AddressPostalCodeWasChangedV2(
             int streetNamePersistentLocalId,
             int addressPersistentLocalId,
+            IEnumerable<int> boxNumberPersistentLocalIds,
             string postalCode,
             Provenance provenance)
         {
             StreetNamePersistentLocalId = streetNamePersistentLocalId;
             AddressPersistentLocalId = addressPersistentLocalId;
+            BoxNumberPersistentLocalIds = boxNumberPersistentLocalIds.ToList();
             PostalCode = postalCode;
             Provenance = provenance;
         }
