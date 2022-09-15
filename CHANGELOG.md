@@ -1,3 +1,10 @@
+## [17.24.1](https://github.com/informatievlaanderen/grar-common/compare/v17.24.0...v17.24.1) (2022-09-15)
+
+
+### Bug Fixes
+
+* include address box number ids in event when postal code is changed ([7977682](https://github.com/informatievlaanderen/grar-common/commit/79776820241bf9c79bdbbaf581c209e8c449863c))
+
 # [17.24.0](https://github.com/informatievlaanderen/grar-common/compare/v17.23.0...v17.24.0) (2022-09-15)
 
 
