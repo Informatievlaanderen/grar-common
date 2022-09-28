@@ -1,3 +1,10 @@
+# [17.25.0](https://github.com/informatievlaanderen/grar-common/compare/v17.24.1...v17.25.0) (2022-09-28)
+
+
+### Features
+
+* add addressBoxNumberWasCorrectedV2 ([415760c](https://github.com/informatievlaanderen/grar-common/commit/415760c598e026f163f0979871db13ac4aea25f2))
+
 ## [17.24.1](https://github.com/informatievlaanderen/grar-common/compare/v17.24.0...v17.24.1) (2022-09-15)
 
 
