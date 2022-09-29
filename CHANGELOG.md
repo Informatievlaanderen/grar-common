@@ -1,3 +1,11 @@
+# [17.26.0](https://github.com/informatievlaanderen/grar-common/compare/v17.25.0...v17.26.0) (2022-09-29)
+
+
+### Features
+
+* add AddressWasCorrectedToProposedV2 ([607e675](https://github.com/informatievlaanderen/grar-common/commit/607e675b8905cc8b491fc677e3dfeffbc722e654))
+* add AddressWasCorrectedToProposedV2 ([a32702e](https://github.com/informatievlaanderen/grar-common/commit/a32702e0edb9d3227d8a637e4240625fa696cdd8))
+
 # [17.25.0](https://github.com/informatievlaanderen/grar-common/compare/v17.24.1...v17.25.0) (2022-09-28)
 
 
