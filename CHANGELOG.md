@@ -1,3 +1,10 @@
+# [17.27.0](https://github.com/informatievlaanderen/grar-common/compare/v17.26.0...v17.27.0) (2022-10-03)
+
+
+### Features
+
+* add addressRejectionWasCorrected event ([f8a8b2a](https://github.com/informatievlaanderen/grar-common/commit/f8a8b2a56c6a9e4e67a122aa2c34cdc3d7380b1a))
+
 # [17.26.0](https://github.com/informatievlaanderen/grar-common/compare/v17.25.0...v17.26.0) (2022-09-29)
 
 
