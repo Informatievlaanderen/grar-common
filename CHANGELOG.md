@@ -1,3 +1,15 @@
+# [17.28.0](https://github.com/informatievlaanderen/grar-common/compare/v17.27.0...v17.28.0) (2022-10-03)
+
+
+### Bug Fixes
+
+* correct AddressWasCorrectToProposedV2 to AddressWasCorrectedFromAprovedToProposed ([39fafd8](https://github.com/informatievlaanderen/grar-common/commit/39fafd8a478e6040401a0bb3b283467aeb4c5c5a))
+
+
+### Features
+
+* Add AddressWasCorrectedFromRetiredToCurrent ([5d46f69](https://github.com/informatievlaanderen/grar-common/commit/5d46f6946f23cfd23bd456e115ba53274ad133ae))
+
 # [17.27.0](https://github.com/informatievlaanderen/grar-common/compare/v17.26.0...v17.27.0) (2022-10-03)
 
 
