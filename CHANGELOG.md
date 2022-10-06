@@ -1,3 +1,10 @@
+# [17.29.0](https://github.com/informatievlaanderen/grar-common/compare/v17.28.0...v17.29.0) (2022-10-06)
+
+
+### Features
+
+* add postinfodetailgemeente ([700535c](https://github.com/informatievlaanderen/grar-common/commit/700535c0c7e6c0bc7c89aa20ae5c16b713e5ce6b))
+
 # [17.28.0](https://github.com/informatievlaanderen/grar-common/compare/v17.27.0...v17.28.0) (2022-10-03)
 
 
