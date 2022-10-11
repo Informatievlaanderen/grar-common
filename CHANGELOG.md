@@ -1,3 +1,10 @@
+# [17.31.0](https://github.com/informatievlaanderen/grar-common/compare/v17.30.0...v17.31.0) (2022-10-11)
+
+
+### Features
+
+* StreetNameWasCorrectedFromRetiredToCurrent ([80c57b4](https://github.com/informatievlaanderen/grar-common/commit/80c57b4b70f065fe5b615a8eadde62394c424ee1))
+
 # [17.30.0](https://github.com/informatievlaanderen/grar-common/compare/v17.29.0...v17.30.0) (2022-10-11)
 
 
