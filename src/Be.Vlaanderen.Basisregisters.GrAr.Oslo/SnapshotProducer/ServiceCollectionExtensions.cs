@@ -5,7 +5,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
 
     public static class ServiceCollectionExtensions
     {
-        public static void AddPublicApiHttpProxy(this IServiceCollection services, string osloApiUrl)
+        public static void AddOsloProxy(this IServiceCollection services, string osloApiUrl)
         {
             if (string.IsNullOrEmpty(osloApiUrl))
             {
