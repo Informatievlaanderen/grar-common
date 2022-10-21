@@ -1,3 +1,10 @@
+## [17.33.2](https://github.com/informatievlaanderen/grar-common/compare/v17.33.1...v17.33.2) (2022-10-21)
+
+
+### Bug Fixes
+
+* rename SnapshotProducer extension method ([da32b47](https://github.com/informatievlaanderen/grar-common/commit/da32b47a18dd92b89504a0f20bc4b9ba4bd8825f))
+
 ## [17.33.1](https://github.com/informatievlaanderen/grar-common/compare/v17.33.0...v17.33.1) (2022-10-21)
 
 
