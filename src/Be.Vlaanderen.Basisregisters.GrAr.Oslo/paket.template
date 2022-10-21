@@ -16,8 +16,11 @@ description Contains common OSLO classes from GrAr.
 
 dependencies
   framework: net6.0
+    Be.Vlaanderen.Basisregisters.GrAr.Common CURRENTVERSION
     Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset >= LOCKEDVERSION
-
+    Be.Vlaanderen.Basisregisters.AspNetCore.Mvc.Formatters.Json >= LOCKEDVERSION
+    Microsoft.Extensions.Configuration >= LOCKEDVERSION
+    Microsoft.Extensions.Http.Polly >= LOCKEDVERSION
     Newtonsoft.Json >= LOCKEDVERSION
 
 files
