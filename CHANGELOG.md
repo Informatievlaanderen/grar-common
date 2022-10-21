@@ -1,3 +1,10 @@
+## [17.33.1](https://github.com/informatievlaanderen/grar-common/compare/v17.33.0...v17.33.1) (2022-10-21)
+
+
+### Bug Fixes
+
+* add logging & rename oslo snapshot proxy ([b71c40f](https://github.com/informatievlaanderen/grar-common/commit/b71c40faa642f2f12da8c5374b20b706bf3e217e))
+
 # [17.33.0](https://github.com/informatievlaanderen/grar-common/compare/v17.32.0...v17.33.0) (2022-10-21)
 
 
