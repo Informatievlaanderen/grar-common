@@ -5,16 +5,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
 
     public static class ServiceCollectionExtensions
     {
-        public static void AddPublicApiHttpProxy(this IServiceCollection services, string publicApiUrl)
+        public static void AddPublicApiHttpProxy(this IServiceCollection services, string osloApiUrl)
         {
-            if (string.IsNullOrEmpty(publicApiUrl))
+            if (string.IsNullOrEmpty(osloApiUrl))
             {
-                throw new ArgumentNullException(nameof(publicApiUrl),"PublicApiUrl config property not set.");
+                throw new ArgumentNullException(nameof(osloApiUrl),"OsloApiUrl config property not set.");
             }
 
-            services.AddHttpClient<IPublicApiHttpProxy, PublicApiHttpProxy>(c =>
+            services.AddHttpClient<IOsloProxy, OsloProxy>(c =>
             {
-                c.BaseAddress = new Uri(publicApiUrl.TrimEnd('/'));
+                c.BaseAddress = new Uri(osloApiUrl.TrimEnd('/'));
             });
         }
     }

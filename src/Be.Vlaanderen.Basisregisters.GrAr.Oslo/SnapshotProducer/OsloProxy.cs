@@ -6,16 +6,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
     using AspNetCore.Mvc.Formatters.Json;
     using Newtonsoft.Json;
 
-    public interface IPublicApiHttpProxy
+    public interface IOsloProxy
     {
         Task<OsloResult> GetSnapshot(string persistentLocal, CancellationToken cancellationToken);
     }
 
-    public sealed class PublicApiHttpProxy : IPublicApiHttpProxy
+    public sealed class OsloProxy : IOsloProxy
     {
         private readonly HttpClient _httpClient;
 
-        public PublicApiHttpProxy(HttpClient httpClient)
+        public OsloProxy(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }

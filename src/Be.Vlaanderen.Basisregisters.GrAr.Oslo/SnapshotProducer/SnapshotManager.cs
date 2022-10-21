@@ -5,20 +5,25 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.Extensions.Logging;
     using NodaTime;
     using Polly;
 
     public sealed class SnapshotManager : ISnapshotManager
     {
-        private readonly IPublicApiHttpProxy _publicApiHttpProxy;
+        private readonly ILogger<SnapshotManager> _logger;
+        private readonly IOsloProxy _osloProxy;
         private readonly int _maxRetryWaitIntervalSeconds;
         private readonly int _retryBackoffFactor;
 
         public SnapshotManager(
-            IPublicApiHttpProxy publicApiHttpProxy,
+            ILoggerFactory loggerFactory,
+            IOsloProxy osloProxy,
             SnapshotManagerOptions options)
         {
-            _publicApiHttpProxy = publicApiHttpProxy;
+
+            _logger = loggerFactory.CreateLogger<SnapshotManager>();
+            _osloProxy = osloProxy;
             _maxRetryWaitIntervalSeconds = options.MaxRetryWaitIntervalSeconds;
             _retryBackoffFactor = options.RetryBackoffFactor;
         }
@@ -29,7 +34,17 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
             CancellationToken ct)
         {
             return await Policy
-                .Handle<Exception>(e => e is StaleSnapshotException or HttpRequestException)
+                .Handle<Exception>(e =>
+                    {
+                        var shouldHandle = e is StaleSnapshotException or HttpRequestException;
+
+                        if (shouldHandle)
+                        {
+                            _logger.LogWarning(e, $"Retry getting snapshot for '{persistentLocalId}' because of exception.");
+                        }
+
+                        return shouldHandle;
+                    })
                 .WaitAndRetryForeverAsync(retryAttempt =>
                 {
                     var waitIntervalSeconds = retryAttempt * _retryBackoffFactor;
@@ -54,10 +69,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
 
                 try
                 {
-                    snapshot = await _publicApiHttpProxy.GetSnapshot(persistentLocalId, ct);
+                    _logger.LogInformation($"Requesting snapshot for '{persistentLocalId}'");
+                    snapshot = await _osloProxy.GetSnapshot(persistentLocalId, ct);
+                    _logger.LogInformation("Snapshot received.");
                 }
                 catch (HttpRequestException e)
                 {
+                    _logger.LogWarning(e, $"HttpRequestException while getting snapshot for '{persistentLocalId}'.");
+
                     switch (e.StatusCode)
                     {
                         case HttpStatusCode.Gone when throwStaleWhenGone: throw;

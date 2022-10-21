@@ -7,6 +7,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
     using System.Threading.Tasks;
     using FluentAssertions;
     using GrAr.Oslo.SnapshotProducer;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.Extensions.Logging.Abstractions;
     using Moq;
     using NodaTime;
     using Xunit;
@@ -18,8 +20,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
         {
             var httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://api.basisregisters.staging-vlaanderen.be/v2/straatnamen");
-            var proxy = new PublicApiHttpProxy(httpClient);
-            var snapshotManager = new SnapshotManager(proxy,SnapshotManagerOptions.Create("1", "1"));
+            var proxy = new OsloProxy(httpClient);
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), proxy,SnapshotManagerOptions.Create("1", "1"));
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse("2022-03-23T14:24:04+01:00")),
@@ -37,7 +39,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
 
             var ct = new CancellationTokenSource(5000);
 
-            var mockProxy = new Mock<IPublicApiHttpProxy>();
+            var mockProxy = new Mock<IOsloProxy>();
             mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(() => new OsloResult
                 {
@@ -47,7 +49,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
                     }
                 });
 
-            var snapshotManager = new SnapshotManager(mockProxy.Object, SnapshotManagerOptions.Create("1", "1"));
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, SnapshotManagerOptions.Create("1", "1"));
             var result = snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
@@ -67,7 +69,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
 
             var ct = new CancellationTokenSource(5000);
 
-            var mockProxy = new Mock<IPublicApiHttpProxy>();
+            var mockProxy = new Mock<IOsloProxy>();
             mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(() => new OsloResult
                 {
@@ -77,7 +79,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
                     }
                 });
 
-            var snapshotManager = new SnapshotManager(mockProxy.Object, SnapshotManagerOptions.Create("1", "1"));
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, SnapshotManagerOptions.Create("1", "1"));
             var result = snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
@@ -99,7 +101,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
 
             var count = 0;
 
-            var mockProxy = new Mock<IPublicApiHttpProxy>();
+            var mockProxy = new Mock<IOsloProxy>();
 
             mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), CancellationToken.None))
                 .ReturnsAsync(() =>
@@ -128,7 +130,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
                     };
                 });
 
-            var snapshotManager = new SnapshotManager(mockProxy.Object, options);
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, options);
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
@@ -150,7 +152,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
 
             var count = 0;
 
-            var mockProxy = new Mock<IPublicApiHttpProxy>();
+            var mockProxy = new Mock<IOsloProxy>();
 
             mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), CancellationToken.None))
                 .ReturnsAsync(() =>
@@ -172,7 +174,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
                     throw new HttpRequestException(string.Empty, null, HttpStatusCode.Gone);
                 });
 
-            var snapshotManager = new SnapshotManager(mockProxy.Object, options);
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, options);
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
@@ -190,12 +192,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
 
             var doNotThrowStaleWhenGone = false;
 
-            var mockProxy = new Mock<IPublicApiHttpProxy>();
+            var mockProxy = new Mock<IOsloProxy>();
 
             mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), CancellationToken.None))
                 .Throws(new HttpRequestException(string.Empty, null, HttpStatusCode.Gone));
 
-            var snapshotManager = new SnapshotManager(mockProxy.Object, options);
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, options);
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse("2022-03-23T14:24:04+01:00")),
@@ -229,7 +231,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
 
             var count = 0;
 
-            var mockProxy = new Mock<IPublicApiHttpProxy>();
+            var mockProxy = new Mock<IOsloProxy>();
 
             mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), CancellationToken.None))
                 .ReturnsAsync(() =>
@@ -251,7 +253,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
                     throw new HttpRequestException(string.Empty, null, httpStatusCode);
                 });
 
-            var snapshotManager = new SnapshotManager(mockProxy.Object, options);
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, options);
             await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
