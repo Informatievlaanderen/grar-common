@@ -1,3 +1,10 @@
+# [17.33.0](https://github.com/informatievlaanderen/grar-common/compare/v17.32.0...v17.33.0) (2022-10-21)
+
+
+### Features
+
+* add snapshotmanager to oslo ([ff68705](https://github.com/informatievlaanderen/grar-common/commit/ff68705af0222c2003d009cd2a926a6f17cd2285))
+
 # [17.32.0](https://github.com/informatievlaanderen/grar-common/compare/v17.31.0...v17.32.0) (2022-10-11)
 
 
