@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Edit.Validators
 {
+    using System;
     using System.Xml;
     using NetTopologySuite.Geometries;
     using NetTopologySuite.IO.GML2;
@@ -25,6 +26,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Edit.Validators
                 return geometry.IsValid;
             }
             catch (XmlException)
+            {
+                return false;
+            }
+            catch (ArgumentException)
             {
                 return false;
             }
