@@ -1,3 +1,16 @@
+# [17.34.0](https://github.com/informatievlaanderen/grar-common/compare/v17.33.2...v17.34.0) (2022-11-09)
+
+
+### Bug Fixes
+
+* add nuget to dependabot ([9f92873](https://github.com/informatievlaanderen/grar-common/commit/9f92873fd2b1fa4dd6326352db4f9349e69d1910))
+* use VBR_SONAR_TOKEN ([0e3ece3](https://github.com/informatievlaanderen/grar-common/commit/0e3ece39505dd026ada348c629217fedd454b83d))
+
+
+### Features
+
+* catch ArgumentException when validating GML polygon ([af938f5](https://github.com/informatievlaanderen/grar-common/commit/af938f5738bbde3998da0ee4fbf17c7f6f4ed8cf))
+
 ## [17.33.2](https://github.com/informatievlaanderen/grar-common/compare/v17.33.1...v17.33.2) (2022-10-21)
 
 
