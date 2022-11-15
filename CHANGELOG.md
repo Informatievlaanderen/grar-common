@@ -1,3 +1,10 @@
+# [17.35.0](https://github.com/informatievlaanderen/grar-common/compare/v17.34.0...v17.35.0) (2022-11-15)
+
+
+### Features
+
+* add building unit functions ([6e06d4d](https://github.com/informatievlaanderen/grar-common/commit/6e06d4dbee2003dd9c2f702ed269510e3ed28f0b))
+
 # [17.34.0](https://github.com/informatievlaanderen/grar-common/compare/v17.33.2...v17.34.0) (2022-11-09)
 
 
