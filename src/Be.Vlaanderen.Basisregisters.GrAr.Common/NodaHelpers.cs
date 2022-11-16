@@ -5,9 +5,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common
 
     public static class NodaHelpers
     {
-        public static DateTimeZone BelgianDateTimeZone = DateTimeZoneProviders.Tzdb.GetZoneOrNull("Europe/Brussels");
+        public static readonly DateTimeZone? BelgianDateTimeZone = DateTimeZoneProviders.Tzdb.GetZoneOrNull("Europe/Brussels");
 
         public static DateTimeOffset ToBelgianDateTimeOffset(this Instant value)
-            => value.InZone(BelgianDateTimeZone).ToDateTimeOffset();
+            => value.InZone(BelgianDateTimeZone ?? throw new InvalidOperationException($"BelgianDateTimeZone is null")).ToDateTimeOffset();
     }
 }
