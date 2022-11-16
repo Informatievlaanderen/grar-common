@@ -22,7 +22,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
 
     public partial class IdempotentCommandHandlerModule
     {
-        private int _maxSqlInSize = 2000;
+        private readonly int _maxSqlInSize = 2000;
         protected ILifetimeScope Container { get; }
         private const int AggregateExpectedVersionNotSet = -1000;
         private const int IdempotencyCommandTimeoutInSeconds = 120;
@@ -50,7 +50,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
 
                 // WHICH COMMANDS SHOULD I PROCESS?
                 if (commands.Any(x => !x.Key.HasValue))
+                {
                     throw new InvalidCommandException("Ongeldig verzoek id.");
+                }
 
                 var validCommands = commands
                     .Where(x => x.Key.HasValue)
@@ -93,13 +95,17 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                     .ToList();
 
                 if (commandsToProcess.Count == 0)
+                {
                     return null;
+                }
 
                 try
                 {
                     // Store commandIds in Command Store if it does not exist
                     foreach (var commandToProcess in commandsToProcess)
+                    {
                         await context.ProcessedCommands.AddAsync(commandToProcess.ProcessedCommand, cancellationToken);
+                    }
 
                     await context.SaveChangesAsync(cancellationToken);
 
@@ -124,7 +130,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
 
                             var commandMetadata = commandMessage?.Metadata ?? new Dictionary<string, object>();
                             if (!commandMetadata.ContainsKey("commandId"))
+                            {
                                 commandMetadata.Add("commandId", commandId);
+                            }
 
                             changes.Add(Tuple.Create(commandId, events, commandMetadata));
 
@@ -135,7 +143,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                     }
 
                     if (!changes.Any())
+                    {
                         return -1L;
+                    }
 
                     var i = 1;
                     var messages = changes
@@ -182,9 +192,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                 {
                     // On exception, remove commandIds from Command Store
                     foreach (var commandToProcess in commandsToProcess)
+                    {
                         context.ProcessedCommands.Remove(commandToProcess.ProcessedCommand);
+                    }
 
-                    context.SaveChanges();
+                    await context.SaveChangesAsync(cancellationToken);
 
                     throw;
                 }
@@ -201,11 +213,15 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
             CancellationToken ct)
         {
             if (!snapshotSupport.Strategy.ShouldCreateSnapshot(context))
+            {
                 return;
+            }
 
             var snapshot = snapshotSupport.TakeSnapshot();
             if (snapshot == null)
+            {
                 throw new InvalidOperationException("Snapshot missing.");
+            }
 
             var snapshotContainer = new SnapshotContainer
             {
@@ -227,7 +243,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                 ct);
         }
 
-        private class CommandContainer
+        private sealed class CommandContainer
         {
             public string ContentHash { get; }
 

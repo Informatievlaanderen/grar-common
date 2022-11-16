@@ -52,7 +52,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
                 Run(options);
             }
             else
+            {
                 throw new InvalidOperationException("Importer is not allowed to run at this time.");
+            }
 
             api.FinalizeImport(options);
         }
@@ -60,7 +62,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         private static bool IsAllowedToRun(ICommandProcessorOptions<TKey> options)
         {
             if (options.Mode == ImportMode.Init)
+            {
                 return true;
+            }
 
             var from = options.From.ToCrabDateTime();
             var until = options.Until.ToCrabDateTime();
@@ -151,7 +155,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         private void FlushConsumers(IEnumerable<BatchedKeyImportConsumer<TKey>> consumers)
         {
             foreach (var consumer in consumers)
+            {
                 consumer.Flush();
+            }
         }
 
         private IEnumerable<BatchedKeyImportConsumer<TKey>> SubscribeConsumers(Bus.Bus bus)
@@ -170,7 +176,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         private IList<TKey> GetKeys(ICommandProcessorOptions<TKey> options)
         {
             var keys = _generator.GetChangedKeys(options.From.ToCrabDateTime(), options.Until.ToCrabDateTime()).ToList();
-            var keyCount = keys.Count();
+            var keyCount = keys.Count;
             _logger.LogInformation("{generatorName} found {keyCount} keys", _generator.Name, keyCount);
 
             keys = keys.Where(key => !_processedKeys.Contains(key)).ToList();
@@ -185,7 +191,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             return keys;
         }
 
-        private class ProgressTracker
+        private sealed class ProgressTracker
         {
             private readonly Action<int> _progressChanged;
             private int _current;
