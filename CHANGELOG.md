@@ -1,3 +1,10 @@
+## [17.35.2](https://github.com/informatievlaanderen/grar-common/compare/v17.35.1...v17.35.2) (2022-11-16)
+
+
+### Bug Fixes
+
+* type in GebouweenheidFunctie ([0b4be01](https://github.com/informatievlaanderen/grar-common/commit/0b4be01088e6e0c5616fb3658c6543108ae48a56))
+
 ## [17.35.1](https://github.com/informatievlaanderen/grar-common/compare/v17.35.0...v17.35.1) (2022-11-16)
 
 
