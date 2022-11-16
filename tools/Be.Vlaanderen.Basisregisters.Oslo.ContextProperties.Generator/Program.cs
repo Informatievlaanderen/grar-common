@@ -8,18 +8,13 @@ namespace Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator
     using System.Threading.Tasks;
     using Microsoft.Extensions.Configuration;
 
-    public class Program
+    public static class Program
     {
-        private static readonly IConfiguration Configuration;
-
-        static Program()
-        {
-            Configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
-                .AddJsonFile($"appsettings.{Environment.MachineName.ToLowerInvariant()}.json", optional: true, reloadOnChange: false)
-                .Build();
-        }
+        private static readonly IConfiguration Configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+            .AddJsonFile($"appsettings.{Environment.MachineName.ToLowerInvariant()}.json", optional: true, reloadOnChange: false)
+            .Build();
 
         public static async Task Main(string[] args)
         {
@@ -31,13 +26,14 @@ namespace Be.Vlaanderen.Basisregisters.Oslo.ContextProperties.Generator
             var contextPropertiesFileBuilder = new ContextPropertiesFileBuilder(Configuration);
 
             foreach (var contextInfo in GetContextInfos())
+            {
                 await contextPropertiesFileBuilder.CreateContentPropertiesFile(contextInfo, cancellationTokenSource.Token);
+            }
         }
 
-        private static IEnumerable<ContextInformation> GetContextInfos()
-            => Configuration
-                .GetSection("jsonld-context-urls")
-                .GetChildren()
-                .Select(x => new ContextInformation(x.Key, new Uri(x.Value)));
+        private static IEnumerable<ContextInformation> GetContextInfos() => Configuration
+            .GetSection("jsonld-context-urls")
+            .GetChildren()
+            .Select(x => new ContextInformation(x.Key, new Uri(x.Value)));
     }
 }
