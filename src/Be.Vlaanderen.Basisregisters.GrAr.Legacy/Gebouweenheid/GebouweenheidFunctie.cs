@@ -77,7 +77,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gebouweenheid
         /// <summary>
         /// Militaire functie.
         /// </summary>
-        [EnumMember(Value = "MilitairFunctie")]
-        MilitairFunctie = 12
+        [EnumMember(Value = "MilitaireFunctie")]
+        MilitaireFunctie = 12
     }
 }
