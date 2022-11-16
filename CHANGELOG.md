@@ -1,3 +1,10 @@
+## [17.35.1](https://github.com/informatievlaanderen/grar-common/compare/v17.35.0...v17.35.1) (2022-11-16)
+
+
+### Bug Fixes
+
+* correct gebouweenheidfunctie values according to Oslo values ([a26ae14](https://github.com/informatievlaanderen/grar-common/commit/a26ae14e3e9f3a07c1067a62901e1b830fea4021))
+
 # [17.35.0](https://github.com/informatievlaanderen/grar-common/compare/v17.34.0...v17.35.0) (2022-11-15)
 
 
