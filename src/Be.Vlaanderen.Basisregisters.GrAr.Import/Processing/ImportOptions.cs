@@ -20,8 +20,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
         public ImportOptions(
             IEnumerable<string> args,
-            Action<IEnumerable<Error>> onNotParsed,
-            Func<Instant> getCurrentTimeStamp)
+            Action<IEnumerable<Error>>? onNotParsed,
+            Func<Instant>? getCurrentTimeStamp)
         {
             _getCurrentTimeStamp = getCurrentTimeStamp ?? (() => DateTimeOffset.Now.ToInstant());
             _parsed = Parser
@@ -35,18 +35,22 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             errors => ThrowNotParsed<ImportArguments>(new ApplicationException($"Parsed options expected to have base type {nameof(ImportArguments)}")));
 
         public ICommandProcessorOptions<TKey> CreateProcessorOptions<TKey>(
-            BatchStatus lastBatch,
+            BatchStatus? lastBatch,
             ICommandProcessorBatchConfiguration<TKey> configuration)
         {
             var defaultUntil = _getCurrentTimeStamp().Minus(Duration.FromTimeSpan(configuration.TimeMargin));
             if (lastBatch != null && lastBatch.Until == DateTimeOffset.MinValue)
+            {
                 lastBatch = null;
+            }
 
             return _parsed.MapResult(
                 (InitArguments init) =>
                 {
                     if (lastBatch?.Completed ?? false)
-                        throw new ApplicationException("Cannot initialize an for an already initialized import");
+                    {
+                        throw new InvalidOperationException("Cannot initialize for an already initialized import");
+                    }
 
                     return new CommandProcessorOptions<TKey>(
                         (lastBatch?.From ?? DateTimeOffset.MinValue).ToInstant(),
@@ -59,7 +63,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
                 (UpdateArguments update) =>
                 {
                     if (lastBatch == null)
-                        throw new ApplicationException("Cannot update an uninitialized import");
+                    {
+                        throw new InvalidOperationException("Cannot update an uninitialized import");
+                    }
 
                     return new CommandProcessorOptions<TKey>(
                         lastBatch.Completed ? lastBatch.Until.ToInstant() : lastBatch.From.ToInstant(),
@@ -75,7 +81,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         private TExpected ThrowNotParsed<TExpected>(Exception exception)
         {
             if (_parsed.Tag == ParserResultType.NotParsed)
-                throw new ApplicationException("No valid command line arguments");
+            {
+                throw new InvalidOperationException("No valid command line arguments");
+            }
+
             throw exception;
         }
     }
