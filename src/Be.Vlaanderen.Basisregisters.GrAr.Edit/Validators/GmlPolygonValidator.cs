@@ -18,12 +18,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Edit.Validators
             {
                 var geometry = gmlReader.Read(gml);
 
-                if (geometry is null or not Polygon)
-                {
-                    return false;
-                }
-
-                return geometry.IsValid;
+                return geometry is Polygon && geometry.IsValid;
             }
             catch (XmlException)
             {
