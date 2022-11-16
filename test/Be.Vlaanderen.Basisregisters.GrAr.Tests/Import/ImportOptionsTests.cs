@@ -39,7 +39,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             Func<ImportArguments> getImportArguments = () => _sut.ImportArguments;
             getImportArguments
                 .Should()
-                .Throw<ApplicationException>()
+                .Throw<InvalidOperationException>()
                 .WithMessage("No valid command line arguments");
         }
 
@@ -49,7 +49,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
             Func<ICommandProcessorOptions<int>> createProcessorOption = () => _sut.CreateProcessorOptions(null, new TestBatchConfiguration<int>());
             createProcessorOption
                 .Should()
-                .Throw<ApplicationException>()
+                .Throw<InvalidOperationException>()
                 .WithMessage("No valid command line arguments");
         }
     }
@@ -314,8 +314,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         {
             _createOptions
                 .Should()
-                .Throw<ApplicationException>()
-                .WithMessage("Cannot initialize an for an already initialized import");
+                .Throw<InvalidOperationException>()
+                .WithMessage("Cannot initialize for an already initialized import");
         }
     }
 
@@ -383,7 +383,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         {
             _createOptions
                 .Should()
-                .Throw<ApplicationException>()
+                .Throw<InvalidOperationException>()
                 .WithMessage("Cannot update an uninitialized import");
         }
     }
@@ -417,7 +417,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Import
         {
             _createOptions
                 .Should()
-                .Throw<ApplicationException>()
+                .Throw<InvalidOperationException>()
                 .WithMessage("Cannot update an uninitialized import");
         }
     }

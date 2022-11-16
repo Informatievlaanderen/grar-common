@@ -1,11 +1,18 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 {
     using System;
+    using System.Runtime.Serialization;
 
-    public class CommandProcessorBuilderConfigurationException : ApplicationException
+    [Serializable]
+    public sealed class CommandProcessorBuilderConfigurationException : ApplicationException
     {
-        public CommandProcessorBuilderConfigurationException(string s) : base(s)
-        {
-        }
+        public CommandProcessorBuilderConfigurationException(string s)
+            : base(s)
+        { }
+
+        private CommandProcessorBuilderConfigurationException(SerializationInfo info,
+            StreamingContext context)
+            : base(info, context)
+        { }
     }
 }
