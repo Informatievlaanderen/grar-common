@@ -1,3 +1,10 @@
+## [17.35.3](https://github.com/informatievlaanderen/grar-common/compare/v17.35.2...v17.35.3) (2022-11-16)
+
+
+### Bug Fixes
+
+* remove added GebouweenheidFuncties from legacy ([2642bb7](https://github.com/informatievlaanderen/grar-common/commit/2642bb70a463a14211be047b233eeb10e94743fb))
+
 ## [17.35.2](https://github.com/informatievlaanderen/grar-common/compare/v17.35.1...v17.35.2) (2022-11-16)
 
 
