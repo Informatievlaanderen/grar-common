@@ -21,7 +21,19 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Bus
 
         public void Dispose()
         {
-            foreach (var subscription in _subscriptions) subscription.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                foreach (var subscription in _subscriptions)
+                {
+                    subscription.Dispose();
+                }
+            }
         }
 
         public async Task ProduceAsync<T>(T item)
