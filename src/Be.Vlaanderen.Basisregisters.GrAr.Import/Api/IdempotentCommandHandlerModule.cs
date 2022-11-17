@@ -196,7 +196,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                         context.ProcessedCommands.Remove(commandToProcess.ProcessedCommand);
                     }
 
-                    await context.SaveChangesAsync(cancellationToken);
+                    await context.SaveChangesAsync(CancellationToken.None); // must not be cancelled
 
                     throw;
                 }
