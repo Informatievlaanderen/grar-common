@@ -1,10 +1,11 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Common.Oslo
 {
     using System;
+    using System.Collections;
     using System.IO;
     using Mappers;
 
-    public class IdentifierUri
+    public class IdentifierUri : IEqualityComparer
     {
         public Uri Uri { get; }
         public string Value { get; }
@@ -35,6 +36,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common.Oslo
 
         public override string ToString()
             => Uri.AbsolutePath;
+
+        public new bool Equals(object? x, object? y) => x is not null && Equals(y);
+
+        public int GetHashCode(object obj) => Uri.GetHashCode();
     }
 
     public class IdentifierUri<T> : IdentifierUri
