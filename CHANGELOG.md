@@ -1,3 +1,25 @@
+# [17.36.0](https://github.com/informatievlaanderen/grar-common/compare/v17.35.3...v17.36.0) (2022-11-23)
+
+
+### Bug Fixes
+
+* conform to Serializable pattern ([93aeaa0](https://github.com/informatievlaanderen/grar-common/commit/93aeaa0776c012958b830a69b683d277f99b58b5))
+* correct fix for unnecessary null check ([739a683](https://github.com/informatievlaanderen/grar-common/commit/739a683e0fbfbdc50a1c04b106e23b9611855633))
+* correctly implement Dispose pattern ([8043b92](https://github.com/informatievlaanderen/grar-common/commit/8043b9213b958668ef5bbc0e0278e0a7e2f2ebca))
+* don't throw general exceptions ([e9ec48d](https://github.com/informatievlaanderen/grar-common/commit/e9ec48d40bdcbd015bd0633d5faf0f06153e74a5))
+* eliminate static ctor ([3415606](https://github.com/informatievlaanderen/grar-common/commit/34156060aa7d20ba443088e050a86c5f379a17f2))
+* implement IEqualityComparer ([9069118](https://github.com/informatievlaanderen/grar-common/commit/90691180fc1428d85c4c8bdbea67d7b96002acef))
+* make generic params co/contravariant ([dc417c2](https://github.com/informatievlaanderen/grar-common/commit/dc417c227964a3095a0c6531cb70c11b94db5314))
+* no public accessibility for fields ([510ea8b](https://github.com/informatievlaanderen/grar-common/commit/510ea8bdd4d68f545812bbd5cef458da43329242))
+* replace null check with pattern ([671e619](https://github.com/informatievlaanderen/grar-common/commit/671e619e12d21ccd362fea25b3b1434b471b9036))
+* SaveChanges in catch clause must not be cancellable ([d005e0c](https://github.com/informatievlaanderen/grar-common/commit/d005e0c57c247337ffcf0faf767fee40e30a59dc))
+* seal private classes ([9bd2a59](https://github.com/informatievlaanderen/grar-common/commit/9bd2a592c840632e216ba10329258af1b0640b18))
+
+
+### Features
+
+* add postalinformation contracts ([f12af3f](https://github.com/informatievlaanderen/grar-common/commit/f12af3f1a9a2c84e77487f886efd31e8e96050ab))
+
 ## [17.35.3](https://github.com/informatievlaanderen/grar-common/compare/v17.35.2...v17.35.3) (2022-11-16)
 
 
