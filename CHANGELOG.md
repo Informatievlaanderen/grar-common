@@ -1,3 +1,10 @@
+# [17.37.0](https://github.com/informatievlaanderen/grar-common/compare/v17.36.0...v17.37.0) (2022-12-02)
+
+
+### Features
+
+* add gebouweenheid to PositieSpecificatie edit contract ([0a56efa](https://github.com/informatievlaanderen/grar-common/commit/0a56efa526505caf7f709d206b6d4108975d31a5))
+
 # [17.36.0](https://github.com/informatievlaanderen/grar-common/compare/v17.35.3...v17.36.0) (2022-11-23)
 
 
