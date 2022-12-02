@@ -34,6 +34,11 @@ public enum PositieSpecificatie
     [EnumMember] Ligplaats = 6,
 
     /// <summary>
+    /// De positie duidt een gebouweenheid aan.
+    /// </summary>
+    [EnumMember] Gebouweenheid = 8,
+
+    /// <summary>
     /// De positie duidt een ingang aan.
     /// </summary>
     [EnumMember] Ingang = 9
