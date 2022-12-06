@@ -9,11 +9,6 @@ using System.Runtime.Serialization;
 public enum PositieSpecificatie
 {
     /// <summary>
-    /// De positie duidt een gemeente aan.
-    /// </summary>
-    [EnumMember] Gemeente = 1,
-
-    /// <summary>
     /// De positie duidt een perceel aan.
     /// </summary>
     [EnumMember] Perceel = 3,
