@@ -1,3 +1,10 @@
+# [17.38.0](https://github.com/informatievlaanderen/grar-common/compare/v17.37.0...v17.38.0) (2022-12-06)
+
+
+### Features
+
+* remove gemeente from PositieSpecificatie edit contract ([ff81d76](https://github.com/informatievlaanderen/grar-common/commit/ff81d76c2ae8921cff8071042a69794f713451ae))
+
 # [17.37.0](https://github.com/informatievlaanderen/grar-common/compare/v17.36.0...v17.37.0) (2022-12-02)
 
 
