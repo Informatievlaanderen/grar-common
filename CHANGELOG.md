@@ -1,3 +1,10 @@
+# [17.39.0](https://github.com/informatievlaanderen/grar-common/compare/v17.38.0...v17.39.0) (2022-12-16)
+
+
+### Features
+
+* bump commandhandling packages ([2eee40a](https://github.com/informatievlaanderen/grar-common/commit/2eee40a3ac13696675effe34665671392133539d))
+
 # [17.38.0](https://github.com/informatievlaanderen/grar-common/compare/v17.37.0...v17.38.0) (2022-12-06)
 
 
