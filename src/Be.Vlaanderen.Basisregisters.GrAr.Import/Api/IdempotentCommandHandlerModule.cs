@@ -128,7 +128,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                             var events = aggregate.Root.GetChanges().Skip(position).ToList();
                             position += events.Count;
 
-                            var commandMetadata = commandMessage?.Metadata ?? new Dictionary<string, object>();
+                            IDictionary<string, object> commandMetadata = commandMessage.Metadata is null
+                                ? new Dictionary<string, object>()
+                                : new Dictionary<string, object>(commandMessage.Metadata);
+
                             if (!commandMetadata.ContainsKey("commandId"))
                             {
                                 commandMetadata.Add("commandId", commandId);
