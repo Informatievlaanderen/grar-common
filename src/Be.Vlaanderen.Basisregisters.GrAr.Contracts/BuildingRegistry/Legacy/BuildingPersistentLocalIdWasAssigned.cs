@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
     using Contracts;
     using Common;
 
-    public class BuildingPersistentLocalIdWasAssigned : IQueueMessage
+    public sealed class BuildingPersistentLocalIdWasAssigned : IQueueMessage
     {
         public string BuildingId { get; }
         public int PersistentLocalId { get; }

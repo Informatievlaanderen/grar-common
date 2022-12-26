@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
     using Contracts;
     using Common;
 
-    public class BuildingWasPlanned : IQueueMessage
+    public sealed class BuildingWasPlanned : IQueueMessage
     {
         public string BuildingId { get; }
         public Provenance Provenance { get; }

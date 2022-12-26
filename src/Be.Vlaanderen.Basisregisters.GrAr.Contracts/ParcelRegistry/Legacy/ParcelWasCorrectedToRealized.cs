@@ -1,9 +1,9 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry.Legacy
+namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
 {
     using Contracts;
     using Common;
 
-    public class ParcelWasCorrectedToRealized : IQueueMessage
+    public sealed class ParcelWasCorrectedToRealized : IQueueMessage
     {
         public string ParcelId { get; }
         public Provenance Provenance { get; }

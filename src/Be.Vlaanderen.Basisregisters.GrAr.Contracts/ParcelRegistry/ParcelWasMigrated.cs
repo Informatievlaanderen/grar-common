@@ -1,15 +1,14 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Common;
 
     public sealed class ParcelWasMigrated : IQueueMessage
     {
-        public Guid OldParcelId { get; }
+        public string OldParcelId { get; }
 
-        public Guid ParcelId { get; }
+        public string ParcelId { get; }
 
         public string CaPaKey { get; }
 
@@ -26,8 +25,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
         public Provenance Provenance { get; }
 
         public ParcelWasMigrated(
-            Guid oldParcelId,
-            Guid parcelId,
+            string oldParcelId,
+            string parcelId,
             string caPaKey,
             string parcelStatus,
             bool isRemoved,

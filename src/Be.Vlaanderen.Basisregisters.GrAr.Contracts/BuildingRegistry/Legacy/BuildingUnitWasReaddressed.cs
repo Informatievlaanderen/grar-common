@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
     using Common;
     using NodaTime;
 
-    public class BuildingUnitWasReaddressed : IQueueMessage
+    public sealed class BuildingUnitWasReaddressed : IQueueMessage
     {
         public string BuildingId { get; }
 
