@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
     using Contracts;
     using Common;
 
-    public class ParcelWasRealized : IQueueMessage
+    public sealed class ParcelWasRealized : IQueueMessage
     {
         public string ParcelId { get; }
         public Provenance Provenance { get; }

@@ -5,7 +5,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry.Legacy
     using Contracts;
     using Common;
 
-    public class BuildingWasRemoved : IQueueMessage
+    public sealed class BuildingWasRemoved : IQueueMessage
     {
         public string BuildingId { get; }
         public List<string> BuildingUnitIds { get; }

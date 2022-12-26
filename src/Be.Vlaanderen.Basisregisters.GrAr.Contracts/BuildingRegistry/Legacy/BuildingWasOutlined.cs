@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
     using Contracts;
     using Common;
 
-    public class BuildingWasOutlined : IQueueMessage
+    public sealed class BuildingWasOutlined : IQueueMessage
     {
         public string BuildingId { get; }
         public string ExtendedWkbGeometry { get; }

@@ -1,9 +1,9 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry.Legacy
+namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
 {
     using Contracts;
     using Common;
 
-    public class ParcelAddressWasDetached : IQueueMessage
+    public sealed class ParcelAddressWasDetached : IQueueMessage
     {
         public string ParcelId { get; }
         public string AddressId { get; }

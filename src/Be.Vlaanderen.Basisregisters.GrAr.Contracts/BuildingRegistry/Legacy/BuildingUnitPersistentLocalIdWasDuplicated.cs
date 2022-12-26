@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
     using Common;
     using NodaTime;
 
-    public class BuildingUnitPersistentLocalIdWasDuplicated : IQueueMessage
+    public sealed class BuildingUnitPersistentLocalIdWasDuplicated : IQueueMessage
     {
         public string BuildingId { get; }
 

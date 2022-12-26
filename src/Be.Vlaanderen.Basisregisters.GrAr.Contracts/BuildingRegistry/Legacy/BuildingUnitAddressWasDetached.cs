@@ -4,7 +4,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
     using System.Linq;
     using Common;
 
-    public class BuildingUnitAddressWasDetached : IQueueMessage
+    public sealed class BuildingUnitAddressWasDetached : IQueueMessage
     {
         public string BuildingId { get; }
 

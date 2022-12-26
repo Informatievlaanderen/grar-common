@@ -2,7 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
     using Common;
 
-    public class BuildingUnitPositionWasCorrectedToDerivedFromObject : IQueueMessage
+    public sealed class BuildingUnitPositionWasCorrectedToDerivedFromObject : IQueueMessage
     {
         public string BuildingId { get; }
 
