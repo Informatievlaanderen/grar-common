@@ -1,20 +1,19 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
-    using System;
     using Common;
 
     public class BuildingUnitPositionWasCorrectedToDerivedFromObject : IQueueMessage
     {
-        public Guid BuildingId { get; }
+        public string BuildingId { get; }
 
-        public Guid BuildingUnitId { get; }
+        public string BuildingUnitId { get; }
 
         public string ExtendedWkbGeometry { get; }
 
         public Provenance Provenance { get; }
 
-        public BuildingUnitPositionWasCorrectedToDerivedFromObject(Guid buildingId,
-            Guid buildingUnitId,
+        public BuildingUnitPositionWasCorrectedToDerivedFromObject(string buildingId,
+            string buildingUnitId,
             string extendedWkbGeometry,
             Provenance provenance)
         {

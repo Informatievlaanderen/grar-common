@@ -1,14 +1,13 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
-    using System;
     using Common;
     using NodaTime;
 
     public class BuildingUnitPersistentLocalIdWasAssigned : IQueueMessage
     {
-        public Guid BuildingId { get; }
+        public string BuildingId { get; }
 
-        public Guid BuildingUnitId { get; }
+        public string BuildingUnitId { get; }
 
         public int PersistentLocalId { get; }
 
@@ -16,8 +15,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public Provenance Provenance { get; }
 
-        public BuildingUnitPersistentLocalIdWasAssigned(Guid buildingId,
-            Guid buildingUnitId,
+        public BuildingUnitPersistentLocalIdWasAssigned(string buildingId,
+            string buildingUnitId,
             int persistentLocalId,
             Instant assignmentDate,
             Provenance provenance)

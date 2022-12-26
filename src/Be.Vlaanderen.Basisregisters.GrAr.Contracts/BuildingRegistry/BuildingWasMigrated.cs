@@ -4,10 +4,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
     using System.Collections.Generic;
     using System.Linq;
     using Common;
-    using NodaTime;
+
     public sealed class BuildingWasMigrated : IQueueMessage
     {
-        public Guid BuildingId { get; }
+        public string BuildingId { get; }
 
         public int BuildingPersistentLocalId { get; }
 
@@ -25,7 +25,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public Provenance Provenance { get; }
 
-        public BuildingWasMigrated(Guid buildingId,
+        public BuildingWasMigrated(
+            string buildingId,
             int buildingPersistentLocalId,
             string buildingPersistentLocalIdAssignmentDate,
             string buildingStatus,
@@ -48,7 +49,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public sealed class BuildingUnit
         {
-            public Guid BuildingUnitId { get; }
+            public string BuildingUnitId { get; }
 
             public int BuildingUnitPersistentLocalId { get; }
 
@@ -64,7 +65,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
             public bool IsRemoved { get; }
 
-            public BuildingUnit(Guid buildingUnitId,
+            public BuildingUnit(
+                string buildingUnitId,
                 int buildingUnitPersistentLocalId,
                 string function,
                 string status,

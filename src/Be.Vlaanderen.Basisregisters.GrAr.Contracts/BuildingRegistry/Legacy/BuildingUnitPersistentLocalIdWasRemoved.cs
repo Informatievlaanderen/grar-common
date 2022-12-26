@@ -1,11 +1,10 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
-    using System;
     using Common;
 
     public class BuildingUnitPersistentLocalIdWasRemoved : IQueueMessage
     {
-        public Guid BuildingId { get; set; }
+        public string BuildingId { get; set; }
 
         public string PersistentLocalId { get; set; }
 
@@ -15,7 +14,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public Provenance Provenance { get; set; }
 
-        public BuildingUnitPersistentLocalIdWasRemoved(Guid buildingId,
+        public BuildingUnitPersistentLocalIdWasRemoved(string buildingId,
             string persistentLocalId,
             string assignmentDate,
             string reason,
