@@ -1,3 +1,10 @@
+## [17.40.1](https://github.com/informatievlaanderen/grar-common/compare/v17.40.0...v17.40.1) (2022-12-26)
+
+
+### Bug Fixes
+
+* Guid to string in events ([b10dbf0](https://github.com/informatievlaanderen/grar-common/commit/b10dbf0763876ea2d8ee7e10848a82664f15b8a9))
+
 # [17.40.0](https://github.com/informatievlaanderen/grar-common/compare/v17.39.0...v17.40.0) (2022-12-26)
 
 
