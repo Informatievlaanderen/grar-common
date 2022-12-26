@@ -1,23 +1,22 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Common;
 
     public class BuildingUnitAddressWasDetached : IQueueMessage
     {
-        public Guid BuildingId { get; }
+        public string BuildingId { get; }
 
-        public List<Guid> AddressIds { get; }
+        public List<string> AddressIds { get; }
 
-        public Guid From { get; }
+        public string From { get; }
 
         public Provenance Provenance { get; }
 
-        public BuildingUnitAddressWasDetached(Guid buildingId,
-            IEnumerable<Guid> addressIds,
-            Guid @from,
+        public BuildingUnitAddressWasDetached(string buildingId,
+            IEnumerable<string> addressIds,
+            string @from,
             Provenance provenance)
         {
             BuildingId = buildingId;

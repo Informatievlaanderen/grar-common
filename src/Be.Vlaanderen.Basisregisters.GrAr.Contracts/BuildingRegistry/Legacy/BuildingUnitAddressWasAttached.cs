@@ -1,22 +1,21 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
-    using System;
     using Common;
 
     public class BuildingUnitAddressWasAttached : IQueueMessage
     {
-        public Guid BuildingId { get; }
+        public string BuildingId { get; }
 
-        public Guid AddressId { get; }
+        public string AddressId { get; }
 
-        public Guid To { get; }
+        public string To { get; }
 
         public Provenance Provenance { get; }
 
         public BuildingUnitAddressWasAttached(
-            Guid buildingId,
-            Guid addressId,
-            Guid to,
+            string buildingId,
+            string addressId,
+            string to,
             Provenance provenance)
         {
             BuildingId = buildingId;

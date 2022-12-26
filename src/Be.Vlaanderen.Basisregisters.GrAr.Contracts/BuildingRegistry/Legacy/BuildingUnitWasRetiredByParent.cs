@@ -1,21 +1,20 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
-    using System;
     using Common;
 
     public class BuildingUnitWasRetiredByParent : IQueueMessage
     {
-        public Guid BuildingId { get; }
+        public string BuildingId { get; }
 
-        public Guid BuildingUnitId { get; }
+        public string BuildingUnitId { get; }
 
-        public Guid ParentBuildingUnitId { get; }
+        public string ParentBuildingUnitId { get; }
 
         public Provenance Provenance { get; }
 
-        public BuildingUnitWasRetiredByParent(Guid buildingId,
-            Guid buildingUnitId,
-            Guid parentBuildingUnitId,
+        public BuildingUnitWasRetiredByParent(string buildingId,
+            string buildingUnitId,
+            string parentBuildingUnitId,
             Provenance provenance)
         {
             BuildingId = buildingId;

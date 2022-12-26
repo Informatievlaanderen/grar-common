@@ -1,31 +1,30 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
-    using System;
     using Common;
     using NodaTime;
 
     public class BuildingUnitWasAdded : IQueueMessage
     {
-        public Guid BuildingId { get; }
+        public string BuildingId { get; }
 
-        public Guid BuildingUnitId { get; }
+        public string BuildingUnitId { get; }
 
         public string BuildingUnitKey { get; }
 
-        public Guid AddressId { get; }
+        public string AddressId { get; }
 
         public Instant BuildingUnitVersion { get; }
 
-        public Guid? PredecessorBuildingUnitId { get; }
+        public string? PredecessorBuildingUnitId { get; }
 
         public Provenance Provenance { get; }
 
-        public BuildingUnitWasAdded(Guid buildingId,
-            Guid buildingUnitId,
+        public BuildingUnitWasAdded(string buildingId,
+            string buildingUnitId,
             string buildingUnitKey,
-            Guid addressId,
+            string addressId,
             Instant buildingUnitVersion,
-            Guid? predecessorBuildingUnitId,
+            string? predecessorBuildingUnitId,
             Provenance provenance)
         {
             BuildingId = buildingId;

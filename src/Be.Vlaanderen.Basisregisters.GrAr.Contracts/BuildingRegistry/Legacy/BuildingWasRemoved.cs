@@ -1,6 +1,5 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry.Legacy
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Contracts;
@@ -8,13 +7,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry.Legacy
 
     public class BuildingWasRemoved : IQueueMessage
     {
-        public Guid BuildingId { get; }
-        public List<Guid> BuildingUnitIds { get; }
+        public string BuildingId { get; }
+        public List<string> BuildingUnitIds { get; }
         public Provenance Provenance { get; }
 
         public BuildingWasRemoved(
-            Guid buildingId,
-            IEnumerable<Guid> buildingUnitIds,
+            string buildingId,
+            IEnumerable<string> buildingUnitIds,
             Provenance provenance)
         {
             BuildingId = buildingId;
