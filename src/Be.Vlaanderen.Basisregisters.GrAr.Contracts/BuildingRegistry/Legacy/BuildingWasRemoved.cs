@@ -1,4 +1,4 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
+namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry.Legacy
 {
     using System;
     using System.Collections.Generic;

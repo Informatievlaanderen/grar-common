@@ -1,15 +1,15 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
+namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry.Legacy
 {
     using System;
     using Contracts;
     using Common;
 
-    public class ParcelWasCorrectedToRetired : IQueueMessage
+    public class ParcelWasMarkedAsMigrated : IQueueMessage
     {
         public Guid ParcelId { get; }
         public Provenance Provenance { get; }
 
-        public ParcelWasCorrectedToRetired(
+        public ParcelWasMarkedAsMigrated(
             Guid parcelId,
             Provenance provenance)
         {
