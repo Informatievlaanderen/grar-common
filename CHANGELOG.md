@@ -1,3 +1,11 @@
+# [17.40.0](https://github.com/informatievlaanderen/grar-common/compare/v17.39.0...v17.40.0) (2022-12-26)
+
+
+### Features
+
+* add contract building parcel ([99ce798](https://github.com/informatievlaanderen/grar-common/commit/99ce798b06409764d8158812044a02df3774eec5))
+* add parcel & building events ([2512756](https://github.com/informatievlaanderen/grar-common/commit/25127561402b9d32e65bcce5e9436725a9974aaa))
+
 # [17.39.0](https://github.com/informatievlaanderen/grar-common/compare/v17.38.0...v17.39.0) (2022-12-16)
 
 
