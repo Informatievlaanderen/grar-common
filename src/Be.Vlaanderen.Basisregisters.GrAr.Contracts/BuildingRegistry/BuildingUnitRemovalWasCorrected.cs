@@ -1,6 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Common;
 
     public sealed class BuildingUnitRemovalWasCorrected : IQueueMessage
@@ -30,7 +31,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
             string geometryMethod,
             string extendedWkbGeometry,
             bool hasDeviation,
-            List<int> addressPersistentLocalIds,
+            IEnumerable<int> addressPersistentLocalIds,
             Provenance provenance)
         {
             BuildingPersistentLocalId = buildingPersistentLocalId;
@@ -40,7 +41,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
             GeometryMethod = geometryMethod;
             ExtendedWkbGeometry = extendedWkbGeometry;
             HasDeviation = hasDeviation;
-            AddressPersistentLocalIds = addressPersistentLocalIds;
+            AddressPersistentLocalIds = addressPersistentLocalIds.ToList();
             Provenance = provenance;
         }
     }

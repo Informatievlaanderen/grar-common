@@ -2,6 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Common;
 
     public sealed class ParcelWasMigrated : IQueueMessage
@@ -30,7 +31,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
             string caPaKey,
             string parcelStatus,
             bool isRemoved,
-            List<int> addressPersistentLocalIds,
+            IEnumerable<int> addressPersistentLocalIds,
             decimal? xCoordinate,
             decimal? yCoordinate,
             Provenance provenance)
@@ -40,7 +41,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
             CaPaKey = caPaKey;
             ParcelStatus = parcelStatus;
             IsRemoved = isRemoved;
-            AddressPersistentLocalIds = addressPersistentLocalIds;
+            AddressPersistentLocalIds = addressPersistentLocalIds.ToList();
             XCoordinate = xCoordinate;
             YCoordinate = yCoordinate;
             Provenance = provenance;

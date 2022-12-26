@@ -1,13 +1,14 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
     using System.Collections.Generic;
+    using System.Linq;
     using Common;
 
     public sealed class BuildingOutlineWasChanged : IQueueMessage
     {
         public int BuildingPersistentLocalId { get; }
 
-        public IEnumerable<int> BuildingUnitPersistentLocalIds { get; }
+        public List<int> BuildingUnitPersistentLocalIds { get; }
 
         public string ExtendedWkbGeometryBuilding { get; }
 
@@ -22,7 +23,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
             Provenance provenance)
         {
             BuildingPersistentLocalId = buildingPersistentLocalId;
-            BuildingUnitPersistentLocalIds = buildingUnitPersistentLocalIds;
+            BuildingUnitPersistentLocalIds = buildingUnitPersistentLocalIds.ToList();
             ExtendedWkbGeometryBuilding = extendedWkbGeometryBuilding;
             ExtendedWkbGeometryBuildingUnits = extendedWkbGeometryBuildingUnits;
             Provenance = provenance;

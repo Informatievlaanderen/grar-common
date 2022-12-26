@@ -1,10 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
-    using System.Collections.Generic;
-    using System.Globalization;
     using Common;
-    using Newtonsoft.Json;
-    
+
     public sealed class BuildingUnitWasRegularized : IQueueMessage
     {
         public int BuildingPersistentLocalId { get; }

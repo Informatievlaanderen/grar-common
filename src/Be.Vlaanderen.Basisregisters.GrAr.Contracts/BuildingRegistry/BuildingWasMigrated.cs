@@ -2,6 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Common;
     using NodaTime;
     public sealed class BuildingWasMigrated : IQueueMessage
@@ -10,7 +11,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public int BuildingPersistentLocalId { get; }
 
-        public Instant BuildingPersistentLocalIdAssignmentDate { get; }
+        public string BuildingPersistentLocalIdAssignmentDate { get; }
 
         public string BuildingStatus { get; }
 
@@ -26,12 +27,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public BuildingWasMigrated(Guid buildingId,
             int buildingPersistentLocalId,
-            Instant buildingPersistentLocalIdAssignmentDate,
+            string buildingPersistentLocalIdAssignmentDate,
             string buildingStatus,
             string geometryMethod,
             string extendedWkbGeometry,
             bool isRemoved,
-            List<BuildingUnit> buildingUnits,
+            IEnumerable<BuildingUnit> buildingUnits,
             Provenance provenance)
         {
             BuildingId = buildingId;
@@ -41,7 +42,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
             GeometryMethod = geometryMethod;
             ExtendedWkbGeometry = extendedWkbGeometry;
             IsRemoved = isRemoved;
-            BuildingUnits = buildingUnits;
+            BuildingUnits = buildingUnits.ToList();
             Provenance = provenance;
         }
 
