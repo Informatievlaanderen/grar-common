@@ -1,3 +1,10 @@
+## [17.40.3](https://github.com/informatievlaanderen/grar-common/compare/v17.40.2...v17.40.3) (2022-12-26)
+
+
+### Bug Fixes
+
+* guid to string ([1706d4d](https://github.com/informatievlaanderen/grar-common/commit/1706d4dad59dba5ff5d73fbb4c8cfbc40b5b91fe))
+
 ## [17.40.2](https://github.com/informatievlaanderen/grar-common/compare/v17.40.1...v17.40.2) (2022-12-26)
 
 
