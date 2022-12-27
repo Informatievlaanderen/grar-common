@@ -1,3 +1,10 @@
+## [17.41.2](https://github.com/informatievlaanderen/grar-common/compare/v17.41.1...v17.41.2) (2022-12-27)
+
+
+### Bug Fixes
+
+* instant to string ([2fc0d77](https://github.com/informatievlaanderen/grar-common/commit/2fc0d77d0b589cc56b3d2af25fe9084b41a902e6))
+
 ## [17.41.1](https://github.com/informatievlaanderen/grar-common/compare/v17.41.0...v17.41.1) (2022-12-27)
 
 
