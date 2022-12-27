@@ -1,6 +1,5 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using Common;

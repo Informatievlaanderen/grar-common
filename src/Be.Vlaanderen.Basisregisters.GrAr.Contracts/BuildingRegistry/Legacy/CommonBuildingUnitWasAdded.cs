@@ -1,7 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
     using Common;
-    using NodaTime;
 
     public sealed class CommonBuildingUnitWasAdded : IQueueMessage
     {
@@ -11,14 +10,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public string BuildingUnitKey { get; }
 
-        public Instant BuildingUnitVersion { get; }
+        public string BuildingUnitVersion { get; }
 
         public Provenance Provenance { get; }
 
         public CommonBuildingUnitWasAdded(string buildingId,
             string buildingUnitId,
             string buildingUnitKey,
-            Instant buildingUnitVersion,
+            string buildingUnitVersion,
             Provenance provenance)
         {
             BuildingId = buildingId;
