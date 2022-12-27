@@ -14,6 +14,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
 
         public ParcelAddressWasAttachedV2(
             string parcelId,
+            string caPaKey,
             int addressPersistentLocalId,
             Provenance provenance)
         {
