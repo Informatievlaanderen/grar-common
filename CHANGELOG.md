@@ -1,3 +1,10 @@
+## [17.41.1](https://github.com/informatievlaanderen/grar-common/compare/v17.41.0...v17.41.1) (2022-12-27)
+
+
+### Bug Fixes
+
+* remove legacy from namespace ([dc5e8fb](https://github.com/informatievlaanderen/grar-common/commit/dc5e8fb848a670c8f2e004d02496dc0fedc6b218))
+
 # [17.41.0](https://github.com/informatievlaanderen/grar-common/compare/v17.40.3...v17.41.0) (2022-12-27)
 
 
