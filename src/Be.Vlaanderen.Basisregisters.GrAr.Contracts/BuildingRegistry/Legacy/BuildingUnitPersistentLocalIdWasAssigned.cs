@@ -11,14 +11,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public int PersistentLocalId { get; }
 
-        public Instant AssignmentDate { get; }
+        public string AssignmentDate { get; }
 
         public Provenance Provenance { get; }
 
         public BuildingUnitPersistentLocalIdWasAssigned(string buildingId,
             string buildingUnitId,
             int persistentLocalId,
-            Instant assignmentDate,
+            string assignmentDate,
             Provenance provenance)
         {
             BuildingId = buildingId;

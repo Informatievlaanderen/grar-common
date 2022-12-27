@@ -1,7 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
     using Common;
-    using NodaTime;
 
     public sealed class BuildingUnitWasReaddressed : IQueueMessage
     {
@@ -13,7 +12,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public string NewAddressId { get; }
 
-        public LocalDate BeginDate { get; }
+        public string BeginDate { get; }
 
         public Provenance Provenance { get; }
 
@@ -21,7 +20,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
             string buildingUnitId,
             string oldAddressId,
             string newAddressId,
-            LocalDate beginDate,
+            string beginDate,
             Provenance provenance)
         {
             BuildingId = buildingId;
