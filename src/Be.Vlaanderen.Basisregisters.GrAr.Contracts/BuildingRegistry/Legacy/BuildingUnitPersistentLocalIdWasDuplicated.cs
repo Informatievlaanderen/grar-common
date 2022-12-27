@@ -1,7 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
     using Common;
-    using NodaTime;
 
     public sealed class BuildingUnitPersistentLocalIdWasDuplicated : IQueueMessage
     {
@@ -13,7 +12,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public int OriginalPersistentLocalId { get; }
 
-        public Instant DuplicateAssignmentDate { get; }
+        public string DuplicateAssignmentDate { get; }
 
         public Provenance Provenance { get; }
 
@@ -21,7 +20,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
             string buildingUnitId,
             int duplicatePersistentLocalId,
             int originalPersistentLocalId,
-            Instant duplicateAssignmentDate,
+            string duplicateAssignmentDate,
             Provenance provenance)
         {
             BuildingId = buildingId;

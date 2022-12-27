@@ -1,7 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
     using Common;
-    using NodaTime;
 
     public sealed class BuildingUnitWasAddedToRetiredBuilding : IQueueMessage
     {
@@ -13,7 +12,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public string AddressId { get; }
 
-        public Instant BuildingUnitVersion { get; }
+        public string BuildingUnitVersion { get; }
 
         public string? PredecessorBuildingUnitId { get; }
 
@@ -23,7 +22,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
             string buildingUnitId,
             string buildingUnitKey,
             string addressId,
-            Instant buildingUnitVersion,
+            string buildingUnitVersion,
             string? predecessorBuildingUnitId,
             Provenance provenance)
         {
