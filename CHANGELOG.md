@@ -1,3 +1,10 @@
+# [17.41.0](https://github.com/informatievlaanderen/grar-common/compare/v17.40.3...v17.41.0) (2022-12-27)
+
+
+### Features
+
+* add capakey to parcel contracts ([cf7fcab](https://github.com/informatievlaanderen/grar-common/commit/cf7fcab94d1759365fb2f6dfdc118b0982cafd10))
+
 ## [17.40.3](https://github.com/informatievlaanderen/grar-common/compare/v17.40.2...v17.40.3) (2022-12-26)
 
 
