@@ -2,7 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
     using Common;
 
-    public class BuildingUnitPersistentLocalIdWasRemoved : IQueueMessage
+    public sealed class BuildingUnitPersistentLocalIdWasRemoved : IQueueMessage
     {
         public string BuildingId { get; set; }
 

@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry.Legacy
     using Contracts;
     using Common;
 
-    public class BuildingMeasurementByGrbWasCorrected : IQueueMessage
+    public sealed class BuildingMeasurementByGrbWasCorrected : IQueueMessage
     {
         public string BuildingId { get; }
         public string ExtendedWkbGeometry { get; }

@@ -1,3 +1,24 @@
+## [17.40.3](https://github.com/informatievlaanderen/grar-common/compare/v17.40.2...v17.40.3) (2022-12-26)
+
+
+### Bug Fixes
+
+* guid to string ([1706d4d](https://github.com/informatievlaanderen/grar-common/commit/1706d4dad59dba5ff5d73fbb4c8cfbc40b5b91fe))
+
+## [17.40.2](https://github.com/informatievlaanderen/grar-common/compare/v17.40.1...v17.40.2) (2022-12-26)
+
+
+### Bug Fixes
+
+* guid to string for parcel events ([f44caf0](https://github.com/informatievlaanderen/grar-common/commit/f44caf04a86b797ff00cdb93df9cf293150790c1))
+
+## [17.40.1](https://github.com/informatievlaanderen/grar-common/compare/v17.40.0...v17.40.1) (2022-12-26)
+
+
+### Bug Fixes
+
+* Guid to string in events ([b10dbf0](https://github.com/informatievlaanderen/grar-common/commit/b10dbf0763876ea2d8ee7e10848a82664f15b8a9))
+
 # [17.40.0](https://github.com/informatievlaanderen/grar-common/compare/v17.39.0...v17.40.0) (2022-12-26)
 
 

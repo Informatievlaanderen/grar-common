@@ -5,7 +5,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
     using Contracts;
     using Common;
 
-    public class BuildingWasNotRealized : IQueueMessage
+    public sealed class BuildingWasNotRealized : IQueueMessage
     {
         public string BuildingId { get; }
         public List<string> BuildingUnitIdsToRetire { get; }

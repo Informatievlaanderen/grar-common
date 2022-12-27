@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
     using Contracts;
     using Common;
 
-    public class BuildingWasMarkedAsMigrated : IQueueMessage
+    public sealed class BuildingWasMarkedAsMigrated : IQueueMessage
     {
         public string BuildingId { get; }
         public int PersistentLocalId { get; }

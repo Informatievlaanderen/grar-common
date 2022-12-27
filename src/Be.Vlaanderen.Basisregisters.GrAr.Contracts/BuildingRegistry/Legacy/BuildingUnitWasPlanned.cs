@@ -2,7 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
     using Common;
 
-    public class BuildingUnitWasPlanned : IQueueMessage
+    public sealed class BuildingUnitWasPlanned : IQueueMessage
     {
         public string BuildingId { get; }
 

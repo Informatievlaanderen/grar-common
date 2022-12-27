@@ -1,11 +1,10 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
 {
-    using System;
     using Common;
 
     public sealed class ParcelAddressWasAttachedV2 : IQueueMessage
     {
-        public Guid ParcelId { get; }
+        public string ParcelId { get; }
 
         public string CaPaKey { get; }
 
@@ -14,8 +13,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
         public Provenance Provenance { get; }
 
         public ParcelAddressWasAttachedV2(
-            Guid parcelId,
-            string caPaKey,
+            string parcelId,
             int addressPersistentLocalId,
             Provenance provenance)
         {
