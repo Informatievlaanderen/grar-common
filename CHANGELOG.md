@@ -1,3 +1,10 @@
+## [17.41.4](https://github.com/informatievlaanderen/grar-common/compare/v17.41.3...v17.41.4) (2022-12-28)
+
+
+### Bug Fixes
+
+* add Microsoft.Extensions.DependencyInjection ([b449b6d](https://github.com/informatievlaanderen/grar-common/commit/b449b6d3854134ab4bdde9d25e3045a19d512423))
+
 ## [17.41.3](https://github.com/informatievlaanderen/grar-common/compare/v17.41.2...v17.41.3) (2022-12-27)
 
 
