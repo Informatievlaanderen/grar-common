@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
     using System.Collections.Generic;
     using NodaTime;
 
-    public interface ICommandProcessorOptions<TKey>
+    public interface ICommandProcessorOptions<out TKey>
     {
         Instant From { get; }
         Instant Until { get; }
