@@ -22,12 +22,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
             if (loggerFactory != null)
                 migrationOptionsBuilder = migrationOptionsBuilder.UseLoggerFactory(loggerFactory);
 
-            using (var migrator = new CrabImportContext(migrationOptionsBuilder.Options, crabImportSchema))
-            {
-                // Static reference is used to set the schema and tables in the migrations
-                CrabImportSchema = crabImportSchema;
-                migrator.Database.Migrate();
-            }
+            using var migrator = new CrabImportContext(migrationOptionsBuilder.Options, crabImportSchema);
+
+            // Static reference is used to set the schema and tables in the migrations
+            CrabImportSchema = crabImportSchema;
+            migrator.Database.Migrate();
         }
     }
 }

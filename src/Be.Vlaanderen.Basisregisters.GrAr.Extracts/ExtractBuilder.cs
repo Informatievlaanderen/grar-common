@@ -72,10 +72,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
                         if (token.IsCancellationRequested)
                             return;
 
-                        var item = new MetadataDbaseRecord();
-
-                        item.metadata.Value = record.Key;
-                        item.value.Value = record.Value;
+                        var item = new MetadataDbaseRecord
+                        {
+                            metadata = { Value = record.Key },
+                            value = { Value = record.Value }
+                        };
 
                         dbfFile.WriteBytesAs<MetadataDbaseRecord>(item.ToBytes(DbfFileWriter<MetadataDbaseRecord>.Encoding));
                     }
@@ -112,17 +113,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
                         if (token.IsCancellationRequested)
                             break;
 
-                        using (var shapeStream = new MemoryStream(shape))
-                        using (var reader = new BinaryReader(shapeStream))
-                        {
-                            var content = readShape(reader);
-                            if (content is TShape || content is NullShapeContent)
-                            {
-                                var shapeRecord = content.RecordAs(number);
-                                shpFile.Write(shapeRecord);
+                        using var shapeStream = new MemoryStream(shape);
+                        using var reader = new BinaryReader(shapeStream);
 
-                                number = number.Next();
-                            }
+                        var content = readShape(reader);
+                        if (content is TShape || content is NullShapeContent)
+                        {
+                            var shapeRecord = content.RecordAs(number);
+                            shpFile.Write(shapeRecord);
+
+                            number = number.Next();
                         }
                     }
                 });
