@@ -1,3 +1,10 @@
+## [17.41.5](https://github.com/informatievlaanderen/grar-common/compare/v17.41.4...v17.41.5) (2022-12-29)
+
+
+### Bug Fixes
+
+* bump DependencyInjection dependency ([312a0e3](https://github.com/informatievlaanderen/grar-common/commit/312a0e354b951ba7fc689e7584327da1830566ab))
+
 ## [17.41.4](https://github.com/informatievlaanderen/grar-common/compare/v17.41.3...v17.41.4) (2022-12-28)
 
 
