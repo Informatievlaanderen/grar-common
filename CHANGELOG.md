@@ -1,3 +1,11 @@
+## [17.41.6](https://github.com/informatievlaanderen/grar-common/compare/v17.41.5...v17.41.6) (2023-01-02)
+
+
+### Bug Fixes
+
+* Add RoadRegistry to Application enum ([a1546b2](https://github.com/informatievlaanderen/grar-common/commit/a1546b2c7c4761bc246b93ee0fdbfcd3f4b1c76d))
+* Add RoadRegistry to Application enum ([3eed866](https://github.com/informatievlaanderen/grar-common/commit/3eed866bf9ce8b0d0a32d2f745b0f1326bf03bf4))
+
 ## [17.41.5](https://github.com/informatievlaanderen/grar-common/compare/v17.41.4...v17.41.5) (2022-12-29)
 
 
