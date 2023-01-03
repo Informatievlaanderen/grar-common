@@ -1,3 +1,10 @@
+# [17.42.0](https://github.com/informatievlaanderen/grar-common/compare/v17.41.6...v17.42.0) (2023-01-03)
+
+
+### Features
+
+* add remove building events ([02c201b](https://github.com/informatievlaanderen/grar-common/commit/02c201b02380c02e9a2612c8d786fcc3e3776a99))
+
 ## [17.41.6](https://github.com/informatievlaanderen/grar-common/compare/v17.41.5...v17.41.6) (2023-01-02)
 
 
