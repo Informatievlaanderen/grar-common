@@ -1,25 +1,19 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
 {
     using System;
-    using Autofac;
-    using DependencyInjection;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
-    public class CrabImportModule : Module, IServiceCollectionModule
+    public class CrabImportModule
     {
-        private readonly string _connectionString;
-        private readonly string _schema;
-        private readonly string _statusTableName;
-        private readonly string _migrationsHistoryTableName;
-        private readonly ILoggerFactory _loggerFactory;
-
         public CrabImportModule(
+            IServiceCollection services,
             string connectionString,
             string schema,
             ILoggerFactory loggerFactory)
             : this(
+                services,
                 connectionString,
                 schema,
                 CrabImportSchema.Default.StatusName,
@@ -28,25 +22,17 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
         { }
 
         public CrabImportModule(
+            IServiceCollection services,
             string connectionString,
             string schema,
             string statusTableName,
             string migrationsHistoryTableName,
             ILoggerFactory loggerFactory)
         {
-            _connectionString = connectionString;
-            _schema = schema;
-            _statusTableName = statusTableName;
-            _migrationsHistoryTableName = migrationsHistoryTableName;
-            _loggerFactory = loggerFactory;
-        }
-
-        public void Load(IServiceCollection services)
-        {
-            var logger = _loggerFactory.CreateLogger<CrabImportContext>();
-            var configuration = new Configuration(_connectionString);
-            var migrationsSchema = new MigrationsSchema(_schema, _migrationsHistoryTableName);
-            var importSchema = new CrabImportSchema(_schema, _statusTableName);
+            var logger = loggerFactory.CreateLogger<CrabImportContext>();
+            var configuration = new Configuration(connectionString);
+            var migrationsSchema = new MigrationsSchema(schema, migrationsHistoryTableName);
+            var importSchema = new CrabImportSchema(schema, statusTableName);
 
             services.AddSingleton(configuration);
             services.AddSingleton(migrationsSchema);
@@ -54,7 +40,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
 
             services.AddDbContext<CrabImportContext>(
                 options => options
-                    .UseLoggerFactory(_loggerFactory)
+                    .UseLoggerFactory(loggerFactory)
                     .UseSqlServer(
                         configuration.ConnectionString,
                         x => x.MigrationsHistoryTable(migrationsSchema.HistoryTable, migrationsSchema.Name)));
@@ -66,6 +52,22 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
                 Environment.NewLine +
                 "\tTableName: {TableName}",
                 nameof(CrabImportContext), migrationsSchema.Name, migrationsSchema.HistoryTable);
+        }
+    }
+
+    public static class CrabImportExtensions
+    {
+        public static IServiceCollection ConfigureCrabImport(
+            this IServiceCollection services,
+            string connectionString,
+            string schema,
+            string statusTableName,
+            string migrationsHistoryTableName,
+            ILoggerFactory loggerFactory)
+        {
+            var _ = new CrabImportModule(services, connectionString, schema, statusTableName, migrationsHistoryTableName, loggerFactory);
+
+            return services;
         }
     }
 }
