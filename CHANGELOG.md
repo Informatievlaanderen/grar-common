@@ -1,3 +1,10 @@
+## [17.42.1](https://github.com/informatievlaanderen/grar-common/compare/v17.42.0...v17.42.1) (2023-01-05)
+
+
+### Bug Fixes
+
+* dependencies + tests ([697f735](https://github.com/informatievlaanderen/grar-common/commit/697f7358eb307b30a7c272504e489f00dc7d6dda))
+
 # [17.42.0](https://github.com/informatievlaanderen/grar-common/compare/v17.41.6...v17.42.0) (2023-01-03)
 
 
