@@ -1,3 +1,10 @@
+# [17.44.0](https://github.com/informatievlaanderen/grar-common/compare/v17.43.0...v17.44.0) (2023-01-09)
+
+
+### Features
+
+* add extension for crabimportmodule registration ([97cd23b](https://github.com/informatievlaanderen/grar-common/commit/97cd23b3b803087163cd5e499639caf371db62bb))
+
 # [17.43.0](https://github.com/informatievlaanderen/grar-common/compare/v17.42.1...v17.43.0) (2023-01-09)
 
 
