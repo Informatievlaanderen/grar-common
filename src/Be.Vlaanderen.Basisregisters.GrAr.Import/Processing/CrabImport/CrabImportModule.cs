@@ -69,5 +69,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
 
             return services;
         }
+
+        public static IServiceCollection ConfigureCrabImport(
+            this IServiceCollection services,
+            string connectionString,
+            string schema,
+            ILoggerFactory loggerFactory)
+        {
+            var _ = new CrabImportModule(services, connectionString, schema, CrabImportSchema.Default.StatusName, MigrationsSchema.Default.HistoryTable, loggerFactory);
+
+            return services;
+        }
     }
 }
