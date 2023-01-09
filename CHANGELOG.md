@@ -1,3 +1,10 @@
+# [17.43.0](https://github.com/informatievlaanderen/grar-common/compare/v17.42.1...v17.43.0) (2023-01-09)
+
+
+### Features
+
+* add contracts for correct regulate/deregulate address ([72f7f26](https://github.com/informatievlaanderen/grar-common/commit/72f7f26c70f3ea77227965358d8ab367c8903adf))
+
 ## [17.42.1](https://github.com/informatievlaanderen/grar-common/compare/v17.42.0...v17.42.1) (2023-01-05)
 
 
