@@ -1,3 +1,10 @@
+# [17.45.0](https://github.com/informatievlaanderen/grar-common/compare/v17.44.0...v17.45.0) (2023-01-10)
+
+
+### Features
+
+* add BuildingUnitRegularizationWasCorrected ([457d11a](https://github.com/informatievlaanderen/grar-common/commit/457d11a4bdee2392439dd8e7af81c8f309a6e6e2))
+
 # [17.44.0](https://github.com/informatievlaanderen/grar-common/compare/v17.43.0...v17.44.0) (2023-01-09)
 
 
