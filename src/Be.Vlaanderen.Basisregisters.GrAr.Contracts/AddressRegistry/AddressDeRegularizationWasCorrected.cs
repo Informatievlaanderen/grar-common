@@ -2,7 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
 {
     using Common;
 
-    public class AddressDeregularizationWasCorrected : IQueueMessage
+    public class AddressDeregulationWasCorrected : IQueueMessage
     {
         public int StreetNamePersistentLocalId { get; }
 
@@ -10,7 +10,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
 
         public Provenance Provenance { get; }
 
-        public AddressDeregularizationWasCorrected(int streetNamePersistentLocalId,
+        public AddressDeregulationWasCorrected(int streetNamePersistentLocalId,
             int addressPersistentLocalId,
             Provenance provenance)
         {
