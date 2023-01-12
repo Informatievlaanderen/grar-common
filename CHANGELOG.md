@@ -1,3 +1,10 @@
+## [17.45.1](https://github.com/informatievlaanderen/grar-common/compare/v17.45.0...v17.45.1) (2023-01-12)
+
+
+### Bug Fixes
+
+* rename deregularization to deregulation ([95392cb](https://github.com/informatievlaanderen/grar-common/commit/95392cb4a1d658913ec31a9c387937701c5c14f5))
+
 # [17.45.0](https://github.com/informatievlaanderen/grar-common/compare/v17.44.0...v17.45.0) (2023-01-10)
 
 
