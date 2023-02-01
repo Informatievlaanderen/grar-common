@@ -1,0 +1,32 @@
+type file
+version 1.0.0
+
+id Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm
+title Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm
+
+authors Basisregisters Vlaanderen
+owners Digitaal Vlaanderen <https://vlaanderen.be/digitaal-vlaanderen>
+copyright Copyright (c) Digitaal Vlaanderen
+requireLicenseAcceptance false
+projectUrl https://github.com/Informatievlaanderen/grar-common
+iconUrl https://raw.githubusercontent.com/Informatievlaanderen/build-pipeline/master/logo.png
+licenseUrl https://opensource.org/licenses/EUPL-1.2
+
+description Common logic for GrAr ACM/IDM provenance information.
+
+dependencies
+  framework: net6.0
+    Be.Vlaanderen.Basisregisters.GrAr.Common CURRENTVERSION
+
+    Be.Vlaanderen.Basisregisters.AcmIdm >= LOCKEDVERSION
+    Be.Vlaanderen.Basisregisters.Crab >= LOCKEDVERSION
+    Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
+s
+    Microsoft.CSharp >= LOCKEDVERSION
+
+files
+  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.dll => lib\net6.0
+  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.pdb => lib\net6.0
+  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.xml => lib\net6.0
+  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm.dll => lib\net6.0
+  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm.pdb => lib\net6.0

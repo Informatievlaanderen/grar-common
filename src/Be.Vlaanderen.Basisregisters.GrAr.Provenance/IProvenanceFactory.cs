@@ -10,4 +10,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
         Provenance CreateFrom(object provenanceHolder,
             TAggregate aggregate);
     }
+
+    public interface IProvenanceFactory
+    {
+        Provenance Create(
+            Reason reason,
+            Modification modification);
+    }
 }

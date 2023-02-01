@@ -38,6 +38,7 @@ Target.create "Lib_Publish" (fun _ ->
     publishSource "Be.Vlaanderen.Basisregisters.GrAr.Legacy"
     publishSource "Be.Vlaanderen.Basisregisters.GrAr.Oslo"
     publishSource "Be.Vlaanderen.Basisregisters.GrAr.Provenance"
+    publishSource "Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm"
 )
 
 Target.create "Lib_Pack" (fun _ -> pack "Be.Vlaanderen.Basisregisters.GrAr")

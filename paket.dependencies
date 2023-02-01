@@ -1,4 +1,5 @@
 framework: net6.0
+strategy: min
 source https://api.nuget.org/v3/index.json
 
 // PRODUCTION STUFF
@@ -23,6 +24,8 @@ nuget Microsoft.EntityFrameworkCore.Design 6.0.3
 
 // VBR STUFF
 nuget Be.Vlaanderen.Basisregisters.Build.Pipeline 6.0.5
+
+nuget Be.Vlaanderen.Basisregisters.AcmIdm 1.3.5
 
 nuget Be.Vlaanderen.Basisregisters.AggregateSource 7.1.3
 nuget Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting 7.1.3
