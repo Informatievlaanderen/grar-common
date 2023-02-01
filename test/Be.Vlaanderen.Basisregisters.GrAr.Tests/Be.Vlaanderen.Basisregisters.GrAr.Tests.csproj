@@ -9,6 +9,7 @@
     <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Legacy\Be.Vlaanderen.Basisregisters.GrAr.Legacy.csproj" />
     <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Oslo\Be.Vlaanderen.Basisregisters.GrAr.Oslo.csproj" />
     <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Provenance\Be.Vlaanderen.Basisregisters.GrAr.Provenance.csproj" />
+    <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm\Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm.csproj" />
   </ItemGroup>
 
   <ItemGroup>

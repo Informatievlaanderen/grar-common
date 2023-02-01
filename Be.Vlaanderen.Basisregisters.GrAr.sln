@@ -42,6 +42,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Vlaanderen.Basisregister
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Vlaanderen.Basisregisters.GrAr.Edit", "src\Be.Vlaanderen.Basisregisters.GrAr.Edit\Be.Vlaanderen.Basisregisters.GrAr.Edit.csproj", "{38714190-48F6-4114-988C-4045D8135C8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm", "src\Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm\Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm.csproj", "{58CE68F1-0059-4651-83E5-62B0455F68AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +90,10 @@ Global
 		{38714190-48F6-4114-988C-4045D8135C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38714190-48F6-4114-988C-4045D8135C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38714190-48F6-4114-988C-4045D8135C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58CE68F1-0059-4651-83E5-62B0455F68AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58CE68F1-0059-4651-83E5-62B0455F68AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58CE68F1-0059-4651-83E5-62B0455F68AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58CE68F1-0059-4651-83E5-62B0455F68AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +109,7 @@ Global
 		{0597BD87-FE42-46C0-B2AA-4C2E00BAC857} = {562ACC15-A0F7-4F21-B0DA-90F757F23342}
 		{AFB8F63E-9C39-4C1D-8C58-66C542C3632E} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
 		{38714190-48F6-4114-988C-4045D8135C8B} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
+		{58CE68F1-0059-4651-83E5-62B0455F68AD} = {4F1B3A9B-2057-48FA-A1CC-94089E5E5364}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CEAD0895-A570-4203-B6EF-288CA9D98AEF}
