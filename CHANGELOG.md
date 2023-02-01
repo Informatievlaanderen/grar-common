@@ -1,3 +1,10 @@
+# [17.47.0](https://github.com/informatievlaanderen/grar-common/compare/v17.46.0...v17.47.0) (2023-02-01)
+
+
+### Features
+
+* add provenance.acmidm ([0163267](https://github.com/informatievlaanderen/grar-common/commit/016326712c4cfa451f1f292e549087964086acb9))
+
 # [17.46.0](https://github.com/informatievlaanderen/grar-common/compare/v17.45.1...v17.46.0) (2023-01-12)
 
 
