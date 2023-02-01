@@ -17,16 +17,14 @@ description Common logic for GrAr ACM/IDM provenance information.
 dependencies
   framework: net6.0
     Be.Vlaanderen.Basisregisters.GrAr.Common CURRENTVERSION
+    Be.Vlaanderen.Basisregisters.GrAr.Provenance CURRENTVERSION
 
     Be.Vlaanderen.Basisregisters.AcmIdm >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.Crab >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
-s
+
     Microsoft.CSharp >= LOCKEDVERSION
 
 files
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.dll => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.pdb => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.xml => lib\net6.0
   /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm.dll => lib\net6.0
   /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm.pdb => lib\net6.0
