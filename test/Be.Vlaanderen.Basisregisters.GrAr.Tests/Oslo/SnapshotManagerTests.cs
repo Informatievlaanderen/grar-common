@@ -25,6 +25,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse("2022-03-23T14:24:04+01:00")),
+                eventPosition: 1111111,
                 throwStaleWhenGone: false,
                 CancellationToken.None);
 
@@ -53,6 +54,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                eventPosition: 1111111,
                 throwStaleWhenGone: false,
                 CancellationToken.None);
 
@@ -83,6 +85,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                eventPosition: 1111111,
                 throwStaleWhenGone: false,
                 CancellationToken.None);
 
@@ -134,6 +137,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                eventPosition: 1111111,
                 throwStaleWhenGone: false,
                 CancellationToken.None);
 
@@ -178,6 +182,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                eventPosition: 1111111,
                 throwStaleWhenGone,
                 CancellationToken.None);
 
@@ -201,6 +206,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse("2022-03-23T14:24:04+01:00")),
+                eventPosition: 1111111,
                 doNotThrowStaleWhenGone,
                 CancellationToken.None);
 
@@ -257,6 +263,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                eventPosition: 1111111,
                 throwStaleWhenGone: false,
                 CancellationToken.None);
 
