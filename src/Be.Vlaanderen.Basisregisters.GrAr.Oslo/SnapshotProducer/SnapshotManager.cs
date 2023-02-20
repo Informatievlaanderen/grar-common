@@ -28,8 +28,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
             _retryBackoffFactor = options.RetryBackoffFactor;
         }
 
-        public async Task<OsloResult?> FindMatchingSnapshot(string persistentLocalId,
+        public async Task<OsloResult?> FindMatchingSnapshot(
+            string objectId,
             Instant eventVersion,
+            long eventPosition,
             bool throwStaleWhenGone,
             CancellationToken ct)
         {
@@ -40,7 +42,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
 
                         if (shouldHandle)
                         {
-                            _logger.LogWarning(e, $"Retry getting snapshot for '{persistentLocalId}' because of exception.");
+                            _logger.LogWarning(e, $"Retry getting snapshot for objectId '{objectId}' with event position '{eventPosition}'.");
                         }
 
                         return shouldHandle;
@@ -69,13 +71,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
 
                 try
                 {
-                    _logger.LogInformation($"Requesting snapshot for '{persistentLocalId}'");
-                    snapshot = await _osloProxy.GetSnapshot(persistentLocalId, ct);
+                    _logger.LogInformation($"Requesting snapshot for '{objectId}'");
+                    snapshot = await _osloProxy.GetSnapshot(objectId, ct);
                     _logger.LogInformation("Snapshot received.");
                 }
                 catch (HttpRequestException e)
                 {
-                    _logger.LogWarning(e, $"HttpRequestException while getting snapshot for '{persistentLocalId}'.");
+                    _logger.LogWarning(e, $"HttpRequestException while getting snapshot for objectId '{objectId}' with event position '{eventPosition}'.");
 
                     switch (e.StatusCode)
                     {
