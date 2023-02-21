@@ -1,3 +1,17 @@
+# [18.0.0](https://github.com/informatievlaanderen/grar-common/compare/v17.47.0...v18.0.0) (2023-02-21)
+
+
+### Features
+
+* add AddressWasRejectedBecauseStreetNameWasRejected AddressWasRetiredBecauseStreetNameWasRejected ([b14cfc7](https://github.com/informatievlaanderen/grar-common/commit/b14cfc705ec884dfb7a376c24a2774bcddbbd7d8))
+* change isnapshotmanager interface to accept event position ([990f4fb](https://github.com/informatievlaanderen/grar-common/commit/990f4fbad89767d317b5d734385fd18bfcae2e23))
+
+
+### BREAKING CHANGES
+
+* Add event position as an extra parameter to ISnapshotManager FindMatchingSnapshot
+method
+
 # [17.47.0](https://github.com/informatievlaanderen/grar-common/compare/v17.46.0...v17.47.0) (2023-02-01)
 
 
