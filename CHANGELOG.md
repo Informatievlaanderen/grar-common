@@ -1,3 +1,10 @@
+# [18.1.0](https://github.com/informatievlaanderen/grar-common/compare/v18.0.0...v18.1.0) (2023-02-22)
+
+
+### Features
+
+* add StreetNameHomonymAdditionsWereCorrected & StreetNameHomonymAdditionsWereRemoved ([33a45b9](https://github.com/informatievlaanderen/grar-common/commit/33a45b9e606feb354768c66306d7416c17bced73))
+
 # [18.0.0](https://github.com/informatievlaanderen/grar-common/compare/v17.47.0...v18.0.0) (2023-02-21)
 
 
