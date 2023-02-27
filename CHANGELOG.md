@@ -1,3 +1,10 @@
+## [18.1.1](https://github.com/informatievlaanderen/grar-common/compare/v18.1.0...v18.1.1) (2023-02-27)
+
+
+### Bug Fixes
+
+* bump command handling ([8d05c69](https://github.com/informatievlaanderen/grar-common/commit/8d05c6944ffb760301d0c3d7ab62ed255636f7b9))
+
 # [18.1.0](https://github.com/informatievlaanderen/grar-common/compare/v18.0.0...v18.1.0) (2023-02-22)
 
 
