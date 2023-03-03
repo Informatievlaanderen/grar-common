@@ -1,3 +1,10 @@
+# [18.2.0](https://github.com/informatievlaanderen/grar-common/compare/v18.1.1...v18.2.0) (2023-03-03)
+
+
+### Features
+
+* add addresswasremovedbecausestreetnamewasremoved ([1aca661](https://github.com/informatievlaanderen/grar-common/commit/1aca6614a1f9040b13072ea9be3148466c2c5650))
+
 ## [18.1.1](https://github.com/informatievlaanderen/grar-common/compare/v18.1.0...v18.1.1) (2023-02-27)
 
 
