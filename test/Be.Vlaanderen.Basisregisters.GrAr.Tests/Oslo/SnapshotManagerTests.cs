@@ -7,7 +7,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
     using System.Threading.Tasks;
     using FluentAssertions;
     using GrAr.Oslo.SnapshotProducer;
-    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Logging.Abstractions;
     using Moq;
     using NodaTime;
@@ -268,6 +267,26 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
                 CancellationToken.None);
 
             mockProxy.Verify(x => x.GetSnapshot(It.IsAny<string>(), CancellationToken.None), () => Times.Exactly(options.MaxRetryWaitIntervalSeconds + 1));
+        }
+
+        [Fact]
+        public async Task WhenUnhandledException_ThenRethrow()
+        {
+            var mockProxy = new Mock<IOsloProxy>();
+
+            mockProxy
+                .Setup(x => x.GetSnapshot(It.IsAny<string>(), CancellationToken.None))
+                .Throws<ArgumentException>();
+
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, SnapshotManagerOptions.Create("1", "0"));
+            var act = async () => await snapshotManager.FindMatchingSnapshot(
+                "50083",
+                Instant.FromDateTimeOffset(DateTimeOffset.Parse("2022-03-23T14:24:04+01:00")),
+                eventPosition: 1111111,
+                throwStaleWhenGone: false,
+                CancellationToken.None);
+
+            act.Should().ThrowAsync<ArgumentException>();
         }
     }
 }
