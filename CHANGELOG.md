@@ -1,3 +1,10 @@
+# [18.4.0](https://github.com/informatievlaanderen/grar-common/compare/v18.3.0...v18.4.0) (2023-03-13)
+
+
+### Features
+
+* add StreetNameNamesWereChanged ([59daad8](https://github.com/informatievlaanderen/grar-common/commit/59daad8285367ad56a141a5af18caa669f325490))
+
 # [18.3.0](https://github.com/informatievlaanderen/grar-common/compare/v18.2.0...v18.3.0) (2023-03-13)
 
 
