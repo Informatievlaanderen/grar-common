@@ -1,3 +1,10 @@
+# [18.3.0](https://github.com/informatievlaanderen/grar-common/compare/v18.2.0...v18.3.0) (2023-03-13)
+
+
+### Features
+
+* bump api ([8a1ac48](https://github.com/informatievlaanderen/grar-common/commit/8a1ac4862251c9dbd0b53488c159582a3d0525da))
+
 # [18.2.0](https://github.com/informatievlaanderen/grar-common/compare/v18.1.1...v18.2.0) (2023-03-03)
 
 
