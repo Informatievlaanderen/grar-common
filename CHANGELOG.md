@@ -1,3 +1,10 @@
+## [18.5.1](https://github.com/informatievlaanderen/grar-common/compare/v18.5.0...v18.5.1) (2023-04-05)
+
+
+### Bug Fixes
+
+* rename to StreetNameWasReaddressed ([785582d](https://github.com/informatievlaanderen/grar-common/commit/785582d5182e51143cf871c4ef0621c41c2b1ce9))
+
 # [18.5.0](https://github.com/informatievlaanderen/grar-common/compare/v18.4.0...v18.5.0) (2023-04-05)
 
 
