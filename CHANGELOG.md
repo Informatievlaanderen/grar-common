@@ -1,3 +1,10 @@
+# [18.5.0](https://github.com/informatievlaanderen/grar-common/compare/v18.4.0...v18.5.0) (2023-04-05)
+
+
+### Features
+
+* add AddressWasReaddressed ([f490acf](https://github.com/informatievlaanderen/grar-common/commit/f490acfe524cd6dde2680981d3eb6e0342c6e791))
+
 # [18.4.0](https://github.com/informatievlaanderen/grar-common/compare/v18.3.0...v18.4.0) (2023-03-13)
 
 
