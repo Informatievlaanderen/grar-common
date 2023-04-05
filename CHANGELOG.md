@@ -1,3 +1,10 @@
+# [18.6.0](https://github.com/informatievlaanderen/grar-common/compare/v18.5.1...v18.6.0) (2023-04-05)
+
+
+### Features
+
+* bump acm-idm package ([e43e549](https://github.com/informatievlaanderen/grar-common/commit/e43e54911417c88fc30bd5cde2291a591053e2ed))
+
 ## [18.5.1](https://github.com/informatievlaanderen/grar-common/compare/v18.5.0...v18.5.1) (2023-04-05)
 
 
