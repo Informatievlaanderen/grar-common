@@ -3,7 +3,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
     using System.Collections.Generic;
     using Common;
 
-    public class AddressWasReaddressed : IQueueMessage
+    public class StreetNameWasReaddressed : IQueueMessage
     {
         public int StreetNamePersistentLocalId { get; }
 
@@ -19,7 +19,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
 
         public Provenance Provenance { get; }
 
-        public AddressWasReaddressed(int streetNamePersistentLocalId,
+        public StreetNameWasReaddressed(int streetNamePersistentLocalId,
             IEnumerable<int> proposedAddressPersistentLocalIds,
             IEnumerable<int> rejectedAddressPersistentLocalIds,
             IEnumerable<int> retiredAddressPersistentLocalIds,
