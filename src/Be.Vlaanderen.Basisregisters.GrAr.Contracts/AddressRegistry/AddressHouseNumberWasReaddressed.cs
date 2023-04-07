@@ -3,36 +3,37 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
     using System.Collections.Generic;
     using Common;
 
-    public class StreetNameWasReaddressed : IQueueMessage
+    public class AddressHouseNumberWasReaddressed : IQueueMessage
     {
         public int StreetNamePersistentLocalId { get; }
 
-        public IEnumerable<int> ProposedAddressPersistentLocalIds { get; }
+        public int AddressPersistentLocalId { get; }
 
-        public IEnumerable<int> RejectedAddressPersistentLocalIds { get; }
+        public ReaddressedAddressData ReaddressedHouseNumber { get; }
 
-        public IEnumerable<int> RetiredAddressPersistentLocalIds { get; }
+        public IReadOnlyList<ReaddressedAddressData> ReaddressedBoxNumbers { get; }
 
-        public IEnumerable<int> AddressesWhichWillBeRejectedOrRetiredPersistentLocalIds { get; }
+        public IReadOnlyList<int> RejectedBoxNumberAddressPersistentLocalIds { get; }
 
-        public IEnumerable<ReaddressedAddressData> ReaddressedAddresses { get; }
+        public IReadOnlyList<int> RetiredBoxNumberAddressPersistentLocalIds { get; }
 
         public Provenance Provenance { get; }
 
-        public StreetNameWasReaddressed(int streetNamePersistentLocalId,
-            IEnumerable<int> proposedAddressPersistentLocalIds,
-            IEnumerable<int> rejectedAddressPersistentLocalIds,
-            IEnumerable<int> retiredAddressPersistentLocalIds,
-            IEnumerable<int> addressesWhichWillBeRejectedOrRetiredPersistentLocalIds,
-            IEnumerable<ReaddressedAddressData> readdressedAddresses,
+        public AddressHouseNumberWasReaddressed(
+            int streetNamePersistentLocalId,
+            int addressPersistentLocalId,
+            ReaddressedAddressData readdressedHouseNumber,
+            IReadOnlyList<ReaddressedAddressData> readdressedBoxNumbers,
+            IReadOnlyList<int> rejectedBoxNumberAddressPersistentLocalIds,
+            IReadOnlyList<int> retiredBoxNumberAddressPersistentLocalIds,
             Provenance provenance)
         {
             StreetNamePersistentLocalId = streetNamePersistentLocalId;
-            ProposedAddressPersistentLocalIds = proposedAddressPersistentLocalIds;
-            RejectedAddressPersistentLocalIds = rejectedAddressPersistentLocalIds;
-            RetiredAddressPersistentLocalIds = retiredAddressPersistentLocalIds;
-            AddressesWhichWillBeRejectedOrRetiredPersistentLocalIds = addressesWhichWillBeRejectedOrRetiredPersistentLocalIds;
-            ReaddressedAddresses = readdressedAddresses;
+            AddressPersistentLocalId = addressPersistentLocalId;
+            ReaddressedHouseNumber = readdressedHouseNumber;
+            ReaddressedBoxNumbers = readdressedBoxNumbers;
+            RejectedBoxNumberAddressPersistentLocalIds = rejectedBoxNumberAddressPersistentLocalIds;
+            RetiredBoxNumberAddressPersistentLocalIds = retiredBoxNumberAddressPersistentLocalIds;
             Provenance = provenance;
         }
     }
