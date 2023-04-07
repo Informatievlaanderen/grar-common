@@ -16,6 +16,22 @@
         public IList<AddressBoxNumberReplacedBecauseOfReaddressData> BoxNumberAddressPersistentLocalIds { get;  }
 
         public Provenance Provenance { get; }
+
+        public AddressHouseNumberWasReplacedBecauseOfReaddress(
+            int streetNamePersistentLocalId,
+            int destinationStreetNamePersistentLocalId,
+            int addressPersistentLocalId,
+            int destinationAddressPersistentLocalId,
+            IList<AddressBoxNumberReplacedBecauseOfReaddressData> boxNumberAddressPersistentLocalIds,
+            Provenance provenance)
+        {
+            StreetNamePersistentLocalId = streetNamePersistentLocalId;
+            DestinationStreetNamePersistentLocalId = destinationStreetNamePersistentLocalId;
+            AddressPersistentLocalId = addressPersistentLocalId;
+            DestinationAddressPersistentLocalId = destinationAddressPersistentLocalId;
+            BoxNumberAddressPersistentLocalIds = boxNumberAddressPersistentLocalIds;
+            Provenance = provenance;
+        }
     }
 
     public class AddressBoxNumberReplacedBecauseOfReaddressData
