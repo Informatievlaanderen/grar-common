@@ -1,3 +1,10 @@
+# [18.8.0](https://github.com/informatievlaanderen/grar-common/compare/v18.7.3...v18.8.0) (2023-04-07)
+
+
+### Features
+
+* add BuildingUnitAddressAttachmentWasReplacedBecauseAddressWasReaddressed ([0ad2f2c](https://github.com/informatievlaanderen/grar-common/commit/0ad2f2cfd7b15e5f2cb5639711d1958d674a357b))
+
 ## [18.7.3](https://github.com/informatievlaanderen/grar-common/compare/v18.7.2...v18.7.3) (2023-04-07)
 
 
