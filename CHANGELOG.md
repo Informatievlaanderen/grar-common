@@ -1,3 +1,10 @@
+## [18.7.1](https://github.com/informatievlaanderen/grar-common/compare/v18.7.0...v18.7.1) (2023-04-07)
+
+
+### Bug Fixes
+
+* correct ReaddressedAddressData ([361be13](https://github.com/informatievlaanderen/grar-common/commit/361be13701715346eb8b6372f2fff32f530cb46b))
+
 # [18.7.0](https://github.com/informatievlaanderen/grar-common/compare/v18.6.0...v18.7.0) (2023-04-07)
 
 
