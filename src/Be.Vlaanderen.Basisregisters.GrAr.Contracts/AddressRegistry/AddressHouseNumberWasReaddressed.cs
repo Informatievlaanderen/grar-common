@@ -42,6 +42,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
     {
         public int SourceAddressPersistentLocalId { get; }
         public int DestinationAddressPersistentLocalId { get; }
+        public bool IsDestinationNewlyProposed { get; }
         public string SourceStatus { get; }
         public string DestinationHouseNumber { get; }
         public string? SourceBoxNumber { get; }
@@ -50,10 +51,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
         public string SourceGeometrySpecification { get; }
         public string SourceExtendedWkbGeometry { get; }
         public bool SourceIsOfficiallyAssigned { get; }
-        public int? DestinationParentAddressPersistentLocalId { get; }
 
-        public ReaddressedAddressData(int sourceAddressPersistentLocalId,
+        public ReaddressedAddressData(
+            int sourceAddressPersistentLocalId,
             int destinationAddressPersistentLocalId,
+            bool isDestinationNewlyProposed,
             string sourceStatus,
             string destinationHouseNumber,
             string? sourceBoxNumber,
@@ -61,11 +63,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
             string sourceGeometryMethod,
             string sourceGeometrySpecification,
             string sourceExtendedWkbGeometry,
-            bool sourceIsOfficiallyAssigned,
-            int? destinationParentAddressPersistentLocalId)
+            bool sourceIsOfficiallyAssigned)
         {
             SourceAddressPersistentLocalId = sourceAddressPersistentLocalId;
             DestinationAddressPersistentLocalId = destinationAddressPersistentLocalId;
+            IsDestinationNewlyProposed = isDestinationNewlyProposed;
             SourceStatus = sourceStatus;
             DestinationHouseNumber = destinationHouseNumber;
             SourceBoxNumber = sourceBoxNumber;
@@ -74,7 +76,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
             SourceGeometrySpecification = sourceGeometrySpecification;
             SourceExtendedWkbGeometry = sourceExtendedWkbGeometry;
             SourceIsOfficiallyAssigned = sourceIsOfficiallyAssigned;
-            DestinationParentAddressPersistentLocalId = destinationParentAddressPersistentLocalId;
         }
     }
 }
