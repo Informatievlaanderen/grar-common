@@ -1,3 +1,15 @@
+# [18.7.0](https://github.com/informatievlaanderen/grar-common/compare/v18.6.0...v18.7.0) (2023-04-07)
+
+
+### Bug Fixes
+
+* StreetNameWasReaddressed to AddressHouseNumberWasReaddressed ([f6930dd](https://github.com/informatievlaanderen/grar-common/commit/f6930dd88901f951181fa1d0a9b1667b9050cf0e))
+
+
+### Features
+
+* add AddressHouseNumberWasReplacedBecauseOfReaddress ([034974e](https://github.com/informatievlaanderen/grar-common/commit/034974e9492ea0b2aebb8d29f6a23775f1d1f7bb))
+
 # [18.6.0](https://github.com/informatievlaanderen/grar-common/compare/v18.5.1...v18.6.0) (2023-04-05)
 
 
