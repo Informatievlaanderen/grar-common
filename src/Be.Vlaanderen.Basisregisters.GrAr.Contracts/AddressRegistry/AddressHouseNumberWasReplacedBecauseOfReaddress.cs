@@ -15,7 +15,7 @@
 
         public IList<AddressBoxNumberReplacedBecauseOfReaddressData> BoxNumberAddressPersistentLocalIds { get;  }
 
-        public Provenance Provenance { get; private set; }
+        public Provenance Provenance { get; }
     }
 
     public class AddressBoxNumberReplacedBecauseOfReaddressData
