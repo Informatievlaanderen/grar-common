@@ -1,3 +1,10 @@
+## [18.7.2](https://github.com/informatievlaanderen/grar-common/compare/v18.7.1...v18.7.2) (2023-04-07)
+
+
+### Bug Fixes
+
+* make event provenance readonly ([cf7f7d9](https://github.com/informatievlaanderen/grar-common/commit/cf7f7d949e6ce169226a0cff1fa26fbc46511e7b))
+
 ## [18.7.1](https://github.com/informatievlaanderen/grar-common/compare/v18.7.0...v18.7.1) (2023-04-07)
 
 
