@@ -1,3 +1,10 @@
+## [18.7.3](https://github.com/informatievlaanderen/grar-common/compare/v18.7.2...v18.7.3) (2023-04-07)
+
+
+### Bug Fixes
+
+* add AddressHouseNumberWasReplacedBecauseOfReaddress constructor ([016f0a8](https://github.com/informatievlaanderen/grar-common/commit/016f0a8263e95d23a399eb3212f5fbc1720773a7))
+
 ## [18.7.2](https://github.com/informatievlaanderen/grar-common/compare/v18.7.1...v18.7.2) (2023-04-07)
 
 
