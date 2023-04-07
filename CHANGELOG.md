@@ -1,3 +1,10 @@
+# [18.9.0](https://github.com/informatievlaanderen/grar-common/compare/v18.8.0...v18.9.0) (2023-04-07)
+
+
+### Features
+
+* add ParcelAddressWasReplacedBecauseAddressWasReaddressed ([760e70b](https://github.com/informatievlaanderen/grar-common/commit/760e70b25b4fd374583277101c3a48f2f92a20c7))
+
 # [18.8.0](https://github.com/informatievlaanderen/grar-common/compare/v18.7.3...v18.8.0) (2023-04-07)
 
 
