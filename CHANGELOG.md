@@ -1,3 +1,10 @@
+## [18.9.1](https://github.com/informatievlaanderen/grar-common/compare/v18.9.0...v18.9.1) (2023-04-11)
+
+
+### Bug Fixes
+
+* building and parcel readdressed events ([37ffba8](https://github.com/informatievlaanderen/grar-common/commit/37ffba84b06b55a294b92a5a884f9ff2e3cc0a6b))
+
 # [18.9.0](https://github.com/informatievlaanderen/grar-common/compare/v18.8.0...v18.9.0) (2023-04-07)
 
 
