@@ -8,7 +8,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
 
         public string CaPaKey { get; }
 
-        public int AddressPersistentLocalId { get; }
+        public int NewAddressPersistentLocalId { get; }
 
         public int PreviousAddressPersistentLocalId { get; }
 
@@ -17,13 +17,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
         public ParcelAddressWasReplacedBecauseAddressWasReaddressed(
             string parcelId,
             string caPaKey,
-            int addressPersistentLocalId,
+            int newAddressPersistentLocalId,
             int previousAddressPersistentLocalId,
             Provenance provenance)
         {
             ParcelId = parcelId;
             CaPaKey = caPaKey;
-            AddressPersistentLocalId = addressPersistentLocalId;
+            NewAddressPersistentLocalId = newAddressPersistentLocalId;
             PreviousAddressPersistentLocalId = previousAddressPersistentLocalId;
             Provenance = provenance;
         }
