@@ -8,23 +8,23 @@
 
         public int BuildingUnitPersistentLocalId { get; }
 
-        public int SourceAddressPersistentLocalId { get; }
+        public int NewAddressPersistentLocalId { get; }
 
-        public int DestinationAddressPersistentLocalId { get; }
+        public int PreviousAddressPersistentLocalId { get; }
 
         public Provenance Provenance { get; }
 
         public BuildingUnitAddressWasReplacedBecauseAddressWasReaddressed(
             int buildingPersistentLocalId,
             int buildingUnitPersistentLocalId,
-            int sourceAddressPersistentLocalId,
-            int destinationAddressPersistentLocalId,
+            int newAddressPersistentLocalId,
+            int previousAddressPersistentLocalId,
             Provenance provenance)
         {
             BuildingPersistentLocalId = buildingPersistentLocalId;
             BuildingUnitPersistentLocalId = buildingUnitPersistentLocalId;
-            SourceAddressPersistentLocalId = sourceAddressPersistentLocalId;
-            DestinationAddressPersistentLocalId = destinationAddressPersistentLocalId;
+            NewAddressPersistentLocalId = newAddressPersistentLocalId;
+            PreviousAddressPersistentLocalId = previousAddressPersistentLocalId;
             Provenance = provenance;
         }
     }
