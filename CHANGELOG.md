@@ -1,3 +1,10 @@
+## [18.9.3](https://github.com/informatievlaanderen/grar-common/compare/v18.9.2...v18.9.3) (2023-04-11)
+
+
+### Bug Fixes
+
+* remove addressPersistentLocalIds from buildingUnitRemovalWasCorrected event ([e8e6d47](https://github.com/informatievlaanderen/grar-common/commit/e8e6d476e1a904d1e2673122bd700c6dd70086b3))
+
 ## [18.9.2](https://github.com/informatievlaanderen/grar-common/compare/v18.9.1...v18.9.2) (2023-04-11)
 
 
