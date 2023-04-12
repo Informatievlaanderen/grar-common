@@ -1,3 +1,10 @@
+## [18.9.4](https://github.com/informatievlaanderen/grar-common/compare/v18.9.3...v18.9.4) (2023-04-12)
+
+
+### Bug Fixes
+
+* only expose edit contract GebouweenheidFunctie NietGekend ([d8249f3](https://github.com/informatievlaanderen/grar-common/commit/d8249f3d68eaf0851596d8ee81f6be2a46a978f1))
+
 ## [18.9.3](https://github.com/informatievlaanderen/grar-common/compare/v18.9.2...v18.9.3) (2023-04-11)
 
 
