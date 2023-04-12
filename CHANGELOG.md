@@ -1,3 +1,10 @@
+## [18.9.5](https://github.com/informatievlaanderen/grar-common/compare/v18.9.4...v18.9.5) (2023-04-12)
+
+
+### Bug Fixes
+
+* bump to trigger build ([92a0f16](https://github.com/informatievlaanderen/grar-common/commit/92a0f16ac75a091f494415c2a55b0a71f59bbc9d))
+
 ## [18.9.4](https://github.com/informatievlaanderen/grar-common/compare/v18.9.3...v18.9.4) (2023-04-12)
 
 
