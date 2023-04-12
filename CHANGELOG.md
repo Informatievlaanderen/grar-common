@@ -1,3 +1,10 @@
+## [18.9.6](https://github.com/informatievlaanderen/grar-common/compare/v18.9.5...v18.9.6) (2023-04-12)
+
+
+### Bug Fixes
+
+* ci use basisregisters-vlaanderen user ([998ce09](https://github.com/informatievlaanderen/grar-common/commit/998ce09caee7032ab40305c1f21dd46a832cac33))
+
 ## [18.9.5](https://github.com/informatievlaanderen/grar-common/compare/v18.9.4...v18.9.5) (2023-04-12)
 
 
