@@ -13,10 +13,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
 
         public IReadOnlyList<ReaddressedAddressData> ReaddressedBoxNumbers { get; }
 
-        public IReadOnlyList<int> RejectedBoxNumberAddressPersistentLocalIds { get; }
-
-        public IReadOnlyList<int> RetiredBoxNumberAddressPersistentLocalIds { get; }
-
         public Provenance Provenance { get; }
 
         public AddressHouseNumberWasReaddressed(
@@ -24,16 +20,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
             int addressPersistentLocalId,
             ReaddressedAddressData readdressedHouseNumber,
             IReadOnlyList<ReaddressedAddressData> readdressedBoxNumbers,
-            IReadOnlyList<int> rejectedBoxNumberAddressPersistentLocalIds,
-            IReadOnlyList<int> retiredBoxNumberAddressPersistentLocalIds,
             Provenance provenance)
         {
             StreetNamePersistentLocalId = streetNamePersistentLocalId;
             AddressPersistentLocalId = addressPersistentLocalId;
             ReaddressedHouseNumber = readdressedHouseNumber;
             ReaddressedBoxNumbers = readdressedBoxNumbers;
-            RejectedBoxNumberAddressPersistentLocalIds = rejectedBoxNumberAddressPersistentLocalIds;
-            RetiredBoxNumberAddressPersistentLocalIds = retiredBoxNumberAddressPersistentLocalIds;
             Provenance = provenance;
         }
     }
