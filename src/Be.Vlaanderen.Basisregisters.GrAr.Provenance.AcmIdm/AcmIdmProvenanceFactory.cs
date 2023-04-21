@@ -2,7 +2,7 @@
 {
     using System;
     using System.Security.Claims;
-    using Basisregisters.AcmIdm;
+    using Basisregisters.Auth.AcmIdm;
     using Microsoft.AspNetCore.Mvc.Infrastructure;
     using NodaTime;
 

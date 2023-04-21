@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Security.Claims;
     using AutoFixture;
-    using Basisregisters.AcmIdm;
+    using Basisregisters.Auth.AcmIdm;
     using FluentAssertions;
     using GrAr.Provenance;
     using GrAr.Provenance.AcmIdm;
