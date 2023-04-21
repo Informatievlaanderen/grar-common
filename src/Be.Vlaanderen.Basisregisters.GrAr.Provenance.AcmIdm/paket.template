@@ -19,7 +19,7 @@ dependencies
     Be.Vlaanderen.Basisregisters.GrAr.Common CURRENTVERSION
     Be.Vlaanderen.Basisregisters.GrAr.Provenance CURRENTVERSION
 
-    Be.Vlaanderen.Basisregisters.AcmIdm >= LOCKEDVERSION
+    Be.Vlaanderen.Basisregisters.Auth.AcmIdm >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.Crab >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
 
