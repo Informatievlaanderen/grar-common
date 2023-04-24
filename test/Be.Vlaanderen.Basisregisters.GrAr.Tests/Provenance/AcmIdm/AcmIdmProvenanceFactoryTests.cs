@@ -52,6 +52,7 @@
         }
 
         [Theory]
+        [InlineData(Application.Grb)]
         [InlineData(Application.BuildingRegistry)]
         [InlineData(Application.AddressRegistry)]
         [InlineData(Application.ParcelRegistry)]

@@ -14,6 +14,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
         AddressRegistry = 9,
         BuildingRegistry = 10,
         ParcelRegistry = 11,
-        RoadRegistry = 12
+        RoadRegistry = 12,
+        Grb = 13,
     }
 }
