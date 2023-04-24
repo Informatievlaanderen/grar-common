@@ -1,3 +1,10 @@
+# [18.11.0](https://github.com/informatievlaanderen/grar-common/compare/v18.10.0...v18.11.0) (2023-04-24)
+
+
+### Features
+
+* expand application enum with grb ([f9d2bd2](https://github.com/informatievlaanderen/grar-common/commit/f9d2bd29f644740f56427911d1cba819b2e39364))
+
 # [18.10.0](https://github.com/informatievlaanderen/grar-common/compare/v18.9.7...v18.10.0) (2023-04-21)
 
 
