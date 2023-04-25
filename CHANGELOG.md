@@ -1,3 +1,10 @@
+# [18.12.0](https://github.com/informatievlaanderen/grar-common/compare/v18.11.0...v18.12.0) (2023-04-25)
+
+
+### Features
+
+* add UnplannedBuildingWasRealizedAndMeasured and BuildingGeometryWasImportedFromGrb ([f543ad1](https://github.com/informatievlaanderen/grar-common/commit/f543ad1ff3967053530bff6f48e2b675a86992b0))
+
 # [18.11.0](https://github.com/informatievlaanderen/grar-common/compare/v18.10.0...v18.11.0) (2023-04-24)
 
 
