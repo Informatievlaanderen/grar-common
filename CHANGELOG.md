@@ -1,3 +1,10 @@
+# [18.13.0](https://github.com/informatievlaanderen/grar-common/compare/v18.12.0...v18.13.0) (2023-04-26)
+
+
+### Features
+
+* add buildingWasDemolished contract ([43d8eac](https://github.com/informatievlaanderen/grar-common/commit/43d8eacf8b4046e7a0b3cf80b3b5d080b3bb48cc))
+
 # [18.12.0](https://github.com/informatievlaanderen/grar-common/compare/v18.11.0...v18.12.0) (2023-04-25)
 
 
