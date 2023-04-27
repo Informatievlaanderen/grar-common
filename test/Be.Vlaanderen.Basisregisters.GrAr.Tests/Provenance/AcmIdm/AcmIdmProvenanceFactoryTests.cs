@@ -121,6 +121,30 @@
         }
 
         [Fact]
+        public void OperatorWithOvoCodeTest()
+        {
+            var expectedOvoCode = "OVO" + _fixture.Create<string>();
+            var defaultClaims = new List<Claim>
+            {
+                new Claim(AcmIdmClaimTypes.VoOrgCode, _fixture.Create<string>()),
+                new Claim(AcmIdmClaimTypes.VoOvoCode, expectedOvoCode),
+            };
+
+            _mockActionContext.SetupProperty(x => x.ActionContext, new ActionContext
+            {
+                HttpContext = new DefaultHttpContext
+                {
+                    User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
+                }
+            });
+
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockActionContext.Object);
+            var result = factory.Create(_fixture.Create<Reason>(), _fixture.Create<Modification>());
+
+            result.Operator.ToString().Should().Be(expectedOvoCode);
+        }
+
+        [Fact]
         public void OrganisationDigitaalVlaanderenTest()
         {
             var defaultClaims = new List<Claim>
