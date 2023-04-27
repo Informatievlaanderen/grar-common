@@ -29,9 +29,10 @@
             }
 
             var contextUser = _actionContextAccessor.ActionContext.HttpContext.User;
+            var ovoCode = _actionContextAccessor.ActionContext.HttpContext.FindOvoCodeClaim();
             var organisation = Organisation.Other;
 
-            if (contextUser.FindFirstValue(AcmIdmClaimTypes.VoOrgCode) == OvoCodeDigitaalVlaanderen)
+            if (ovoCode == OvoCodeDigitaalVlaanderen)
             {
                 organisation = Organisation.DigitaalVlaanderen;
             }
@@ -44,7 +45,7 @@
                 SystemClock.Instance.GetCurrentInstant(),
                 _application,
                 reason,
-                new Operator(contextUser.FindFirstValue(AcmIdmClaimTypes.VoOrgCode)),
+                new Operator(ovoCode ?? contextUser.FindFirstValue(AcmIdmClaimTypes.VoOrgCode)),
                 modification,
                 organisation);
         }
