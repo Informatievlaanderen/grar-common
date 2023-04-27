@@ -1,3 +1,15 @@
+# [18.14.0](https://github.com/informatievlaanderen/grar-common/compare/v18.13.0...v18.14.0) (2023-04-27)
+
+
+### Bug Fixes
+
+* use new findovocodeclaim ([c8e88ad](https://github.com/informatievlaanderen/grar-common/commit/c8e88ad3d6deee2a8570027ef8d7dde5897fdc18))
+
+
+### Features
+
+* building was measured ([0b83bf7](https://github.com/informatievlaanderen/grar-common/commit/0b83bf7a39cb04e4ae901dfeef557408d5bf23c9))
+
 # [18.13.0](https://github.com/informatievlaanderen/grar-common/compare/v18.12.0...v18.13.0) (2023-04-26)
 
 
