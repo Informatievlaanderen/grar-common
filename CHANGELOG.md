@@ -1,3 +1,10 @@
+## [18.14.1](https://github.com/informatievlaanderen/grar-common/compare/v18.14.0...v18.14.1) (2023-04-28)
+
+
+### Bug Fixes
+
+* extend BuildingWasMeasured with building units ([113c76a](https://github.com/informatievlaanderen/grar-common/commit/113c76a43ed167ccecac58f3de1948b4c3da3c79))
+
 # [18.14.0](https://github.com/informatievlaanderen/grar-common/compare/v18.13.0...v18.14.0) (2023-04-27)
 
 
