@@ -1,3 +1,10 @@
+# [18.16.0](https://github.com/informatievlaanderen/grar-common/compare/v18.15.0...v18.16.0) (2023-05-02)
+
+
+### Features
+
+* add buildingMeasurementChanged ([9854a39](https://github.com/informatievlaanderen/grar-common/commit/9854a39721b2ebf28d20d82f5caf4473c4ae98a0))
+
 # [18.15.0](https://github.com/informatievlaanderen/grar-common/compare/v18.14.1...v18.15.0) (2023-05-02)
 
 
