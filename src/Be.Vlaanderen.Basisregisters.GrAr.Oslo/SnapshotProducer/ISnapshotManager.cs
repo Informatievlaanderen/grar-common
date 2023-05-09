@@ -6,6 +6,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
 
     public interface ISnapshotManager
     {
-        Task<OsloResult?> FindMatchingSnapshot(string objectId, Instant eventVersion, long eventPosition, bool throwStaleWhenGone, CancellationToken ct);
+        Task<OsloResult?> FindMatchingSnapshot(string objectId, Instant eventVersion, string? eventHash, long eventPosition, bool throwStaleWhenGone, CancellationToken ct);
     }
 }

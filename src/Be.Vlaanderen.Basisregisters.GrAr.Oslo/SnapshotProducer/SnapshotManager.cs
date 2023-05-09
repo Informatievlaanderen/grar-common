@@ -31,6 +31,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
         public async Task<OsloResult?> FindMatchingSnapshot(
             string objectId,
             Instant eventVersion,
+            string? eventHash,
             long eventPosition,
             bool throwStaleWhenGone,
             CancellationToken ct)
@@ -96,6 +97,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
                 if (versionDeltaInSeconds > 0)
                 {
                     throw new StaleSnapshotException();
+                }
+
+                if (snapshot.ETag is not null && eventHash is not null)
+                {
+                    return versionDeltaInSeconds == 0 && snapshot.ETag == eventHash
+                        ? snapshot
+                        : null;
                 }
 
                 return versionDeltaInSeconds == 0

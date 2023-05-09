@@ -24,6 +24,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse("2022-03-23T14:24:04+01:00")),
+                null,
                 eventPosition: 1111111,
                 throwStaleWhenGone: false,
                 CancellationToken.None);
@@ -53,6 +54,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                null,
                 eventPosition: 1111111,
                 throwStaleWhenGone: false,
                 CancellationToken.None);
@@ -60,6 +62,78 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             Task.WaitAny(new Task[] { result }, ct.Token);
 
             result.Result.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void WhenVersionsMatch_AndETagMatch_ThenReturnOsloResult()
+        {
+            var eventHash = "eventHash";
+            var eTag = eventHash;
+
+            var eventVersion = "2022-03-23T14:24:04.801+01:00";
+            var snapshotVersion = "2022-03-23T14:24:04+01:00";
+
+            var ct = new CancellationTokenSource(5000);
+
+            var mockProxy = new Mock<IOsloProxy>();
+            mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(() => new OsloResult
+                {
+                    ETag = eTag,
+                    Identificator = new OsloIdentificator
+                    {
+                        Versie = snapshotVersion
+                    }
+                });
+
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, SnapshotManagerOptions.Create("1", "1"));
+            var result = snapshotManager.FindMatchingSnapshot(
+                "50083",
+                Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                eventHash,
+                eventPosition: 1111111,
+                throwStaleWhenGone: false,
+                CancellationToken.None);
+
+            Task.WaitAny(new Task[] { result }, ct.Token);
+
+            result.Result.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void WhenVersionsMatch_ButETagMismatch_DoNothing()
+        {
+            var eventHash = "eventHash";
+            var eTag = "eTag";
+
+            var eventVersion = "2022-03-23T14:24:04.801+01:00";
+            var snapshotVersion = "2022-03-23T14:24:04+01:00";
+
+            var ct = new CancellationTokenSource(5000);
+
+            var mockProxy = new Mock<IOsloProxy>();
+            mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(() => new OsloResult
+                {
+                    ETag = eTag,
+                    Identificator = new OsloIdentificator
+                    {
+                        Versie = snapshotVersion
+                    }
+                });
+
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, SnapshotManagerOptions.Create("1", "1"));
+            var result = snapshotManager.FindMatchingSnapshot(
+                "50083",
+                Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                eventHash,
+                eventPosition: 1111111,
+                throwStaleWhenGone: false,
+                CancellationToken.None);
+
+            Task.WaitAny(new Task[] { result }, ct.Token);
+
+            result.Result.Should().BeNull();
         }
 
         [Fact]
@@ -84,6 +158,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                null,
                 eventPosition: 1111111,
                 throwStaleWhenGone: false,
                 CancellationToken.None);
@@ -136,6 +211,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                null,
                 eventPosition: 1111111,
                 throwStaleWhenGone: false,
                 CancellationToken.None);
@@ -181,6 +257,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                null,
                 eventPosition: 1111111,
                 throwStaleWhenGone,
                 CancellationToken.None);
@@ -205,6 +282,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var result = await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse("2022-03-23T14:24:04+01:00")),
+                null,
                 eventPosition: 1111111,
                 doNotThrowStaleWhenGone,
                 CancellationToken.None);
@@ -262,6 +340,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                null,
                 eventPosition: 1111111,
                 throwStaleWhenGone: false,
                 CancellationToken.None);
@@ -282,6 +361,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
             var act = async () => await snapshotManager.FindMatchingSnapshot(
                 "50083",
                 Instant.FromDateTimeOffset(DateTimeOffset.Parse("2022-03-23T14:24:04+01:00")),
+                null,
                 eventPosition: 1111111,
                 throwStaleWhenGone: false,
                 CancellationToken.None);

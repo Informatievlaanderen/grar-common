@@ -40,6 +40,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
             }
 
             osloResult.JsonContent = jsonContent;
+            osloResult.ETag = response.Headers.ETag?.Tag.Trim('"');
 
             return osloResult;
         }

@@ -12,6 +12,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
 
         [JsonIgnore]
         public string JsonContent { get; set; }
+
+        [JsonIgnore]
+        public string? ETag { get; set; }
     }
 
     public class OsloIdentificator : Identificator
