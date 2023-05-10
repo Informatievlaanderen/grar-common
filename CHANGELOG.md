@@ -1,3 +1,16 @@
+# [19.0.0](https://github.com/informatievlaanderen/grar-common/compare/v18.16.0...v19.0.0) (2023-05-10)
+
+
+### Features
+
+* change isnapshotmanager interface to accept eventhash ([a847d55](https://github.com/informatievlaanderen/grar-common/commit/a847d55cfae46d256f416de4768000070c26b802))
+
+
+### BREAKING CHANGES
+
+* Add event hash as an extra parameter to ISnapshotManager FindMatchingSnapshot
+method
+
 # [18.16.0](https://github.com/informatievlaanderen/grar-common/compare/v18.15.0...v18.16.0) (2023-05-02)
 
 
