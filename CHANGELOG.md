@@ -1,3 +1,10 @@
+# [19.1.0](https://github.com/informatievlaanderen/grar-common/compare/v19.0.0...v19.1.0) (2023-06-01)
+
+
+### Features
+
+* add GeoJSONMultiLineString / GeoJSONLineString WR-725 ([bda37fc](https://github.com/informatievlaanderen/grar-common/commit/bda37fcdd222cc535999de00fe0b5c0c8324b090))
+
 # [19.0.0](https://github.com/informatievlaanderen/grar-common/compare/v18.16.0...v19.0.0) (2023-05-10)
 
 
