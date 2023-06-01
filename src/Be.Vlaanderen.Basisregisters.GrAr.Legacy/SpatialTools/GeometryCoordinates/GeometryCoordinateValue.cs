@@ -40,6 +40,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
             => TryParse(jsonValue, value => new PolygonGeometryCoordinateValue(value));
     }
 
+    public class LineStringGeometryCoordinateValue : GeometryCoordinateValue
+    {
+        public LineStringGeometryCoordinateValue(double value) : base(value, "F11") { }
+
+        public static LineStringGeometryCoordinateValue? TryParse(string jsonValue)
+            => TryParse(jsonValue, value => new LineStringGeometryCoordinateValue(value));
+    }
+
     public class PointGeometryCoordinateValue : GeometryCoordinateValue
     {
         public PointGeometryCoordinateValue(double value) : base(value, "F2") { }
