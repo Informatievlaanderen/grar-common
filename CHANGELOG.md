@@ -1,3 +1,10 @@
+# [19.2.0](https://github.com/informatievlaanderen/grar-common/compare/v19.1.0...v19.2.0) (2023-06-29)
+
+
+### Features
+
+* add building was merged contracts ([43422b2](https://github.com/informatievlaanderen/grar-common/commit/43422b2dd1e8ff1a1218cd659db42ca2f8ff7965))
+
 # [19.1.0](https://github.com/informatievlaanderen/grar-common/compare/v19.0.0...v19.1.0) (2023-06-01)
 
 
