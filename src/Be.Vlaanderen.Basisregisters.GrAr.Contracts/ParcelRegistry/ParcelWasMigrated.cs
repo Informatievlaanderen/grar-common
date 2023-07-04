@@ -18,9 +18,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
 
         public List<int> AddressPersistentLocalIds { get; }
 
-        public decimal? XCoordinate { get; }
-
-        public decimal? YCoordinate { get; }
+        public string ExtendedWkbGeometry { get; }
 
         public Provenance Provenance { get; }
 
@@ -31,8 +29,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
             string parcelStatus,
             bool isRemoved,
             IEnumerable<int> addressPersistentLocalIds,
-            decimal? xCoordinate,
-            decimal? yCoordinate,
+            string extendedWkbGeometry,
             Provenance provenance)
         {
             OldParcelId = oldParcelId;
@@ -41,8 +38,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
             ParcelStatus = parcelStatus;
             IsRemoved = isRemoved;
             AddressPersistentLocalIds = addressPersistentLocalIds.ToList();
-            XCoordinate = xCoordinate;
-            YCoordinate = yCoordinate;
+            ExtendedWkbGeometry = extendedWkbGeometry;
             Provenance = provenance;
         }
     }
