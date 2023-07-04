@@ -1,3 +1,10 @@
+# [19.3.0](https://github.com/informatievlaanderen/grar-common/compare/v19.2.0...v19.3.0) (2023-07-04)
+
+
+### Features
+
+* add parcel was imported + changes in parcel was migrated ([3e26ffe](https://github.com/informatievlaanderen/grar-common/commit/3e26ffe66548f034f3066227f293e0c32af647db))
+
 # [19.2.0](https://github.com/informatievlaanderen/grar-common/compare/v19.1.0...v19.2.0) (2023-06-29)
 
 
