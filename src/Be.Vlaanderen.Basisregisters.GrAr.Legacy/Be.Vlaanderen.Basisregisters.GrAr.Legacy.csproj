@@ -10,6 +10,9 @@
       <DocumentationFile>bin\Release\net6.0\Be.Vlaanderen.Basisregisters.GrAr.Legacy.xml</DocumentationFile>
       <NoWarn>1701;1702;1705;1591</NoWarn>
     </PropertyGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Be.Vlaanderen.Basisregisters.GrAr.Common\Be.Vlaanderen.Basisregisters.GrAr.Common.csproj" />
+    </ItemGroup>
 
     <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

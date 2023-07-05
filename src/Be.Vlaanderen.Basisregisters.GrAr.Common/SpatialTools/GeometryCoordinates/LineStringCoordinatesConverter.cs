@@ -2,6 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 {
     using System;
     using System.Linq;
+    using Common.SpatialTools.GeometryCoordinates;
     using Newtonsoft.Json;
 
     public class LineStringCoordinatesConverter : JsonConverter<double[][]>
