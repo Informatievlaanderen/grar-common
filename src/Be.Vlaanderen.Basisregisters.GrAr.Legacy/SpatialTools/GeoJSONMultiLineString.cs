@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 {
+    using Common.SpatialTools.GeometryCoordinates;
     using Newtonsoft.Json;
 
     /// <summary>

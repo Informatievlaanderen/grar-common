@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 {
+    using Common.SpatialTools.GeometryCoordinates;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -13,7 +14,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
         [JsonConverter(typeof(PointCoordinatesConverter))]
         [JsonProperty(Required = Required.DisallowNull)]
         public double[] Coordinates { get; set; }
-        
+
         /// <summary>
         /// GeoJSON-geometrietype.
         /// </summary>

@@ -17,6 +17,7 @@ description Contains common legacy classes from GrAr.
 dependencies
   framework: net6.0
     Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset >= LOCKEDVERSION
+    Be.Vlaanderen.Basisregisters.GrAr.Common CURRENTVERSION
 
     Newtonsoft.Json >= LOCKEDVERSION
 

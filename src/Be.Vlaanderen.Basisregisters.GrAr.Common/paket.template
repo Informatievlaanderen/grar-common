@@ -17,7 +17,9 @@ description Common utilities for GrAr.
 dependencies
   framework: net6.0
     Be.Vlaanderen.Basisregisters.AggregateSource >= LOCKEDVERSION
+    Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
 
+    NetTopologySuite >= LOCKEDVERSION
     NodaTime >= LOCKEDVERSION
 
 files

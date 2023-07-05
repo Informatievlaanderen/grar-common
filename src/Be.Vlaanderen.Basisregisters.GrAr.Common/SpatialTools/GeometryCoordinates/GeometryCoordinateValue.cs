@@ -1,4 +1,4 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
+namespace Be.Vlaanderen.Basisregisters.GrAr.Common.SpatialTools.GeometryCoordinates
 {
     using System;
     using System.Globalization;

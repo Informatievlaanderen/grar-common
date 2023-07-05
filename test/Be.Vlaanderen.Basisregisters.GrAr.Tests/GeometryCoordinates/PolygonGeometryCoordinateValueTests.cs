@@ -4,8 +4,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
     using System.Globalization;
     using AutoFixture;
     using FluentAssertions;
+    using GrAr.Common.SpatialTools.GeometryCoordinates;
     using Infrastructure;
-    using Legacy.SpatialTools;
     using Xunit;
 
     public class WhenConvertingACreatingAPolygonGeometryCoordinateValueBackToADouble
@@ -27,7 +27,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.GeometryCoordinates
                 .Should()
                 .Be(_originalValue);
         }
-
     }
 
     public class WhenWritingAPolygonGeometryCoordinateValueWithLessPrecisionThanExpected
