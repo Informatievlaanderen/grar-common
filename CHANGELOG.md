@@ -1,3 +1,15 @@
+# [20.0.0](https://github.com/informatievlaanderen/grar-common/compare/v19.3.0...v20.0.0) (2023-07-05)
+
+
+### Features
+
+* add geometry extensions to convert to gml ([3c80a41](https://github.com/informatievlaanderen/grar-common/commit/3c80a410fffd4fa1b68b2140d832b992ee1c9afb))
+
+
+### BREAKING CHANGES
+
+* moved GeometryCoordinates from Legacy to Common
+
 # [19.3.0](https://github.com/informatievlaanderen/grar-common/compare/v19.2.0...v19.3.0) (2023-07-04)
 
 
