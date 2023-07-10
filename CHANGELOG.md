@@ -1,3 +1,10 @@
+# [20.1.0](https://github.com/informatievlaanderen/grar-common/compare/v20.0.0...v20.1.0) (2023-07-10)
+
+
+### Features
+
+* add contracts for parcel retired & geometry changed ([3ccedde](https://github.com/informatievlaanderen/grar-common/commit/3ccedde360c2823b6a2ea3970ec43bf304338b5a))
+
 # [20.0.0](https://github.com/informatievlaanderen/grar-common/compare/v19.3.0...v20.0.0) (2023-07-05)
 
 
