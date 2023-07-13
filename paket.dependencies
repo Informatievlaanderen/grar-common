@@ -4,10 +4,11 @@ source https://api.nuget.org/v3/index.json
 
 // PRODUCTION STUFF
 nuget Microsoft.CSharp 4.7.0
-nuget Microsoft.Extensions.Logging 6.0.0
 
 nuget Microsoft.Extensions.Configuration 6.0.1
 nuget Microsoft.Extensions.Configuration.Json 6.0.0
+nuget Microsoft.Extensions.Http.Polly 6.0.3
+nuget Microsoft.Extensions.Logging 6.0.0
 
 nuget System.Threading.Tasks.Dataflow 6.0.0
 
@@ -16,11 +17,13 @@ nuget CommandLineParser 2.8.0
 nuget NodaTime 3.0.10
 nuget NetTopologySuite 2.4.0
 
-nuget Microsoft.Extensions.Http.Polly 6.0.3
-
 nuget Serilog.Sinks.Email 2.4.0
 
+// EF
 nuget Microsoft.EntityFrameworkCore.Design 6.0.3
+
+// AWS
+nuget AWSSDK.SimpleNotificationService 3.7.101.86
 
 // VBR STUFF
 nuget Be.Vlaanderen.Basisregisters.Build.Pipeline 6.0.5
