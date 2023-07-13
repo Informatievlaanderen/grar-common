@@ -1,3 +1,10 @@
+# [20.2.0](https://github.com/informatievlaanderen/grar-common/compare/v20.1.0...v20.2.0) (2023-07-13)
+
+
+### Features
+
+* add notifications lib ([036b5f7](https://github.com/informatievlaanderen/grar-common/commit/036b5f799a3ebca16fc18b6c05cf088dbf2e9c87))
+
 # [20.1.0](https://github.com/informatievlaanderen/grar-common/compare/v20.0.0...v20.1.0) (2023-07-10)
 
 
