@@ -2,7 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
 {
     using Common;
 
-    public sealed class ParcelRetirementWasCorrected : IQueueMessage
+    public sealed class ParcelWasCorrectedFromRetiredToRealized : IQueueMessage
     {
         public string ParcelId { get; }
 
@@ -12,7 +12,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.ParcelRegistry
 
         public Provenance Provenance { get; }
 
-        public ParcelRetirementWasCorrected(
+        public ParcelWasCorrectedFromRetiredToRealized(
             string parcelId,
             string caPaKey,
             string extendedWkbGeometry,
