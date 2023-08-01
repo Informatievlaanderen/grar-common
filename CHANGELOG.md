@@ -1,3 +1,10 @@
+# [20.3.0](https://github.com/informatievlaanderen/grar-common/compare/v20.2.0...v20.3.0) (2023-08-01)
+
+
+### Features
+
+* add ParcelRetirementWasCorrected ([820e5e4](https://github.com/informatievlaanderen/grar-common/commit/820e5e4ce5b69475aa9f7c033bb9bfb03b572747))
+
 # [20.2.0](https://github.com/informatievlaanderen/grar-common/compare/v20.1.0...v20.2.0) (2023-07-13)
 
 
