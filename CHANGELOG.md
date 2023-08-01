@@ -1,3 +1,10 @@
+## [20.3.1](https://github.com/informatievlaanderen/grar-common/compare/v20.3.0...v20.3.1) (2023-08-01)
+
+
+### Bug Fixes
+
+* ParcelRetirementWasCorrected to ParcelWasCorrectedFromRetiredToRealized ([0839203](https://github.com/informatievlaanderen/grar-common/commit/0839203f9dff4853c81cece9fa14f6645ef217f1))
+
 # [20.3.0](https://github.com/informatievlaanderen/grar-common/compare/v20.2.0...v20.3.0) (2023-08-01)
 
 
