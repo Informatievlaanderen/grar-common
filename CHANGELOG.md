@@ -1,3 +1,10 @@
+# [20.4.0](https://github.com/informatievlaanderen/grar-common/compare/v20.3.1...v20.4.0) (2023-10-02)
+
+
+### Features
+
+* add status to bu detail ([e645213](https://github.com/informatievlaanderen/grar-common/commit/e6452137f818dc23d6d30499e54fd310498c3b8c))
+
 ## [20.3.1](https://github.com/informatievlaanderen/grar-common/compare/v20.3.0...v20.3.1) (2023-08-01)
 
 
