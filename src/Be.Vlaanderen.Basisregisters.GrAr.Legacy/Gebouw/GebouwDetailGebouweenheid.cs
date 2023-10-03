@@ -14,15 +14,23 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.Gebouw
         public string ObjectId { get; set; }
 
         /// <summary>
+        /// De status van de gekoppelde gebouweenheid.
+        /// </summary>
+        [DataMember(Name = "Status", Order = 2)]
+        [JsonProperty(Required = Required.DisallowNull)]
+        public string Status { get; set; }
+
+        /// <summary>
         /// De URL die de details van de meest recente versie van de gekoppelde gebouweenheid weergeeft.
         /// </summary>
-        [DataMember(Name = "Detail", Order = 2)]
+        [DataMember(Name = "Detail", Order = 3)]
         [JsonProperty(Required = Required.DisallowNull)]
         public string Detail { get; set; }
 
-        public GebouwDetailGebouweenheid(string objectId, string detail)
+        public GebouwDetailGebouweenheid(string objectId, string status, string detail)
         {
             ObjectId = objectId;
+            Status = status;
             Detail = detail;
         }
     }
