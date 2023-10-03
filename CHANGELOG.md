@@ -1,3 +1,15 @@
+# [20.5.0](https://github.com/informatievlaanderen/grar-common/compare/v20.4.0...v20.5.0) (2023-10-03)
+
+
+### Bug Fixes
+
+* Revert "feat: add status to bu detail" ([e7a03e7](https://github.com/informatievlaanderen/grar-common/commit/e7a03e751288e808d23f171e6e30cd080121acfa))
+
+
+### Features
+
+* add status to GebouwDetailGebouweenheid ([345b599](https://github.com/informatievlaanderen/grar-common/commit/345b599eb8fe8fc3b68515a9a00b22c271488723))
+
 # [20.4.0](https://github.com/informatievlaanderen/grar-common/compare/v20.3.1...v20.4.0) (2023-10-02)
 
 
