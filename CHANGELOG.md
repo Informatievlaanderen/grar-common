@@ -1,3 +1,10 @@
+## [20.5.1](https://github.com/informatievlaanderen/grar-common/compare/v20.5.0...v20.5.1) (2023-10-04)
+
+
+### Bug Fixes
+
+* GebouwDetailGebouweenheid Status should be enum ([4e5a3e2](https://github.com/informatievlaanderen/grar-common/commit/4e5a3e2aea31a5fc3911b18bd962fa121dfc2501))
+
 # [20.5.0](https://github.com/informatievlaanderen/grar-common/compare/v20.4.0...v20.5.0) (2023-10-03)
 
 
