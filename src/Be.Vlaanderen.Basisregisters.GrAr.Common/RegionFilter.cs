@@ -1,10 +1,8 @@
-namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy
+﻿namespace Be.Vlaanderen.Basisregisters.GrAr.Common
 {
     using System;
     using System.Linq;
 
-    //TODO: remove with another breaking change
-    [Obsolete("Moved to Common")]
     public static class RegionFilter
     {
         /// <summary>
