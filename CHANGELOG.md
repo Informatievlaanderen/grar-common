@@ -1,3 +1,11 @@
+# [20.6.0](https://github.com/informatievlaanderen/grar-common/compare/v20.5.1...v20.6.0) (2023-11-27)
+
+
+### Features
+
+* add streetname was renamed ([5d34db4](https://github.com/informatievlaanderen/grar-common/commit/5d34db418f0bbff989d175a846e2247c67aa04cc))
+* duplicate region filter ([0fbc3f6](https://github.com/informatievlaanderen/grar-common/commit/0fbc3f6ffb507c63efc459e62922fff67c5c3f21))
+
 ## [20.5.1](https://github.com/informatievlaanderen/grar-common/compare/v20.5.0...v20.5.1) (2023-10-04)
 
 
