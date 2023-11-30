@@ -1,5 +1,9 @@
 ﻿namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Legacy
 {
+    using System;
+    using System.IO;
+    using System.Runtime.Serialization;
+    using System.Xml;
     using Common.NTS;
     using FluentAssertions;
     using GrAr.Legacy.SpatialTools;
@@ -80,6 +84,29 @@
             polygon.Interior.Should().BeNullOrEmpty();
             polygon.Exterior.Should().NotBeNull();
             polygon.Exterior.LinearRing.PosList.Should().NotBeNullOrEmpty();
+        }
+
+        [Fact]
+        public void ThenSerializedResultIsValid()
+        {
+            var stringSerialized = string.Empty;
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                var serializer = new DataContractSerializer(typeof(GmlMultiSurface));
+                using (XmlWriter xmlWriter = XmlWriter.Create(memoryStream))
+                {
+                    serializer.WriteObject(xmlWriter, _testResult);
+                    xmlWriter.Flush();
+                    memoryStream.Position = 0;
+
+                    using (StreamReader reader = new StreamReader(memoryStream))
+                    {
+                        stringSerialized = reader.ReadToEnd();
+                    }
+                }
+            }
+
+            stringSerialized.Should().Be(@"<?xml version=""1.0"" encoding=""utf-8""?><GmlMultiSurface xmlns:i=""http://www.w3.org/2001/XMLSchema-instance""><surfaceMember><polygon><exterior><LinearRing><posList>10.00000000000 10.00000000000 20.00000000000 10.00000000000 20.00000000000 20.00000000000 10.00000000000 20.00000000000 10.00000000000 10.00000000000</posList></LinearRing></exterior><interior><RingProperty><LinearRing><posList>12.00000000000 12.00000000000 18.00000000000 12.00000000000 18.00000000000 18.00000000000 12.00000000000 18.00000000000 12.00000000000 12.00000000000</posList></LinearRing></RingProperty></interior></polygon></surfaceMember><surfaceMember><polygon><exterior><LinearRing><posList>30.00000000000 30.00000000000 40.00000000000 30.00000000000 40.00000000000 40.00000000000 30.00000000000 40.00000000000 30.00000000000 30.00000000000</posList></LinearRing></exterior></polygon></surfaceMember></GmlMultiSurface>");
         }
     }
 }
