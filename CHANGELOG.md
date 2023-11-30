@@ -1,3 +1,10 @@
+## [20.6.1](https://github.com/informatievlaanderen/grar-common/compare/v20.6.0...v20.6.1) (2023-11-30)
+
+
+### Bug Fixes
+
+* mulitsurface serialization ([6581842](https://github.com/informatievlaanderen/grar-common/commit/6581842698a245622bb505ac6ef38b771d881801))
+
 # [20.6.0](https://github.com/informatievlaanderen/grar-common/compare/v20.5.1...v20.6.0) (2023-11-27)
 
 
