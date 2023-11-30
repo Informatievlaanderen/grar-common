@@ -21,8 +21,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
     /// <summary>
     /// Een GML3 MultiSurface.
     /// </summary>
-    [DataContract(Namespace = "")]
-    [CollectionDataContract(ItemName = "surfaceMember")]
+    [CollectionDataContract(ItemName = "surfaceMember", Namespace = "")]
     public class GmlMultiSurface : List<GmlSurfaceMember>
     {
         public GmlMultiSurface()
