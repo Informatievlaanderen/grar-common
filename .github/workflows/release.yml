@@ -3,20 +3,204 @@ name: Release
 on:
   workflow_dispatch:
 
+concurrency: Release
+
 jobs:
-  build:
+  set-release-version:
     if: github.repository_owner == 'Informatievlaanderen'
-    name: Build
+    name: Decide next version
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.set-version.outputs.version }}
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+      with:
+          persist-credentials: false
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+
+    - name: Node version
+      shell: bash
+      run: node --version
+
+    - name: Install NPM dependencies
+      shell: bash
+      run: npm ci
+
+    - name: Run Semantic Release Dry-Run
+      shell: bash
+      run: npx semantic-release --dry-run
+      env:
+        GITHUB_TOKEN: ${{ secrets.VBR_GIT_RELEASE_TOKEN }}
+        GIT_COMMIT: ${{ github.sha }}
+        GIT_USERNAME: ${{ secrets.VBR_GIT_USER }}
+        GIT_AUTHOR_NAME: ${{ secrets.VBR_GIT_USER }}
+        GIT_COMMITTER_NAME: ${{ secrets.VBR_GIT_USER }}
+        GIT_EMAIL: ${{ secrets.VBR_GIT_EMAIL }}
+        GIT_AUTHOR_EMAIL: ${{ secrets.VBR_GIT_EMAIL }}
+        GIT_COMMITTER_EMAIL: ${{ secrets.VBR_GIT_EMAIL }}
+
+    - name: Set Release Version
+      id: set-version
+      run: |
+        [ ! -f semver ] && echo none > semver
+        echo $(cat semver)
+        echo ::set-output name=version::$(cat semver)
+        echo RELEASE_VERSION=$(cat semver) >> $GITHUB_ENV
+      shell: bash
+
+  pack-common:
+    name: Pack Grar.Common
+    uses: Informatievlaanderen/build-pipeline/.github/workflows/pack.yml@main
+    needs: [ set-release-version ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.set-release-version.outputs.version != 'none') }}
+    with:
+      pack-file: Be.Vlaanderen.Basisregisters.GrAr.Common
+      test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
+      build-project: Be.Vlaanderen.Basisregisters.GrAr.Common
+      semver: ${{ needs.set-release-version.outputs.version }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_8 }}
+    secrets: inherit
+
+  pack-contracts:
+    name: Pack Grar.Contracts
+    uses: Informatievlaanderen/build-pipeline/.github/workflows/pack.yml@main
+    needs: [ set-release-version ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.set-release-version.outputs.version != 'none') }}
+    with:
+      pack-file: Be.Vlaanderen.Basisregisters.GrAr.Contracts
+      test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
+      build-project: Be.Vlaanderen.Basisregisters.GrAr.Contracts
+      semver: ${{ needs.set-release-version.outputs.version }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_8 }}
+    secrets: inherit
+
+  pack-edit:
+    name: Pack Grar.Edit
+    uses: Informatievlaanderen/build-pipeline/.github/workflows/pack.yml@main
+    needs: [ set-release-version ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.set-release-version.outputs.version != 'none') }}
+    with:
+      pack-file: Be.Vlaanderen.Basisregisters.GrAr.Edit
+      test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
+      build-project: Be.Vlaanderen.Basisregisters.GrAr.Edit
+      semver: ${{ needs.set-release-version.outputs.version }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_8 }}
+    secrets: inherit
+
+  pack-extracts:
+    name: Pack Grar.Extracts
+    uses: Informatievlaanderen/build-pipeline/.github/workflows/pack.yml@main
+    needs: [ set-release-version ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.set-release-version.outputs.version != 'none') }}
+    with:
+      pack-file: Be.Vlaanderen.Basisregisters.GrAr.Extracts
+      test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
+      build-project: Be.Vlaanderen.Basisregisters.GrAr.Extracts
+      semver: ${{ needs.set-release-version.outputs.version }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_8 }}
+    secrets: inherit
+
+  pack-import:
+    name: Pack Grar.Import
+    uses: Informatievlaanderen/build-pipeline/.github/workflows/pack.yml@main
+    needs: [ set-release-version ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.set-release-version.outputs.version != 'none') }}
+    with:
+      pack-file: Be.Vlaanderen.Basisregisters.GrAr.Import
+      test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
+      build-project: Be.Vlaanderen.Basisregisters.GrAr.Import
+      semver: ${{ needs.set-release-version.outputs.version }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_8 }}
+    secrets: inherit
+
+  pack-legacy:
+    name: Pack Grar.Legacy
+    uses: Informatievlaanderen/build-pipeline/.github/workflows/pack.yml@main
+    needs: [ set-release-version ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.set-release-version.outputs.version != 'none') }}
+    with:
+      pack-file: Be.Vlaanderen.Basisregisters.GrAr.Legacy
+      test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
+      build-project: Be.Vlaanderen.Basisregisters.GrAr.Legacy
+      semver: ${{ needs.set-release-version.outputs.version }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_8 }}
+    secrets: inherit
+    
+  pack-notifications:
+    name: Pack Grar.Notifications
+    uses: Informatievlaanderen/build-pipeline/.github/workflows/pack.yml@main
+    needs: [ set-release-version ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.set-release-version.outputs.version != 'none') }}
+    with:
+      pack-file: Be.Vlaanderen.Basisregisters.GrAr.Notifications
+      test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
+      build-project: Be.Vlaanderen.Basisregisters.GrAr.Notifications
+      semver: ${{ needs.set-release-version.outputs.version }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_8 }}
+    secrets: inherit
+
+  pack-oslo:
+    name: Pack Grar.Oslo
+    uses: Informatievlaanderen/build-pipeline/.github/workflows/pack.yml@main
+    needs: [ set-release-version ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.set-release-version.outputs.version != 'none') }}
+    with:
+      pack-file: Be.Vlaanderen.Basisregisters.GrAr.Oslo
+      test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
+      build-project: Be.Vlaanderen.Basisregisters.GrAr.Oslo
+      semver: ${{ needs.set-release-version.outputs.version }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_8 }}
+    secrets: inherit    
+
+  pack-provenance:
+    name: Pack Grar.Provenance
+    uses: Informatievlaanderen/build-pipeline/.github/workflows/pack.yml@main
+    needs: [ set-release-version ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.set-release-version.outputs.version != 'none') }}
+    with:
+      pack-file: Be.Vlaanderen.Basisregisters.GrAr.Provenance
+      test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
+      build-project: Be.Vlaanderen.Basisregisters.GrAr.Provenance
+      semver: ${{ needs.set-release-version.outputs.version }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_8 }}
+    secrets: inherit
+
+  pack-provenance-acmidm:
+    name: Pack Grar.Provenance.AcmIdm
+    uses: Informatievlaanderen/build-pipeline/.github/workflows/pack.yml@main
+    needs: [ set-release-version ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.set-release-version.outputs.version != 'none') }}
+    with:
+      pack-file: Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm
+      test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
+      build-project: Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm
+      semver: ${{ needs.set-release-version.outputs.version }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_8 }}
+    secrets: inherit
+
+  release:
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.set-release-version.outputs.version != 'none') }}
+    name: Semantic Release
+    runs-on: ubuntu-latest
+    needs: [ 
+      set-release-version, pack-common, pack-contracts, pack-edit, pack-extracts, pack-import, pack-legacy, 
+      pack-notifications, pack-oslo, pack-provenance, pack-provenance-acmidm ]
+    outputs:
+      version: ${{ steps.set-version.outputs.version }}
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
       with:
           persist-credentials: false
 
     - name: Cache NPM
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       env:
         cache-name: cache-npm
       with:
@@ -25,38 +209,17 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
 
-    - name: Cache Paket
-      uses: actions/cache@v3
-      env:
-        cache-name: cache-paket
-      with:
-        path: packages
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('paket.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-
-    - name: Cache Python
-      uses: actions/cache@v3
-      env:
-        cache-name: cache-pip
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-build-${{ env.cache-name }}
-
     - name: Parse repository name
       run: echo REPOSITORY_NAME=$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | sed -e "s/:refs//") >> $GITHUB_ENV
       shell: bash
 
     - name: Setup Node.js
-      uses: actions/setup-node@v3
-
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-node@v4
       with:
-        dotnet-version: ${{ secrets.VBR_DOTNET_VERSION }}
+        node-version: '20.x'
 
-    - name: Set up Python
-      uses: actions/setup-python@v3
+    - name: Setup Python
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x'
 
@@ -82,6 +245,76 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests markdown argparse
 
+    - name: Download NuGet Grar.Common
+      uses: actions/download-artifact@v4
+      continue-on-error: false
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Common-${{ needs.set-release-version.outputs.version }}
+        path: dist/nuget/
+
+    - name: Download NuGet Grar.Contracts
+      uses: actions/download-artifact@v4
+      continue-on-error: false
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Contracts-${{ needs.set-release-version.outputs.version }}
+        path: dist/nuget/
+
+    - name: Download NuGet Grar.Edit
+      uses: actions/download-artifact@v4
+      continue-on-error: false
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Edit-${{ needs.set-release-version.outputs.version }}
+        path: dist/nuget/
+
+    - name: Download NuGet Grar.Extracts
+      uses: actions/download-artifact@v4
+      continue-on-error: false
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Extracts-${{ needs.set-release-version.outputs.version }}
+        path: dist/nuget/
+
+    - name: Download NuGet Grar.Import
+      uses: actions/download-artifact@v4
+      continue-on-error: false
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Import-${{ needs.set-release-version.outputs.version }}
+        path: dist/nuget/
+
+    - name: Download NuGet Grar.Legacy
+      uses: actions/download-artifact@v4
+      continue-on-error: false
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Legacy-${{ needs.set-release-version.outputs.version }}
+        path: dist/nuget/
+
+    - name: Download NuGet Grar.Notifications
+      uses: actions/download-artifact@v4
+      continue-on-error: false
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Notifications-${{ needs.set-release-version.outputs.version }}
+        path: dist/nuget/
+
+    - name: Download NuGet Grar.Oslo
+      uses: actions/download-artifact@v4
+      continue-on-error: false
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Oslo-${{ needs.set-release-version.outputs.version }}
+        path: dist/nuget/
+
+    - name: Download NuGet Grar.Provenance
+      uses: actions/download-artifact@v4
+      continue-on-error: false
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Provenance-${{ needs.set-release-version.outputs.version }}
+        path: dist/nuget/
+
+    - name: Download NuGet Grar.Provenance.AcmIdm
+      uses: actions/download-artifact@v4
+      continue-on-error: false
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm-${{ needs.set-release-version.outputs.version }}
+        path: dist/nuget/
+
     - name: Run Semantic Release
       shell: bash
       run: npx semantic-release
@@ -96,36 +329,157 @@ jobs:
         GIT_COMMITTER_EMAIL: ${{ secrets.VBR_GIT_EMAIL }}
 
     - name: Set Release Version
+      id: set-version
       run: |
         [ ! -f semver ] && echo none > semver
+        echo $(cat semver)
+        echo ::set-output name=version::$(cat semver)
         echo RELEASE_VERSION=$(cat semver) >> $GITHUB_ENV
       shell: bash
 
-    - name: Publish to NuGet
-      if: env.RELEASE_VERSION != 'none'
+  publish_to_nuget:
+    needs: [ release ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.release.outputs.version != 'none') }}
+    name: Publish to NuGet
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ vars.VBR_DOTNET_VERSION_8 }}
+
+    - name: .NET version
+      shell: bash
+      run: dotnet --info
+
+    - name: Download NuGet Grar.Common package
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Common-${{ needs.release.outputs.version }}
+        path: ~/
+
+    - name: Download NuGet Grar.Contracts package
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Contracts-${{ needs.release.outputs.version }}
+        path: ~/
+
+    - name: Download NuGet Grar.Edit package
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Edit-${{ needs.release.outputs.version }}
+        path: ~/
+
+    - name: Download NuGet Grar.Extracts package
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Extracts-${{ needs.release.outputs.version }}
+        path: ~/
+
+    - name: Download NuGet Grar.Import package
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Import-${{ needs.release.outputs.version }}
+        path: ~/
+
+    - name: Download NuGet Grar.Legacy package
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Legacy-${{ needs.release.outputs.version }}
+        path: ~/
+
+    - name: Download NuGet Grar.Notifications package
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Notifications-${{ needs.release.outputs.version }}
+        path: ~/
+
+    - name: Download NuGet Grar.Oslo package
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Oslo-${{ needs.release.outputs.version }}
+        path: ~/
+
+    - name: Download NuGet Grar.Provenance package
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Provenance-${{ needs.release.outputs.version }}
+        path: ~/
+
+    - name: Download NuGet Grar.Provenance.AcmIdm package
+      uses: actions/download-artifact@v4
+      with:
+        name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm-${{ needs.release.outputs.version }}
+        path: ~/
+
+    - name: Publish packages to NuGet
       shell: bash
       run: |
-        node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Provenance.$SEMVER.nupkg
-        node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Provenance.AcmIdm.$SEMVER.nupkg
-        node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Import.$SEMVER.nupkg
-        node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Legacy.$SEMVER.nupkg
-        node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Oslo.$SEMVER.nupkg
-        node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Common.$SEMVER.nupkg
-        node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Contracts.$SEMVER.nupkg
-        node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Extracts.$SEMVER.nupkg
-        node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Edit.$SEMVER.nupkg
-        node packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-nuget.js dist/$LIBNAME/$LIBNAME.Notifications.$SEMVER.nupkg
+        dotnet nuget push ~/Be.Vlaanderen.Basisregisters.GrAr.Common.$SEMVER.nupkg --source nuget.org --api-key $NUGET_API_KEY
+        dotnet nuget push ~/Be.Vlaanderen.Basisregisters.GrAr.Contracts.$SEMVER.nupkg --source nuget.org --api-key $NUGET_API_KEY
+        dotnet nuget push ~/Be.Vlaanderen.Basisregisters.GrAr.Edit.$SEMVER.nupkg --source nuget.org --api-key $NUGET_API_KEY
+        dotnet nuget push ~/Be.Vlaanderen.Basisregisters.GrAr.Extracts.$SEMVER.nupkg --source nuget.org --api-key $NUGET_API_KEY
+        dotnet nuget push ~/Be.Vlaanderen.Basisregisters.GrAr.Import.$SEMVER.nupkg --source nuget.org --api-key $NUGET_API_KEY
+        dotnet nuget push ~/Be.Vlaanderen.Basisregisters.GrAr.Legacy.$SEMVER.nupkg --source nuget.org --api-key $NUGET_API_KEY
+        dotnet nuget push ~/Be.Vlaanderen.Basisregisters.GrAr.Notifications.$SEMVER.nupkg --source nuget.org --api-key $NUGET_API_KEY
+        dotnet nuget push ~/Be.Vlaanderen.Basisregisters.GrAr.Oslo.$SEMVER.nupkg --source nuget.org --api-key $NUGET_API_KEY
+        dotnet nuget push ~/Be.Vlaanderen.Basisregisters.GrAr.Provenance.$SEMVER.nupkg --source nuget.org --api-key $NUGET_API_KEY
+        dotnet nuget push ~/Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm.$SEMVER.nupkg --source nuget.org --api-key $NUGET_API_KEY
       env:
-        LIBNAME: Be.Vlaanderen.Basisregisters.GrAr
-        SEMVER: ${{ env.RELEASE_VERSION }}
-        NUGET_HOST: ${{ secrets.NUGET_HOST }}
+        SEMVER: ${{  needs.release.outputs.version }}
+        WORKSPACE: ${{ github.workspace }}
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 
-    - name: Publish to Confluence
-      if: env.RELEASE_VERSION != 'none'
-      shell: bash
-      run: ./packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-confluence.sh
-      env:
-        CONFLUENCE_TITLE: ${{ env.REPOSITORY_NAME }}
-        CONFLUENCE_USERNAME: ${{ secrets.VBR_CONFLUENCE_USER }}
-        CONFLUENCE_PASSWORD: ${{ secrets.VBR_CONFLUENCE_PASSWORD }}
+  publish_to_atlassian:
+    needs: [ release ]
+    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.release.outputs.version != 'none') }}
+    name: Publish to Atlassian
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Parse repository name
+        run: echo REPOSITORY_NAME=$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | sed -e "s/:refs//") >> $GITHUB_ENV
+        shell: bash
+
+      - name: Cache Paket
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-paket
+        with:
+          path: packages
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('paket.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+
+      - name: Cache Python
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-pip
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-build-${{ env.cache-name }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests markdown argparse
+
+      - name: Publish to Confluence
+        shell: bash
+        run: ./packages/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-confluence.sh
+        env:
+          CONFLUENCE_TITLE: ${{ env.REPOSITORY_NAME }}
+          CONFLUENCE_USERNAME: ${{ secrets.VBR_CONFLUENCE_USER }}
+          CONFLUENCE_PASSWORD: ${{ secrets.VBR_CONFLUENCE_PASSWORD }}

@@ -15,13 +15,13 @@ licenseUrl https://opensource.org/licenses/EUPL-1.2
 description Contains common legacy classes from GrAr.
 
 dependencies
-  framework: net6.0
+  framework: netstandard2.1
     Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.GrAr.Common CURRENTVERSION
 
     Newtonsoft.Json >= LOCKEDVERSION
 
 files
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Legacy.dll => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Legacy.pdb => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Legacy.xml => lib\net6.0
+  Be.Vlaanderen.Basisregisters.GrAr.Legacy.dll => lib\netstandard2.1
+  Be.Vlaanderen.Basisregisters.GrAr.Legacy.pdb => lib\netstandard2.1
+  Be.Vlaanderen.Basisregisters.GrAr.Legacy.xml => lib\netstandard2.1

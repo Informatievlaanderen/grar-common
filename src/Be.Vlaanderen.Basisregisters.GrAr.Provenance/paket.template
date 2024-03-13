@@ -15,7 +15,7 @@ licenseUrl https://opensource.org/licenses/EUPL-1.2
 description Common logic for GrAr provenance information.
 
 dependencies
-  framework: net6.0
+  framework: netstandard2.1
     Be.Vlaanderen.Basisregisters.GrAr.Common CURRENTVERSION
 
     Be.Vlaanderen.Basisregisters.Crab >= LOCKEDVERSION
@@ -24,6 +24,6 @@ dependencies
     Microsoft.CSharp >= LOCKEDVERSION
 
 files
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.dll => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.pdb => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Provenance.xml => lib\net6.0
+  Be.Vlaanderen.Basisregisters.GrAr.Provenance.dll => lib\netstandard2.1
+  Be.Vlaanderen.Basisregisters.GrAr.Provenance.pdb => lib\netstandard2.1
+  Be.Vlaanderen.Basisregisters.GrAr.Provenance.xml => lib\netstandard2.1

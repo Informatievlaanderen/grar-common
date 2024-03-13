@@ -1,4 +1,6 @@
 AWSSDK.SimpleNotificationService
 
+System.Text.Json
+
 SourceLink.Embed.AllSourceFiles
 SourceLink.Copy.PdbFiles
