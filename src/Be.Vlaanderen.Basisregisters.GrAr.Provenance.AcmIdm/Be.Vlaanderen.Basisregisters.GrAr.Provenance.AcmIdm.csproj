@@ -5,5 +5,14 @@
     <ProjectReference Include="..\Be.Vlaanderen.Basisregisters.GrAr.Provenance\Be.Vlaanderen.Basisregisters.GrAr.Provenance.csproj" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <!-- Error NETSDK1152: https://docs.microsoft.com/en-us/dotnet/core/compatibility/sdk/6.0/duplicate-files-in-output -->
+    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="paket.template" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

@@ -16,7 +16,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Serilog
             var logEventLevel = LogLevelMappings.ContainsKey(minimumLogLevel) ? LogLevelMappings[minimumLogLevel] : LogEventLevel.Information;
 
             var loggerConfiguration = new LoggerConfiguration().MinimumLevel.Is(logEventLevel);
-            configureSinks?.Invoke(loggerConfiguration);
+            configureSinks.Invoke(loggerConfiguration);
 
             var factory = new LoggerFactory();
             factory.AddSerilog(loggerConfiguration.CreateLogger(), true);

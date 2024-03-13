@@ -15,7 +15,7 @@ licenseUrl https://opensource.org/licenses/EUPL-1.2
 description Common utilities for GrAr.
 
 dependencies
-  framework: net6.0
+  framework: netstandard2.1
     Be.Vlaanderen.Basisregisters.AggregateSource >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
 
@@ -23,6 +23,6 @@ dependencies
     NodaTime >= LOCKEDVERSION
 
 files
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Common.dll => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Common.pdb => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Common.xml => lib\net6.0
+  Be.Vlaanderen.Basisregisters.GrAr.Common.dll => lib\netstandard2.1
+  Be.Vlaanderen.Basisregisters.GrAr.Common.pdb => lib\netstandard2.1
+  Be.Vlaanderen.Basisregisters.GrAr.Common.xml => lib\netstandard2.1

@@ -1,15 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\packages\Be.Vlaanderen.Basisregisters.Build.Pipeline\Content\Be.Vlaanderen.Basisregisters.Build.Pipeline.Settings.Library.props" />
+  <Import Project="..\..\packages\Be.Vlaanderen.Basisregisters.Build.Pipeline\Content\Be.Vlaanderen.Basisregisters.Build.Pipeline.Settings.NetStandard.props" />
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\net6.0\Be.Vlaanderen.Basisregisters.GrAr.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.1\Be.Vlaanderen.Basisregisters.GrAr.Common.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
-    <DefineConstants>TRACE;DEBUG;NETCOREAPP;NET5_0</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\net6.0\Be.Vlaanderen.Basisregisters.GrAr.Common.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.1\Be.Vlaanderen.Basisregisters.GrAr.Common.xml</DocumentationFile>
     <NoWarn>1701;1702;1705;1591</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="paket.template" CopyToOutputDirectory="Always" />
+  </ItemGroup>
 
   <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>

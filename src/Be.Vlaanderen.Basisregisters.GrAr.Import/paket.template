@@ -15,7 +15,7 @@ licenseUrl https://opensource.org/licenses/EUPL-1.2
 description Common logic for GrAr crab imports.
 
 dependencies
-  framework: net6.0
+  framework: net8.0
     Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.CommandHandling >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency >= LOCKEDVERSION
@@ -26,7 +26,6 @@ dependencies
     Newtonsoft.Json >= LOCKEDVERSION
     Serilog >= LOCKEDVERSION
     Serilog.Extensions.Logging >= LOCKEDVERSION
-    Serilog.Sinks.Email >= LOCKEDVERSION
     Autofac >= LOCKEDVERSION
     Microsoft.Extensions.Logging >= LOCKEDVERSION
     Microsoft.Extensions.Configuration.Json >= LOCKEDVERSION
@@ -34,6 +33,6 @@ dependencies
     System.Threading.Tasks.Dataflow >= LOCKEDVERSION
 
 files
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Import.dll => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Import.pdb => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Import.xml => lib\net6.0
+  Be.Vlaanderen.Basisregisters.GrAr.Import.dll => lib\net8.0
+  Be.Vlaanderen.Basisregisters.GrAr.Import.pdb => lib\net8.0
+  Be.Vlaanderen.Basisregisters.GrAr.Import.xml => lib\net8.0

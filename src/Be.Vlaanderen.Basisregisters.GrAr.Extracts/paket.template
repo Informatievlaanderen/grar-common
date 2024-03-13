@@ -15,11 +15,11 @@ licenseUrl https://opensource.org/licenses/EUPL-1.2
 description Extract utilities for GrAr.
 
 dependencies
-  framework: net6.0
+  framework: net8.0
     Be.Vlaanderen.Basisregisters.Api >= LOCKEDVERSION
     Be.Vlaanderen.Basisregisters.Shaperon >= LOCKEDVERSION
 
 files
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Extracts.dll => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Extracts.pdb => lib\net6.0
-  /bin/Release/net6.0/Be.Vlaanderen.Basisregisters.GrAr.Extracts.xml => lib\net6.0
+  Be.Vlaanderen.Basisregisters.GrAr.Extracts.dll => lib\net8.0
+  Be.Vlaanderen.Basisregisters.GrAr.Extracts.pdb => lib\net8.0
+  Be.Vlaanderen.Basisregisters.GrAr.Extracts.xml => lib\net8.0
