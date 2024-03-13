@@ -1,3 +1,15 @@
+# [21.0.0](https://github.com/informatievlaanderen/grar-common/compare/v20.6.1...v21.0.0) (2024-03-13)
+
+
+### Features
+
+* move to dotnet 8.0.2 ([8b46d64](https://github.com/informatievlaanderen/grar-common/commit/8b46d64c13519b524ec7d6f110b4c96dbf2c8a2d))
+
+
+### BREAKING CHANGES
+
+* move to dotnet 8.0.2 and remove Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Serilog.LoggerConfigurationExtensions
+
 ## [20.6.1](https://github.com/informatievlaanderen/grar-common/compare/v20.6.0...v20.6.1) (2023-11-30)
 
 
