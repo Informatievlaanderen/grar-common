@@ -1,3 +1,10 @@
+# [21.1.0](https://github.com/informatievlaanderen/grar-common/compare/v21.0.0...v21.1.0) (2024-03-20)
+
+
+### Features
+
+* add validopfactory for GML reader ([2b2fc8a](https://github.com/informatievlaanderen/grar-common/commit/2b2fc8a5ac72ee6a3ace60fd69f886ef153b75f3))
+
 # [21.0.0](https://github.com/informatievlaanderen/grar-common/compare/v20.6.1...v21.0.0) (2024-03-13)
 
 
