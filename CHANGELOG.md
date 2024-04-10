@@ -1,3 +1,10 @@
+# [21.2.0](https://github.com/informatievlaanderen/grar-common/compare/v21.1.0...v21.2.0) (2024-04-10)
+
+
+### Features
+
+* add contracts for moving BuildingUnit ([aa0271c](https://github.com/informatievlaanderen/grar-common/commit/aa0271c5a4e195e40a23e0ad877c7b7f90a194b5))
+
 # [21.1.0](https://github.com/informatievlaanderen/grar-common/compare/v21.0.0...v21.1.0) (2024-03-20)
 
 
