@@ -1,3 +1,10 @@
+# [21.3.0](https://github.com/informatievlaanderen/grar-common/compare/v21.2.0...v21.3.0) (2024-04-25)
+
+
+### Features
+
+* add AddressRemovalWasCorrected ([dfb7f64](https://github.com/informatievlaanderen/grar-common/commit/dfb7f64abd95df777b2bf3718e4f97cb36b9477e))
+
 # [21.2.0](https://github.com/informatievlaanderen/grar-common/compare/v21.1.0...v21.2.0) (2024-04-10)
 
 
