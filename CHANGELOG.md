@@ -1,3 +1,10 @@
+# [21.4.0](https://github.com/informatievlaanderen/grar-common/compare/v21.3.0...v21.4.0) (2024-05-06)
+
+
+### Features
+
+* remove AggregateSource and NodaTime depenedencies ([32b1218](https://github.com/informatievlaanderen/grar-common/commit/32b12188661950785eacdaccc504d56112179cb0))
+
 # [21.3.0](https://github.com/informatievlaanderen/grar-common/compare/v21.2.0...v21.3.0) (2024-04-25)
 
 
