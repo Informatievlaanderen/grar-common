@@ -16,9 +16,6 @@ description Contracts for GrAr.
 
 dependencies
   framework: netstandard2.1
-    Be.Vlaanderen.Basisregisters.AggregateSource >= LOCKEDVERSION
-
-    NodaTime >= LOCKEDVERSION
 
 files
   Be.Vlaanderen.Basisregisters.GrAr.Contracts.dll => lib\netstandard2.1
