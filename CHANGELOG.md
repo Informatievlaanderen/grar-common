@@ -1,3 +1,10 @@
+# [21.5.0](https://github.com/informatievlaanderen/grar-common/compare/v21.4.0...v21.5.0) (2024-05-14)
+
+
+### Features
+
+* **contracts:** add streetname was readdressed ([66bfd9d](https://github.com/informatievlaanderen/grar-common/commit/66bfd9d3316811e988ca880053211faf6516d7a0))
+
 # [21.4.0](https://github.com/informatievlaanderen/grar-common/compare/v21.3.0...v21.4.0) (2024-05-06)
 
 
