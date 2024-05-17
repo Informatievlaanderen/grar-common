@@ -1,3 +1,10 @@
+# [21.6.0](https://github.com/informatievlaanderen/grar-common/compare/v21.5.0...v21.6.0) (2024-05-17)
+
+
+### Features
+
+* add ParcelAddressesWereReaddressed ([551e1e0](https://github.com/informatievlaanderen/grar-common/commit/551e1e0dd9b9899ed8681d0916c6e3f6d3fbab22))
+
 # [21.5.0](https://github.com/informatievlaanderen/grar-common/compare/v21.4.0...v21.5.0) (2024-05-14)
 
 
