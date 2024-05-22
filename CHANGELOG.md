@@ -1,3 +1,10 @@
+# [21.7.0](https://github.com/informatievlaanderen/grar-common/compare/v21.6.0...v21.7.0) (2024-05-22)
+
+
+### Features
+
+* add BuildingBuildingUnitsAddressesWereReaddressed ([db01330](https://github.com/informatievlaanderen/grar-common/commit/db013302a6491e79271f4846df5079711f60b543))
+
 # [21.6.0](https://github.com/informatievlaanderen/grar-common/compare/v21.5.0...v21.6.0) (2024-05-17)
 
 
