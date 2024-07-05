@@ -1,3 +1,10 @@
+# [21.8.0](https://github.com/informatievlaanderen/grar-common/compare/v21.7.0...v21.8.0) (2024-07-05)
+
+
+### Features
+
+* **contracts:** add municipalitywasmerged ([ab35720](https://github.com/informatievlaanderen/grar-common/commit/ab35720a6ff646d06b93265acb044f04011433be))
+
 # [21.7.0](https://github.com/informatievlaanderen/grar-common/compare/v21.6.0...v21.7.0) (2024-05-22)
 
 
