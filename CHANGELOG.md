@@ -1,3 +1,10 @@
+# [21.9.0](https://github.com/informatievlaanderen/grar-common/compare/v21.8.0...v21.9.0) (2024-07-11)
+
+
+### Features
+
+* **contracts:** add streetname municipality events ([e7fc57d](https://github.com/informatievlaanderen/grar-common/commit/e7fc57d44bee3fbd10b6110081a5361fbc6bad0e))
+
 # [21.8.0](https://github.com/informatievlaanderen/grar-common/compare/v21.7.0...v21.8.0) (2024-07-05)
 
 
