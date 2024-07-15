@@ -1,3 +1,10 @@
+# [21.10.0](https://github.com/informatievlaanderen/grar-common/compare/v21.9.0...v21.10.0) (2024-07-15)
+
+
+### Features
+
+* **contracts:** add postal municipalitywasrelinked contract ([a3a79a4](https://github.com/informatievlaanderen/grar-common/commit/a3a79a4a4068660f368ca1d3dda8de5921922240))
+
 # [21.9.0](https://github.com/informatievlaanderen/grar-common/compare/v21.8.0...v21.9.0) (2024-07-11)
 
 
