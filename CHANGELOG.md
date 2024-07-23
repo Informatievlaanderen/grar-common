@@ -1,3 +1,11 @@
+# [21.12.0](https://github.com/informatievlaanderen/grar-common/compare/v21.11.0...v21.12.0) (2024-07-23)
+
+
+### Features
+
+* add AddressWasProposedForMunicipalityMerger ([6d88389](https://github.com/informatievlaanderen/grar-common/commit/6d88389497d90e37f67ef7dbe5adf23a4bb1e6ba))
+* add DesiredStatus to StreetNameWasProposedForMunicipalityMerger ([df969dd](https://github.com/informatievlaanderen/grar-common/commit/df969dd5c75f0f0640e0de458467111b380e545c))
+
 # [21.11.0](https://github.com/informatievlaanderen/grar-common/compare/v21.10.0...v21.11.0) (2024-07-23)
 
 
