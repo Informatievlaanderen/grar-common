@@ -1,3 +1,10 @@
+# [21.11.0](https://github.com/informatievlaanderen/grar-common/compare/v21.10.0...v21.11.0) (2024-07-23)
+
+
+### Features
+
+* add AddressRegistry municipality merger events ([a99594d](https://github.com/informatievlaanderen/grar-common/commit/a99594dca75588d8411832bdc0c830543e54eed5))
+
 # [21.10.0](https://github.com/informatievlaanderen/grar-common/compare/v21.9.0...v21.10.0) (2024-07-15)
 
 
