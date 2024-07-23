@@ -1,3 +1,10 @@
+# [21.13.0](https://github.com/informatievlaanderen/grar-common/compare/v21.12.0...v21.13.0) (2024-07-23)
+
+
+### Features
+
+* BuildingUnitAddressWasReplacedBecauseOfMunicipalityMerger ([bb7d9f7](https://github.com/informatievlaanderen/grar-common/commit/bb7d9f74ee3b419e6f440e93103bdb78cb72ece8))
+
 # [21.12.0](https://github.com/informatievlaanderen/grar-common/compare/v21.11.0...v21.12.0) (2024-07-23)
 
 
