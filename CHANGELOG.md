@@ -1,3 +1,10 @@
+# [21.14.0](https://github.com/informatievlaanderen/grar-common/compare/v21.13.0...v21.14.0) (2024-07-23)
+
+
+### Features
+
+* add ParcelAddressWasReplacedBecauseOfMunicipalityMerger ([1189a14](https://github.com/informatievlaanderen/grar-common/commit/1189a14d47c4efaf922af1fb97c7e190c06343e2))
+
 # [21.13.0](https://github.com/informatievlaanderen/grar-common/compare/v21.12.0...v21.13.0) (2024-07-23)
 
 
