@@ -10,6 +10,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
 
         public string NisCode { get; }
 
+        public string DesiredStatus { get; }
+
         public IDictionary<string, string> StreetNameNames { get; }
 
         public IDictionary<string, string> HomonymAdditions { get; }
@@ -23,6 +25,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
         public StreetNameWasProposedForMunicipalityMerger(
             string municipalityId,
             string nisCode,
+            string desiredStatus,
             IDictionary<string, string> streetNameNames,
             IDictionary<string, string> homonymAdditions,
             int persistentLocalId,
@@ -31,6 +34,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.StreetNameRegistry
         {
             MunicipalityId = municipalityId;
             NisCode = nisCode;
+            DesiredStatus = desiredStatus;
             StreetNameNames = streetNameNames;
             HomonymAdditions = homonymAdditions;
             PersistentLocalId = persistentLocalId;
