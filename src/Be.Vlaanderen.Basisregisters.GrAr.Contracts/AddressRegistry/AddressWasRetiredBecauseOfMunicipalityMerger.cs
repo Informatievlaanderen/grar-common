@@ -8,14 +8,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.AddressRegistry
 
         public int AddressPersistentLocalId { get; }
 
-        public int NewAddressPersistentLocalId { get; }
+        public int? NewAddressPersistentLocalId { get; }
 
         public Provenance Provenance { get; }
 
         public AddressWasRetiredBecauseOfMunicipalityMerger(
             int streetNamePersistentLocalId,
             int addressPersistentLocalId,
-            int newAddressPersistentLocalId,
+            int? newAddressPersistentLocalId,
             Provenance provenance)
         {
             StreetNamePersistentLocalId = streetNamePersistentLocalId;
