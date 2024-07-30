@@ -1,3 +1,10 @@
+## [21.14.1](https://github.com/informatievlaanderen/grar-common/compare/v21.14.0...v21.14.1) (2024-07-30)
+
+
+### Bug Fixes
+
+* new address persistent local id should be nullable for address municipality merger events ([d6fde15](https://github.com/informatievlaanderen/grar-common/commit/d6fde151dadb474860bd5006147619e41f70d040))
+
 # [21.14.0](https://github.com/informatievlaanderen/grar-common/compare/v21.13.0...v21.14.0) (2024-07-23)
 
 
