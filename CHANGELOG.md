@@ -1,3 +1,10 @@
+# [21.15.0](https://github.com/informatievlaanderen/grar-common/compare/v21.14.1...v21.15.0) (2024-11-19)
+
+
+### Features
+
+* **contract:** add MunicipalityNisCodeWasChanged for StreetName ([aea45e1](https://github.com/informatievlaanderen/grar-common/commit/aea45e1e6e46f2e1c6e800f8331868a46edd87a0))
+
 ## [21.14.1](https://github.com/informatievlaanderen/grar-common/compare/v21.14.0...v21.14.1) (2024-07-30)
 
 
