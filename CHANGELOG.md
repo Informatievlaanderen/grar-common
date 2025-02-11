@@ -1,3 +1,10 @@
+# [21.16.0](https://github.com/informatievlaanderen/grar-common/compare/v21.15.0...v21.16.0) (2025-02-11)
+
+
+### Features
+
+* add AddressBoxNumbersWereCorrected contract ([6e9dfca](https://github.com/informatievlaanderen/grar-common/commit/6e9dfca38026d65deacf9c2080ac15c66a164230))
+
 # [21.15.0](https://github.com/informatievlaanderen/grar-common/compare/v21.14.1...v21.15.0) (2024-11-19)
 
 
