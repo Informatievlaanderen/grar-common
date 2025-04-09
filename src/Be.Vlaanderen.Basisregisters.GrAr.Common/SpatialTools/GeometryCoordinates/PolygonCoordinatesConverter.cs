@@ -10,9 +10,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common.SpatialTools.GeometryCoordina
 
         public override void WriteJson(
             JsonWriter writer,
-            double[][][] polygon,
+            double[][][]? polygon,
             JsonSerializer serializer)
         {
+            if(polygon == null)
+                throw new ArgumentNullException(nameof(polygon));
+
             lock (Lock)
             {
                 if (!serializer.Converters.Any(converter => converter is GeometryCoordinateValueConverter))
@@ -34,7 +37,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common.SpatialTools.GeometryCoordina
         public override double[][][] ReadJson(
             JsonReader reader,
             Type objectType,
-            double[][][] existingValue,
+            double[][][]? existingValue,
             bool hasExistingValue,
             JsonSerializer serializer)
             => throw new NotImplementedException("Json deserialization of PolygonCoordinates is not supported");

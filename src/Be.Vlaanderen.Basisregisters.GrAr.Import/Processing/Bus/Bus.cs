@@ -36,7 +36,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Bus
             }
         }
 
-        public async Task ProduceAsync<T>(T item)
+        public async Task ProduceAsync<T>(T item) where T : notnull
         {
             await _queue.SendAsync(item);
         }

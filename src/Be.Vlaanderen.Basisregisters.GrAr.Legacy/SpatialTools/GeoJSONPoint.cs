@@ -23,6 +23,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 
         public GeoJSONPoint()
         {
+            Coordinates = [];
             Type = "Point";
         }
     }

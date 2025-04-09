@@ -1,9 +1,0 @@
-Microsoft.CSharp
-CompareNETObjects
-
-Be.Vlaanderen.Basisregisters.Crab
-Be.Vlaanderen.Basisregisters.CommandHandling
-Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset
-
-SourceLink.Embed.AllSourceFiles
-SourceLink.Copy.PdbFiles

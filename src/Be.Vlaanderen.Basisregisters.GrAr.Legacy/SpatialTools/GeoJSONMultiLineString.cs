@@ -23,6 +23,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Legacy.SpatialTools
 
         public GeoJSONMultiLineString()
         {
+            Coordinates = [];
             Type = "MultiLineString";
         }
     }

@@ -1,8 +1,0 @@
-NetTopologySuite
-NodaTime
-
-Be.Vlaanderen.Basisregisters.AggregateSource
-Be.Vlaanderen.Basisregisters.CommandHandling
-
-SourceLink.Embed.AllSourceFiles
-SourceLink.Copy.PdbFiles

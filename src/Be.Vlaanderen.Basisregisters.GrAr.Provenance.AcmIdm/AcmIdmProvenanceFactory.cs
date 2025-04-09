@@ -45,7 +45,7 @@
                 SystemClock.Instance.GetCurrentInstant(),
                 _application,
                 reason,
-                new Operator(ovoCode ?? contextUser.FindFirstValue(AcmIdmClaimTypes.VoOrgCode)),
+                new Operator(ovoCode ?? contextUser.FindFirstValue(AcmIdmClaimTypes.VoOrgCode) ?? string.Empty),
                 modification,
                 organisation);
         }

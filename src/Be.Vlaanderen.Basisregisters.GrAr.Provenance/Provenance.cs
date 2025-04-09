@@ -58,16 +58,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
                 organisation);
         }
 
-        public IDictionary<string, object> ToDictionary() => new Dictionary<string, object>
+        public IDictionary<string, object?> ToDictionary() => new Dictionary<string, object?>
         {
             {nameof(Application), Application},
             {nameof(Modification), Modification},
             {nameof(Timestamp), Timestamp},
-            {nameof(Operator), Operator?.ToString()},
+            {nameof(Operator), Operator.ToString()},
             {nameof(Organisation), Organisation},
-            {nameof(Reason), Reason?.ToString()}
+            {nameof(Reason), Reason.ToString()}
         };
-        
+
         public IEnumerable<object> GetIdentityFields() => Reflect();
 
         protected override IEnumerable<object> Reflect()

@@ -34,7 +34,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
 
         public async Task<long?> IdempotentCommandHandlerDispatchBatch(
             Dictionary<Guid?, dynamic> commands,
-            IDictionary<string, object> metadata = null,
+            IDictionary<string, object>? metadata = null,
             CancellationToken cancellationToken = new CancellationToken())
         {
             using (var c = Container.BeginLifetimeScope())
@@ -56,7 +56,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
 
                 var validCommands = commands
                     .Where(x => x.Key.HasValue)
-                    .ToDictionary(x => x.Key.Value, x => new CommandContainer(x.Key.Value, x.Value));
+                    .ToDictionary(x => x.Key!.Value, x => new CommandContainer(x.Key!.Value, x.Value));
 
                 var commandIds = validCommands.Keys.ToList();
 
@@ -169,7 +169,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                         messages,
                         cancellationToken);
 
-                    var snapshotable = latestAggregate?.Root as ISnapshotable;
+                    var snapshotable = latestAggregate!.Root as ISnapshotable;
                     if (snapshotable != null)
                     {
                         await CreateSnapshot(
@@ -261,7 +261,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
                 ContentHash = SHA512
                     .Create()
                     .ComputeHash(Encoding.UTF8.GetBytes((string)command.ToString()))
-                    .ToHexString();
+                    .ToHexString()!;
 
                 ProcessedCommand = new ProcessedCommand(commandId, ContentHash);
             }

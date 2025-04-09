@@ -29,9 +29,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             {CrabOrganisation.Vkbo, Organisation.Vkbo}
         };
 
-        private static Operator MapOperator(CrabOperator crabOperator)
+        private static Operator? MapOperator(CrabOperator? crabOperator)
         {
-            if (crabOperator == null)
+            if (crabOperator is null)
                 return null;
 
             var trimmed = ((string)crabOperator).Trim();
@@ -68,13 +68,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
 
             if (crabOrganisation == CrabOrganisation.Vlm)
             {
-                if (timestamp < VlmEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone).ToInstant())
+                if (timestamp < VlmEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone!).ToInstant())
                     return Organisation.Vlm;
 
-                if (timestamp < AgivEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone).ToInstant())
+                if (timestamp < AgivEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone!).ToInstant())
                     return Organisation.Agiv;
 
-                if (timestamp < AivEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone).ToInstant())
+                if (timestamp < AivEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone!).ToInstant())
                     return Organisation.Aiv;
 
                 return Organisation.DigitaalVlaanderen;
@@ -83,7 +83,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             return MapCrabOrganisations[crabOrganisation.Value];
         }
 
-        private static Reason MapReason(CrabOperator crabOperator)
+        private static Reason MapReason(CrabOperator? crabOperator)
         {
             string @operator = crabOperator ?? string.Empty;
 
@@ -136,7 +136,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             (Instant) timestamp,
             MapApplication(crabOperator),
             MapReason(crabOperator),
-            MapOperator(crabOperator),
+            MapOperator(crabOperator) ?? new Operator(string.Empty),
             MapModification(crabModification, version, isRemoved),
             MapOrganisation(crabOrganisation, timestamp));
 

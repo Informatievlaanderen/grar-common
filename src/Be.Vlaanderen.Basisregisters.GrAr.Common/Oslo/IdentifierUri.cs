@@ -25,14 +25,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common.Oslo
         public IdentifierUri<T> Map<T>(IIdentifierUriMapper<T> mapper)
             => new IdentifierUri<T>(this, mapper);
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
             => Equals(obj as IdentifierUri);
 
-        protected bool Equals(IdentifierUri other)
+        protected bool Equals(IdentifierUri? other)
             => Equals(Uri, other?.Uri);
 
         public override int GetHashCode()
-            => Uri != null ? Uri.GetHashCode() : 0;
+            => Uri.GetHashCode();
 
         public override string ToString()
             => Uri.AbsolutePath;

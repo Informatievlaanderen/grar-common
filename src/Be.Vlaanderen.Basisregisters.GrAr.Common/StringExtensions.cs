@@ -30,7 +30,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common
             return resultString.Normalize(NormalizationForm.FormC);
         }
 
-        public static string SanitizeForBosaSearch(this string input)
+        public static string? SanitizeForBosaSearch(this string? input)
         {
             if (input == null)
                 return input;

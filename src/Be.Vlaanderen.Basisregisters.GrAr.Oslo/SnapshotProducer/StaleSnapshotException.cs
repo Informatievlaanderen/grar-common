@@ -9,6 +9,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo
         public StaleSnapshotException()
         { }
 
+        /// <inheritdoc />
         private StaleSnapshotException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         { }

@@ -10,9 +10,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common
         private static readonly Regex OldCrabCaPaKeyFormat = new Regex("^[0-9]{5}_[A-Z]_[0-9]{4}_[A-Z_0]_[0-9]{3}_[0-9]{2}$");
         private static readonly Regex NewCrabCaPaKeyFormat = new Regex(@"^[0-9]{5}[A-Z][0-9]{4}\/[0-9]{2}[A-Z_0][0-9]{3}$");
 
-        public string CaPaKeyCrabNotation1 { get; private set; }
-        public string CaPaKeyCrabNotation2 { get; private set; }
-        public string VbrCaPaKey { get; private set; }
+        public string? CaPaKeyCrabNotation1 { get; private set; }
+        public string? CaPaKeyCrabNotation2 { get; private set; }
+        public string? VbrCaPaKey { get; private set; }
 
         public static CaPaKey CreateFrom(string identifierTerrainObject)
         {
@@ -66,9 +66,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common
 
         protected override IEnumerable<object> Reflect()
         {
-            yield return CaPaKeyCrabNotation1;
-            yield return CaPaKeyCrabNotation2;
-            yield return VbrCaPaKey;
+            yield return CaPaKeyCrabNotation1 ?? string.Empty;
+            yield return CaPaKeyCrabNotation2 ?? string.Empty;
+            yield return VbrCaPaKey ?? string.Empty;
         }
     }
 }
