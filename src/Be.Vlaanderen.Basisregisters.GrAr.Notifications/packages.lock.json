@@ -4,11 +4,11 @@
     ".NETStandard,Version=v2.1": {
       "AWSSDK.SimpleNotificationService": {
         "type": "Direct",
-        "requested": "[3.7.400.129, )",
-        "resolved": "3.7.400.129",
-        "contentHash": "2yZQXL7pRVmk1JGiFy1SsxTA6XDjvIHUTZ0NFv9oBgHGD4Blgc/NcJxreQYrxpPD69gqUyjMT4d4ag7pHgxYrQ==",
+        "requested": "[3.7.400.130, )",
+        "resolved": "3.7.400.130",
+        "contentHash": "l+/f0F3m9upfH7yJdb4Uk5J4XAzBZI7FVmmQV8m1drQEXjnzH7WGP0RQV8+xpxu4BJkYN0OODFOoswelW/Q1Gg==",
         "dependencies": {
-          "AWSSDK.Core": "[3.7.402.35, 4.0.0)"
+          "AWSSDK.Core": "[3.7.402.36, 4.0.0)"
         }
       },
       "SourceLink.Copy.PdbFiles": {
@@ -40,8 +40,8 @@
       },
       "AWSSDK.Core": {
         "type": "Transitive",
-        "resolved": "3.7.402.35",
-        "contentHash": "9Jby5BBQTzZOqzQiFjJyr3zCe5GVi64U8gxOlPk3vTTuVJqtkisBJ0Jh1RBj2fNqnWmJLfaWSCLvX1L06zwHnQ==",
+        "resolved": "3.7.402.36",
+        "contentHash": "Xrsw7P8z8ZxClciRXY4Rdb31FLhuXq57IGAisb0C15cClM/gThyy2Us0dnS0gXPdSOYuC21fk/pmLX+GDRopFw==",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.0"
         }
