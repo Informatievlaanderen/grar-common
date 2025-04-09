@@ -4,7 +4,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Api.Messages
 
     public class ImportStatus
     {
-        public string Name { get; set; }
+        public required string Name { get; set; }
         public ImportStatusBatchScope? LastCompletedBatch { get; set; }
         public ImportStatusBatchScope? CurrentBatch { get; set; }
     }

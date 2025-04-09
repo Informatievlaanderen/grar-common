@@ -17,7 +17,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance.Syndication
 
         [DataMember(Name = "Organisatie", Order = 1)]
         [JsonProperty(Required = Required.DisallowNull)]
-        public string Organisation { get; set; }
+        public string? Organisation { get; set; }
 
         [DataMember(Name = "Reden", Order = 2)]
         [JsonProperty(Required = Required.DisallowNull)]

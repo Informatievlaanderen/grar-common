@@ -7,10 +7,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Migrations
 
     public partial class migrate_batch_history : Migration
     {
-        private static CrabImportSchema Schema => CrabImportMigrationsHelper.CrabImportSchema;
+        private static CrabImportSchema? Schema => CrabImportMigrationsHelper.CrabImportSchema;
 
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            if(Schema == null)
+                throw new InvalidOperationException("Schema is not set.");
+
             migrationBuilder.EnsureSchema(name: Schema.Name);
 
             //CREATE TEMP TABLE + FILL
@@ -116,7 +119,7 @@ GROUP BY ImportFeedId");
         {
             migrationBuilder.DropPrimaryKey(
                 name: "PK_ImportStatus",
-                schema: Schema.Name,
+                schema: Schema!.Name,
                 table:Schema.StatusTable);
 
             migrationBuilder.DropIndex(

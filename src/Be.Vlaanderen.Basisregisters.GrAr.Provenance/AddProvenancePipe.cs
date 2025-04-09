@@ -12,6 +12,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             Func<ConcurrentUnitOfWork> getUnitOfWork,
             IProvenanceFactory<TAggregate>[] provenanceFactories)
             where TAggregate : IAggregateRootEntity
+            where TCommand : notnull
         {
             var provenanceFactory = provenanceFactories.SingleOrDefault(f => f.CanCreateFrom<TCommand>());
             return provenanceFactory == null
@@ -22,8 +23,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
         public static ICommandHandlerBuilder<CommandMessage<TCommand>> AddProvenance<TCommand, TAggregate>(
             this ICommandHandlerBuilder<CommandMessage<TCommand>> commandHandlerBuilder,
             Func<ConcurrentUnitOfWork> getUnitOfWork,
-            IProvenanceFactory<TAggregate> provenanceFactory)
+            IProvenanceFactory<TAggregate>? provenanceFactory)
             where TAggregate : IAggregateRootEntity
+            where TCommand : notnull
         {
             return provenanceFactory == null
                 ? commandHandlerBuilder

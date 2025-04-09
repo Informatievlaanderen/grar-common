@@ -34,7 +34,7 @@ public static class GeometryExtensions
             {
                 xmlwriter.WriteStartElement("gml", "Polygon", GmlNamespace);
                 xmlwriter.WriteAttributeString("srsName", SrsName);
-                WriteRing(polygon.ExteriorRing as LinearRing, xmlwriter);
+                WriteRing((polygon.ExteriorRing as LinearRing)!, xmlwriter);
                 WriteInteriorRings(polygon.InteriorRings, polygon.NumInteriorRings, xmlwriter);
                 xmlwriter.WriteEndElement();
             }
@@ -48,10 +48,10 @@ public static class GeometryExtensions
 
                 foreach (var p in multiPolygon.Geometries.Cast<Polygon>())
                 {
-                    xmlwriter.WriteStartElement("gml", "surfaceMember", null);
-                    xmlwriter.WriteStartElement("gml", "Polygon", null);
+                    xmlwriter.WriteStartElement("gml", "surfaceMember", null!);
+                    xmlwriter.WriteStartElement("gml", "Polygon", null!);
 
-                    WriteRing(p.ExteriorRing as LinearRing, xmlwriter);
+                    WriteRing((p.ExteriorRing as LinearRing)!, xmlwriter);
                     WriteInteriorRings(p.InteriorRings, p.NumInteriorRings, xmlwriter);
 
                     xmlwriter.WriteEndElement();
@@ -68,7 +68,7 @@ public static class GeometryExtensions
                 xmlwriter.WriteStartElement("gml", "Point", GmlNamespace);
                 xmlwriter.WriteAttributeString("srsName", SrsName);
 
-                xmlwriter.WriteStartElement("gml", "pos", null);
+                xmlwriter.WriteStartElement("gml", "pos", null!);
                 xmlwriter.WriteValue(string.Format(Global.GetNfi(), "{0} {1}",
                     point.Coordinate.X.ToPointGeometryCoordinateValueFormat(),
                     point.Coordinate.Y.ToPointGeometryCoordinateValueFormat()));
@@ -82,7 +82,7 @@ public static class GeometryExtensions
     }
 
     private static void WriteRing(
-        LinearRing? ring,
+        LinearRing ring,
         XmlWriter writer,
         bool isInterior = false)
     {
@@ -122,7 +122,7 @@ public static class GeometryExtensions
 
         foreach (var ring in rings)
         {
-            WriteRing(ring as LinearRing, writer, true);
+            WriteRing((ring as LinearRing)!, writer, true);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Extracts
         where TDbaseRecord : DbaseRecord
     {
         public static DbaseCodePage CodePage => DbaseCodePage.Western_European_ANSI;
-        public static Encoding Encoding => CodePage.ToEncoding();
+        public static Encoding Encoding => CodePage.ToEncoding()!;
 
         public DbfFileWriter(DbaseFileHeader header, Stream writeStream)
             : base(Encoding, writeStream) => header.Write(Writer);

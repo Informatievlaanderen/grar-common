@@ -7,14 +7,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common.SpatialTools.GeometryCoordina
     {
         public override void WriteJson(
             JsonWriter writer,
-            GeometryCoordinateValue value,
+            GeometryCoordinateValue? value,
             JsonSerializer serializer)
-            => writer.WriteRawValue(value.ToString());
+            => writer.WriteRawValue(value?.ToString());
 
         public override GeometryCoordinateValue ReadJson(
             JsonReader reader,
             Type objectType,
-            GeometryCoordinateValue existingValue,
+            GeometryCoordinateValue? existingValue,
             bool hasExistingValue,
             JsonSerializer serializer)
             => throw new NotImplementedException($"Json deserialization of {nameof(GeometryCoordinateValue)} is not supported");
