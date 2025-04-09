@@ -1,3 +1,15 @@
+# [22.0.0](https://github.com/informatievlaanderen/grar-common/compare/v21.16.0...v22.0.0) (2025-04-09)
+
+
+### Code Refactoring
+
+* use renovate and nuget + update pipeline ([963fc7f](https://github.com/informatievlaanderen/grar-common/commit/963fc7fee6709c2a3f60fbd153a4da51f0caac20))
+
+
+### BREAKING CHANGES
+
+* update to dotnet 9
+
 # [21.16.0](https://github.com/informatievlaanderen/grar-common/compare/v21.15.0...v21.16.0) (2025-02-11)
 
 
