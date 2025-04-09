@@ -10,9 +10,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common.SpatialTools.GeometryCoordina
 
         public override void WriteJson(
             JsonWriter writer,
-            double[] point,
+            double[]? point,
             JsonSerializer serializer)
         {
+            if (point == null)
+                throw new ArgumentNullException(nameof(point));
+
             lock (Lock)
             {
                 if (!serializer.Converters.Any(converter => converter is GeometryCoordinateValueConverter))
@@ -28,7 +31,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common.SpatialTools.GeometryCoordina
         public override double[] ReadJson(
             JsonReader reader,
             Type objectType,
-            double[] existingValue,
+            double[]? existingValue,
             bool hasExistingValue,
             JsonSerializer serializer)
             => throw new NotImplementedException($"Json deserialization of PointCoordinates is not supported");

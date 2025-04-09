@@ -11,6 +11,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.Serilog
         public static CommandProcessorBuilder<T> UseSerilog<T>(
             this CommandProcessorBuilder<T> builder,
             Action<LoggerConfiguration> configureSinks)
+            where T : notnull
         {
             var minimumLogLevel = builder.MinLogLevel;
             var logEventLevel = LogLevelMappings.ContainsKey(minimumLogLevel) ? LogLevelMappings[minimumLogLevel] : LogEventLevel.Information;

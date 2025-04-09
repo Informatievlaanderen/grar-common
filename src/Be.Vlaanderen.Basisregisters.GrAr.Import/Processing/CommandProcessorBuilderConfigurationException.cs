@@ -10,6 +10,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
             : base(s)
         { }
 
+        /// <inheritdoc />
         private CommandProcessorBuilderConfigurationException(SerializationInfo info,
             StreamingContext context)
             : base(info, context)

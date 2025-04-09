@@ -8,10 +8,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
         public OsloResult()
         { }
 
-        public OsloIdentificator Identificator { get; set; }
+        public required OsloIdentificator Identificator { get; set; }
 
         [JsonIgnore]
-        public string JsonContent { get; set; }
+        public string? JsonContent { get; set; }
 
         [JsonIgnore]
         public string? ETag { get; set; }

@@ -17,7 +17,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CommandLine
         public bool DryRun { get; set; }
 
         [Option('k', "keys", Required = false, Separator = ',', HelpText = "Process a range of keys. Seperated by ,")]
-        public IEnumerable<string> Keys { get; set; }
+        public IEnumerable<string>? Keys { get; set; }
     }
 
     [Verb("init", HelpText = "Run the event generator in initialize mode")]

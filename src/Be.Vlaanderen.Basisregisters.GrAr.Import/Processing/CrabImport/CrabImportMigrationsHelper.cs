@@ -6,13 +6,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
 
     public static class CrabImportMigrationsHelper
     {
-        internal static CrabImportSchema CrabImportSchema { get; private set; }
+        internal static CrabImportSchema? CrabImportSchema { get; private set; }
 
         internal static void Run(
             Configuration configuration,
             MigrationsSchema migrationsSchema,
             CrabImportSchema crabImportSchema,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory? loggerFactory)
         {
             var migrationOptionsBuilder = new DbContextOptionsBuilder<CrabImportContext>()
                 .UseSqlServer(

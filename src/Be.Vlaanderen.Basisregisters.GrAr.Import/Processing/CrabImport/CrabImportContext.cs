@@ -43,7 +43,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
                 var batchStatus = BatchStatuses
                     ?.AsNoTracking()
                     .Where(batch =>
-                        batch.ImportFeedId == feed.Name && 
+                        batch.ImportFeedId == feed.Name &&
                         batch.Completed == completed)
                     .OrderBy(batch => batch.From)
                     .LastOrDefault();
@@ -59,7 +59,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
 
             return new ImportStatus
             {
-                Name = feed.Name,
+                Name = feed.Name!,
                 CurrentBatch = GetLastBatch(false),
                 LastCompletedBatch = GetLastBatch(true)
             };

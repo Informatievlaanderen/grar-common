@@ -7,10 +7,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Migrations
 
     public partial class inital_migration_import_batch : Migration
     {
-        private static CrabImportSchema Schema => CrabImportMigrationsHelper.CrabImportSchema;
+        private static CrabImportSchema? Schema => CrabImportMigrationsHelper.CrabImportSchema;
 
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            if(Schema == null)
+                throw new InvalidOperationException("Schema is not initialized.");
+
             migrationBuilder.EnsureSchema(
                 name: Schema.Name);
 
@@ -33,7 +36,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: Schema.StatusTable,
+                name: Schema!.StatusTable,
                 schema: Schema.Name);
         }
     }

@@ -29,9 +29,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             {CrabOrganisation.Vkbo, Organisation.Vkbo}
         };
 
-        private static Operator MapOperator(CrabOperator crabOperator)
+        private static Operator? MapOperator(CrabOperator? crabOperator)
         {
-            if (crabOperator == null)
+            if (crabOperator is null)
                 return null;
 
             var trimmed = ((string)crabOperator).Trim();
@@ -68,13 +68,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
 
             if (crabOrganisation == CrabOrganisation.Vlm)
             {
-                if (timestamp < VlmEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone).ToInstant())
+                if (timestamp < VlmEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone!).ToInstant())
                     return Organisation.Vlm;
 
-                if (timestamp < AgivEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone).ToInstant())
+                if (timestamp < AgivEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone!).ToInstant())
                     return Organisation.Agiv;
 
-                if (timestamp < AivEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone).ToInstant())
+                if (timestamp < AivEndDate.AtStartOfDayInZone(NodaHelpers.BelgianDateTimeZone!).ToInstant())
                     return Organisation.Aiv;
 
                 return Organisation.DigitaalVlaanderen;
@@ -83,9 +83,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             return MapCrabOrganisations[crabOrganisation.Value];
         }
 
-        private static Reason MapReason(CrabOperator crabOperator)
+        private static Reason MapReason(CrabOperator? crabOperator)
         {
-            string @operator = crabOperator ?? string.Empty;
+            var @operator = crabOperator ?? string.Empty;
 
             if (@operator.Equals("VLM\\GRBCrabMatchingProd", StringComparison.OrdinalIgnoreCase) ||
                 @operator.Equals("VLM\\GRBCrabMatchingBeta", StringComparison.OrdinalIgnoreCase))
@@ -100,9 +100,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             return Reason.ManagementCrab;
         }
 
-        private static Application MapApplication(CrabOperator crabOperator)
+        private static Application MapApplication(CrabOperator? crabOperator)
         {
-            if (string.IsNullOrWhiteSpace(crabOperator))
+            if (crabOperator is null || string.IsNullOrWhiteSpace(crabOperator))
                 return Application.Unknown;
 
             string @operator = crabOperator;
@@ -131,12 +131,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Provenance
             bool isRemoved,
             CrabTimestamp timestamp,
             CrabModification? crabModification,
-            CrabOperator crabOperator,
+            CrabOperator? crabOperator,
             CrabOrganisation? crabOrganisation) => new Provenance(
             (Instant) timestamp,
             MapApplication(crabOperator),
             MapReason(crabOperator),
-            MapOperator(crabOperator),
+            MapOperator(crabOperator) ?? new Operator(string.Empty),
             MapModification(crabModification, version, isRemoved),
             MapOrganisation(crabOrganisation, timestamp));
 

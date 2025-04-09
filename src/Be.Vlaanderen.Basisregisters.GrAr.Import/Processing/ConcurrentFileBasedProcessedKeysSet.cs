@@ -5,13 +5,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
     using System.IO;
     using System.Linq;
 
-    public class ConcurrentFileBasedProcessedKeysSet<TKey> : IProcessedKeysSet<TKey>
+    public class ConcurrentFileBasedProcessedKeysSet<TKey> : IProcessedKeysSet<TKey> where TKey : notnull
     {
         private readonly Func<string, TKey> _deserializeKey;
         private readonly object _lockObj = new object();
         private readonly string _path;
         private readonly Func<TKey, string> _serializeKey;
-        private HashSet<TKey> _cache;
+        private HashSet<TKey>? _cache;
 
         public ConcurrentFileBasedProcessedKeysSet(
             Func<TKey, string> serializeKey,

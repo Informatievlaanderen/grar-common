@@ -74,7 +74,7 @@
         {
             var gmlPolygon = new GmlPolygon
             {
-                Exterior = GetGmlRing(polygon.ExteriorRing as NetTopologySuite.Geometries.LinearRing)
+                Exterior = GetGmlRing((polygon.ExteriorRing as NetTopologySuite.Geometries.LinearRing)!)
             };
 
             if (polygon.NumInteriorRings > 0)
@@ -84,7 +84,7 @@
 
             for (var i = 0; i < polygon.NumInteriorRings; i++)
             {
-                gmlPolygon.Interior.Add(GetGmlRing(polygon.InteriorRings[i] as NetTopologySuite.Geometries.LinearRing));
+                gmlPolygon.Interior.Add(GetGmlRing((polygon.InteriorRings[i] as NetTopologySuite.Geometries.LinearRing)!));
             }
 
             return gmlPolygon;

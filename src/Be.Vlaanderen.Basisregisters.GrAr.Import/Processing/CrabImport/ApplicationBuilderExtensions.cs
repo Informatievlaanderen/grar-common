@@ -11,10 +11,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing.CrabImport
             var services = builder.ApplicationServices;
 
             CrabImportMigrationsHelper.Run(
-                services.GetService<Configuration>(),
-                services.GetService<MigrationsSchema>(),
-                services.GetService<CrabImportSchema>(),
-                services.GetService<ILoggerFactory>());
+                services.GetRequiredService<Configuration>(),
+                services.GetRequiredService<MigrationsSchema>(),
+                services.GetRequiredService<CrabImportSchema>(),
+                services.GetRequiredService<ILoggerFactory>());
 
             return builder;
         }

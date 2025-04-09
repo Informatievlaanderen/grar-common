@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\packages\Be.Vlaanderen.Basisregisters.Build.Pipeline\Content\Be.Vlaanderen.Basisregisters.Build.Pipeline.Settings.Test.props" />
+  <Import Project="..\..\.build\Be.Vlaanderen.Basisregisters.Build.Pipeline\Content\Be.Vlaanderen.Basisregisters.Build.Pipeline.Settings.Test.props" />
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Common\Be.Vlaanderen.Basisregisters.GrAr.Common.csproj" />
@@ -19,5 +19,26 @@
     </None>
   </ItemGroup>
 
-  <Import Project="..\..\.paket\Paket.Restore.targets" />
+  <ItemGroup>
+    <PackageReference Include="NetTopologySuite" />
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="AutoFixture" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.Crab" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.AggregateSource" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore.Autofac" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.AggregateSource.Testing" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.AggregateSource.Testing.CommandHandling" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.EventHandling.Autofac" />
+    <PackageReference Include="Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore" />
+  </ItemGroup>
 </Project>

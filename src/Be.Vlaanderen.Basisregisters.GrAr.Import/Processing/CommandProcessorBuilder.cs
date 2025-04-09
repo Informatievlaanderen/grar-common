@@ -9,17 +9,17 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
     using System.Reflection;
     using CommandLine;
 
-    public class CommandProcessorBuilder<TKey>
+    public class CommandProcessorBuilder<TKey> where TKey : notnull
     {
         private readonly ICommandGenerator<TKey> _generator;
-        private Func<ILogger, IApiProxyFactory> _createApiProxyFactory;
-        private ICommandProcessorConfig _commandProcessorConfig;
-        private IHttpApiProxyConfig _httpApiProxyConfig;
-        private LoggerFactory _loggerFactory;
-        private IProcessedKeysSet<TKey> _processedKeys;
-        private JsonSerializerSettings _serializerSettings;
+        private Func<ILogger, IApiProxyFactory>? _createApiProxyFactory;
+        private ICommandProcessorConfig? _commandProcessorConfig;
+        private IHttpApiProxyConfig? _httpApiProxyConfig;
+        private LoggerFactory? _loggerFactory;
+        private IProcessedKeysSet<TKey>? _processedKeys;
+        private JsonSerializerSettings? _serializerSettings;
         private bool _useDryRunApiProxyFactory;
-        private ImportFeed _importFeed;
+        private ImportFeed? _importFeed;
 
         public LogLevel MinLogLevel { get; private set; }
 
@@ -65,7 +65,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
         }
 
         public CommandProcessorBuilder<TKey> UseApiProxyFactory(IApiProxyFactory factory)
-            => UseApiProxyFactory(logger => factory);
+            => UseApiProxyFactory(_ => factory);
 
         public CommandProcessorBuilder<TKey> UseApiProxyFactory(Func<ILogger, IApiProxyFactory> factoryBuilder)
         {
@@ -122,10 +122,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Processing
 
         public CommandProcessor<TKey> Build()
         {
-            var logger = _loggerFactory?.CreateLogger(Assembly.GetExecutingAssembly().FullName) ?? throw Exceptions.LoggerFactoryNotConfigured;
+            var logger = _loggerFactory?.CreateLogger(Assembly.GetExecutingAssembly().FullName ?? nameof(CommandProcessorBuilder<TKey>)) ?? throw Exceptions.LoggerFactoryNotConfigured;
 
             var config = _commandProcessorConfig ?? new DefaultCommandProcessorConfig();
-            var processedKeys = _processedKeys ?? new ConcurrentFileBasedProcessedKeysSet<TKey>(x => x.ToString(), s => (TKey)Convert.ChangeType(s, typeof(TKey)));
+            var processedKeys = _processedKeys ?? new ConcurrentFileBasedProcessedKeysSet<TKey>(x => x.ToString()!, s => (TKey)Convert.ChangeType(s, typeof(TKey)));
             var serializer = JsonSerializer.CreateDefault(_serializerSettings);
 
             return new CommandProcessor<TKey>(config,
