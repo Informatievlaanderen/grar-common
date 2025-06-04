@@ -27,7 +27,7 @@
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.AspNetCore.Mvc.Formatters.Json" Version="6.0.0" />
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.Shaperon" Version="11.0.0" />
 
-        <PackageVersion Include="AWSSDK.SimpleNotificationService" Version="3.7.400.129" />
+        <PackageVersion Include="AWSSDK.SimpleNotificationService" Version="3.7.400.159" />
 
         <PackageVersion Include="Autofac" Version="8.2.1"/>
         <PackageVersion Include="CommandLineParser" Version="2.9.1"/>

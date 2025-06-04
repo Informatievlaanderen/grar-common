@@ -262,8 +262,8 @@
       },
       "AWSSDK.Core": {
         "type": "Transitive",
-        "resolved": "3.7.402.35",
-        "contentHash": "9Jby5BBQTzZOqzQiFjJyr3zCe5GVi64U8gxOlPk3vTTuVJqtkisBJ0Jh1RBj2fNqnWmJLfaWSCLvX1L06zwHnQ=="
+        "resolved": "3.7.402.65",
+        "contentHash": "qXcYPON8H7jHn3DuBjehDhGoVfdCcUtpI9trzFrk0nST/qWqRs4XQ7Rx7M58IQMiXj3mKoM+OZHAsFOXPNjvwg=="
       },
       "AWSSDK.DynamoDBv2": {
         "type": "Transitive",
@@ -2429,7 +2429,7 @@
       "be.vlaanderen.basisregisters.grar.notifications": {
         "type": "Project",
         "dependencies": {
-          "AWSSDK.SimpleNotificationService": "[3.7.400.129, )",
+          "AWSSDK.SimpleNotificationService": "[3.7.400.159, )",
           "System.Text.Json": "[9.0.3, )"
         }
       },
@@ -2475,11 +2475,11 @@
       },
       "AWSSDK.SimpleNotificationService": {
         "type": "CentralTransitive",
-        "requested": "[3.7.400.129, )",
-        "resolved": "3.7.400.129",
-        "contentHash": "2yZQXL7pRVmk1JGiFy1SsxTA6XDjvIHUTZ0NFv9oBgHGD4Blgc/NcJxreQYrxpPD69gqUyjMT4d4ag7pHgxYrQ==",
+        "requested": "[3.7.400.159, )",
+        "resolved": "3.7.400.159",
+        "contentHash": "B6imL/UWSaGT0ygeNZ4pvO/KjpVySmqvAnuu9x7QlBClWZQoWIDv365bSmy6C9fFMzwugXSB6cSAe1w7JKNvWQ==",
         "dependencies": {
-          "AWSSDK.Core": "[3.7.402.35, 4.0.0)"
+          "AWSSDK.Core": "[3.7.402.65, 4.0.0)"
         }
       },
       "Be.Vlaanderen.Basisregisters.Api": {
