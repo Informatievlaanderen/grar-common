@@ -1,3 +1,10 @@
+## [22.1.1](https://github.com/informatievlaanderen/grar-common/compare/v22.1.0...v22.1.1) (2025-07-15)
+
+
+### Bug Fixes
+
+* **contract:** add NisCode to MunicipalityWasRemoved ([3649c93](https://github.com/informatievlaanderen/grar-common/commit/3649c93ed42a75117026e8e30944e7444a85c169))
+
 # [22.1.0](https://github.com/informatievlaanderen/grar-common/compare/v22.0.0...v22.1.0) (2025-07-15)
 
 
