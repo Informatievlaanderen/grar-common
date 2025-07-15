@@ -1,3 +1,10 @@
+# [22.1.0](https://github.com/informatievlaanderen/grar-common/compare/v22.0.0...v22.1.0) (2025-07-15)
+
+
+### Features
+
+* **contracts:** add Municipality & PostalInfoWasRemoved ([d159bea](https://github.com/informatievlaanderen/grar-common/commit/d159bea8d9b70741ca24c18f97feefdd27107c62))
+
 # [22.0.0](https://github.com/informatievlaanderen/grar-common/compare/v21.16.0...v22.0.0) (2025-04-09)
 
 
