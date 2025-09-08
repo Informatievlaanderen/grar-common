@@ -1,3 +1,10 @@
+# [22.2.0](https://github.com/informatievlaanderen/grar-common/compare/v22.1.1...v22.2.0) (2025-09-08)
+
+
+### Features
+
+* add GML validator for point and polygon ([02f5f08](https://github.com/informatievlaanderen/grar-common/commit/02f5f08f843457d4bb788f6da6cd16338926cf23))
+
 ## [22.1.1](https://github.com/informatievlaanderen/grar-common/compare/v22.1.0...v22.1.1) (2025-07-15)
 
 
