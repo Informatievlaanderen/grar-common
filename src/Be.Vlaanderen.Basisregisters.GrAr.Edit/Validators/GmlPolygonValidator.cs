@@ -18,6 +18,16 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Edit.Validators
             GMLReader gmlReader,
             Func<Geometry, IsValidOp>? isValidOpFactory)
         {
+            return IsValid(gml, gmlReader, isValidOpFactory, out _);
+        }
+
+        public static bool IsValid(
+            string? gml,
+            GMLReader gmlReader,
+            Func<Geometry, IsValidOp>? isValidOpFactory,
+            out Polygon? polygon)
+        {
+            polygon = null;
             if (string.IsNullOrEmpty(gml) || !gml.Contains(GmlConstants.GmlVersionAttribute) || !gml.Contains(GmlConstants.SrsNameAttribute))
             {
                 return false;
@@ -27,7 +37,13 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Edit.Validators
             {
                 var geometry = gmlReader.Read(gml);
 
-                return geometry is Polygon && (isValidOpFactory is null ? geometry.IsValid : isValidOpFactory(geometry).IsValid);
+                if (geometry is Polygon && (isValidOpFactory is null ? geometry.IsValid : isValidOpFactory(geometry).IsValid))
+                {
+                    polygon = (Polygon)geometry;
+                    return true;
+                }
+
+                return false;
             }
             catch (XmlException)
             {
