@@ -1,3 +1,10 @@
+# [22.3.0](https://github.com/informatievlaanderen/grar-common/compare/v22.2.0...v22.3.0) (2025-11-18)
+
+
+### Features
+
+* add Link contract ([eec8b5f](https://github.com/informatievlaanderen/grar-common/commit/eec8b5f8b2b42753e52d69037e5586ebb8fcd25f))
+
 # [22.2.0](https://github.com/informatievlaanderen/grar-common/compare/v22.1.1...v22.2.0) (2025-09-08)
 
 
