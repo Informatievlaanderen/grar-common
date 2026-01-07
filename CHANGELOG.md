@@ -1,3 +1,10 @@
+# [22.4.0](https://github.com/informatievlaanderen/grar-common/compare/v22.3.0...v22.4.0) (2026-01-07)
+
+
+### Features
+
+* **oslo:** add extensions to write GML in oslo ([f6b89b6](https://github.com/informatievlaanderen/grar-common/commit/f6b89b653edeb0117a9fa76eea747f8596c4d1a6))
+
 # [22.3.0](https://github.com/informatievlaanderen/grar-common/compare/v22.2.0...v22.3.0) (2025-11-18)
 
 
