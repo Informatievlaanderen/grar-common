@@ -1,3 +1,10 @@
+# [22.5.0](https://github.com/informatievlaanderen/grar-common/compare/v22.4.0...v22.5.0) (2026-01-26)
+
+
+### Features
+
+* add feed package ([982b795](https://github.com/informatievlaanderen/grar-common/commit/982b79547bae385011dd9c973c883446b662a82d))
+
 # [22.4.0](https://github.com/informatievlaanderen/grar-common/compare/v22.3.0...v22.4.0) (2026-01-07)
 
 
