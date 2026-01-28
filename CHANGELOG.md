@@ -1,3 +1,10 @@
+# [22.6.0](https://github.com/informatievlaanderen/grar-common/compare/v22.5.0...v22.6.0) (2026-01-28)
+
+
+### Features
+
+* add FeedPositieRespone ([cf2b926](https://github.com/informatievlaanderen/grar-common/commit/cf2b92626fa5d971a7b7c92153637c663b1184cf))
+
 # [22.5.0](https://github.com/informatievlaanderen/grar-common/compare/v22.4.0...v22.5.0) (2026-01-26)
 
 
