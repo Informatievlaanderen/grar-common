@@ -1,3 +1,10 @@
+# [22.7.0](https://github.com/informatievlaanderen/grar-common/compare/v22.6.0...v22.7.0) (2026-02-01)
+
+
+### Features
+
+* add Oslo namepaces ([b50d129](https://github.com/informatievlaanderen/grar-common/commit/b50d129ebe76b15a0ed273666162e9e38c422ec3))
+
 # [22.6.0](https://github.com/informatievlaanderen/grar-common/compare/v22.5.0...v22.6.0) (2026-01-28)
 
 
