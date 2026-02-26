@@ -18,7 +18,6 @@ public static class GeometryExtensions
     }
 
     private const string GmlNamespace = "http://www.opengis.net/gml/3.2";
-    private const string SrsName = "https://www.opengis.net/def/crs/EPSG/0/31370";
 
     public static string ConvertToGml(this Geometry geometry)
     {
@@ -33,7 +32,7 @@ public static class GeometryExtensions
             using (var xmlwriter = XmlWriter.Create(builder, settings))
             {
                 xmlwriter.WriteStartElement("gml", "Polygon", GmlNamespace);
-                xmlwriter.WriteAttributeString("srsName", SrsName);
+                WriteSrsName(xmlwriter, geometry);
                 WriteRing((polygon.ExteriorRing as LinearRing)!, xmlwriter);
                 WriteInteriorRings(polygon.InteriorRings, polygon.NumInteriorRings, xmlwriter);
                 xmlwriter.WriteEndElement();
@@ -44,7 +43,7 @@ public static class GeometryExtensions
             using (var xmlwriter = XmlWriter.Create(builder, settings))
             {
                 xmlwriter.WriteStartElement("gml", "MultiSurface", GmlNamespace);
-                xmlwriter.WriteAttributeString("srsName", SrsName);
+                WriteSrsName(xmlwriter, geometry);
 
                 foreach (var p in multiPolygon.Geometries.Cast<Polygon>())
                 {
@@ -66,7 +65,7 @@ public static class GeometryExtensions
             using (var xmlwriter = XmlWriter.Create(builder, settings))
             {
                 xmlwriter.WriteStartElement("gml", "Point", GmlNamespace);
-                xmlwriter.WriteAttributeString("srsName", SrsName);
+                WriteSrsName(xmlwriter, point);
 
                 xmlwriter.WriteStartElement("gml", "pos", null!);
                 xmlwriter.WriteValue(string.Format(Global.GetNfi(), "{0} {1}",
@@ -79,6 +78,21 @@ public static class GeometryExtensions
         }
 
         return builder.ToString();
+    }
+
+    private static void WriteSrsName(XmlWriter xmlWriter, Geometry geometry)
+    {
+        switch (geometry.SRID)
+        {
+            case SystemReferenceId.SridLambert72:
+                xmlWriter.WriteAttributeString("srsName", SystemReferenceId.SrsNameLambert72);
+                break;
+            case SystemReferenceId.SridLambert2008:
+                xmlWriter.WriteAttributeString("srsName", SystemReferenceId.SrsNameLambert2008);
+                break;
+            default:
+                throw new InvalidOperationException($"Unsupported SRID: {geometry.SRID}.");
+        }
     }
 
     private static void WriteRing(
