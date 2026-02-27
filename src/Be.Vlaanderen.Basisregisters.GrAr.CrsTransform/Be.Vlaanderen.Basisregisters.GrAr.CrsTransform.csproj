@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\.build\Be.Vlaanderen.Basisregisters.Build.Pipeline\Content\Be.Vlaanderen.Basisregisters.Build.Pipeline.Settings.Library.props" />
+  <ItemGroup>
+    <ProjectReference Include="..\Be.Vlaanderen.Basisregisters.GrAr.Common\Be.Vlaanderen.Basisregisters.GrAr.Common.csproj" />
+    <ProjectReference Include="..\Be.Vlaanderen.Basisregisters.GrAr.Legacy\Be.Vlaanderen.Basisregisters.GrAr.Legacy.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <!-- Error NETSDK1152: https://docs.microsoft.com/en-us/dotnet/core/compatibility/sdk/6.0/duplicate-files-in-output -->
+    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+    <PackageId>Be.Vlaanderen.Basisregisters.GrAr.CrsTransform</PackageId>
+    <Title>Be.Vlaanderen.Basisregisters.GrAr.CrsTransform</Title>
+    <Authors>Basisregisters Vlaanderen</Authors>
+    <Owners>Digitaal Vlaanderen</Owners>
+    <Copyright>Copyright (c) Digitaal Vlaanderen</Copyright>
+    <PackageLicenseExpression>EUPL-1.2</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/Informatievlaanderen/grar-common</PackageProjectUrl>
+    <PackageIcon>logo.png</PackageIcon>
+    <Description>Contains CrsTransform classes for GrAr-WR Lambert72-08.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\.build\Be.Vlaanderen.Basisregisters.Build.Pipeline\Content\logo.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetTopologySuite.Features" />
+    <PackageReference Include="SourceLink.Embed.AllSourceFiles" PrivateAssets="all" />
+    <PackageReference Include="SourceLink.Copy.PdbFiles" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Gisvl.Gecko.CrsTransformer.Core" HintPath="Assets\Gisvl.Gecko.CrsTransformer.Core.dll" />
+    <Reference Include="Gisvl.Gecko.CrsTransformer.NTS" HintPath="Assets\Gisvl.Gecko.CrsTransformer.NTS.dll" />
+    
+    <None Include="Assets\Gisvl.Gecko.CrsTransformer.Core.dll" Pack="true" PackagePath="lib\$(TargetFramework)" />
+    <None Include="Assets\Gisvl.Gecko.CrsTransformer.NTS.dll" Pack="true" PackagePath="lib\$(TargetFramework)" />
+  </ItemGroup>
+</Project>

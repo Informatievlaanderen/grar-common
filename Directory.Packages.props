@@ -35,6 +35,7 @@
         <PackageVersion Include="CompareNETObjects" Version="4.83.0" />
         <PackageVersion Include="Microsoft.CSharp" Version="4.7.0" />
         <PackageVersion Include="NetTopologySuite" Version="2.6.0" />
+        <PackageVersion Include="NetTopologySuite.Features" Version="2.2.0" />
         <PackageVersion Include="Newtonsoft.Json" Version="13.0.3"/>
         <PackageVersion Include="NodaTime" Version="3.2.2" />
         <PackageVersion Include="CloudNative.CloudEvents.NewtonsoftJson" Version="2.8.0" />

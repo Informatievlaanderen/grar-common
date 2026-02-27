@@ -17,6 +17,17 @@ public static class GeometryExtensions
         return centroid.Within(geometry) ? centroid : geometry.InteriorPoint;
     }
 
+    public static T WithSrid<T>(this T geometry, int srid)
+        where T : Geometry
+    {
+        if(srid <= 0)
+            throw new ArgumentException("SRID must be greater than 0.", nameof(srid));
+
+        geometry.SRID = srid;
+
+        return geometry;
+    }
+
     private const string GmlNamespace = "http://www.opengis.net/gml/3.2";
 
     public static string ConvertToGml(this Geometry geometry)
