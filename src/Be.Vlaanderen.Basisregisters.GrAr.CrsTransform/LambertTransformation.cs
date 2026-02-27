@@ -7,6 +7,7 @@ using Gisvl.Gecko.CrsTransformer.NTS;
 using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
+using GeometryFactory = NetTopologySuite.Geometries.GeometryFactory;
 
 public static class LambertTransformation
 {
@@ -106,11 +107,11 @@ public static class LambertTransformation
     private static class CoordinateSystem
     {
         public static readonly FlandersCoordinateSystem Lambert72 = new(
-            new GeometryFactory(new PrecisionModel(), SystemReferenceId.SridLambert72),
+            NtsGeometryFactory.CreateGeometryFactoryLambert72(),
             "POLYGON ((21492.616926517032 152558.5059805829, 21492.616926874573 244521.11300331634, 259366.13819444185 244521.11300324462, 259366.13819474622 152558.50598051306, 21492.616926517032 152558.5059805829))"
         );
         public static readonly FlandersCoordinateSystem Lambert08 = new(
-            new GeometryFactory(new PrecisionModel(), SystemReferenceId.SridLambert2008),
+            NtsGeometryFactory.CreateGeometryFactoryLambert2008(),
             "POLYGON ((521398.8154037502 652516.2224709671, 521398.8154037502 744502.4871143429, 759275.2584176834 744502.4871143429, 759275.2584176834 652516.2224709671, 521398.8154037502 652516.2224709671))"
         );
     }
