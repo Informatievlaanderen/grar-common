@@ -2389,7 +2389,6 @@
         "type": "Project",
         "dependencies": {
           "Be.Vlaanderen.Basisregisters.GrAr.Common": "[1.0.0, )",
-          "Be.Vlaanderen.Basisregisters.GrAr.Legacy": "[1.0.0, )",
           "NetTopologySuite.Features": "[2.2.0, )"
         }
       },
