@@ -3,7 +3,7 @@
     public class ConstantGmls
     {
         public const string ValidGmlPolygon =
-            "<gml:Polygon srsName=\"https://www.opengis.net/def/crs/EPSG/0/31370\" xmlns:gml=\"http://www.opengis.net/gml/3.2\">" +
+            "<gml:Polygon srsName=\"http://www.opengis.net/def/crs/EPSG/0/31370\" xmlns:gml=\"http://www.opengis.net/gml/3.2\">" +
             "<gml:exterior>" +
             "<gml:LinearRing>" +
             "<gml:posList>" +
@@ -14,7 +14,7 @@
             "</gml:Polygon>";
 
         public const string ValidGmlMultiPolygon =
-            "<gml:MultiSurface srsName=\"https://www.opengis.net/def/crs/EPSG/0/31370\" xmlns:gml=\"http://www.opengis.net/gml/3.2\">" +
+            "<gml:MultiSurface srsName=\"http://www.opengis.net/def/crs/EPSG/0/31370\" xmlns:gml=\"http://www.opengis.net/gml/3.2\">" +
             "<gml:surfaceMember>" +
             "<gml:Polygon>" +
             "<gml:exterior>" +
@@ -41,7 +41,7 @@
             "</gml:MultiSurface>";
 
         public const string ValidGmlPoint =
-            "<gml:Point srsName=\"https://www.opengis.net/def/crs/EPSG/0/31370\" xmlns:gml=\"http://www.opengis.net/gml/3.2\">" +
+            "<gml:Point srsName=\"http://www.opengis.net/def/crs/EPSG/0/31370\" xmlns:gml=\"http://www.opengis.net/gml/3.2\">" +
             "<gml:pos>103671.37 192046.71</gml:pos>" +
             "</gml:Point>";
     }

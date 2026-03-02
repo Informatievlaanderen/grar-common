@@ -25,6 +25,7 @@
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.Crab" Version="5.0.1"/>
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.ProjectionHandling.LastChangedList" Version="15.0.1" />
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset" Version="5.0.0" />
+        <PackageVersion Include="Be.Vlaanderen.Basisregisters.Utilities.HexByteConvertor" Version="5.0.0" />
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.AspNetCore.Mvc.Formatters.Json" Version="6.0.0" />
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.Shaperon" Version="11.0.0" />
 
@@ -35,6 +36,7 @@
         <PackageVersion Include="CompareNETObjects" Version="4.83.0" />
         <PackageVersion Include="Microsoft.CSharp" Version="4.7.0" />
         <PackageVersion Include="NetTopologySuite" Version="2.6.0" />
+        <PackageVersion Include="NetTopologySuite.Features" Version="2.2.0" />
         <PackageVersion Include="Newtonsoft.Json" Version="13.0.3"/>
         <PackageVersion Include="NodaTime" Version="3.2.2" />
         <PackageVersion Include="CloudNative.CloudEvents.NewtonsoftJson" Version="2.8.0" />

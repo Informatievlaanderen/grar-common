@@ -157,6 +157,12 @@
           "Be.Vlaanderen.Basisregisters.EventHandling": "7.0.0"
         }
       },
+      "Be.Vlaanderen.Basisregisters.Utilities.HexByteConvertor": {
+        "type": "Direct",
+        "requested": "[5.0.0, )",
+        "resolved": "5.0.0",
+        "contentHash": "DI3ETyL4lW+/SQcVAHE1F2fkNLZ5UV8GtVMoPZxX73gTdlfcKHASnsKrxVS/IcQu/5dzwQR70OIpC7kKTQzKcg=="
+      },
       "FluentAssertions": {
         "type": "Direct",
         "requested": "[7.1.0, 8.0.0)",
@@ -446,11 +452,6 @@
         "type": "Transitive",
         "resolved": "5.0.0",
         "contentHash": "zb1i6RL8RkQQNa+gv553tMNe+q/6C41G4nia1p1u13COa4zCMVBmBs2ypFYuw2VTLmwAUhTZJDqGYwGVnC38YA=="
-      },
-      "Be.Vlaanderen.Basisregisters.Utilities.HexByteConvertor": {
-        "type": "Transitive",
-        "resolved": "5.0.0",
-        "contentHash": "DI3ETyL4lW+/SQcVAHE1F2fkNLZ5UV8GtVMoPZxX73gTdlfcKHASnsKrxVS/IcQu/5dzwQR70OIpC7kKTQzKcg=="
       },
       "Be.Vlaanderen.Basisregisters.Utilities.ToStringBuilder": {
         "type": "Transitive",
@@ -2385,6 +2386,13 @@
           "NodaTime": "[3.2.2, )"
         }
       },
+      "be.vlaanderen.basisregisters.grar.crstransform": {
+        "type": "Project",
+        "dependencies": {
+          "Be.Vlaanderen.Basisregisters.GrAr.Common": "[1.0.0, )",
+          "NetTopologySuite.Features": "[2.2.0, )"
+        }
+      },
       "be.vlaanderen.basisregisters.grar.edit": {
         "type": "Project",
         "dependencies": {
@@ -2674,6 +2682,15 @@
           "Microsoft.Extensions.Http": "9.0.3",
           "Polly": "7.2.4",
           "Polly.Extensions.Http": "3.0.0"
+        }
+      },
+      "NetTopologySuite.Features": {
+        "type": "CentralTransitive",
+        "requested": "[2.2.0, )",
+        "resolved": "2.2.0",
+        "contentHash": "Uk0Sun2RtpDLMcPhPO8UFZYDtESpZmHSfqa/eskJkdOjmK2rVbo2Zm3YiT3zdtjgosypgDT/eQLiFbsPKMOgbg==",
+        "dependencies": {
+          "NetTopologySuite": "[2.0.0, 3.0.0-A)"
         }
       },
       "Newtonsoft.Json": {
