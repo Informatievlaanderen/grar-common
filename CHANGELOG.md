@@ -1,3 +1,10 @@
+# [22.8.0](https://github.com/informatievlaanderen/grar-common/compare/v22.7.0...v22.8.0) (2026-03-02)
+
+
+### Features
+
+* add lambert08 support transform + NTS functions ([f9d962e](https://github.com/informatievlaanderen/grar-common/commit/f9d962e9972066b4b186c19224be4bf38254622e))
+
 # [22.7.0](https://github.com/informatievlaanderen/grar-common/compare/v22.6.0...v22.7.0) (2026-02-01)
 
 
