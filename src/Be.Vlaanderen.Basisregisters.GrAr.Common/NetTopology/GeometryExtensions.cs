@@ -32,6 +32,11 @@ public static class GeometryExtensions
 
     public static string ConvertToGml(this Geometry geometry)
     {
+        return geometry.ConvertToGml(true);
+    }
+
+    public static string ConvertToGml(this Geometry geometry, bool useHttpsSchema)
+    {
         if (geometry is not Polygon && geometry is not MultiPolygon && geometry is not Point)
             throw new InvalidOperationException();
 
@@ -43,7 +48,7 @@ public static class GeometryExtensions
             using (var xmlwriter = XmlWriter.Create(builder, settings))
             {
                 xmlwriter.WriteStartElement("gml", "Polygon", GmlNamespace);
-                WriteSrsName(xmlwriter, geometry);
+                WriteSrsName(xmlwriter, geometry, useHttpsSchema);
                 WriteRing((polygon.ExteriorRing as LinearRing)!, xmlwriter);
                 WriteInteriorRings(polygon.InteriorRings, polygon.NumInteriorRings, xmlwriter);
                 xmlwriter.WriteEndElement();
@@ -54,7 +59,7 @@ public static class GeometryExtensions
             using (var xmlwriter = XmlWriter.Create(builder, settings))
             {
                 xmlwriter.WriteStartElement("gml", "MultiSurface", GmlNamespace);
-                WriteSrsName(xmlwriter, geometry);
+                WriteSrsName(xmlwriter, geometry, useHttpsSchema);
 
                 foreach (var p in multiPolygon.Geometries.Cast<Polygon>())
                 {
@@ -76,7 +81,7 @@ public static class GeometryExtensions
             using (var xmlwriter = XmlWriter.Create(builder, settings))
             {
                 xmlwriter.WriteStartElement("gml", "Point", GmlNamespace);
-                WriteSrsName(xmlwriter, point);
+                WriteSrsName(xmlwriter, point, useHttpsSchema);
 
                 xmlwriter.WriteStartElement("gml", "pos", null!);
                 xmlwriter.WriteValue(string.Format(Global.GetNfi(), "{0} {1}",
@@ -91,15 +96,15 @@ public static class GeometryExtensions
         return builder.ToString();
     }
 
-    private static void WriteSrsName(XmlWriter xmlWriter, Geometry geometry)
+    private static void WriteSrsName(XmlWriter xmlWriter, Geometry geometry, bool useHttpsSchema)
     {
         switch (geometry.SRID)
         {
             case SystemReferenceId.SridLambert72:
-                xmlWriter.WriteAttributeString("srsName", SystemReferenceId.SrsNameLambert72);
+                xmlWriter.WriteAttributeString("srsName", useHttpsSchema ? SystemReferenceId.SrsNameLambert72.Replace("http://", "https://") : SystemReferenceId.SrsNameLambert72);
                 break;
             case SystemReferenceId.SridLambert2008:
-                xmlWriter.WriteAttributeString("srsName", SystemReferenceId.SrsNameLambert2008);
+                xmlWriter.WriteAttributeString("srsName", useHttpsSchema ? SystemReferenceId.SrsNameLambert2008.Replace("http://", "https://") : SystemReferenceId.SrsNameLambert2008);
                 break;
             default:
                 throw new InvalidOperationException($"Unsupported SRID: {geometry.SRID}.");

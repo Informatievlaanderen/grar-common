@@ -18,6 +18,16 @@
         }
 
         [Fact]
+        public void WhenConvertPolygonToGmlWithHttpSchema_ThenProduceValidXml()
+        {
+            var geometry = new GMLReader().Read(ConstantGmls.ValidGmlPolygon);
+
+            var resultingGml = geometry.ConvertToGml(false);
+
+            ConstantGmls.ValidGmlPolygonHttp.Should().Be(resultingGml);
+        }
+
+        [Fact]
         public void WhenConvertPointToGml_ThenProduceValidXml()
         {
             var geometry = new GMLReader().Read(ConstantGmls.ValidGmlPoint);
