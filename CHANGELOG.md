@@ -1,3 +1,10 @@
+## [22.8.1](https://github.com/informatievlaanderen/grar-common/compare/v22.8.0...v22.8.1) (2026-03-20)
+
+
+### Bug Fixes
+
+* use default https as it was before ([1844e07](https://github.com/informatievlaanderen/grar-common/commit/1844e07baf1537b3f311d59867e3306798b9dbf3))
+
 # [22.8.0](https://github.com/informatievlaanderen/grar-common/compare/v22.7.0...v22.8.0) (2026-03-02)
 
 
