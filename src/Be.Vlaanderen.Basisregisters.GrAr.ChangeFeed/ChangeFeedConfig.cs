@@ -39,4 +39,9 @@ public class ChangeFeedConfig
     /// The identifier prefix for cache records (e.g., "v1.feed")
     /// </summary>
     public required string CacheIdSuffix { get; set; }
+
+    /// <summary>
+    /// Whether caching is enabled for this feed (default: true)
+    /// </summary>
+    public required bool IsCacheEnabled { get; set; } = true;
 }

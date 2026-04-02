@@ -134,6 +134,7 @@ public class ChangeFeedService : IChangeFeedService
             CacheKey = $"{_config.CacheKeyPrefix}:{page}",
             Id = $"{page}.{_config.CacheIdSuffix}",
             Position = page,
+            LastPopulatedPosition = _config.IsCacheEnabled ? 0 : page,
             Uri = $"{_config.CacheLookUpUrl}?page={page}"
         });
         await _lastChangedListContext.SaveChangesAsync();
