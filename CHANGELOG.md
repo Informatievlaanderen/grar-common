@@ -1,3 +1,10 @@
+# [22.9.0](https://github.com/informatievlaanderen/grar-common/compare/v22.8.1...v22.9.0) (2026-04-02)
+
+
+### Features
+
+* **changefeed:** add IsCacheEnabled ([71d7893](https://github.com/informatievlaanderen/grar-common/commit/71d789339917d1c94ba98e58d549ea581d2d5627))
+
 ## [22.8.1](https://github.com/informatievlaanderen/grar-common/compare/v22.8.0...v22.8.1) (2026-03-20)
 
 
