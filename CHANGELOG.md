@@ -1,3 +1,10 @@
+# [22.10.0](https://github.com/informatievlaanderen/grar-common/compare/v22.9.0...v22.10.0) (2026-04-03)
+
+
+### Features
+
+* **crstransformer:** bump assets to 1.0.0 ([694935d](https://github.com/informatievlaanderen/grar-common/commit/694935db45f5a188c08f3d9f1239376f394dbe32))
+
 # [22.9.0](https://github.com/informatievlaanderen/grar-common/compare/v22.8.1...v22.9.0) (2026-04-02)
 
 
