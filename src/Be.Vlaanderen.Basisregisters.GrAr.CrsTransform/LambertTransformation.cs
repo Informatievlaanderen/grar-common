@@ -28,6 +28,13 @@ public static class LambertTransformation
     {
         return Lambert72To08Transformer.Transform(geometry, false);
     }
+
+    public static T TransformFromLambert72To08<T>(this T geometry, int roundingPrecision)
+        where T : Geometry
+    {
+        return Lambert72To08Transformer.Transform(geometry, false, roundingPrecision);
+    }
+
     public static T TransformFromLambert08To72<T>(this T geometry)
         where T : Geometry
     {
@@ -53,6 +60,20 @@ public static class LambertTransformation
         return CoordinateSystem.Lambert08.Contains(geometry);
     }
 
+    public static T RoundCoordinates<T>(this T geometry, int roundingPrecision)
+        where T : Geometry
+    {
+        if (geometry is null)
+            throw new ArgumentNullException(nameof(geometry));
+
+        if (roundingPrecision < 0)
+            throw new ArgumentOutOfRangeException(nameof(roundingPrecision), "Rounding precision must be non-negative.");
+
+        var filter = new CoordinateRoundingFilter(roundingPrecision);
+        geometry.Apply(filter);
+        return geometry;
+    }
+
     public static T EnsureLambert72<T>(this T geometry)
         where T : Geometry
     {
@@ -69,6 +90,16 @@ public static class LambertTransformation
                 ? geometry.TransformFromLambert72To08()
                 : geometry.WithSrid(CoordinateSystem.Lambert08.GeometryFactory.SRID));
     }
+
+    public static T EnsureLambert08<T>(this T geometry, int roundingPrecision)
+        where T : Geometry
+    {
+        return EnsureCoordinatesAreInCoordinateSystem(geometry, () =>
+            geometry.IsInsideFlandersUsingLambert72()
+                ? geometry.TransformFromLambert72To08(roundingPrecision)
+                : geometry.WithSrid(CoordinateSystem.Lambert08.GeometryFactory.SRID).RoundCoordinates(roundingPrecision));
+    }
+
     private static T EnsureCoordinatesAreInCoordinateSystem<T>(T geometry, Func<T> transformValidGeometry)
         where T : Geometry
     {
@@ -147,5 +178,36 @@ public static class LambertTransformation
 
             return (T)transformedGeometry;
         }
+
+        public T Transform<T>(T geometry, bool inverse, int roundingPrecision) where T : Geometry
+        {
+            var transformedGeometry = Transform(geometry, inverse);
+
+            if (roundingPrecision < 0)
+                throw new ArgumentOutOfRangeException(nameof(roundingPrecision), "Rounding precision must be non-negative.");
+
+            return transformedGeometry.RoundCoordinates(roundingPrecision);
+        }
+    }
+
+    public sealed class CoordinateRoundingFilter : ICoordinateSequenceFilter
+    {
+        private readonly int _roundingPrecision;
+
+        public CoordinateRoundingFilter(int roundingPrecision)
+        {
+            _roundingPrecision = roundingPrecision;
+        }
+
+        public bool Done => false;
+
+        public bool GeometryChanged => true;
+
+        public void Filter(CoordinateSequence seq, int i)
+        {
+            seq.SetOrdinate(i, Ordinate.X, Math.Round(seq.GetX(i), _roundingPrecision, MidpointRounding.AwayFromZero));
+            seq.SetOrdinate(i, Ordinate.Y, Math.Round(seq.GetY(i), _roundingPrecision, MidpointRounding.AwayFromZero));
+        }
     }
 }
+
