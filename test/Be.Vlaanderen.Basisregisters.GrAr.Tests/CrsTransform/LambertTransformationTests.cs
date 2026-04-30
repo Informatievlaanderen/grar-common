@@ -97,6 +97,56 @@ public class LambertTransformationTests
         act.Should().NotThrow();
     }
 
+    [Fact]
+    public void WhenTransformingFromLambert72To08WithRounding_GivenValidPoint_ThenCoordinatesAreRoundedToRequestedPrecision()
+    {
+        var point = CreateLambert72Point(FlandersLambert72X, FlandersLambert72Y);
+
+        var unrounded = point.TransformFromLambert72To08();
+        var rounded = point.TransformFromLambert72To08(0);
+
+        rounded.SRID.Should().Be(SystemReferenceId.SridLambert2008);
+        rounded.GeometryType.Should().Be("Point");
+        AssertCoordinatesAreRounded(rounded, unrounded, 0);
+    }
+
+    [Fact]
+    public void WhenTransformingFromLambert72To08WithRounding_GivenPolygon_ThenAllCoordinatesAreRoundedToRequestedPrecision()
+    {
+        var geometry = (Polygon)new WKTReader(Lambert72Factory).Read("POLYGON ((100000.123 190000, 100100 190000, 100100 190100, 100000.123 190100, 100000.123 190000))");
+        geometry.SRID = SystemReferenceId.SridLambert72;
+
+        var unrounded = geometry.TransformFromLambert72To08();
+        var rounded = geometry.TransformFromLambert72To08(2);
+
+        rounded.SRID.Should().Be(SystemReferenceId.SridLambert2008);
+        rounded.GeometryType.Should().Be("Polygon");
+        AssertCoordinatesAreRounded(rounded, unrounded, 2);
+    }
+
+    [Fact]
+    public void WhenTransformingFromLambert72To08WithRounding_GivenNegativeRoundingPrecision_ThenThrowsArgumentOutOfRangeException()
+    {
+        var point = CreateLambert72Point(FlandersLambert72X, FlandersLambert72Y);
+
+        var act = () => point.TransformFromLambert72To08(-1);
+
+        var exception = act.Should().Throw<ArgumentOutOfRangeException>().Which;
+        exception.ParamName.Should().Be("roundingPrecision");
+        exception.Message.Should().StartWith("Rounding precision must be non-negative.");
+    }
+
+    private static void AssertCoordinatesAreRounded(Geometry roundedGeometry, Geometry unroundedGeometry, int roundingPrecision)
+    {
+        roundedGeometry.Coordinates.Should().HaveSameCount(unroundedGeometry.Coordinates);
+
+        for (var index = 0; index < roundedGeometry.Coordinates.Length; index++)
+        {
+            roundedGeometry.Coordinates[index].X.Should().Be(Math.Round(unroundedGeometry.Coordinates[index].X, roundingPrecision, MidpointRounding.AwayFromZero));
+            roundedGeometry.Coordinates[index].Y.Should().Be(Math.Round(unroundedGeometry.Coordinates[index].Y, roundingPrecision, MidpointRounding.AwayFromZero));
+        }
+    }
+
     #endregion
 
     #region TransformFromLambert08To72
@@ -334,6 +384,56 @@ public class LambertTransformationTests
         var result = polygon.EnsureLambert08();
 
         result.Should().BeSameAs(polygon);
+    }
+
+    [Fact]
+    public void WhenEnsureLambert08WithRounding_GivenLambert72PointInsideFlanders_ThenCoordinatesAreRoundedToRequestedPrecision()
+    {
+        var point = CreateLambert72Point(FlandersLambert72X, FlandersLambert72Y);
+
+        var unrounded = point.EnsureLambert08();
+        var rounded = point.EnsureLambert08(2);
+
+        rounded.SRID.Should().Be(SystemReferenceId.SridLambert2008);
+        AssertCoordinatesAreRounded(rounded, unrounded, 2);
+    }
+
+    [Fact]
+    public void WhenEnsureLambert08WithRounding_GivenNegativeRoundingPrecision_ThenThrowsArgumentOutOfRangeException()
+    {
+        var point = CreateLambert08Point(FlandersLambert08X, FlandersLambert08Y);
+
+        var act = () => point.EnsureLambert08(-1);
+
+        var exception = act.Should().Throw<ArgumentOutOfRangeException>().Which;
+        exception.ParamName.Should().Be("roundingPrecision");
+        exception.Message.Should().StartWith("Rounding precision must be non-negative.");
+    }
+
+    [Fact]
+    public void WhenEnsureLambert08WithRounding_GivenLambert08Point_ThenCoordinatesAreRoundedWithoutTransforming()
+    {
+        var point = CreateLambert08Point(604000.126, 694000.454);
+        var originalCoordinate = point.Coordinate.Copy();
+
+        var result = point.EnsureLambert08(2);
+
+        result.SRID.Should().Be(SystemReferenceId.SridLambert2008);
+        result.Coordinate.X.Should().Be(Math.Round(originalCoordinate.X, 2, MidpointRounding.AwayFromZero));
+        result.Coordinate.Y.Should().Be(Math.Round(originalCoordinate.Y, 2, MidpointRounding.AwayFromZero));
+    }
+
+    [Fact]
+    public void WhenEnsureLambert08WithRounding_GivenPointOutsideFlanders_ThenWithSridBranchRoundsCoordinatesWithoutTransforming()
+    {
+        var point = CreateLambert72Point(0.126, 0.454);
+        var originalCoordinate = point.Coordinate.Copy();
+
+        var result = point.EnsureLambert08(1);
+
+        result.SRID.Should().Be(SystemReferenceId.SridLambert2008);
+        result.Coordinate.X.Should().Be(Math.Round(originalCoordinate.X, 1, MidpointRounding.AwayFromZero));
+        result.Coordinate.Y.Should().Be(Math.Round(originalCoordinate.Y, 1, MidpointRounding.AwayFromZero));
     }
 
     #endregion
