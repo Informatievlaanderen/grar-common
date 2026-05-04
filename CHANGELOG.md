@@ -1,3 +1,10 @@
+# [22.11.0](https://github.com/informatievlaanderen/grar-common/compare/v22.10.0...v22.11.0) (2026-05-04)
+
+
+### Features
+
+* **crs:** add rounding to Lambert08 ([2ef094b](https://github.com/informatievlaanderen/grar-common/commit/2ef094bbb0a317918d93bd4bf11433dc27fc4091))
+
 # [22.10.0](https://github.com/informatievlaanderen/grar-common/compare/v22.9.0...v22.10.0) (2026-04-03)
 
 
