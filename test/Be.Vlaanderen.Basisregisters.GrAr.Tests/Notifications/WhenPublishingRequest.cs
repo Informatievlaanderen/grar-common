@@ -57,7 +57,7 @@
         public void ThenMessageIsExpected()
         {
             _publishRequest.Should().NotBeNull();
-            _publishRequest.Message.Should().Be(
+            _publishRequest!.Message.Should().Be(
                 $"{{\"basisregistersError\":\"{_expectedBasisregistersError}\",\"service\":\"{_expectedService}\",\"warning\":\"{_expectedNotificationSeverity.ToString().ToLowerInvariant()}\"}}");
         }
 
@@ -65,7 +65,7 @@
         public void ThenTopicArnIsExpected()
         {
             _publishRequest.Should().NotBeNull();
-            _publishRequest.TopicArn.Should().Be("topic");
+            _publishRequest!.TopicArn.Should().Be("topic");
         }
 
         [Fact]
@@ -79,7 +79,7 @@
             };
 
             _publishRequest.Should().NotBeNull();
-            _publishRequest.MessageAttributes.Should().BeEquivalentTo(expectedMessageAttributes);
+            _publishRequest!.MessageAttributes.Should().BeEquivalentTo(expectedMessageAttributes);
         }
     }
 }

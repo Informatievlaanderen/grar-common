@@ -15,14 +15,14 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
           persist-credentials: false
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
-        node-version: '22.x'
+        node-version: '24.x'
 
     - name: Node version
       shell: bash
@@ -63,7 +63,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.Common
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
 
@@ -77,7 +77,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.Contracts
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
 
@@ -91,7 +91,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.Edit
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
 
@@ -105,7 +105,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.Extracts
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
 
@@ -119,7 +119,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.Import
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
 
@@ -133,7 +133,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.Legacy
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
     
@@ -147,7 +147,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.Notifications
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
 
@@ -161,7 +161,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.Oslo
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
 
@@ -175,7 +175,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.Provenance
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
 
@@ -189,7 +189,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
 
@@ -203,7 +203,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.ChangeFeed
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
 
@@ -217,7 +217,7 @@ jobs:
       test-project: Be.Vlaanderen.Basisregisters.GrAr.Tests
       build-project: Be.Vlaanderen.Basisregisters.GrAr.CrsTransform
       semver: ${{ needs.set-release-version.outputs.version }}
-      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+      dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
       prerestore-script: ./pre-restore.sh
     secrets: inherit
 
@@ -232,12 +232,12 @@ jobs:
       version: ${{ steps.set-version.outputs.version }}
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
           persist-credentials: false
 
     - name: Cache NPM
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       env:
         cache-name: cache-npm
       with:
@@ -251,12 +251,12 @@ jobs:
       shell: bash
 
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
-        node-version: '22.x'
+        node-version: '24.x'
 
     - name: Setup Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: '3.x'
 
@@ -283,84 +283,84 @@ jobs:
         pip install requests markdown argparse
 
     - name: Download NuGet Grar.Common
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Common-${{ needs.set-release-version.outputs.version }}
         path: dist/nuget/
 
     - name: Download NuGet Grar.Contracts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Contracts-${{ needs.set-release-version.outputs.version }}
         path: dist/nuget/
 
     - name: Download NuGet Grar.Edit
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Edit-${{ needs.set-release-version.outputs.version }}
         path: dist/nuget/
 
     - name: Download NuGet Grar.Extracts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Extracts-${{ needs.set-release-version.outputs.version }}
         path: dist/nuget/
 
     - name: Download NuGet Grar.Import
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Import-${{ needs.set-release-version.outputs.version }}
         path: dist/nuget/
 
     - name: Download NuGet Grar.Legacy
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Legacy-${{ needs.set-release-version.outputs.version }}
         path: dist/nuget/
 
     - name: Download NuGet Grar.Notifications
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Notifications-${{ needs.set-release-version.outputs.version }}
         path: dist/nuget/
 
     - name: Download NuGet Grar.Oslo
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Oslo-${{ needs.set-release-version.outputs.version }}
         path: dist/nuget/
 
     - name: Download NuGet Grar.Provenance
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Provenance-${{ needs.set-release-version.outputs.version }}
         path: dist/nuget/
 
     - name: Download NuGet Grar.Provenance.AcmIdm
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm-${{ needs.set-release-version.outputs.version }}
         path: dist/nuget/
 
     - name: Download NuGet Grar.ChangeFeed
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.ChangeFeed-${{ needs.set-release-version.outputs.version }}
         path: dist/nuget/
 
     - name: Download NuGet Grar.CrsTransform
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       continue-on-error: false
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.CrsTransform-${{ needs.set-release-version.outputs.version }}
@@ -395,12 +395,12 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: ${{ vars.VBR_DOTNET_VERSION_9 }}
+        dotnet-version: ${{ vars.VBR_DOTNET_VERSION_10 }}
         cache: true
         cache-dependency-path: "**/packages.lock.json"
 
@@ -409,73 +409,73 @@ jobs:
       run: dotnet --info
 
     - name: Download NuGet Grar.Common package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Common-${{ needs.release.outputs.version }}
         path: ~/
 
     - name: Download NuGet Grar.Contracts package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Contracts-${{ needs.release.outputs.version }}
         path: ~/
 
     - name: Download NuGet Grar.Edit package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Edit-${{ needs.release.outputs.version }}
         path: ~/
 
     - name: Download NuGet Grar.Extracts package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Extracts-${{ needs.release.outputs.version }}
         path: ~/
 
     - name: Download NuGet Grar.Import package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Import-${{ needs.release.outputs.version }}
         path: ~/
 
     - name: Download NuGet Grar.Legacy package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Legacy-${{ needs.release.outputs.version }}
         path: ~/
 
     - name: Download NuGet Grar.Notifications package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Notifications-${{ needs.release.outputs.version }}
         path: ~/
 
     - name: Download NuGet Grar.Oslo package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Oslo-${{ needs.release.outputs.version }}
         path: ~/
 
     - name: Download NuGet Grar.Provenance package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Provenance-${{ needs.release.outputs.version }}
         path: ~/
 
     - name: Download NuGet Grar.Provenance.AcmIdm package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.Provenance.AcmIdm-${{ needs.release.outputs.version }}
         path: ~/
 
     - name: Download NuGet Grar.ChangeFeed package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.ChangeFeed-${{ needs.release.outputs.version }}
         path: ~/
 
     - name: Download NuGet Grar.CrsTransform package
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
         name: nuget-Be.Vlaanderen.Basisregisters.GrAr.CrsTransform-${{ needs.release.outputs.version }}
         path: ~/
@@ -499,47 +499,3 @@ jobs:
         SEMVER: ${{  needs.release.outputs.version }}
         WORKSPACE: ${{ github.workspace }}
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-
-  publish_to_atlassian:
-    needs: [ release ]
-    if: ${{ (github.repository_owner == 'Informatievlaanderen') && (needs.release.outputs.version != 'none') }}
-    name: Publish to Atlassian
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Parse repository name
-        run: echo REPOSITORY_NAME=$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | sed -e "s/:refs//") >> $GITHUB_ENV
-        shell: bash
-
-      - name: Cache Python
-        uses: actions/cache@v4
-        env:
-          cache-name: cache-pip
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-build-${{ env.cache-name }}
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Install Python dependencies
-        shell: bash
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests markdown argparse
-
-      - name: Restore build-pipeline
-        shell: bash
-        run: ./pre-restore.sh
-
-      - name: Publish to Confluence
-        shell: bash
-        run: bash ./.build/Be.Vlaanderen.Basisregisters.Build.Pipeline/Content/ci-confluence.sh
-        env:
-          CONFLUENCE_TITLE: ${{ env.REPOSITORY_NAME }}
-          CONFLUENCE_USERNAME: ${{ secrets.VBR_CONFLUENCE_USER }}
-          CONFLUENCE_PASSWORD: ${{ secrets.VBR_CONFLUENCE_PASSWORD }}

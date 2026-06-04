@@ -1,24 +1,24 @@
 {
   "version": 2,
   "dependencies": {
-    "net9.0": {
+    "net10.0": {
       "Be.Vlaanderen.Basisregisters.Auth.AcmIdm": {
         "type": "Direct",
-        "requested": "[4.0.1, )",
-        "resolved": "4.0.1",
-        "contentHash": "Op6jgwiJdKtoHApAF57U8Z8gpAQwzFqr28d1pFyBPbWv2zbjNTQRKH8DSH45gDlss7GAjRsk7LdA4vZ2p7ABsg==",
+        "requested": "[5.0.0, )",
+        "resolved": "5.0.0",
+        "contentHash": "zCRsMTvzuncsq27VkpwlKR8ovhjRanBaGs/zTw+MFoFKi9RI+UikpIdKNB/Q3cQl0MY3kjPMRV6MDOx1qvYN/Q==",
         "dependencies": {
-          "Be.Vlaanderen.Basisregisters.NisCodeService.Abstractions": "6.0.0",
-          "IdentityModel.AspNetCore.OAuth2Introspection": "6.2.0",
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.3",
-          "Microsoft.Extensions.DependencyInjection": "9.0.3"
+          "Be.Vlaanderen.Basisregisters.NisCodeService.Abstractions": "7.0.0",
+          "Duende.AspNetCore.Authentication.OAuth2Introspection": "7.0.1",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "10.0.8",
+          "Microsoft.Extensions.DependencyInjection": "10.0.8"
         }
       },
       "NodaTime": {
         "type": "Direct",
-        "requested": "[3.2.2, )",
-        "resolved": "3.2.2",
-        "contentHash": "dmju5W0UYC3QP/UJM0juKAZkH0HSDMp0gH91A0+mT9M0kgyM2Jm67hUZPl/WRQLq8Lijjqmdk8kyAViWFWM7dA=="
+        "requested": "[3.3.2, )",
+        "resolved": "3.3.2",
+        "contentHash": "8hI5b1ENTKQCaPyU6YHpYiMwj5aJKZ4Mnv0bLbhk65Dd44gQsXenUohMzyiIphANa8LdW6vcOvpY/l1urvx4dw=="
       },
       "SourceLink.Copy.PdbFiles": {
         "type": "Direct",
@@ -34,22 +34,36 @@
       },
       "Be.Vlaanderen.Basisregisters.NisCodeService.Abstractions": {
         "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "CJ5+X9IHCTFh6XsKvMd7DjjvRdBf/TAapz9V7P6Y0Jgn4guWFUbd+EnK7JMJAPyyCQOoRJxLo5bk6r3g9jQVGg==",
+        "resolved": "7.0.0",
+        "contentHash": "abWHsTfwy10IPbDcRNIWfDie2DpO6NBbsTH9ZKlUuL42pl9+zmfyjfAcQaJ47J+l5/mFGl4q/fLH8QjSlgSf6Q==",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.3",
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.3"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.8"
         }
       },
       "Be.Vlaanderen.Basisregisters.Utilities.HashCodeCalculator": {
         "type": "Transitive",
-        "resolved": "5.0.0",
-        "contentHash": "zb1i6RL8RkQQNa+gv553tMNe+q/6C41G4nia1p1u13COa4zCMVBmBs2ypFYuw2VTLmwAUhTZJDqGYwGVnC38YA=="
+        "resolved": "5.1.0",
+        "contentHash": "Ty+Cepnjy0L96peVFpi8nJWhF2qnDpVreNzTjTVmLiTSlCIsTKRnAQYNo8fqPa2ASu4F5E2lsMO421zek5pNmg=="
       },
       "Be.Vlaanderen.Basisregisters.Utilities.ToStringBuilder": {
         "type": "Transitive",
-        "resolved": "4.0.8",
-        "contentHash": "jzp8ifH4bBjvhxGe4bBDeDGEXVbiXco7cZX2iKghOTulus30lKk/oj9mOz2gMusQHGEppvXhtHgoJsX3XNYRng=="
+        "resolved": "4.1.0",
+        "contentHash": "3XxDslyPVdZ43RCahDBM+K7xaCgvfbh2CYsgCm/vF6D5zAyBpJUnePl8M2Ebw/Xtiv7kzM9V2b8nmO+Ac9twxQ=="
+      },
+      "Duende.AspNetCore.Authentication.OAuth2Introspection": {
+        "type": "Transitive",
+        "resolved": "7.0.1",
+        "contentHash": "NToa5QWerEAaAYXaP3Xt6J7P2GxG43Y7RtY1VTAENJmnzg1c36UQpOevgKTNxmfDUPt2MuNZo/6GK319RQy73g==",
+        "dependencies": {
+          "Duende.IdentityModel": "8.0.1",
+          "Microsoft.Extensions.Caching.Hybrid": "10.0.0"
+        }
+      },
+      "Duende.IdentityModel": {
+        "type": "Transitive",
+        "resolved": "8.0.1",
+        "contentHash": "P3bNPAiyYh15VuDZP/xE7Y8ohhQloiW2KdiBzzJh3m26sPQJ3Wuxj4ur6X+A9m0qhdwx2kLeh4so0a2nEslHmw=="
       },
       "GeoJSON.Net": {
         "type": "Transitive",
@@ -59,47 +73,79 @@
           "Newtonsoft.Json": "13.0.3"
         }
       },
-      "IdentityModel": {
-        "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "eVHCR7a6m/dm5RFcBzE3qs/Jg5j9R5Rjpu8aTOv9e4AFvaQtBXb5ah7kmwU+YwA0ufRwz4wf1hnIvsD2hSnI4g=="
-      },
-      "IdentityModel.AspNetCore.OAuth2Introspection": {
-        "type": "Transitive",
-        "resolved": "6.2.0",
-        "contentHash": "1hRDOqWk5jdATfOIso5GsewS391ngZ8mSoLbfdEHv2vue8CV1tv6Xy/xmY8phENm6Bvg9U0twzkAz/alhiKD8g==",
-        "dependencies": {
-          "IdentityModel": "6.0.0"
-        }
-      },
       "Microsoft.AspNetCore.Authentication.JwtBearer": {
         "type": "Transitive",
-        "resolved": "9.0.3",
-        "contentHash": "7+u/rBzHSd9KDT4uLxI8j6n5IKiQ59Yvct6KcYM0QL2ynfBMkon01dDFgQJMpeZf7PTOi5wtI3EEO/dnjsFA1g==",
+        "resolved": "10.0.8",
+        "contentHash": "oGnE+X/SN6jdqao9WOkOIfyZ5+a0AtluJWy1Mxndq+kcWG6sx5k6l6tucu8/wJ7o9fHfLgVCzm/c4v/KVgVk6w==",
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "8.0.1"
         }
       },
+      "Microsoft.Extensions.Caching.Abstractions": {
+        "type": "Transitive",
+        "resolved": "10.0.0",
+        "contentHash": "Zcoy6H9mSoGyvr7UvlGokEZrlZkcPCICPZr8mCsSt9U/N8eeCwCXwKF5bShdA66R0obxBCwP4AxomQHvVkC/uA==",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "10.0.0"
+        }
+      },
+      "Microsoft.Extensions.Caching.Hybrid": {
+        "type": "Transitive",
+        "resolved": "10.0.0",
+        "contentHash": "xvhmF2dlwC3e8KKSuWOjJkjQdKG80991CUqjDnqzV1Od0CgMqbDw49kGJ9RiGrp3nbLTYCSb3c+KYo6TcENYRw==",
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Caching.Memory": "10.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Options": "10.0.0"
+        }
+      },
+      "Microsoft.Extensions.Caching.Memory": {
+        "type": "Transitive",
+        "resolved": "10.0.0",
+        "contentHash": "krK19MKp0BNiR9rpBDW7PKSrTMLVlifS9am3CVc4O1Jq6GWz0o4F+sw5OSL4L3mVd56W8l6JRgghUa2KB51vOw==",
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "10.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Options": "10.0.0",
+          "Microsoft.Extensions.Primitives": "10.0.0"
+        }
+      },
       "Microsoft.Extensions.DependencyInjection": {
         "type": "Transitive",
-        "resolved": "9.0.3",
-        "contentHash": "lDbxJpkl6X8KZGpkAxgrrthQ42YeiR0xjPp7KPx+sCPc3ZbpaIbjzd0QQ+9kDdK2RU2DOl3pc6tQyAgEZY3V0A==",
+        "resolved": "10.0.8",
+        "contentHash": "daf62xHIrq8pnE709hgaZZN9tSam9TGGepWe1+bE6V3GEuVwJiMs6ib+38lfMCyAJAHiX0vapxBhsuMSV7U+cg==",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.3"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.8"
         }
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions": {
         "type": "Transitive",
-        "resolved": "9.0.3",
-        "contentHash": "TfaHPSe39NyL2wxkisRxXK7xvHGZYBZ+dy3r+mqGvnxKgAPdHkMu3QMQZI4pquP6W5FIQBqs8FJpWV8ffCgDqQ=="
+        "resolved": "10.0.8",
+        "contentHash": "21nbDV60SRPWGIivsyl6lqBeEJNG1sginhhfWgRrr3Ais7aQ12To25OAHQxgoiJkjqy1aQ6RxpZBGYuTi7Ge6A=="
       },
       "Microsoft.Extensions.Logging.Abstractions": {
         "type": "Transitive",
-        "resolved": "9.0.3",
-        "contentHash": "H/MBMLt9A/69Ux4OrV7oCKt3DcMT04o5SCqDolulzQA66TLFEpYYb4qedMs/uwrLtyHXGuDGWKZse/oa8W9AZw==",
+        "resolved": "10.0.8",
+        "contentHash": "fdVadZmsC8jRP0KvKy8mO8f6GV/HyBvElfcSxEhd+5FM5boAw/01iSaCto5G3G37ApJira4A3pNaVvBv8cUiLQ==",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.3"
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.8"
         }
+      },
+      "Microsoft.Extensions.Options": {
+        "type": "Transitive",
+        "resolved": "10.0.0",
+        "contentHash": "8oCAgXOow5XDrY9HaXX1QmH3ORsyZO/ANVHBlhLyCeWTH5Sg4UuqZeOTWJi6484M+LqSx0RqQXDJtdYy2BNiLQ==",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Primitives": "10.0.0"
+        }
+      },
+      "Microsoft.Extensions.Primitives": {
+        "type": "Transitive",
+        "resolved": "10.0.0",
+        "contentHash": "inRnbpCS0nwO/RuoZIAqxQUuyjaknOOnCEZB55KSMMjRhl0RQDttSmLSGsUJN3RQ3ocf5NDLFd2mOQViHqMK5w=="
       },
       "Microsoft.IdentityModel.Abstractions": {
         "type": "Transitive",
@@ -152,11 +198,6 @@
         "resolved": "8.0.0",
         "contentHash": "9opKRyOKMCi2xJ7Bj7kxtZ1r9vbzosMvRrdEhVhDz8j8MoBGgB+WmC94yH839NPH+BclAjtQ/pyagvi/8gDLkw=="
       },
-      "System.Collections.Immutable": {
-        "type": "Transitive",
-        "resolved": "9.0.3",
-        "contentHash": "CfYi30Pbpw9aGpXVLcoGt+yM0egrE8M1DUOOwdAWOAQ2QZkXkSgjonqZYvtKdxUF1XJaLCp0OdTXueeAeUHSlQ=="
-      },
       "System.Configuration.ConfigurationManager": {
         "type": "Transitive",
         "resolved": "8.0.0",
@@ -196,95 +237,84 @@
       "be.vlaanderen.basisregisters.grar.common": {
         "type": "Project",
         "dependencies": {
-          "Be.Vlaanderen.Basisregisters.AggregateSource": "[10.0.2, )",
-          "Be.Vlaanderen.Basisregisters.CommandHandling": "[10.0.2, )",
+          "Be.Vlaanderen.Basisregisters.AggregateSource": "[11.0.0, )",
+          "Be.Vlaanderen.Basisregisters.CommandHandling": "[11.0.0, )",
           "NetTopologySuite": "[2.6.0, )",
-          "NodaTime": "[3.2.2, )"
+          "NodaTime": "[3.3.2, )"
         }
       },
       "be.vlaanderen.basisregisters.grar.provenance": {
         "type": "Project",
         "dependencies": {
-          "Be.Vlaanderen.Basisregisters.CommandHandling": "[10.0.2, )",
-          "Be.Vlaanderen.Basisregisters.Crab": "[5.0.1, )",
+          "Be.Vlaanderen.Basisregisters.CommandHandling": "[11.0.0, )",
+          "Be.Vlaanderen.Basisregisters.Crab": "[5.1.0, )",
           "Be.Vlaanderen.Basisregisters.GrAr.Common": "[1.0.0, )",
-          "Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset": "[5.0.0, )",
-          "CompareNETObjects": "[4.83.0, )",
-          "Microsoft.CSharp": "[4.7.0, )"
+          "Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset": "[5.1.0, )",
+          "CompareNETObjects": "[4.84.0, )"
         }
       },
       "Be.Vlaanderen.Basisregisters.AggregateSource": {
         "type": "CentralTransitive",
-        "requested": "[10.0.2, )",
-        "resolved": "10.0.2",
-        "contentHash": "Yl/b3hX+eL00r2hs/vIFbr4BX+4dapcj5AFBguPhO4QBb2Hwzgzm/jjuoS3bziUg5PAb1TWn+jQxcw63c886RA==",
+        "requested": "[11.0.0, )",
+        "resolved": "11.0.0",
+        "contentHash": "lhNphZSw/4nT+xl1KyO7xjEqg77eaYVVYT5V7tGO3J3KTk7eJ3GRX3kdMZZWTpI6EYKecLlHN30PTIDHvwL7Tg==",
         "dependencies": {
-          "Be.Vlaanderen.Basisregisters.Utilities.HashCodeCalculator": "5.0.0",
-          "Be.Vlaanderen.Basisregisters.Utilities.HexByteConvertor": "5.0.0",
-          "Be.Vlaanderen.Basisregisters.Utilities.ToStringBuilder": "4.0.8",
-          "Newtonsoft.Json": "13.0.3",
-          "NodaTime": "3.2.2",
-          "System.Collections.Immutable": "9.0.3"
+          "Be.Vlaanderen.Basisregisters.Utilities.HashCodeCalculator": "5.1.0",
+          "Be.Vlaanderen.Basisregisters.Utilities.HexByteConvertor": "5.1.0",
+          "Be.Vlaanderen.Basisregisters.Utilities.ToStringBuilder": "4.1.0",
+          "Newtonsoft.Json": "13.0.4",
+          "NodaTime": "3.3.2"
         }
       },
       "Be.Vlaanderen.Basisregisters.CommandHandling": {
         "type": "CentralTransitive",
-        "requested": "[10.0.2, )",
-        "resolved": "10.0.2",
-        "contentHash": "kF9PkiM+9/iqXSSg4B+rXLAgNGgMAdIxtFsQsXlmQ6/tnqXU1FMbRJ0rAHCFKABwv+GW0b113NvDAdAA9V1x9Q==",
-        "dependencies": {
-          "System.Collections.Immutable": "9.0.3"
-        }
+        "requested": "[11.0.0, )",
+        "resolved": "11.0.0",
+        "contentHash": "1jDwnB96MHLvOAGZgJA/dKfrOgfoQCl1U3CzzfA6jlZkASOM01Dp5UH4+Pgj4Ll8ueYNCITRizBCCfwPG1GKJA=="
       },
       "Be.Vlaanderen.Basisregisters.Crab": {
         "type": "CentralTransitive",
-        "requested": "[5.0.1, )",
-        "resolved": "5.0.1",
-        "contentHash": "or0wpQBcvjZ+npSzPl8EBVJrt8AuYIX3/prR4F5pnf6UuZVkRKs+griZXSb0L6QMKB/YQxNssGr1haryUknfOQ==",
+        "requested": "[5.1.0, )",
+        "resolved": "5.1.0",
+        "contentHash": "4P0hqjpAENqvncO3DU10VKWhL7rn9XTAqIC42MkT7unNjmvnlC+8gZAfebPWLUuk8wap/EUhiRAI6HoMhnhDtQ==",
         "dependencies": {
-          "Be.Vlaanderen.Basisregisters.AggregateSource": "10.0.2",
-          "Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic": "5.0.0",
+          "Be.Vlaanderen.Basisregisters.AggregateSource": "11.0.0",
+          "Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic": "5.1.0",
           "GeoJSON.NET": "1.4.1",
-          "Microsoft.Extensions.Logging.Abstractions": "9.0.3",
-          "NodaTime": "3.2.2"
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.8",
+          "NodaTime": "3.3.2"
         }
       },
       "Be.Vlaanderen.Basisregisters.Generators.Guid.Deterministic": {
         "type": "CentralTransitive",
-        "requested": "[5.0.0, )",
-        "resolved": "5.0.0",
-        "contentHash": "YlSC0DHwE0vHgVmEOUQDF/6muu8Q+uv3gZWkS+0lKg6UocSUWa9VpBCciLnwLoSW7oIA+viSuBm4bGMWKrchDg=="
+        "requested": "[5.1.0, )",
+        "resolved": "5.1.0",
+        "contentHash": "2WB1iVxqU35ULl7ATujoTlWNb4fCEv3CWytmfq1WqIrZvy5oLbfKmgKkTCAehQwZD4bIgQvPQQ4crifcQO3PSg=="
       },
       "Be.Vlaanderen.Basisregisters.Utilities.HexByteConvertor": {
         "type": "CentralTransitive",
-        "requested": "[5.0.0, )",
-        "resolved": "5.0.0",
-        "contentHash": "DI3ETyL4lW+/SQcVAHE1F2fkNLZ5UV8GtVMoPZxX73gTdlfcKHASnsKrxVS/IcQu/5dzwQR70OIpC7kKTQzKcg=="
+        "requested": "[5.1.0, )",
+        "resolved": "5.1.0",
+        "contentHash": "ASn875qbPXLUt0oJ368bl2JWbX9gXf7KwBxdQKlv78GQAbcusQonOlcAj8u9JZPUI73QoX8WwU0lh+aI9VZvxw=="
       },
       "Be.Vlaanderen.Basisregisters.Utilities.Rfc3339DateTimeOffset": {
         "type": "CentralTransitive",
-        "requested": "[5.0.0, )",
-        "resolved": "5.0.0",
-        "contentHash": "OVyzqSCZKdjIke/oXSqp874O5vZvpwnec5wZkCmffjITjK+G/4nQk1jeV3wDAvusjcIEscdGOmhgYGCnUWoQkQ==",
+        "requested": "[5.1.0, )",
+        "resolved": "5.1.0",
+        "contentHash": "cvaIm1DzRkV1mB8ZambUqqNXIOG83bzCGa7PD0nsqLcEXqxDpI1NSk9QeCuC+sO7PM4SQze4oyJkty68jwbJfQ==",
         "dependencies": {
-          "Newtonsoft.Json": "13.0.3"
+          "Newtonsoft.Json": "13.0.4"
         }
       },
       "CompareNETObjects": {
         "type": "CentralTransitive",
-        "requested": "[4.83.0, )",
-        "resolved": "4.83.0",
-        "contentHash": "KNpF1bgvuifzKB5BId3ZHXaBdI/rgJNpq0ZvM2wtdc1Oe8rh4rUUQUnBgHOJQ353eVGNxoXwvlOPuZqg/5cjdg==",
+        "requested": "[4.84.0, )",
+        "resolved": "4.84.0",
+        "contentHash": "OkAQ9RYkiQkgDc+eLDYMNE+rJB99rQAbnUqZTVLlzxt5YkPuLFQHgV+Nk2iRlffPxaq5DDoM577EC8lyR6OOnQ==",
         "dependencies": {
           "System.Configuration.Configurationmanager": "8.0.0",
           "System.Drawing.Common": "8.0.0"
         }
-      },
-      "Microsoft.CSharp": {
-        "type": "CentralTransitive",
-        "requested": "[4.7.0, )",
-        "resolved": "4.7.0",
-        "contentHash": "pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA=="
       },
       "NetTopologySuite": {
         "type": "CentralTransitive",
@@ -294,12 +324,12 @@
       },
       "Newtonsoft.Json": {
         "type": "CentralTransitive",
-        "requested": "[13.0.3, )",
-        "resolved": "13.0.3",
-        "contentHash": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ=="
+        "requested": "[13.0.4, )",
+        "resolved": "13.0.4",
+        "contentHash": "pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A=="
       }
     },
-    "net9.0/linux-arm64": {
+    "net10.0/linux-arm64": {
       "Microsoft.Win32.SystemEvents": {
         "type": "Transitive",
         "resolved": "8.0.0",
@@ -311,7 +341,7 @@
         "contentHash": "fdYxcRjQqTTacKId/2IECojlDSFvp7LP5N78+0z/xH7v/Tuw5ZAxu23Y6PTCRinqyu2ePx+Gn1098NC6jM6d+A=="
       }
     },
-    "net9.0/linux-x64": {
+    "net10.0/linux-x64": {
       "Microsoft.Win32.SystemEvents": {
         "type": "Transitive",
         "resolved": "8.0.0",
@@ -323,7 +353,7 @@
         "contentHash": "fdYxcRjQqTTacKId/2IECojlDSFvp7LP5N78+0z/xH7v/Tuw5ZAxu23Y6PTCRinqyu2ePx+Gn1098NC6jM6d+A=="
       }
     },
-    "net9.0/win-x64": {
+    "net10.0/win-x64": {
       "Microsoft.Win32.SystemEvents": {
         "type": "Transitive",
         "resolved": "8.0.0",
