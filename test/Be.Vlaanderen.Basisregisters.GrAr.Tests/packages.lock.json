@@ -1406,7 +1406,7 @@
       "be.vlaanderen.basisregisters.grar.extracts": {
         "type": "Project",
         "dependencies": {
-          "Be.Vlaanderen.Basisregisters.Api": "[25.0.0, )",
+          "Be.Vlaanderen.Basisregisters.Api": "[26.0.0, )",
           "Be.Vlaanderen.Basisregisters.Shaperon": "[11.1.0, )"
         }
       },
@@ -1487,9 +1487,9 @@
       },
       "Be.Vlaanderen.Basisregisters.Api": {
         "type": "CentralTransitive",
-        "requested": "[25.0.0, )",
-        "resolved": "25.0.0",
-        "contentHash": "IjPI/k3viuKFaSK5fv5mpLhJwbQYoTTH7cOekfZGIjwhC2cc5yftDOZ2RfYkl30K8q+Xqkkhb5qnf7sOtAQTvA==",
+        "requested": "[26.0.0, )",
+        "resolved": "26.0.0",
+        "contentHash": "U+rMdoQHjphpF+ndmKygGWv2CXcBCaP2+TRMPqckmBc7yYXcA+mvrfBc7042i4Mdyfz4MrUUwIpa9L5yNUQuVA==",
         "dependencies": {
           "Asp.Versioning.Mvc.ApiExplorer": "10.0.0",
           "Autofac": "9.1.0",

@@ -5,7 +5,7 @@
         <CentralPackageVersionOverrideEnabled>false</CentralPackageVersionOverrideEnabled>
     </PropertyGroup>
     <ItemGroup>
-        <PackageVersion Include="Be.Vlaanderen.Basisregisters.Api" Version="25.0.0" />
+        <PackageVersion Include="Be.Vlaanderen.Basisregisters.Api" Version="26.0.0" />
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.AggregateSource" Version="11.0.0" />
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.AggregateSource.ExplicitRouting" Version="11.0.0" />
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.AggregateSource.SqlStreamStore" Version="11.0.0" />

@@ -18,12 +18,6 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Import.Api
             public InvalidCommandException(string message, Exception innerException)
                 : base(message, innerException)
             { }
-
-
-            /// <inerhitdoc />
-            private InvalidCommandException(SerializationInfo info, StreamingContext context)
-                : base(info, context)
-            { }
         }
     }
 }

@@ -18,30 +18,27 @@
     public class AcmIdmProvenanceFactoryTests
     {
         private readonly Fixture _fixture;
-        private readonly Mock<IActionContextAccessor> _mockActionContext;
+        private readonly Mock<IHttpContextAccessor> _mockHttpContext;
 
         public AcmIdmProvenanceFactoryTests()
         {
-            _mockActionContext = new Mock<IActionContextAccessor>();
+            _mockHttpContext = new Mock<IHttpContextAccessor>();
             _fixture = new Fixture();
             var defaultClaims = new List<Claim>
             {
                 new Claim(AcmIdmClaimTypes.VoOrgCode, _fixture.Create<string>()),
             };
 
-            _mockActionContext.SetupProperty(x => x.ActionContext, new ActionContext
+            _mockHttpContext.SetupProperty(x => x.HttpContext, new DefaultHttpContext
             {
-                HttpContext = new DefaultHttpContext
-                {
-                    User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
-                }
+                User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
             });
         }
 
         [Fact]
         public void TimestampCloseToNowTest()
         {
-            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockActionContext.Object);
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);
             var result = factory.Create(_fixture.Create<Reason>(), _fixture.Create<Modification>());
 
             result
@@ -68,7 +65,7 @@
         [InlineData(Application.CrabWstEditService)]
         public void ApplicationTest(Application application)
         {
-            var factory = new AcmIdmProvenanceFactory(application, _mockActionContext.Object);
+            var factory = new AcmIdmProvenanceFactory(application, _mockHttpContext.Object);
             var result = factory.Create(_fixture.Create<Reason>(), _fixture.Create<Modification>());
 
             result.Application.Should().Be(application);
@@ -77,7 +74,7 @@
         [Fact]
         public void ReasonTest()
         {
-            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockActionContext.Object);
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);
             var reason = _fixture.Create<string>();
             var result = factory.Create(new Reason(reason), _fixture.Create<Modification>());
 
@@ -91,7 +88,7 @@
         [InlineData(Modification.Unknown)]
         public void ModificationTest(Modification modification)
         {
-            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockActionContext.Object);
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);
             var result = factory.Create(_fixture.Create<Reason>(), modification);
 
             result.Modification.Should().Be(modification);
@@ -106,15 +103,12 @@
                 new Claim(AcmIdmClaimTypes.VoOrgCode, expectedOrgCode),
             };
 
-            _mockActionContext.SetupProperty(x => x.ActionContext, new ActionContext
+            _mockHttpContext.SetupProperty(x => x.HttpContext, new DefaultHttpContext
             {
-                HttpContext = new DefaultHttpContext
-                {
-                    User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
-                }
+                User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
             });
 
-            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockActionContext.Object);
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);
             var result = factory.Create(_fixture.Create<Reason>(), _fixture.Create<Modification>());
 
             result.Operator.ToString().Should().Be(expectedOrgCode);
@@ -130,15 +124,12 @@
                 new Claim(AcmIdmClaimTypes.VoOvoCode, expectedOvoCode),
             };
 
-            _mockActionContext.SetupProperty(x => x.ActionContext, new ActionContext
+            _mockHttpContext.SetupProperty(x => x.HttpContext, new DefaultHttpContext()
             {
-                HttpContext = new DefaultHttpContext
-                {
-                    User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
-                }
+                User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
             });
 
-            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockActionContext.Object);
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);
             var result = factory.Create(_fixture.Create<Reason>(), _fixture.Create<Modification>());
 
             result.Operator.ToString().Should().Be(expectedOvoCode);
@@ -152,15 +143,12 @@
                 new Claim(AcmIdmClaimTypes.VoOrgCode, AcmIdmProvenanceFactory.OvoCodeDigitaalVlaanderen),
             };
 
-            _mockActionContext.SetupProperty(x => x.ActionContext, new ActionContext
+            _mockHttpContext.SetupProperty(x => x.HttpContext, new DefaultHttpContext
             {
-                HttpContext = new DefaultHttpContext
-                {
-                    User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
-                }
+                User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
             });
 
-            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockActionContext.Object);
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);
             var result = factory.Create(_fixture.Create<Reason>(), _fixture.Create<Modification>());
 
             result.Organisation.Should().Be(Organisation.DigitaalVlaanderen);
@@ -175,15 +163,12 @@
                 new Claim(AcmIdmClaimTypes.NisCode, _fixture.Create<string>()),
             };
 
-            _mockActionContext.SetupProperty(x => x.ActionContext, new ActionContext
+            _mockHttpContext.SetupProperty(x => x.HttpContext, new DefaultHttpContext
             {
-                HttpContext = new DefaultHttpContext
-                {
-                    User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
-                }
+                User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
             });
 
-            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockActionContext.Object);
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);
             var result = factory.Create(_fixture.Create<Reason>(), _fixture.Create<Modification>());
 
             result.Organisation.Should().Be(Organisation.Municipality);
@@ -192,7 +177,7 @@
         [Fact]
         public void OrganisationOtherTest()
         {
-            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockActionContext.Object);
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);
             var result = factory.Create(_fixture.Create<Reason>(), _fixture.Create<Modification>());
 
             result.Organisation.Should().Be(Organisation.Other);

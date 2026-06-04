@@ -3,7 +3,7 @@
     using System;
     using System.Security.Claims;
     using Basisregisters.Auth.AcmIdm;
-    using Microsoft.AspNetCore.Mvc.Infrastructure;
+    using Microsoft.AspNetCore.Http;
     using NodaTime;
 
     public class AcmIdmProvenanceFactory : IProvenanceFactory
@@ -11,25 +11,25 @@
         public const string OvoCodeDigitaalVlaanderen = "OVO002949";
 
         private readonly Application _application;
-        private readonly IActionContextAccessor _actionContextAccessor;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public AcmIdmProvenanceFactory(
             Application application,
-            IActionContextAccessor actionContextAccessor)
+            IHttpContextAccessor httpContextAccessor)
         {
             _application = application;
-            _actionContextAccessor = actionContextAccessor;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public Provenance Create(Reason reason, Modification modification)
         {
-            if (_actionContextAccessor.ActionContext is null)
+            if (_httpContextAccessor.HttpContext is null)
             {
                 throw new NullReferenceException("No ActionContext on the ActionContextAccessor");
             }
 
-            var contextUser = _actionContextAccessor.ActionContext.HttpContext.User;
-            var ovoCode = _actionContextAccessor.ActionContext.HttpContext.FindOvoCodeClaim();
+            var contextUser = _httpContextAccessor.HttpContext.User;
+            var ovoCode = _httpContextAccessor.HttpContext.FindOvoCodeClaim();
             var organisation = Organisation.Other;
 
             if (ovoCode == OvoCodeDigitaalVlaanderen)
