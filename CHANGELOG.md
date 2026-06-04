@@ -1,3 +1,15 @@
+# [23.0.0](https://github.com/informatievlaanderen/grar-common/compare/v22.11.0...v23.0.0) (2026-06-04)
+
+
+### Features
+
+* update packages + upgrade to dotnet 10 ([667a253](https://github.com/informatievlaanderen/grar-common/commit/667a253570f8a6c9f3f27105c637d1bd4add30a3))
+
+
+### BREAKING CHANGES
+
+* update to dotnet 10
+
 # [22.11.0](https://github.com/informatievlaanderen/grar-common/compare/v22.10.0...v22.11.0) (2026-05-04)
 
 
