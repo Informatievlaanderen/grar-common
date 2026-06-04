@@ -1,3 +1,15 @@
+# [24.0.0](https://github.com/informatievlaanderen/grar-common/compare/v23.0.0...v24.0.0) (2026-06-04)
+
+
+### Code Refactoring
+
+* update packages + refactor obsolete code ([5edf811](https://github.com/informatievlaanderen/grar-common/commit/5edf81116b14d1ba93c6c6127c16bbebafe1c5a0))
+
+
+### BREAKING CHANGES
+
+* remove use of IActionContextAccessor
+
 # [23.0.0](https://github.com/informatievlaanderen/grar-common/compare/v22.11.0...v23.0.0) (2026-06-04)
 
 
