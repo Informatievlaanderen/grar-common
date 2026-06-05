@@ -1,3 +1,10 @@
+# [24.1.0](https://github.com/informatievlaanderen/grar-common/compare/v24.0.0...v24.1.0) (2026-06-05)
+
+
+### Features
+
+* update api package ([b1d11ee](https://github.com/informatievlaanderen/grar-common/commit/b1d11ee3c188a21b0e65d7f73105629a26e72163))
+
 # [24.0.0](https://github.com/informatievlaanderen/grar-common/compare/v23.0.0...v24.0.0) (2026-06-04)
 
 
