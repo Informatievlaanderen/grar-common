@@ -4,9 +4,9 @@
     "net10.0": {
       "Be.Vlaanderen.Basisregisters.Api": {
         "type": "Direct",
-        "requested": "[26.0.0, )",
-        "resolved": "26.0.0",
-        "contentHash": "U+rMdoQHjphpF+ndmKygGWv2CXcBCaP2+TRMPqckmBc7yYXcA+mvrfBc7042i4Mdyfz4MrUUwIpa9L5yNUQuVA==",
+        "requested": "[27.0.0, )",
+        "resolved": "27.0.0",
+        "contentHash": "x3fNKcEKL/G0U6rpD+4x9CYRgyEKiAHUlB1+hnHj95Rt2vAvshlvrvxV09Y5RLaDtYOwuqcsD3hpJPvWdfsm0Q==",
         "dependencies": {
           "Asp.Versioning.Mvc.ApiExplorer": "10.0.0",
           "Autofac": "9.1.0",
@@ -31,7 +31,7 @@
           "Be.Vlaanderen.Basisregisters.Middleware.AddProblemJsonHeader": "4.1.0",
           "Be.Vlaanderen.Basisregisters.ProblemDetails": "10.1.0",
           "Destructurama.JsonNet": "4.0.2",
-          "FluentValidation.AspNetCore": "11.3.1",
+          "FluentValidation": "12.1.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "10.0.8",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "10.0.8",
           "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": "10.0.8",
@@ -275,8 +275,8 @@
       },
       "FluentValidation": {
         "type": "Transitive",
-        "resolved": "11.11.0",
-        "contentHash": "cyIVdQBwSipxWG8MA3Rqox7iNbUNUTK5bfJi9tIdm4CAfH71Oo5ABLP4/QyrUwuakqpUEPGtE43BDddvEehuYw=="
+        "resolved": "12.1.0",
+        "contentHash": "FqWEn8BdbbFEHGanj9K8SVo+LyBeFWy2rolaE+e1TNUbifr8M7Iss+I1AqTSc8kjKtvjl/WN4XIHiRpslh42bA=="
       },
       "FluentValidation.AspNetCore": {
         "type": "Transitive",
