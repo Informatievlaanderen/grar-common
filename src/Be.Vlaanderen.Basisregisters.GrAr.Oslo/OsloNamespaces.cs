@@ -13,4 +13,6 @@ public static class OsloNamespaces
     public static readonly OsloNamespace Perceel = $"{OsloNamespacePrefix}/perceel";
     public static readonly OsloNamespace Wegknoop = $"{OsloNamespacePrefix}/wegknoop";
     public static readonly OsloNamespace Wegsegment = $"{OsloNamespacePrefix}/wegsegment";
+    public static readonly OsloNamespace GelijkgrondseKruising = $"{OsloNamespacePrefix}/gelijkgrondsekruising";
+    public static readonly OsloNamespace OngelijkgrondseKruising = $"{OsloNamespacePrefix}/ongelijkgrondsekruising";
 }
