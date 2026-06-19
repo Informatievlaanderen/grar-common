@@ -1,3 +1,10 @@
+# [24.2.0](https://github.com/informatievlaanderen/grar-common/compare/v24.1.0...v24.2.0) (2026-06-19)
+
+
+### Features
+
+* **oslo:** add ongelijkgrondsekruising and gelijkgrondsekruising namespace ([656b807](https://github.com/informatievlaanderen/grar-common/commit/656b80702e6783f65c18d93cb416febb7c8eb503))
+
 # [24.1.0](https://github.com/informatievlaanderen/grar-common/compare/v24.0.0...v24.1.0) (2026-06-05)
 
 
