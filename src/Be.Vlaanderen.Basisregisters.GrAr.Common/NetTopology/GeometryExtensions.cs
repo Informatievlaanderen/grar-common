@@ -37,7 +37,7 @@ public static class GeometryExtensions
 
     public static string ConvertToGml(this Geometry geometry, bool useHttpsSchema)
     {
-        if (geometry is not Polygon && geometry is not MultiPolygon && geometry is not Point)
+        if (geometry is not Polygon && geometry is not MultiPolygon && geometry is not LineString && geometry is not Point)
             throw new InvalidOperationException();
 
         var builder = new StringBuilder();
@@ -73,6 +73,16 @@ public static class GeometryExtensions
                     xmlwriter.WriteEndElement();
                 }
 
+                xmlwriter.WriteEndElement();
+            }
+        }
+        else if (geometry is LineString lineString)
+        {
+            using (var xmlwriter = XmlWriter.Create(builder, settings))
+            {
+                xmlwriter.WriteStartElement("gml", "LineString", GmlNamespace);
+                WriteSrsName(xmlwriter, geometry, useHttpsSchema);
+                WritePosList(lineString.Coordinates, xmlwriter);
                 xmlwriter.WriteEndElement();
             }
         }
@@ -118,24 +128,9 @@ public static class GeometryExtensions
     {
         writer.WriteStartElement("gml", isInterior ? "interior" : "exterior", GmlNamespace);
         writer.WriteStartElement("gml", "LinearRing", GmlNamespace);
-        writer.WriteStartElement("gml", "posList", GmlNamespace);
 
-        var posListBuilder = new StringBuilder();
-        foreach (var coordinate in ring.Coordinates)
-        {
-            posListBuilder.Append(string.Format(
-                Global.GetNfi(),
-                "{0} {1} ",
-                coordinate.X.ToPolygonGeometryCoordinateValueFormat(),
-                coordinate.Y.ToPolygonGeometryCoordinateValueFormat()));
-        }
+        WritePosList(ring.Coordinates, writer);
 
-        //remove last space
-        posListBuilder.Length--;
-
-        writer.WriteValue(posListBuilder.ToString());
-
-        writer.WriteEndElement();
         writer.WriteEndElement();
         writer.WriteEndElement();
     }
@@ -154,5 +149,29 @@ public static class GeometryExtensions
         {
             WriteRing((ring as LinearRing)!, writer, true);
         }
+    }
+
+    private static void WritePosList(
+        Coordinate[] coordinates,
+        XmlWriter writer)
+    {
+        writer.WriteStartElement("gml", "posList", GmlNamespace);
+
+        var posListBuilder = new StringBuilder();
+        foreach (var coordinate in coordinates)
+        {
+            posListBuilder.Append(string.Format(
+                Global.GetNfi(),
+                "{0} {1} ",
+                coordinate.X.ToPolygonGeometryCoordinateValueFormat(),
+                coordinate.Y.ToPolygonGeometryCoordinateValueFormat()));
+        }
+
+        //remove last space
+        posListBuilder.Length--;
+
+        writer.WriteValue(posListBuilder.ToString());
+
+        writer.WriteEndElement();
     }
 }
