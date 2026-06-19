@@ -1,6 +1,5 @@
-﻿namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Common.NTS
+namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Common.NTS
 {
-    using System;
     using FluentAssertions;
     using GrAr.Common.NetTopology;
     using NetTopologySuite.Geometries;
@@ -70,7 +69,7 @@
         [Fact]
         public void WhenConvertLineStringWithoutCoordinatesToGml_ThenProduceValidXml()
         {
-            var geometry = new LineString(Array.Empty<Coordinate>());
+            var geometry = GeometryFactory.Default.CreateLineString();
             geometry.SRID = SystemReferenceId.SridLambert72;
 
             var resultingGml = geometry.ConvertToGml();
