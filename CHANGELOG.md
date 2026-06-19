@@ -1,3 +1,10 @@
+# [24.3.0](https://github.com/informatievlaanderen/grar-common/compare/v24.2.0...v24.3.0) (2026-06-19)
+
+
+### Features
+
+* add LineString to Gml writer ([57ca4fa](https://github.com/informatievlaanderen/grar-common/commit/57ca4fa1105cc17f8af68cfa5287395ae2e042bf))
+
 # [24.2.0](https://github.com/informatievlaanderen/grar-common/compare/v24.1.0...v24.2.0) (2026-06-19)
 
 
