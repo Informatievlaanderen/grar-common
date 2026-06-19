@@ -37,8 +37,11 @@ public static class GeometryExtensions
 
     public static string ConvertToGml(this Geometry geometry, bool useHttpsSchema)
     {
+        if (geometry is null)
+            throw new ArgumentNullException(nameof(geometry));
+
         if (geometry is not Polygon && geometry is not MultiPolygon && geometry is not LineString && geometry is not Point)
-            throw new InvalidOperationException();
+            throw new InvalidOperationException($"Unsupported geometry type: {geometry.GeometryType}. Supported types: Polygon, MultiPolygon, LineString, Point.");
 
         var builder = new StringBuilder();
         var settings = new XmlWriterSettings {Indent = false, OmitXmlDeclaration = true};
