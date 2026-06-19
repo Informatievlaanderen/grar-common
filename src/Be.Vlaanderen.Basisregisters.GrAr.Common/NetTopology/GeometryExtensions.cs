@@ -171,8 +171,8 @@ public static class GeometryExtensions
         }
 
         //remove last space
-        posListBuilder.Length--;
-
+        if (posListBuilder.Length > 0)
+            posListBuilder.Length--;
         writer.WriteValue(posListBuilder.ToString());
 
         writer.WriteEndElement();
