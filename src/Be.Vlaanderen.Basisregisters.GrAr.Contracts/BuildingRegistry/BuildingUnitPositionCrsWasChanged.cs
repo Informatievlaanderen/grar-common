@@ -2,7 +2,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 {
     using Common;
 
-    public sealed class BuildingUnitPositionCrsWasCorrected : IQueueMessage
+    public sealed class BuildingUnitPositionCrsWasChanged : IQueueMessage
     {
         public int BuildingPersistentLocalId { get; }
 
@@ -14,7 +14,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Contracts.BuildingRegistry
 
         public Provenance Provenance { get; }
 
-        public BuildingUnitPositionCrsWasCorrected(
+        public BuildingUnitPositionCrsWasChanged(
             int buildingPersistentLocalId,
             int buildingUnitPersistentLocalId,
             string geometryMethod,
