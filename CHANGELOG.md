@@ -1,3 +1,10 @@
+## [24.4.1](https://github.com/informatievlaanderen/grar-common/compare/v24.4.0...v24.4.1) (2026-06-25)
+
+
+### Bug Fixes
+
+* **contracts:** rename corrected to changed ([8e3e81a](https://github.com/informatievlaanderen/grar-common/commit/8e3e81aea737242abf67abd521cd84cdba8c67f3))
+
 # [24.4.0](https://github.com/informatievlaanderen/grar-common/compare/v24.3.0...v24.4.0) (2026-06-25)
 
 
