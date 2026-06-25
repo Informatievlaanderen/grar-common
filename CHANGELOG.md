@@ -1,3 +1,10 @@
+# [24.4.0](https://github.com/informatievlaanderen/grar-common/compare/v24.3.0...v24.4.0) (2026-06-25)
+
+
+### Features
+
+* **contracts:** add lambert08 contracts ([663a34f](https://github.com/informatievlaanderen/grar-common/commit/663a34ffe1ee0b578a29b75516a6276f31f67ec3))
+
 # [24.3.0](https://github.com/informatievlaanderen/grar-common/compare/v24.2.0...v24.3.0) (2026-06-19)
 
 
