@@ -5,9 +5,6 @@ using Newtonsoft.Json;
 
 public class BaseRegistriesCloudEvent
 {
-    [JsonProperty("@id", Order = 0)]
-    public required string Id { get; set; }
-
     [JsonProperty("objectId", Order = 1)]
     public required string ObjectId { get; set; }
 
