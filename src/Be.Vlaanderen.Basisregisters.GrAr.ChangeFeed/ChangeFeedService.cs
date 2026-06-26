@@ -62,6 +62,7 @@ public class ChangeFeedService : IChangeFeedService
         long feedItemId,
         DateTimeOffset timestamp,
         string eventType,
+        string objectId,
         object data,
         Uri? dataSchema,
         string eventName,
@@ -74,6 +75,7 @@ public class ChangeFeedService : IChangeFeedService
             Type = eventType,
             Source = _feedSourceUri,
             DataContentType = MediaTypeNames.Application.Json,
+            Subject = $"{_config.Namespace}/{objectId}",
             Data = data,
             DataSchema = dataSchema ?? _dataSchemaUri,
             [BaseRegistriesCloudEventAttribute.BaseRegistriesEventType] = eventName,
@@ -97,7 +99,6 @@ public class ChangeFeedService : IChangeFeedService
     {
         var data = new BaseRegistriesCloudEvent
         {
-            Id = $"{_config.Namespace}/{objectId}",
             ObjectId = objectId,
             Namespace = _config.Namespace,
             VersionId = new Rfc3339SerializableDateTimeOffset(versionId).ToString(),
@@ -109,6 +110,7 @@ public class ChangeFeedService : IChangeFeedService
             feedItemId,
             timestamp,
             eventType,
+            objectId,
             data,
             _dataSchemaUri,
             eventName,
