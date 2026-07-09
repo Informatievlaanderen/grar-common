@@ -27,6 +27,7 @@ public class ChangeFeedService : IChangeFeedService
         [EventTypeAttribute, CausationIdAttribute];
 
     private readonly ChangeFeedConfig _config;
+    private readonly EventTypeValidation _eventTypeValidation;
     private readonly LastChangedListContext _lastChangedListContext;
     private readonly JsonEventFormatter _jsonEventFormatter;
 
@@ -38,11 +39,13 @@ public class ChangeFeedService : IChangeFeedService
 
     public ChangeFeedService(
         ChangeFeedConfig config,
+        EventTypeValidation eventTypeValidation,
         LastChangedListContext lastChangedListContext,
         JsonSerializerSettings jsonSerializerSettings,
         int maxPageSize = DefaultMaxPageSize)
     {
         _config = config;
+        _eventTypeValidation = eventTypeValidation;
         _lastChangedListContext = lastChangedListContext;
         _jsonEventFormatter = new JsonEventFormatter(JsonSerializer.Create(jsonSerializerSettings));
 
@@ -81,6 +84,8 @@ public class ChangeFeedService : IChangeFeedService
         };
 
         cloudEvent.Validate();
+        _eventTypeValidation.Validate(cloudEvent);
+
         return cloudEvent;
     }
 
@@ -127,6 +132,7 @@ public class ChangeFeedService : IChangeFeedService
         if (pageItemsCount < (MaxPageSize - 1))
             return;
 
+        // Why save changes?
         await feedContext.SaveChangesAsync();
         await _lastChangedListContext.LastChangedList.AddAsync(new LastChangedRecord
         {
