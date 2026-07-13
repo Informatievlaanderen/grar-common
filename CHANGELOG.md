@@ -1,3 +1,15 @@
+# [25.0.0](https://github.com/informatievlaanderen/grar-common/compare/v24.4.1...v25.0.0) (2026-07-13)
+
+
+### Code Refactoring
+
+* **changefeed:** remove Id from contract and use subject instead ([dbd0ad8](https://github.com/informatievlaanderen/grar-common/commit/dbd0ad8b90840d6ee9e3d9b8d46862d10e5d14cd))
+
+
+### BREAKING CHANGES
+
+* **changefeed:** The Id property has been removed from the contract, use Subject from CloudEvent instead.
+
 ## [24.4.1](https://github.com/informatievlaanderen/grar-common/compare/v24.4.0...v24.4.1) (2026-06-25)
 
 
