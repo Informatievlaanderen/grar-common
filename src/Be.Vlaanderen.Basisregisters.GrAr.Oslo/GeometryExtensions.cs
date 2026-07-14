@@ -4,9 +4,10 @@
     using System.Text;
     using System.Xml;
     using Common.SpatialTools.GeometryCoordinates;
-    using Legacy.SpatialTools;
     using NetTopologySuite.Geometries;
     using NetTopologySuite.Utilities;
+    using GmlJsonPoint = Legacy.SpatialTools.GmlJsonPoint;
+    using GmlJsonPolygon = Legacy.SpatialTools.GmlJsonPolygon;
     using LinearRing = NetTopologySuite.Geometries.LinearRing;
     using Polygon = NetTopologySuite.Geometries.Polygon;
 
