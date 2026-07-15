@@ -40,7 +40,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         /// Identificatie van de status.
         /// </summary>
         [JsonProperty("@id", Required = Required.DisallowNull, Order = 1)]
-        public required string Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Linked data type van het object.
@@ -52,7 +52,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         /// De beschrijving van de status.
         /// </summary>
         [JsonProperty("skos:prefLabel", Required = Required.DisallowNull, Order = 3)]
-        public required AdresStatus Label { get; set; }
+        public AdresStatus Label { get; set; }
 
         public Status(AdresStatus adresStatus)
         {

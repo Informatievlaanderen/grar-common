@@ -38,7 +38,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Straatnaam
         /// Identificatie van de status.
         /// </summary>
         [JsonProperty("@id", Required = Required.DisallowNull, Order = 1)]
-        public required string Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Linked data type van het object.
@@ -50,7 +50,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Straatnaam
         /// De beschrijving van de status.
         /// </summary>
         [JsonProperty("skos:prefLabel", Required = Required.DisallowNull, Order = 3)]
-        public required StraatnaamStatus Label { get; set; }
+        public StraatnaamStatus Label { get; set; }
 
         public Status(StraatnaamStatus straatnaamStatus)
         {
