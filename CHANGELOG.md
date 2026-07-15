@@ -1,3 +1,10 @@
+# [25.1.0](https://github.com/informatievlaanderen/grar-common/compare/v25.0.0...v25.1.0) (2026-07-15)
+
+
+### Features
+
+* **oslo:** add new models for address registries ([235cce9](https://github.com/informatievlaanderen/grar-common/commit/235cce9107700df00021772f3201ac001f1421e6))
+
 # [25.0.0](https://github.com/informatievlaanderen/grar-common/compare/v24.4.1...v25.0.0) (2026-07-13)
 
 
