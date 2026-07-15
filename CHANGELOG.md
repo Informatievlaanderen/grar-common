@@ -1,3 +1,10 @@
+## [25.2.1](https://github.com/informatievlaanderen/grar-common/compare/v25.2.0...v25.2.1) (2026-07-15)
+
+
+### Bug Fixes
+
+* **oslo:** required properties for statuses ([50c3208](https://github.com/informatievlaanderen/grar-common/commit/50c32082ddfef1f4f4ad1c3ddc6faae6cd30904c))
+
 # [25.2.0](https://github.com/informatievlaanderen/grar-common/compare/v25.1.0...v25.2.0) (2026-07-15)
 
 
