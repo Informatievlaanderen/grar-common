@@ -1,3 +1,10 @@
+# [25.2.0](https://github.com/informatievlaanderen/grar-common/compare/v25.1.0...v25.2.0) (2026-07-15)
+
+
+### Features
+
+* **oslo:** add status namespaces ([40b2868](https://github.com/informatievlaanderen/grar-common/commit/40b286870520f7b59154053578bda1adb0804d7e))
+
 # [25.1.0](https://github.com/informatievlaanderen/grar-common/compare/v25.0.0...v25.1.0) (2026-07-15)
 
 
