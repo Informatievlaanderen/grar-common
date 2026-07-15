@@ -1,6 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Gemeente
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
 
     /// <summary>De status van de gemeente.</summary>
     public enum GemeenteStatus
@@ -24,6 +25,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Gemeente
     /// <summary>De status van de gemeente.</summary>
     public class Status
     {
+        private static readonly CamelCaseNamingStrategy NamingStrategy = new();
+
         /// <summary>
         /// Identificatie van de status.
         /// </summary>
@@ -41,5 +44,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Gemeente
         /// </summary>
         [JsonProperty("skos:prefLabel", Required = Required.DisallowNull, Order = 3)]
         public required GemeenteStatus Label { get; set; }
+
+        public Status(GemeenteStatus gemeenteStatus)
+        {
+            Label = gemeenteStatus;
+            Id = OsloNamespaces.GemeenteStatus.ToPuri(NamingStrategy.GetPropertyName(gemeenteStatus.ToString(), false));
+        }
     }
 }

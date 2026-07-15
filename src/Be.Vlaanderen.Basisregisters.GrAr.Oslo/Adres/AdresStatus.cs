@@ -1,6 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
 
     /// <summary>
     /// De status van het adres.
@@ -33,6 +34,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
     /// </summary>
     public class Status
     {
+        private static readonly CamelCaseNamingStrategy NamingStrategy = new();
+
         /// <summary>
         /// Identificatie van de status.
         /// </summary>
@@ -50,5 +53,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         /// </summary>
         [JsonProperty("skos:prefLabel", Required = Required.DisallowNull, Order = 3)]
         public required AdresStatus Label { get; set; }
+
+        public Status(AdresStatus adresStatus)
+        {
+            Label = adresStatus;
+            Id = OsloNamespaces.AdresStatus.ToPuri(NamingStrategy.GetPropertyName(adresStatus.ToString(), false));
+        }
     }
 }

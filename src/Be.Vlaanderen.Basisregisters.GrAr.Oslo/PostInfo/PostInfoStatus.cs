@@ -1,6 +1,7 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.PostInfo
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
 
     /// <summary>
     /// De status van de postinfo.
@@ -23,6 +24,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.PostInfo
     /// </summary>
     public class Status
     {
+        private static readonly CamelCaseNamingStrategy NamingStrategy = new();
+
         /// <summary>
         /// Identificatie van de status.
         /// </summary>
@@ -40,5 +43,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.PostInfo
         /// </summary>
         [JsonProperty("skos:prefLabel", Required = Required.DisallowNull, Order = 3)]
         public required PostInfoStatus Label { get; set; }
+
+        public Status(PostInfoStatus postInfoStatus)
+        {
+            Label = postInfoStatus;
+            Id = OsloNamespaces.PostinfoStatus.ToPuri(NamingStrategy.GetPropertyName(postInfoStatus.ToString(), false));
+        }
     }
 }
