@@ -1,3 +1,10 @@
+# [25.3.0](https://github.com/informatievlaanderen/grar-common/compare/v25.2.2...v25.3.0) (2026-07-23)
+
+
+### Features
+
+* **oslo:** rename status objects to avoid swagger conflicts ([4013fbf](https://github.com/informatievlaanderen/grar-common/commit/4013fbf5e4f96fa720ebf1ad060d1c5da7401521))
+
 ## [25.2.2](https://github.com/informatievlaanderen/grar-common/compare/v25.2.1...v25.2.2) (2026-07-23)
 
 
