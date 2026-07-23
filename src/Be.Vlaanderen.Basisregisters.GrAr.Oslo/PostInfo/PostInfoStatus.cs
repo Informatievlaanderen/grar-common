@@ -6,7 +6,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.PostInfo
     /// <summary>
     /// De status van de postinfo.
     /// </summary>
-    public enum PostInfoStatus
+    public enum PostInfoStatusValue
     {
         /// <summary>
         /// Een gerealiseerd object.
@@ -22,7 +22,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.PostInfo
     /// <summary>
     /// De status van de postinfo.
     /// </summary>
-    public class Status
+    public class PostInfoStatus
     {
         private static readonly CamelCaseNamingStrategy NamingStrategy = new();
 
@@ -42,9 +42,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.PostInfo
         /// De beschrijving van de status.
         /// </summary>
         [JsonProperty("skos:prefLabel", Required = Required.DisallowNull, Order = 3)]
-        public PostInfoStatus Label { get; set; }
+        public PostInfoStatusValue Label { get; set; }
 
-        public Status(PostInfoStatus postInfoStatus)
+        public PostInfoStatus(PostInfoStatusValue postInfoStatus)
         {
             Label = postInfoStatus;
             Id = OsloNamespaces.PostinfoStatus.ToPuri(NamingStrategy.GetPropertyName(postInfoStatus.ToString(), false));

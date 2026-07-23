@@ -6,7 +6,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
     /// <summary>
     /// De status van het adres.
     /// </summary>
-    public enum AdresStatus
+    public enum AdresStatusValue
     {
         /// <summary>
         /// Het adres is voorgesteld, maar is nog niet goedgekeurd.
@@ -32,7 +32,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
     /// <summary>
     /// De status van het adres.
     /// </summary>
-    public class Status
+    public class AdresStatus
     {
         private static readonly CamelCaseNamingStrategy NamingStrategy = new();
 
@@ -52,9 +52,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         /// De beschrijving van de status.
         /// </summary>
         [JsonProperty("skos:prefLabel", Required = Required.DisallowNull, Order = 3)]
-        public AdresStatus Label { get; set; }
+        public AdresStatusValue Label { get; set; }
 
-        public Status(AdresStatus adresStatus)
+        public AdresStatus(AdresStatusValue adresStatus)
         {
             Label = adresStatus;
             Id = OsloNamespaces.AdresStatus.ToPuri(NamingStrategy.GetPropertyName(adresStatus.ToString(), false));

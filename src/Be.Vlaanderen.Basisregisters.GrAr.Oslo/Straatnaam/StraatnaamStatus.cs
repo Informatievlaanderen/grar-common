@@ -4,7 +4,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Straatnaam
     using Newtonsoft.Json.Serialization;
 
     /// <summary>De status van de straatnaam.</summary>
-    public enum StraatnaamStatus
+    public enum StraatnaamStatusValue
     {
         /// <summary>
         /// Een straatnaam die voorgesteld is.
@@ -30,7 +30,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Straatnaam
     /// <summary>
     /// De status van de straatnaam.
     /// </summary>
-    public class Status
+    public class StraatnaamStatus
     {
         private static readonly CamelCaseNamingStrategy NamingStrategy = new();
 
@@ -50,9 +50,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Straatnaam
         /// De beschrijving van de status.
         /// </summary>
         [JsonProperty("skos:prefLabel", Required = Required.DisallowNull, Order = 3)]
-        public StraatnaamStatus Label { get; set; }
+        public StraatnaamStatusValue Label { get; set; }
 
-        public Status(StraatnaamStatus straatnaamStatus)
+        public StraatnaamStatus(StraatnaamStatusValue straatnaamStatus)
         {
             Label = straatnaamStatus;
             Id = OsloNamespaces.StraatNaamStatus.ToPuri(NamingStrategy.GetPropertyName(straatnaamStatus.ToString(), false));
