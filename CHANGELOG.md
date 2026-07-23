@@ -1,3 +1,10 @@
+## [25.2.2](https://github.com/informatievlaanderen/grar-common/compare/v25.2.1...v25.2.2) (2026-07-23)
+
+
+### Bug Fixes
+
+* **oslo:** PostinfoStatus namespace formatting ([64f0980](https://github.com/informatievlaanderen/grar-common/commit/64f0980009286c6880ace2ba02d72825241009f4))
+
 ## [25.2.1](https://github.com/informatievlaanderen/grar-common/compare/v25.2.0...v25.2.1) (2026-07-15)
 
 
