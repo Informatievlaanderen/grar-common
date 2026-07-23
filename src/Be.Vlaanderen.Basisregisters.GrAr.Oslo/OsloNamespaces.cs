@@ -7,7 +7,7 @@ public static class OsloNamespaces
     public static readonly OsloNamespace Gemeente = new OsloNamespace(OsloNamespacePrefix + "/gemeente");
     public static readonly OsloNamespace GemeenteStatus = new OsloNamespace(OsloNamespacePrefix + "/concept/gemeentestatus");
     public static readonly OsloNamespace Postinfo = $"{OsloNamespacePrefix}/postinfo";
-    public static readonly OsloNamespace PostinfoStatus = new OsloNamespace(OsloNamespacePrefix + "concept/postinfostatus");
+    public static readonly OsloNamespace PostinfoStatus = new OsloNamespace(OsloNamespacePrefix + "/concept/postinfostatus");
     public static readonly OsloNamespace StraatNaam = $"{OsloNamespacePrefix}/straatnaam";
     public static readonly OsloNamespace StraatNaamStatus = new OsloNamespace(OsloNamespacePrefix + "/concept/straatnaamstatus");
     public static readonly OsloNamespace Adres = $"{OsloNamespacePrefix}/adres";
