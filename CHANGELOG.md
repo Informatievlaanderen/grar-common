@@ -1,3 +1,10 @@
+## [25.4.2](https://github.com/informatievlaanderen/grar-common/compare/v25.4.1...v25.4.2) (2026-07-24)
+
+
+### Bug Fixes
+
+* **changefeed:** interface to reflect service change ([4295869](https://github.com/informatievlaanderen/grar-common/commit/4295869511092baba71badea52b88171d83a6e03))
+
 ## [25.4.1](https://github.com/informatievlaanderen/grar-common/compare/v25.4.0...v25.4.1) (2026-07-24)
 
 # [25.4.0](https://github.com/informatievlaanderen/grar-common/compare/v25.3.1...v25.4.0) (2026-07-24)
