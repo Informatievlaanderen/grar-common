@@ -62,7 +62,7 @@ public class ChangeFeedService : IChangeFeedService
         long feedItemId,
         DateTimeOffset timestamp,
         string eventType,
-        string objectId,
+        string? objectId,
         object data,
         Uri? dataSchema,
         string eventName,
@@ -75,12 +75,14 @@ public class ChangeFeedService : IChangeFeedService
             Type = eventType,
             Source = _feedSourceUri,
             DataContentType = MediaTypeNames.Application.Json,
-            Subject = $"{_config.Namespace}/{objectId}",
             Data = data,
             DataSchema = dataSchema ?? _dataSchemaUri,
             [BaseRegistriesCloudEventAttribute.BaseRegistriesEventType] = eventName,
             [BaseRegistriesCloudEventAttribute.BaseRegistriesCausationId] = causationId
         };
+
+        if (objectId != null)
+            cloudEvent.Subject = $"{_config.Namespace}/{objectId}";
 
         cloudEvent.Validate();
         return cloudEvent;
