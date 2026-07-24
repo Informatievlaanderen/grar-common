@@ -1,3 +1,10 @@
+# [25.4.0](https://github.com/informatievlaanderen/grar-common/compare/v25.3.1...v25.4.0) (2026-07-24)
+
+
+### Features
+
+* **oslo:** add geometriemethode + specificatie namespace ([6c84d1b](https://github.com/informatievlaanderen/grar-common/commit/6c84d1bc428b9d36af8aa77e982f80d4a1d58edc))
+
 ## [25.3.1](https://github.com/informatievlaanderen/grar-common/compare/v25.3.0...v25.3.1) (2026-07-24)
 
 # [25.3.0](https://github.com/informatievlaanderen/grar-common/compare/v25.2.2...v25.3.0) (2026-07-23)
