@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -14,14 +15,19 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         /// De geografische naam.
         /// </summary>
         [JsonProperty("volledigAdres", Required = Required.DisallowNull, Order = 1)]
-        public GeografischeNaam GeografischeNaam { get; set; }
+        public List<GeografischeNaam> GeografischeNaam { get; set; }
 
-        public VolledigAdres(GeografischeNaam geografischeNaam)
+        public VolledigAdres()
+        {
+            GeografischeNaam = new List<GeografischeNaam>();
+        }
+
+        public VolledigAdres(List<GeografischeNaam> geografischeNaam)
         {
             GeografischeNaam = geografischeNaam;
         }
 
-        public VolledigAdres(
+        public void Add(
             string straatnaam,
             string huisnummer,
             string busnummer,
@@ -33,7 +39,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
                 $"{straatnaam} {huisnummer}, {postcode} {gemeentenaam}" :
                 $"{straatnaam} {huisnummer} {TranslateBus(taal)} {busnummer}, {postcode} {gemeentenaam}";
 
-            GeografischeNaam = new GeografischeNaam(representation, taal);
+            GeografischeNaam.Add(new GeografischeNaam(representation, taal));
         }
 
         private static string TranslateBus(Taal taalCode)
