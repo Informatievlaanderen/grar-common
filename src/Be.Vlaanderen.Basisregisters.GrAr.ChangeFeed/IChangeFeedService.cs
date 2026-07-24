@@ -18,7 +18,7 @@ public interface IChangeFeedService
         long feedItemId,
         DateTimeOffset timestamp,
         string eventType,
-        string objectId,
+        string? objectId,
         object data,
         Uri? dataSchema,
         string eventName,
