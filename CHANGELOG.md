@@ -1,3 +1,10 @@
+# [25.5.0](https://github.com/informatievlaanderen/grar-common/compare/v25.4.2...v25.5.0) (2026-07-27)
+
+
+### Features
+
+* **common:** add optional coordinate precision to ConvertToGml ([c7e5e53](https://github.com/informatievlaanderen/grar-common/commit/c7e5e535b51aadcd46ed80394cf09d9cda532368))
+
 ## [25.4.2](https://github.com/informatievlaanderen/grar-common/compare/v25.4.1...v25.4.2) (2026-07-24)
 
 
