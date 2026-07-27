@@ -1,6 +1,7 @@
 ﻿namespace Be.Vlaanderen.Basisregisters.GrAr.Common.NetTopology;
 
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -35,10 +36,23 @@ public static class GeometryExtensions
         return geometry.ConvertToGml(true);
     }
 
-    public static string ConvertToGml(this Geometry geometry, bool useHttpsSchema)
+    /// <summary>
+    /// Converts the geometry to its GML 3.2 representation.
+    /// </summary>
+    /// <param name="geometry">The geometry to convert.</param>
+    /// <param name="useHttpsSchema">Whether the srsName should use the https schema.</param>
+    /// <param name="coordinatePrecision">
+    /// The number of decimals to use for the coordinate values. When <c>null</c> (the default) the precision is derived
+    /// from the geometry type (2 decimals for a point, 11 for a polygon/multipolygon/linestring); when specified, that
+    /// number of decimals is used instead for every coordinate.
+    /// </param>
+    public static string ConvertToGml(this Geometry geometry, bool useHttpsSchema, int? coordinatePrecision = null)
     {
         if (geometry is null)
             throw new ArgumentNullException(nameof(geometry));
+
+        if (coordinatePrecision is < 0)
+            throw new ArgumentOutOfRangeException(nameof(coordinatePrecision), coordinatePrecision, "Coordinate precision must be greater than or equal to 0.");
 
         if (geometry is not Polygon && geometry is not MultiPolygon && geometry is not LineString && geometry is not Point)
             throw new InvalidOperationException($"Unsupported geometry type: {geometry.GeometryType}. Supported types: Polygon, MultiPolygon, LineString, Point.");
@@ -52,8 +66,8 @@ public static class GeometryExtensions
             {
                 xmlwriter.WriteStartElement("gml", "Polygon", GmlNamespace);
                 WriteSrsName(xmlwriter, geometry, useHttpsSchema);
-                WriteRing((polygon.ExteriorRing as LinearRing)!, xmlwriter);
-                WriteInteriorRings(polygon.InteriorRings, polygon.NumInteriorRings, xmlwriter);
+                WriteRing((polygon.ExteriorRing as LinearRing)!, xmlwriter, coordinatePrecision);
+                WriteInteriorRings(polygon.InteriorRings, polygon.NumInteriorRings, xmlwriter, coordinatePrecision);
                 xmlwriter.WriteEndElement();
             }
         }
@@ -69,8 +83,8 @@ public static class GeometryExtensions
                     xmlwriter.WriteStartElement("gml", "surfaceMember", null!);
                     xmlwriter.WriteStartElement("gml", "Polygon", null!);
 
-                    WriteRing((p.ExteriorRing as LinearRing)!, xmlwriter);
-                    WriteInteriorRings(p.InteriorRings, p.NumInteriorRings, xmlwriter);
+                    WriteRing((p.ExteriorRing as LinearRing)!, xmlwriter, coordinatePrecision);
+                    WriteInteriorRings(p.InteriorRings, p.NumInteriorRings, xmlwriter, coordinatePrecision);
 
                     xmlwriter.WriteEndElement();
                     xmlwriter.WriteEndElement();
@@ -85,7 +99,7 @@ public static class GeometryExtensions
             {
                 xmlwriter.WriteStartElement("gml", "LineString", GmlNamespace);
                 WriteSrsName(xmlwriter, geometry, useHttpsSchema);
-                WritePosList(lineString.Coordinates, xmlwriter);
+                WritePosList(lineString.Coordinates, xmlwriter, coordinatePrecision);
                 xmlwriter.WriteEndElement();
             }
         }
@@ -98,8 +112,8 @@ public static class GeometryExtensions
 
                 xmlwriter.WriteStartElement("gml", "pos", null!);
                 xmlwriter.WriteValue(string.Format(Global.GetNfi(), "{0} {1}",
-                    point.Coordinate.X.ToPointGeometryCoordinateValueFormat(),
-                    point.Coordinate.Y.ToPointGeometryCoordinateValueFormat()));
+                    FormatCoordinate(point.Coordinate.X, coordinatePrecision, static v => v.ToPointGeometryCoordinateValueFormat()),
+                    FormatCoordinate(point.Coordinate.Y, coordinatePrecision, static v => v.ToPointGeometryCoordinateValueFormat())));
                 xmlwriter.WriteEndElement();
 
                 xmlwriter.WriteEndElement();
@@ -127,12 +141,13 @@ public static class GeometryExtensions
     private static void WriteRing(
         LinearRing ring,
         XmlWriter writer,
+        int? coordinatePrecision,
         bool isInterior = false)
     {
         writer.WriteStartElement("gml", isInterior ? "interior" : "exterior", GmlNamespace);
         writer.WriteStartElement("gml", "LinearRing", GmlNamespace);
 
-        WritePosList(ring.Coordinates, writer);
+        WritePosList(ring.Coordinates, writer, coordinatePrecision);
 
         writer.WriteEndElement();
         writer.WriteEndElement();
@@ -141,7 +156,8 @@ public static class GeometryExtensions
     private static void WriteInteriorRings(
         LineString[] rings,
         int numInteriorRings,
-        XmlWriter writer)
+        XmlWriter writer,
+        int? coordinatePrecision)
     {
         if (numInteriorRings < 1)
         {
@@ -150,13 +166,14 @@ public static class GeometryExtensions
 
         foreach (var ring in rings)
         {
-            WriteRing((ring as LinearRing)!, writer, true);
+            WriteRing((ring as LinearRing)!, writer, coordinatePrecision, true);
         }
     }
 
     private static void WritePosList(
         Coordinate[] coordinates,
-        XmlWriter writer)
+        XmlWriter writer,
+        int? coordinatePrecision)
     {
         writer.WriteStartElement("gml", "posList", GmlNamespace);
 
@@ -166,8 +183,8 @@ public static class GeometryExtensions
             posListBuilder.Append(string.Format(
                 Global.GetNfi(),
                 "{0} {1} ",
-                coordinate.X.ToPolygonGeometryCoordinateValueFormat(),
-                coordinate.Y.ToPolygonGeometryCoordinateValueFormat()));
+                FormatCoordinate(coordinate.X, coordinatePrecision, static v => v.ToPolygonGeometryCoordinateValueFormat()),
+                FormatCoordinate(coordinate.Y, coordinatePrecision, static v => v.ToPolygonGeometryCoordinateValueFormat())));
         }
 
         //remove last space
@@ -176,5 +193,14 @@ public static class GeometryExtensions
         writer.WriteValue(posListBuilder.ToString());
 
         writer.WriteEndElement();
+    }
+
+    // Formats a coordinate value: the explicitly requested number of decimals when a coordinate precision is given,
+    // otherwise the geometry-type based default format.
+    private static string FormatCoordinate(double value, int? coordinatePrecision, Func<double, string> defaultFormat)
+    {
+        return coordinatePrecision.HasValue
+            ? value.ToString("F" + coordinatePrecision.Value.ToString(CultureInfo.InvariantCulture), CultureInfo.InvariantCulture)
+            : defaultFormat(value);
     }
 }
