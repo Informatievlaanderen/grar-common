@@ -1,3 +1,10 @@
+# [25.6.0](https://github.com/informatievlaanderen/grar-common/compare/v25.5.0...v25.6.0) (2026-07-29)
+
+
+### Features
+
+* **oslo:** add gebouw/eenheid/perceel status + gefunctie ([74e0277](https://github.com/informatievlaanderen/grar-common/commit/74e02773a150714be8443f28835145e4eba0cbf3))
+
 # [25.5.0](https://github.com/informatievlaanderen/grar-common/compare/v25.4.2...v25.5.0) (2026-07-27)
 
 
