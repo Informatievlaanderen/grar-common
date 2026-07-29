@@ -15,8 +15,12 @@ public static class OsloNamespaces
     public static readonly OsloNamespace AdresGeometrieMethode = new OsloNamespace(OsloNamespacePrefix + "/concept/geometriemethode");
     public static readonly OsloNamespace AdresGeometrieSpecificatie = new OsloNamespace(OsloNamespacePrefix + "/concept/geometriespecificatie");
     public static readonly OsloNamespace Gebouw = new OsloNamespace($"{OsloNamespacePrefix}/gebouw");
+    public static readonly OsloNamespace GebouwStatus = new OsloNamespace($"{OsloNamespacePrefix}/concept/gebouwstatus");
     public static readonly OsloNamespace Gebouweenheid = new OsloNamespace($"{OsloNamespacePrefix}/gebouweenheid");
+    public static readonly OsloNamespace GebouweenheidStatus = new OsloNamespace($"{OsloNamespacePrefix}/concept/gebouweenheidstatus");
+    public static readonly OsloNamespace GebouweenheidFunctie = new OsloNamespace($"{OsloNamespacePrefix}/concept/gebouweenheidfunctie");
     public static readonly OsloNamespace Perceel = new OsloNamespace($"{OsloNamespacePrefix}/perceel");
+    public static readonly OsloNamespace PerceelStatus = new OsloNamespace($"{OsloNamespacePrefix}/concept/perceelstatus");
     public static readonly OsloNamespace Wegknoop = new OsloNamespace($"{OsloNamespacePrefix}/wegknoop");
     public static readonly OsloNamespace Wegsegment = new OsloNamespace($"{OsloNamespacePrefix}/wegsegment");
     public static readonly OsloNamespace GelijkgrondseKruising = new OsloNamespace($"{OsloNamespacePrefix}/gelijkgrondsekruising");
