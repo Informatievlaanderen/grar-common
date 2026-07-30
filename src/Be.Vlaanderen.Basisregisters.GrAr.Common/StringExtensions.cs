@@ -1,10 +1,14 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Common
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
+    using System.IO;
     using System.Linq;
     using System.Security.Cryptography;
     using System.Text;
+    using System.Xml;
+    using NetTopology;
     using Utilities.HexByteConvertor;
 
     public static class StringExtensions
@@ -111,6 +115,27 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common
             }
         }
 
+        private static readonly IReadOnlyDictionary<string, int> SridBySrsName = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
+        {
+            { SystemReferenceId.SrsNameLambert72, SystemReferenceId.SridLambert72 },
+            { ToHttps(SystemReferenceId.SrsNameLambert72), SystemReferenceId.SridLambert72 },
+            { SystemReferenceId.SrsNameLambert2008, SystemReferenceId.SridLambert2008 },
+            { ToHttps(SystemReferenceId.SrsNameLambert2008), SystemReferenceId.SridLambert2008 }
+        };
+
+        /// <summary>
+        /// Determines the SRID of a GML string based on its srsName attribute.
+        /// Both Lambert 72 (EPSG 31370) and Lambert 2008 (EPSG 3812) are supported, with either an http or an https srsName.
+        /// </summary>
+        public static bool TryReadSridGml(this string? gml, out int srid)
+        {
+            srid = 0;
+
+            var srsName = ReadSrsName(gml);
+
+            return srsName is not null && SridBySrsName.TryGetValue(srsName, out srid);
+        }
+
         private static string GetStringFromHash(byte[] hash)
         {
             StringBuilder result = new StringBuilder();
@@ -120,5 +145,39 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Common
             }
             return result.ToString();
         }
+
+        private static string? ReadSrsName(string? gml)
+        {
+            if (string.IsNullOrWhiteSpace(gml))
+            {
+                return null;
+            }
+
+            try
+            {
+                using var stringReader = new StringReader(gml);
+                using var xmlReader = XmlReader.Create(stringReader, new XmlReaderSettings
+                {
+                    DtdProcessing = DtdProcessing.Prohibit,
+                    XmlResolver = null
+                });
+
+                while (xmlReader.Read())
+                {
+                    if (xmlReader.NodeType == XmlNodeType.Element)
+                    {
+                        return xmlReader.GetAttribute("srsName");
+                    }
+                }
+
+                return null;
+            }
+            catch (XmlException)
+            {
+                return null;
+            }
+        }
+
+        private static string ToHttps(string srsName) => srsName.Replace("http://", "https://");
     }
 }

@@ -5,6 +5,7 @@ using NetTopologySuite;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Implementation;
 using NetTopologySuite.IO;
+using NetTopologySuite.IO.GML2;
 
 public static class WKBReaderFactory
 {
@@ -54,4 +55,18 @@ public static class NtsGeometryFactory
 
     public static NetTopologySuite.Geometries.GeometryFactory CreateGeometryFactoryLambert72() => CreateNtsGeometryServicesLambert72().CreateGeometryFactory();
     public static NetTopologySuite.Geometries.GeometryFactory CreateGeometryFactoryLambert2008() => CreateNtsGeometryServicesLambert2008().CreateGeometryFactory();
+}
+
+public static class GmlFactory
+{
+    public static GMLReader CreateGmlReader(int srid) =>
+        srid switch
+        {
+            SystemReferenceId.SridLambert72 => new GMLReader(NtsGeometryFactory.CreateGeometryFactoryLambert72()),
+            SystemReferenceId.SridLambert2008 => new GMLReader(NtsGeometryFactory.CreateGeometryFactoryLambert2008()),
+            _ => throw new InvalidOperationException($"Unsupported SRID: {srid}.")
+        };
+
+    public static GMLReader CreateForLambert72() => new GMLReader(NtsGeometryFactory.CreateGeometryFactoryLambert72());
+    public static GMLReader CreateForLambert2008() => new GMLReader(NtsGeometryFactory.CreateGeometryFactoryLambert2008());
 }
