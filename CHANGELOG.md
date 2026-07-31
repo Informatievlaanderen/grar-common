@@ -1,3 +1,10 @@
+# [25.7.0](https://github.com/informatievlaanderen/grar-common/compare/v25.6.0...v25.7.0) (2026-07-31)
+
+
+### Features
+
+* **edit:** add point validator to handle lambert2008 ([4038dbe](https://github.com/informatievlaanderen/grar-common/commit/4038dbe1a3fc10f5a57d35a60e838671c4ca4e2d))
+
 # [25.6.0](https://github.com/informatievlaanderen/grar-common/compare/v25.5.0...v25.6.0) (2026-07-29)
 
 
