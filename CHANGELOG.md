@@ -1,3 +1,10 @@
+# [25.8.0](https://github.com/informatievlaanderen/grar-common/compare/v25.7.0...v25.8.0) (2026-08-03)
+
+
+### Features
+
+* **edit:** add polygon validator methods lambert 2008 + mark obsolete old ones ([9190e64](https://github.com/informatievlaanderen/grar-common/commit/9190e642d906397d0fcd1578b3e574fda1dcfca8))
+
 # [25.7.0](https://github.com/informatievlaanderen/grar-common/compare/v25.6.0...v25.7.0) (2026-07-31)
 
 
