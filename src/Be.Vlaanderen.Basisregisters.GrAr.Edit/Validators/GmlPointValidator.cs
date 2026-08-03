@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Edit.Validators
 {
+    using System;
     using System.Xml;
     using Common;
     using Common.NetTopology;
@@ -9,11 +10,20 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Edit.Validators
     public static class GmlPointValidator
     {
         private const string GmlVersionAttributeValue = "http://www.opengis.net/gml/3.2";
+
+        /// <summary>
+        /// Lambert-1972 only
+        /// </summary>
+        [Obsolete("Use IsValidPoint(string, out Point?) instead.")]
         public static bool IsValid(string? gml, GMLReader gmlReader)
         {
             return IsValid(gml, gmlReader, out _);
         }
 
+        /// <summary>
+        /// Lambert-1972 only
+        /// </summary>
+        [Obsolete("Use IsValidPoint(string, out Point?) instead.")]
         public static bool IsValid(string? gml, GMLReader gmlReader, out Point? point)
         {
             point = null;
@@ -76,6 +86,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Edit.Validators
             }
         }
 
+        /// <summary>
+        /// Validates a GML point position. Unlike IsValid(string, GMLReader, out Point?)
+        /// this accepts both Lambert 72 (EPSG 31370) and Lambert 2008 (EPSG 3812) as srsName.
+        /// </summary>
         public static bool IsValidPoint(string? gml) => IsValidPoint(gml, out _);
     }
 }
