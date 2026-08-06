@@ -1,7 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
 {
     using System.Collections.Generic;
-    using Gemeente;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -9,14 +8,17 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
     /// </summary>
     public class AdresHeeftGemeentenaam
     {
+        /// <summary>
+        /// Het linked-data type van de gemeentenaam.
+        /// </summary>
         [JsonProperty("@type", Required = Required.DisallowNull, Order = 0)]
         public string Type => "Gemeentenaam";
 
         /// <summary>
         /// De gemeentenamen van de gemeente.
         /// </summary>
-        [JsonProperty("gemeentenaam", Required = Required.DisallowNull, Order = 1)]
-        public Gemeentenaam Gemeentenaam { get; set; }
+        [JsonProperty("gemeentenaam", Required = Required.DisallowNull, Order = 2)]
+        public required List<GeografischeNaam> Gemeentenamen { get; set; }
 
         /// <summary>
         /// De gemeentenaam afgeleid van de gemeente.
@@ -26,10 +28,8 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
 
         public AdresHeeftGemeentenaam(string id, string detail, List<GeografischeNaam> geografischeNamen)
         {
-            Gemeentenaam = new Gemeentenaam
-            {
-                Gemeentenamen = geografischeNamen
-            };
+
+            Gemeentenamen = geografischeNamen;
             IsAfgeleidVan = new AdresHeeftGemeentenaamAfgeleidVan
             {
                 Id = id,

@@ -8,6 +8,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.PostInfo
     /// </summary>
     public class PostinfoToegekendAanGemeente
     {
+        /// <summary>
+        /// Het linked-data type van de gemeente.
+        /// </summary>
         [JsonProperty("@type", Required = Required.DisallowNull, Order = 0)]
         public string Type => "Gemeente";
 

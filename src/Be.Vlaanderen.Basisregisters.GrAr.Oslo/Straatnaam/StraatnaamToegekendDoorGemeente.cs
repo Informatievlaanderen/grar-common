@@ -10,6 +10,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Straatnaam
     [DataContract(Name = "Gemeente", Namespace = "")]
     public class StraatnaamToegekendDoorGemeente
     {
+        /// <summary>
+        /// Het linked-data type van de gemeente.
+        /// </summary>
         [JsonProperty("@type", Required = Required.DisallowNull, Order = 0)]
         public string Type => "Gemeente";
 

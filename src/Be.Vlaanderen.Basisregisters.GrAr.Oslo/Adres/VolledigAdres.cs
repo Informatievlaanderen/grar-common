@@ -8,6 +8,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
     /// </summary>
     public class VolledigAdres
     {
+        /// <summary>
+        /// Het linked-data type van de adresvoorstelling.
+        /// </summary>
         [JsonProperty("@type", Required = Required.DisallowNull, Order = 0)]
         public string Type => "Adresuitbreiding";
 

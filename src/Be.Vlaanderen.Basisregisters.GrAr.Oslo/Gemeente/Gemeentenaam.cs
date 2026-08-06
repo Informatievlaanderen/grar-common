@@ -8,6 +8,9 @@
     /// </summary>
     public class Gemeentenaam
     {
+        /// <summary>
+        /// Het linked-data type van de gemeentenaam.
+        /// </summary>
         [JsonProperty("@type", Required = Required.DisallowNull, Order = 1)]
         public string Type => "Gemeentenaam";
 

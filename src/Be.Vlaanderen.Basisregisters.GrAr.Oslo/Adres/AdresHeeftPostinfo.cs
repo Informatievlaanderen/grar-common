@@ -7,6 +7,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
     /// </summary>
     public class AdresHeeftPostinfo
     {
+        /// <summary>
+        /// Het linked-data type van de postinfo.
+        /// </summary>
         [JsonProperty("@type", Required = Required.DisallowNull, Order = 0)]
         public string Type => "PostInfo";
 
