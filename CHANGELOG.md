@@ -1,3 +1,10 @@
+## [25.8.1](https://github.com/informatievlaanderen/grar-common/compare/v25.8.0...v25.8.1) (2026-08-06)
+
+
+### Bug Fixes
+
+* **oslo:** correct heeftGemeentenaam + add docs ([3f138a4](https://github.com/informatievlaanderen/grar-common/commit/3f138a4ae8304270072123be4c0e8e22a6406ac7))
+
 # [25.8.0](https://github.com/informatievlaanderen/grar-common/compare/v25.7.0...v25.8.0) (2026-08-03)
 
 
