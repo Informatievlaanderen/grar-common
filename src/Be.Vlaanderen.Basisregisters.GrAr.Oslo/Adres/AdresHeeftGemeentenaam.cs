@@ -18,7 +18,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         /// De gemeentenamen van de gemeente.
         /// </summary>
         [JsonProperty("gemeentenaam", Required = Required.DisallowNull, Order = 2)]
-        public required List<GeografischeNaam> Gemeentenamen { get; set; }
+        public List<GeografischeNaam> Gemeentenamen { get; set; }
 
         /// <summary>
         /// De gemeentenaam afgeleid van de gemeente.
@@ -26,10 +26,10 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         [JsonProperty("isAfgeleidVan", Required = Required.DisallowNull, Order = 2)]
         public AdresHeeftGemeentenaamAfgeleidVan IsAfgeleidVan { get; set; }
 
-        public AdresHeeftGemeentenaam(string id, string detail, List<GeografischeNaam> geografischeNamen)
+        public AdresHeeftGemeentenaam(string id, string detail, List<GeografischeNaam> gemeenteNamen)
         {
 
-            Gemeentenamen = geografischeNamen;
+            Gemeentenamen = gemeenteNamen;
             IsAfgeleidVan = new AdresHeeftGemeentenaamAfgeleidVan
             {
                 Id = id,
