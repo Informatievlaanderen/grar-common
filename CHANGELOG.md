@@ -1,3 +1,10 @@
+## [25.8.2](https://github.com/informatievlaanderen/grar-common/compare/v25.8.1...v25.8.2) (2026-08-06)
+
+
+### Bug Fixes
+
+* **oslo:** AdresHeeftGemeentenaam contract ([bfd6304](https://github.com/informatievlaanderen/grar-common/commit/bfd63041809adcbe5deed09b7e08e0bee0d70beb))
+
 ## [25.8.1](https://github.com/informatievlaanderen/grar-common/compare/v25.8.0...v25.8.1) (2026-08-06)
 
 
