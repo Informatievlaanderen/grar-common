@@ -37,12 +37,12 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Gemeente
         /// Linked data type van het object.
         /// </summary>
         [JsonProperty("@type", Required = Required.DisallowNull, Order = 2)]
-        public string Type => "skos:Concept";
+        public string Type => "Concept";
 
         /// <summary>
-        /// De beschrijving van de status.
+        /// De code notatie van de status.
         /// </summary>
-        [JsonProperty("skos:prefLabel", Required = Required.DisallowNull, Order = 3)]
+        [JsonProperty("code", Required = Required.DisallowNull, Order = 3)]
         public GemeenteStatusValue Label { get; set; }
 
         public GemeenteStatus(GemeenteStatusValue gemeenteStatus)
