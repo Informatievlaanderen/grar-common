@@ -159,12 +159,85 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo
     }
 
     /// <summary>Bevat informatie waarmee het perceel kan geïdentificeerd worden.</summary>
-    public class PerceelIdentificator : Identificator
+    public class PerceelIdentificator
     {
-        public PerceelIdentificator(string lokaleIdentificator, DateTimeOffset versie)
-            : base(OsloNamespaces.Perceel, lokaleIdentificator, versie) { }
+        /// <summary>
+        /// Linked data type van het object.
+        /// </summary>
+        [JsonProperty("@type", Required = Required.DisallowNull, Order = 1)]
+        public string Type => "Identificator";
 
-        public PerceelIdentificator(string lokaleIdentificator, string versie)
-            : base(OsloNamespaces.Perceel, lokaleIdentificator, versie) { }
+        /// <summary>
+        /// Bevat de gestructureerde identificator van het object.
+        /// </summary>
+        [JsonProperty("gestructureerdeIdentificator", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore, DefaultValueHandling = DefaultValueHandling.Ignore, Order = 2)]
+        public GestructureerdeIdentificator? GestructureerdeIdentificator { get; set; }
+
+        /// <summary>
+        /// De organisatie die de identificator van het perceel heeft toegekend.
+        /// </summary>
+        [JsonProperty("toegekendDoor", Required = Required.DisallowNull, Order = 3)]
+        public PerceelIdentificatorToegekendDoor ToegekendDoor { get; set; }
+
+        [JsonProperty("identificator", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore, DefaultValueHandling = DefaultValueHandling.Ignore, Order = 4)]
+        public string? Identificator { get; set; }
+
+        public PerceelIdentificator(
+            string naamruimte,
+            string lokaleIdentificator,
+            DateTimeOffset versie,
+            PerceelIdentificatorToegekendDoor toegekendDoor)
+            : this(
+                new GestructureerdeIdentificator(
+                    naamruimte,
+                    lokaleIdentificator,
+                    new Rfc3339SerializableDateTimeOffset(versie).ToString()),
+                toegekendDoor)
+        { }
+
+        public PerceelIdentificator(
+            string naamruimte,
+            string lokaleIdentificator,
+            string versie,
+            PerceelIdentificatorToegekendDoor toegekendDoor)
+            : this(
+                new GestructureerdeIdentificator(
+                    naamruimte,
+                    lokaleIdentificator,
+                    versie),
+                toegekendDoor)
+        { }
+
+        public PerceelIdentificator(GestructureerdeIdentificator gestructureerdeIdentificator, PerceelIdentificatorToegekendDoor toegekendDoor)
+        {
+            GestructureerdeIdentificator = gestructureerdeIdentificator;
+            ToegekendDoor = toegekendDoor;
+        }
+
+        public PerceelIdentificator(string identificator, PerceelIdentificatorToegekendDoor toegekendDoor)
+        {
+            Identificator = identificator;
+            ToegekendDoor = toegekendDoor;
+        }
+    }
+
+    /// <summary>
+    /// De organisatie die de identificator van het perceel heeft toegekend.
+    /// </summary>
+    public class PerceelIdentificatorToegekendDoor
+    {
+        /// <summary>
+        /// De unieke en persistente identificator van de gekoppelde organisatie (volgt de Vlaamse URI-standaard).
+        /// </summary>
+        [JsonProperty("@id", Required = Required.DisallowNull, Order = 1)]
+        public string Id { get; set; }
+
+        public PerceelIdentificatorToegekendDoor(string id)
+        {
+            Id = id;
+        }
+
+        public static PerceelIdentificatorToegekendDoor Basisregisters => new PerceelIdentificatorToegekendDoor("https://data.vlaanderen.be/id/organisatie/OVO054890");
+        public static PerceelIdentificatorToegekendDoor Aapd => new PerceelIdentificatorToegekendDoor("https://data.vlaanderen.be/id/organisatie/OVO027170");
     }
 }
