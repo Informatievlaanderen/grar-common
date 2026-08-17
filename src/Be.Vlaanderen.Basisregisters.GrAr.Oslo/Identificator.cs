@@ -183,26 +183,24 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo
         public string? Identificator { get; set; }
 
         public PerceelIdentificator(
-            string naamruimte,
             string lokaleIdentificator,
             DateTimeOffset versie,
             PerceelIdentificatorToegekendDoor toegekendDoor)
             : this(
                 new GestructureerdeIdentificator(
-                    naamruimte,
+                    OsloNamespaces.Perceel,
                     lokaleIdentificator,
                     new Rfc3339SerializableDateTimeOffset(versie).ToString()),
                 toegekendDoor)
         { }
 
         public PerceelIdentificator(
-            string naamruimte,
             string lokaleIdentificator,
             string versie,
             PerceelIdentificatorToegekendDoor toegekendDoor)
             : this(
                 new GestructureerdeIdentificator(
-                    naamruimte,
+                    OsloNamespaces.Perceel,
                     lokaleIdentificator,
                     versie),
                 toegekendDoor)

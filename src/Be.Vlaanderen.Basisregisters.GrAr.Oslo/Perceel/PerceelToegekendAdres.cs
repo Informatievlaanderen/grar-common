@@ -24,5 +24,13 @@
         /// </summary>
         [JsonProperty("detail", Required = Required.DisallowNull, Order = 2)]
         public string Detail { get; set; }
+
+        public PerceelToegekendAdres(
+            string id,
+            string detail)
+        {
+            Id = id;
+            Detail = detail;
+        }
     }
 }
