@@ -1,3 +1,10 @@
+# [25.9.0](https://github.com/informatievlaanderen/grar-common/compare/v25.8.2...v25.9.0) (2026-08-17)
+
+
+### Features
+
+* **oslo:** add gebouw/eenheid + perceel oslo types ([aa08ed3](https://github.com/informatievlaanderen/grar-common/commit/aa08ed36462a429e9492ba0b04a6a7bb3efc1610))
+
 ## [25.8.2](https://github.com/informatievlaanderen/grar-common/compare/v25.8.1...v25.8.2) (2026-08-06)
 
 
