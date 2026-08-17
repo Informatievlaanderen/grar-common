@@ -1,3 +1,10 @@
+## [25.9.1](https://github.com/informatievlaanderen/grar-common/compare/v25.9.0...v25.9.1) (2026-08-17)
+
+
+### Bug Fixes
+
+* **oslo:** add ctors gebouw/eenheid + perceel ([69dd566](https://github.com/informatievlaanderen/grar-common/commit/69dd566e9d7eead8aa5ab23ba55a040328308fcf))
+
 # [25.9.0](https://github.com/informatievlaanderen/grar-common/compare/v25.8.2...v25.9.0) (2026-08-17)
 
 
