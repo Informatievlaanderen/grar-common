@@ -1,3 +1,10 @@
+## [25.9.4](https://github.com/informatievlaanderen/grar-common/compare/v25.9.3...v25.9.4) (2026-08-18)
+
+
+### Bug Fixes
+
+* **oslo:** add gebouwgeometriemethode ([d4f25cb](https://github.com/informatievlaanderen/grar-common/commit/d4f25cbb7678a865d76aede4bf522ada7aeff46f))
+
 ## [25.9.3](https://github.com/informatievlaanderen/grar-common/compare/v25.9.2...v25.9.3) (2026-08-18)
 
 
