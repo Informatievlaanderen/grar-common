@@ -1,3 +1,10 @@
+## [25.9.2](https://github.com/informatievlaanderen/grar-common/compare/v25.9.1...v25.9.2) (2026-08-18)
+
+
+### Bug Fixes
+
+* **oslo:** change detail string to Uri ([c5799c5](https://github.com/informatievlaanderen/grar-common/commit/c5799c508f09a392b90aff6417b18842dda6cfce))
+
 ## [25.9.1](https://github.com/informatievlaanderen/grar-common/compare/v25.9.0...v25.9.1) (2026-08-17)
 
 
