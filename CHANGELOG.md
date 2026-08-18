@@ -1,3 +1,10 @@
+## [25.9.3](https://github.com/informatievlaanderen/grar-common/compare/v25.9.2...v25.9.3) (2026-08-18)
+
+
+### Bug Fixes
+
+* **oslo:** add namespaces ([fbba39e](https://github.com/informatievlaanderen/grar-common/commit/fbba39e3c7ba37b6b12df0c2f89fee81f0a46ca3))
+
 ## [25.9.2](https://github.com/informatievlaanderen/grar-common/compare/v25.9.1...v25.9.2) (2026-08-18)
 
 
