@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -26,15 +27,11 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         [JsonProperty("isAfgeleidVan", Required = Required.DisallowNull, Order = 2)]
         public AdresHeeftGemeentenaamAfgeleidVan IsAfgeleidVan { get; set; }
 
-        public AdresHeeftGemeentenaam(string id, string detail, List<GeografischeNaam> gemeenteNamen)
+        public AdresHeeftGemeentenaam(string id, Uri detail, List<GeografischeNaam> gemeenteNamen)
         {
 
             Gemeentenamen = gemeenteNamen;
-            IsAfgeleidVan = new AdresHeeftGemeentenaamAfgeleidVan
-            {
-                Id = id,
-                Detail = detail
-            };
+            IsAfgeleidVan = new AdresHeeftGemeentenaamAfgeleidVan(id, detail);
         }
     }
 
@@ -53,6 +50,14 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         /// De URL die de details van de meest recente versie van de gekoppelde gemeente weergeeft.
         /// </summary>
         [JsonProperty("detail", Required = Required.DisallowNull, Order = 2)]
-        public string Detail { get; set; }
+        public Uri Detail { get; set; }
+
+        public AdresHeeftGemeentenaamAfgeleidVan(
+            string id,
+            Uri detail)
+        {
+            Id = id;
+            Detail = detail;
+        }
     }
 }

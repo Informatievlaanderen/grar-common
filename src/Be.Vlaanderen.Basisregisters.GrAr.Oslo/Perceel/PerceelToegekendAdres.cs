@@ -1,5 +1,6 @@
 ﻿namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Perceel
 {
+    using System;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -23,11 +24,11 @@
         /// De URL die de details van de meest recente versie van het gekoppelde adres weergeeft.
         /// </summary>
         [JsonProperty("detail", Required = Required.DisallowNull, Order = 2)]
-        public string Detail { get; set; }
+        public Uri Detail { get; set; }
 
         public PerceelToegekendAdres(
             string id,
-            string detail)
+            Uri detail)
         {
             Id = id;
             Detail = detail;

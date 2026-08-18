@@ -1,5 +1,6 @@
 ﻿namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Gebouweenheid
 {
+    using System;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -23,10 +24,11 @@
         /// De URL die de details van de meest recente versie van het gekoppelde gebouw weergeeft.
         /// </summary>
         [JsonProperty("detail", Required = Required.DisallowNull, Order = 2)]
-        public string Detail { get; set; }
+        public Uri Detail { get; set; }
 
-        public GebouweenheidIsDeelVan(string id,
-            string detail)
+        public GebouweenheidIsDeelVan(
+            string id,
+            Uri detail)
         {
             Id = id;
             Detail = detail;

@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
@@ -24,7 +25,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         /// De URL die de details van de meest recente versie van de gekoppelde straatnaam weergeeft.
         /// </summary>
         [JsonProperty("detail", Required = Required.DisallowNull, Order = 2)]
-        public string Detail { get; set; }
+        public Uri Detail { get; set; }
 
         /// <summary>
         /// De straatnamen in de officiële talen van de gemeente.
@@ -38,7 +39,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         [JsonProperty("homoniemToevoeging", Required = Required.Default, DefaultValueHandling = DefaultValueHandling.Ignore, Order = 4)]
         public List<GeografischeNaam>? HomoniemToevoeging { get; set; }
 
-        public AdresHeeftStraatnaam(string id, string detail, List<GeografischeNaam> straatnamen, List<GeografischeNaam>? homoniemToevoeging = null)
+        public AdresHeeftStraatnaam(string id, Uri detail, List<GeografischeNaam> straatnamen, List<GeografischeNaam>? homoniemToevoeging = null)
         {
             Id = id;
             Detail = detail;

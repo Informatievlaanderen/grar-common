@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.PostInfo
 {
+    using System;
     using Gemeente;
     using Newtonsoft.Json;
 
@@ -24,7 +25,7 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.PostInfo
         /// De URL die de details van de meest recente versie van de gekoppelde gemeente weergeeft.
         /// </summary>
         [JsonProperty("detail", Required = Required.DisallowNull, Order = 2)]
-        public required string Detail { get; set; }
+        public required Uri Detail { get; set; }
 
         /// <summary>
         /// De gemeentenamen van de gemeente.

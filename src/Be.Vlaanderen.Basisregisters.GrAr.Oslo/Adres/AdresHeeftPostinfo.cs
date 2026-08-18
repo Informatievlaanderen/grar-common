@@ -1,5 +1,6 @@
 namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
 {
+    using System;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -23,9 +24,9 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.Adres
         /// De URL die de details van de meest recente versie van de gekoppelde postinfo weergeeft.
         /// </summary>
         [JsonProperty("detail", Required = Required.DisallowNull, Order = 2)]
-        public string Detail { get; set; }
+        public Uri Detail { get; set; }
 
-        public AdresHeeftPostinfo(string id, string detail)
+        public AdresHeeftPostinfo(string id, Uri detail)
         {
             Id = id;
             Detail = detail;
