@@ -1,3 +1,16 @@
+# [26.0.0](https://github.com/informatievlaanderen/grar-common/compare/v25.9.4...v26.0.0) (2026-08-21)
+
+
+### Bug Fixes
+
+* **changefeed:** transaction issues for update cache ([126aeac](https://github.com/informatievlaanderen/grar-common/commit/126aeac48577d65e6c97ad6694e5a00f9bbe18f9))
+
+
+### BREAKING CHANGES
+
+* **changefeed:** CheckToUpdateCacheAsync is replaced by MarkCompletedPageAsync
+We now commit once the page is complete + 1. Where before we committed on the page complete.
+
 ## [25.9.4](https://github.com/informatievlaanderen/grar-common/compare/v25.9.3...v25.9.4) (2026-08-18)
 
 
