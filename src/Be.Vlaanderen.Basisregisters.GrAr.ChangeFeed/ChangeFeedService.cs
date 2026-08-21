@@ -18,6 +18,11 @@ public class ChangeFeedService : IChangeFeedService
 {
     public const int DefaultMaxPageSize = 100;
 
+    /// <summary>
+    /// Feed pages are numbered from one, so there is never a page to mark while on the first page.
+    /// </summary>
+    private const int FirstPage = 1;
+
     private static readonly CloudEventAttribute EventTypeAttribute =
         CloudEventAttribute.CreateExtension(BaseRegistriesCloudEventAttribute.BaseRegistriesEventType, CloudEventAttributeType.String);
     private static readonly CloudEventAttribute CausationIdAttribute =
@@ -33,6 +38,13 @@ public class ChangeFeedService : IChangeFeedService
     private readonly Uri _feedSourceUri;
     private readonly Uri _dataSchemaUri;
     private readonly Uri _dataSchemaUriTransform;
+
+    /// <summary>
+    /// Highest page already known to have a last changed record, so that the pages that have been marked
+    /// during this process are not re-checked for every projected message. Rebuilt from the database on
+    /// the first message after a restart.
+    /// </summary>
+    private int _highestMarkedPage;
 
     public int MaxPageSize { get; }
 
@@ -125,22 +137,53 @@ public class ChangeFeedService : IChangeFeedService
         return Encoding.UTF8.GetString(bytes.Span);
     }
 
-    public async Task CheckToUpdateCacheAsync(int page, DbContext feedContext, Func<int, Task<int>> countPageItemsAsync)
+    public async Task MarkCompletedPageAsync(int currentPage, Func<int, Task<int>> countCommittedPageItemsAsync)
     {
-        var pageItemsCount = await countPageItemsAsync(page);
-        if (pageItemsCount < (MaxPageSize - 1))
+        // Marks the page before the one being written to, never the current one. The previous page's rows
+        // were committed by the projection runner in an earlier batch, whereas the current page's rows are
+        // still pending in the feed context, so the cache populator can never observe a record for a page
+        // that is still incomplete in the database.
+        var pageToMark = currentPage - 1;
+        if (pageToMark < FirstPage || pageToMark <= _highestMarkedPage)
             return;
 
-        await feedContext.SaveChangesAsync();
-        await _lastChangedListContext.LastChangedList.AddAsync(new LastChangedRecord
+        // Counts committed rows only. That is what makes the record safe to publish, so this must not
+        // include rows that are merely tracked as added on the feed context.
+        if (await countCommittedPageItemsAsync(pageToMark) < MaxPageSize)
+            return;
+
+        var id = $"{pageToMark}.{_config.CacheIdSuffix}";
+
+        // Nothing is written to the feed context here. Its rows are committed by the projection runner,
+        // together with the projection position, after this method returns. Leaving nothing committed
+        // ahead of the position is what keeps the replay after a restart free of primary key violations,
+        // and the existence check makes that replay a no-op for a record written before the failure.
+        if (!await _lastChangedListContext.LastChangedList.AnyAsync(x => x.Id == id))
         {
-            AcceptType = "application/cloudevents-batch+json",
-            CacheKey = $"{_config.CacheKeyPrefix}:{page}",
-            Id = $"{page}.{_config.CacheIdSuffix}",
-            Position = page,
-            LastPopulatedPosition = _config.IsCacheEnabled ? 0 : page,
-            Uri = $"{_config.CacheLookUpUrl}?page={page}"
-        });
-        await _lastChangedListContext.SaveChangesAsync();
+            try
+            {
+                _lastChangedListContext.LastChangedList.Add(new LastChangedRecord
+                {
+                    AcceptType = "application/cloudevents-batch+json",
+                    CacheKey = $"{_config.CacheKeyPrefix}:{pageToMark}",
+                    Id = id,
+                    Position = pageToMark,
+                    LastPopulatedPosition = _config.IsCacheEnabled ? 0 : pageToMark,
+                    Uri = $"{_config.CacheLookUpUrl}?page={pageToMark}"
+                });
+                await _lastChangedListContext.SaveChangesAsync();
+            }
+            finally
+            {
+                // This context is long lived, as the service is typically registered as a singleton.
+                // Without clearing, a failed save leaves the record tracked as Added and every later save
+                // retries it, and successful saves grow the change tracker for the life of the process.
+                _lastChangedListContext.ChangeTracker.Clear();
+            }
+        }
+
+        // Only advanced once the record is known to exist, so a failure above is retried on replay.
+        // Keeps the two queries above to roughly one per page instead of one per projected message.
+        _highestMarkedPage = pageToMark;
     }
 }

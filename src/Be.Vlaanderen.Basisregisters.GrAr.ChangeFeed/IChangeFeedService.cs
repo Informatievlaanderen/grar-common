@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using CloudNative.CloudEvents;
-using Microsoft.EntityFrameworkCore;
 
 public interface IChangeFeedService
 {
@@ -37,5 +36,20 @@ public interface IChangeFeedService
 
     string SerializeCloudEvent(CloudEvent cloudEvent);
 
-    Task CheckToUpdateCacheAsync(int page, DbContext feedContext, Func<int, Task<int>> countPageItemsAsync);
+    /// <summary>
+    /// Writes the cache record for the page preceding <paramref name="currentPage"/> once that page is
+    /// complete, if it does not exist yet. Call this for every projected feed item.
+    /// </summary>
+    /// <param name="currentPage">The page the item being projected was written to.</param>
+    /// <param name="countCommittedPageItemsAsync">
+    /// Returns the number of items on the given page that are <em>committed</em> to the database. It must
+    /// not include items that are only tracked as added on the feed context, since publishing a record for
+    /// a page whose rows are still pending lets the cache populator cache an incomplete page.
+    /// </param>
+    /// <remarks>
+    /// The feed context is intentionally left untouched: its rows are committed by the projection runner,
+    /// together with the projection position, after this returns. Nothing durable may be written ahead of
+    /// that position, or the replay after a restart fails on a primary key violation.
+    /// </remarks>
+    Task MarkCompletedPageAsync(int currentPage, Func<int, Task<int>> countCommittedPageItemsAsync);
 }
