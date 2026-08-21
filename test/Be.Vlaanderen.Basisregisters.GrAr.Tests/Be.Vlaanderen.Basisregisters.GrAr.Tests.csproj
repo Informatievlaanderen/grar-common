@@ -2,6 +2,7 @@
   <Import Project="..\..\.build\Be.Vlaanderen.Basisregisters.Build.Pipeline\Content\Be.Vlaanderen.Basisregisters.Build.Pipeline.Settings.Test.props" />
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.ChangeFeed\Be.Vlaanderen.Basisregisters.GrAr.ChangeFeed.csproj" />
     <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Common\Be.Vlaanderen.Basisregisters.GrAr.Common.csproj" />
     <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.CrsTransform\Be.Vlaanderen.Basisregisters.GrAr.CrsTransform.csproj" />
     <ProjectReference Include="..\..\src\Be.Vlaanderen.Basisregisters.GrAr.Edit\Be.Vlaanderen.Basisregisters.GrAr.Edit.csproj" />
@@ -22,6 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="NetTopologySuite" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
     <PackageReference Include="Microsoft.Extensions.Logging" />
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio" />
