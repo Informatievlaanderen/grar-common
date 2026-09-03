@@ -4,8 +4,10 @@ Common code for all GR/AR base registries.
 
 | Package | Version |
 |:--- | --- |
+| Be.Vlaanderen.Basisregisters.GrAr.ChangeFeed | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.ChangeFeed.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.ChangeFeed) |
 | Be.Vlaanderen.Basisregisters.GrAr.Common | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Common.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Common) |
 | Be.Vlaanderen.Basisregisters.GrAr.Contracts | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Contracts.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Contracts) |
+| Be.Vlaanderen.Basisregisters.GrAr.CrsTransform | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.CrsTransform.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.CrsTransform) |
 | Be.Vlaanderen.Basisregisters.GrAr.Edit | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Edit.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Edit) |
 | Be.Vlaanderen.Basisregisters.GrAr.Extracts | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Extracts.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Extracts) |
 | Be.Vlaanderen.Basisregisters.GrAr.Import | [![NuGet](https://img.shields.io/nuget/v/Be.Vlaanderen.Basisregisters.GrAr.Import.svg)](https://www.nuget.org/packages/Be.Vlaanderen.Basisregisters.GrAr.Import) |
