@@ -36,6 +36,23 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
             bool throwStaleWhenGone,
             CancellationToken ct)
         {
+            return await FindMatchingSnapshot(objectId, eventVersion, eventHash, eventPosition, throwStaleWhenGone, false, ct);
+        }
+
+        public async Task<OsloResult?> FindMatchingSnapshot(
+            string objectId,
+            Instant eventVersion,
+            string? eventHash,
+            long eventPosition,
+            bool throwStaleWhenGone,
+            bool matchOnHashOnly,
+            CancellationToken ct)
+        {
+            if (matchOnHashOnly && eventHash is null)
+            {
+                throw new ArgumentNullException(nameof(eventHash), "An event hash is required when matching on hash only.");
+            }
+
             return await Policy
                 .Handle<Exception>(e =>
                     {
@@ -93,6 +110,20 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Oslo.SnapshotProducer
                 var snapshotVersion = Instant.FromDateTimeOffset(snapshotDto);
 
                 var versionDeltaInSeconds = Math.Floor(eventVersion.Minus(snapshotVersion).TotalSeconds);
+
+                if (matchOnHashOnly)
+                {
+                    if (snapshot.ETag == eventHash)
+                        return snapshot;
+
+                    if (versionDeltaInSeconds < 0)
+                        return null;
+
+                    if (string.IsNullOrEmpty(snapshot.ETag))
+                        return snapshot;
+
+                    throw new StaleSnapshotException();
+                }
 
                 if (versionDeltaInSeconds > 0)
                 {

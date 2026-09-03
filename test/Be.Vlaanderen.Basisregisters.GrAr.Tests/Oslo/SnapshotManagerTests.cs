@@ -368,5 +368,181 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.Oslo
 
             act.Should().ThrowAsync<ArgumentException>();
         }
+
+        [Fact]
+        public void WhenMatchOnHashOnly_AndETagMatches_ThenReturnOsloResult()
+        {
+            var eventHash = "eventHash";
+
+            // The event does not bump the version, so the snapshot version stays behind the event version.
+            var eventVersion = "2022-03-23T14:24:04+01:00";
+            var snapshotVersion = "2022-03-23T11:24:04+01:00";
+
+            var ct = new CancellationTokenSource(5000);
+
+            var mockProxy = new Mock<IOsloProxy>();
+            mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(() => new OsloResult
+                {
+                    ETag = eventHash,
+                    Identificator = new OsloIdentificator
+                    {
+                        Versie = snapshotVersion
+                    }
+                });
+
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, SnapshotManagerOptions.Create("1", "1"));
+            var result = snapshotManager.FindMatchingSnapshot(
+                "50083",
+                Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                eventHash,
+                eventPosition: 1111111,
+                throwStaleWhenGone: false,
+                matchOnHashOnly: true,
+                CancellationToken.None);
+
+            Task.WaitAny(new Task[] { result }, ct.Token);
+
+            result.Result.Should().NotBeNull();
+        }
+
+        [Fact]
+        public async Task WhenMatchOnHashOnly_AndETagMismatch_ThenRetryUntilETagMatches()
+        {
+            var options = SnapshotManagerOptions.Create("2", "1");
+
+            var eventHash = "eventHash";
+
+            // The event does not bump the version, so the snapshot version stays behind the event version.
+            var eventVersion = "2022-03-23T14:24:04+01:00";
+            var snapshotVersion = "2022-03-23T11:24:04+01:00";
+
+            var count = 0;
+
+            var mockProxy = new Mock<IOsloProxy>();
+            mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), CancellationToken.None))
+                .ReturnsAsync(() =>
+                {
+                    // Return a snapshot which has not projected the event yet.
+                    var eTag = count == options.MaxRetryWaitIntervalSeconds ? eventHash : "previousEventHash";
+
+                    count++;
+
+                    return new OsloResult
+                    {
+                        ETag = eTag,
+                        Identificator = new OsloIdentificator
+                        {
+                            Versie = snapshotVersion
+                        }
+                    };
+                });
+
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, options);
+            var result = await snapshotManager.FindMatchingSnapshot(
+                "50083",
+                Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                eventHash,
+                eventPosition: 1111111,
+                throwStaleWhenGone: false,
+                matchOnHashOnly: true,
+                CancellationToken.None);
+
+            result.Should().NotBeNull();
+            mockProxy.Verify(x => x.GetSnapshot(It.IsAny<string>(), CancellationToken.None), () => Times.Exactly(options.MaxRetryWaitIntervalSeconds + 1));
+        }
+
+        [Fact]
+        public void WhenMatchOnHashOnly_AndEventVersionOlderThanSnapshot_ThenReturnNull()
+        {
+            var eventHash = "eventHash";
+
+            // A later event bumped the version, so the event has been projected already.
+            var eventVersion = "2022-03-23T14:24:04+01:00";
+            var snapshotVersion = "2022-03-23T15:24:04+01:00";
+
+            var ct = new CancellationTokenSource(5000);
+
+            var mockProxy = new Mock<IOsloProxy>();
+            mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(() => new OsloResult
+                {
+                    ETag = "laterEventHash",
+                    Identificator = new OsloIdentificator
+                    {
+                        Versie = snapshotVersion
+                    }
+                });
+
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, SnapshotManagerOptions.Create("1", "1"));
+            var result = snapshotManager.FindMatchingSnapshot(
+                "50083",
+                Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                eventHash,
+                eventPosition: 1111111,
+                throwStaleWhenGone: false,
+                matchOnHashOnly: true,
+                CancellationToken.None);
+
+            Task.WaitAny(new Task[] { result }, ct.Token);
+
+            result.Result.Should().BeNull();
+        }
+
+        [Fact]
+        public void WhenMatchOnHashOnly_AndSnapshotHasNoETag_ThenReturnOsloResultWithoutRetrying()
+        {
+            var eventHash = "eventHash";
+
+            var eventVersion = "2022-03-23T14:24:04+01:00";
+            var snapshotVersion = "2022-03-23T11:24:04+01:00";
+
+            var ct = new CancellationTokenSource(5000);
+
+            var mockProxy = new Mock<IOsloProxy>();
+            mockProxy.Setup(x => x.GetSnapshot(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(() => new OsloResult
+                {
+                    ETag = null,
+                    Identificator = new OsloIdentificator
+                    {
+                        Versie = snapshotVersion
+                    }
+                });
+
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, SnapshotManagerOptions.Create("1", "1"));
+            var result = snapshotManager.FindMatchingSnapshot(
+                "50083",
+                Instant.FromDateTimeOffset(DateTimeOffset.Parse(eventVersion)),
+                eventHash,
+                eventPosition: 1111111,
+                throwStaleWhenGone: false,
+                matchOnHashOnly: true,
+                CancellationToken.None);
+
+            Task.WaitAny(new Task[] { result }, ct.Token);
+
+            result.Result.Should().NotBeNull();
+            mockProxy.Verify(x => x.GetSnapshot(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+        }
+
+        [Fact]
+        public async Task WhenMatchOnHashOnly_AndEventHashIsNull_ThenThrowArgumentNullException()
+        {
+            var mockProxy = new Mock<IOsloProxy>();
+
+            var snapshotManager = new SnapshotManager(new NullLoggerFactory(), mockProxy.Object, SnapshotManagerOptions.Create("1", "1"));
+            var act = async () => await snapshotManager.FindMatchingSnapshot(
+                "50083",
+                Instant.FromDateTimeOffset(DateTimeOffset.Parse("2022-03-23T14:24:04+01:00")),
+                null,
+                eventPosition: 1111111,
+                throwStaleWhenGone: false,
+                matchOnHashOnly: true,
+                CancellationToken.None);
+
+            await act.Should().ThrowAsync<ArgumentNullException>();
+            mockProxy.Verify(x => x.GetSnapshot(It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Never);
+        }
     }
 }
