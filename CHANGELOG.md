@@ -1,3 +1,10 @@
+# [26.1.0](https://github.com/informatievlaanderen/grar-common/compare/v26.0.0...v26.1.0) (2026-09-03)
+
+
+### Features
+
+* **oslo:** add snapshotmanager overload matchhashonly ([9bb699f](https://github.com/informatievlaanderen/grar-common/commit/9bb699f3af2f9929355a9b4c407befa68845ee6c))
+
 # [26.0.0](https://github.com/informatievlaanderen/grar-common/compare/v25.9.4...v26.0.0) (2026-08-21)
 
 
