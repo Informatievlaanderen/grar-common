@@ -14,8 +14,8 @@ public class BaseRegistriesCloudEvent
     [JsonProperty("versieId", Order = 3)]
     public required string VersionId { get; set; }
 
-    [JsonProperty("nisCodes", Order = 4)]
-    public required List<string> NisCodes { get; set; }
+    [JsonProperty("nisCodes", Order = 4, NullValueHandling = NullValueHandling.Ignore)]
+    public List<string>? NisCodes { get; set; }
 
     [JsonProperty("attributen", Order = 5)]
     public required List<BaseRegistriesCloudEventAttribute> Attributes { get; set; } = [];

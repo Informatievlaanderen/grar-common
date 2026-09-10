@@ -171,6 +171,47 @@ namespace Be.Vlaanderen.Basisregisters.GrAr.Tests.ChangeFeed
             context.ChangeTracker.Entries().Should().BeEmpty();
         }
 
+        [Fact]
+        public async Task WhenThereAreNoNisCodes_ThenTheyAreLeftOutOfTheSerializedEvent()
+        {
+            await using var context = CreateLastChangedListContext();
+            var sut = CreateSut(context);
+
+            var cloudEvent = sut.CreateCloudEventWithData(
+                1,
+                DateTimeOffset.UtcNow,
+                "EventType",
+                "objectId",
+                DateTimeOffset.UtcNow,
+                null,
+                [],
+                "EventName",
+                "causationId");
+
+            // The field is optional, so a null must be absent from the payload rather than serialized as null.
+            sut.SerializeCloudEvent(cloudEvent).Should().NotContain("nisCodes");
+        }
+
+        [Fact]
+        public async Task WhenThereAreNisCodes_ThenTheyAreSerialized()
+        {
+            await using var context = CreateLastChangedListContext();
+            var sut = CreateSut(context);
+
+            var cloudEvent = sut.CreateCloudEventWithData(
+                1,
+                DateTimeOffset.UtcNow,
+                "EventType",
+                "objectId",
+                DateTimeOffset.UtcNow,
+                ["11001"],
+                [],
+                "EventName",
+                "causationId");
+
+            sut.SerializeCloudEvent(cloudEvent).Should().Contain("\"nisCodes\":[\"11001\"]");
+        }
+
         private static ChangeFeedService CreateSut(LastChangedListContext context, bool isCacheEnabled = true)
             => new ChangeFeedService(
                 new ChangeFeedConfig

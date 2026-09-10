@@ -106,7 +106,7 @@ public class ChangeFeedService : IChangeFeedService
         string eventType,
         string objectId,
         DateTimeOffset versionId,
-        List<string> nisCodes,
+        List<string>? nisCodes,
         List<BaseRegistriesCloudEventAttribute> attributes,
         string eventName,
         string causationId)
