@@ -1,3 +1,10 @@
+# [26.2.0](https://github.com/informatievlaanderen/grar-common/compare/v26.1.0...v26.2.0) (2026-09-10)
+
+
+### Features
+
+* **changefeed:** make niscodes optional ([faa4031](https://github.com/informatievlaanderen/grar-common/commit/faa4031268497c74fe782a682fc213d8d080223d))
+
 # [26.1.0](https://github.com/informatievlaanderen/grar-common/compare/v26.0.0...v26.1.0) (2026-09-03)
 
 
