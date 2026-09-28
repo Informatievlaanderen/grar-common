@@ -36,7 +36,8 @@
             {
                 organisation = Organisation.DigitaalVlaanderen;
             }
-            else if (!string.IsNullOrEmpty(contextUser.FindFirstValue(AcmIdmClaimTypes.NisCode)))
+            else if (!string.IsNullOrEmpty(contextUser.FindFirstValue(AcmIdmClaimTypes.NisCode)) ||
+                     !string.IsNullOrEmpty(contextUser.FindFirstValue(AcmIdmClaimTypes.CustomOvoCode)))
             {
                 organisation = Organisation.Municipality;
             }
