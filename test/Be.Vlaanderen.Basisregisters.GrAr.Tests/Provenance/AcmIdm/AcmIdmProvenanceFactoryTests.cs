@@ -175,6 +175,71 @@
         }
 
         [Fact]
+        public void OrganisationMunicipalityWithCustomOvoCodeTest()
+        {
+            var expectedOvoCode = "OVO" + _fixture.Create<string>();
+            var defaultClaims = new List<Claim>
+            {
+                new Claim(AcmIdmClaimTypes.VoOrgCode, _fixture.Create<string>()),
+                new Claim(AcmIdmClaimTypes.CustomOvoCode, expectedOvoCode),
+            };
+
+            _mockHttpContext.SetupProperty(x => x.HttpContext, new DefaultHttpContext
+            {
+                User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
+            });
+
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);
+            var result = factory.Create(_fixture.Create<Reason>(), _fixture.Create<Modification>());
+
+            result.Organisation.Should().Be(Organisation.Municipality);
+            result.Operator.ToString().Should().Be(expectedOvoCode);
+        }
+
+        [Fact]
+        public void OrganisationDigitaalVlaanderenWithCustomOvoCodeTest()
+        {
+            var defaultClaims = new List<Claim>
+            {
+                new Claim(AcmIdmClaimTypes.VoOrgCode, _fixture.Create<string>()),
+                new Claim(AcmIdmClaimTypes.CustomOvoCode, AcmIdmProvenanceFactory.OvoCodeDigitaalVlaanderen),
+            };
+
+            _mockHttpContext.SetupProperty(x => x.HttpContext, new DefaultHttpContext
+            {
+                User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
+            });
+
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);
+            var result = factory.Create(_fixture.Create<Reason>(), _fixture.Create<Modification>());
+
+            result.Organisation.Should().Be(Organisation.DigitaalVlaanderen);
+            result.Operator.ToString().Should().Be(AcmIdmProvenanceFactory.OvoCodeDigitaalVlaanderen);
+        }
+
+        [Fact]
+        public void OperatorWithOvoCodeTakesPriorityOverCustomOvoCodeTest()
+        {
+            var expectedOvoCode = "OVO" + _fixture.Create<string>();
+            var defaultClaims = new List<Claim>
+            {
+                new Claim(AcmIdmClaimTypes.VoOrgCode, _fixture.Create<string>()),
+                new Claim(AcmIdmClaimTypes.VoOvoCode, expectedOvoCode),
+                new Claim(AcmIdmClaimTypes.CustomOvoCode, "OVO" + _fixture.Create<string>()),
+            };
+
+            _mockHttpContext.SetupProperty(x => x.HttpContext, new DefaultHttpContext
+            {
+                User = new ClaimsPrincipal(new ClaimsIdentity(defaultClaims, "Test"))
+            });
+
+            var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);
+            var result = factory.Create(_fixture.Create<Reason>(), _fixture.Create<Modification>());
+
+            result.Operator.ToString().Should().Be(expectedOvoCode);
+        }
+
+        [Fact]
         public void OrganisationOtherTest()
         {
             var factory = new AcmIdmProvenanceFactory(Application.BuildingRegistry, _mockHttpContext.Object);

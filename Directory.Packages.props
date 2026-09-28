@@ -15,7 +15,7 @@
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore" Version="11.0.0" />
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.AggregateSource.Testing.SqlStreamStore.Autofac" Version="11.0.0" />
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.AggregateSource.Testing.Xunit" Version="11.0.0" />
-        <PackageVersion Include="Be.Vlaanderen.Basisregisters.Auth.AcmIdm" Version="5.0.0" />
+        <PackageVersion Include="Be.Vlaanderen.Basisregisters.Auth.AcmIdm" Version="5.1.0" />
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.CommandHandling" Version="11.0.0" />
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.CommandHandling.Idempotency" Version="11.0.0"/>
         <PackageVersion Include="Be.Vlaanderen.Basisregisters.CommandHandling.SqlStreamStore" Version="11.0.0" />
